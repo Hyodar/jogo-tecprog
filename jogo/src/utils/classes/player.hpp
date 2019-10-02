@@ -13,7 +13,7 @@ protected:
 public:
     Player(int x=0, int y=0);
     
-    void move(sf::Keyboard::Key keycode);
+    void update(const float deltaTime);
     void render(sf::RenderWindow& window);
 
 };

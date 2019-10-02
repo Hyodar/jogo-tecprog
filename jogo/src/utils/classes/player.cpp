@@ -10,22 +10,21 @@ Player::Player(int x, int y) : speed(6, 0), position(x, y) {
     sprite.setTexture(texture);
 }
 
-void Player::move(sf::Keyboard::Key keycode) {
-    switch(keycode) {
-        case sf::Keyboard::Key::Left:
-            position.x -= speed.x;
-            break;
-        case sf::Keyboard::Key::Up:
-            speed.y = 6; // FIXME - provisorio para testes
-            position.y -= speed.y;
-            break;
-        case sf::Keyboard::Key::Right:
-            position.x += speed.x;
-            break;
-        case sf::Keyboard::Key::Down:
-            speed.y = 6; // FIXME - provisorio para testes
-            position.y += speed.y;
-            break;
+void Player::update(const float deltaTime) {
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        position.x -= speed.x * deltaTime;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        if(!speed.y) speed.y -= 10;
+        //position.x -= speed.y * deltaTime;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        position.x += speed.x * deltaTime;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if(speed.y) speed.y += 2.5;
+        //position.y += speed.y * deltaTime;
     }
     std::cout << position.x << ", " << position.y << std::endl;
 }
