@@ -1,18 +1,19 @@
 
 #include <SFML/Window.hpp>
-#include <SFML/Vector2.hpp>
+#include <SFML/Graphics.hpp>
 #include "point.hpp"
 
 class Player {
 
 protected:
-    sf::Vector2i position;
-    sf::Vector2i speed;
+    sf::Vector2f position;
+    sf::Vector2f speed;
+    sf::Sprite sprite;
 
 public:
-    Player() : position(), speed(6, 0) {}
-    Player(int x, int y) : position(x, y), speed(6, 0) {}
+    Player(int x=0, int y=0);
     
     void move(sf::Keyboard::Key keycode);
+    void render(sf::RenderWindow& window);
 
 };

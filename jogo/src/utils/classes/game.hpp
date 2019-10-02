@@ -5,11 +5,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "player.hpp"
+
 class Game {
 
     public: 
         Game();
-
         static void start();
 
     private:
@@ -22,6 +23,8 @@ class Game {
             playing,
             exiting
         };
+
+        static Player player;
 
         static GameState gameState;
         static sf::RenderWindow mainWindow;

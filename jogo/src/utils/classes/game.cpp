@@ -1,6 +1,9 @@
 
 #include "game.hpp"
 
+#include <iostream>
+#include <string>
+
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
 
@@ -8,6 +11,7 @@
 
 Game::GameState Game::gameState = uninitialized;
 sf::RenderWindow Game::mainWindow;
+Player Game::player(100, 100);
 
 Game::Game() {
     
@@ -19,6 +23,7 @@ void Game::start() {
 
     if(gameState != uninitialized) return;
 
+    std::cout << "Creating window" << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     gameState = showingSplash;
 
@@ -41,20 +46,32 @@ void Game::gameLoop() {
 
     sf::Event event;
     while(mainWindow.pollEvent(event)) {
-        switch(gameState) {
-            
-            case Game::showingMenu:
+        switch(gameState) {            
+            case showingMenu:
                 showMenu();
                 break;
-
-            case Game::showingSplash:
+            case showingSplash:
                 showSplashScreen();
                 break;
-            
-            case Game::playing:
-                processPlaying(event);
-                break;
+            case playing:
+                sf::Event playingEvent;
+                while(mainWindow.pollEvent(playingEvent)) {
+                    
+                    mainWindow.clear(sf::Color(0, 0, 255));
+                    player.render(mainWindow);
+                    mainWindow.display();
 
+                    switch(playingEvent.type) {
+                        case sf::Event::KeyPressed:
+                            std::cout << "Key pressed. \n";
+                            player.move(playingEvent.key.code);
+                            break;
+                        case sf::Event::Closed:
+                            gameState = exiting;
+                            break;
+                    }
+                }
+            break;
         }
     }
 }
@@ -87,17 +104,8 @@ void Game::showMenu() {
 // -------------------------------------------------------------
 
 void Game::processPlaying(sf::Event& event) {
-    mainWindow.clear(sf::Color(0, 255, 0));
-    mainWindow.display();
+    //mainWindow.clear(sf::Color(0, 255, 0));
 
-    switch(event.type) {
-        case sf::Event::KeyPressed:
-            player.move(event.key.code);
-            break;
-        case sf::Event::Closed:
-            gameState = exiting;
-            break;
-    }
 }
 
 // -------------------------------------------------------------
@@ -105,3 +113,4 @@ void Game::processPlaying(sf::Event& event) {
 void Game::stop() {
     mainWindow.close();
 }
+
