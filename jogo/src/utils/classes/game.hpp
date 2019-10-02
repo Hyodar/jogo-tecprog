@@ -13,17 +13,6 @@ class Game {
         static void start();
 
     private:
-
-        static void stop();
-        static bool isExiting();
-
-        static void gameLoop();
-
-        static void showSplashScreen();
-        static void showMenu();
-
-        static void processPlaying(sf::Event& e);
-
         enum GameState {
             uninitialized,
             showingSplash,
@@ -36,6 +25,17 @@ class Game {
 
         static GameState gameState;
         static sf::RenderWindow mainWindow;
+
+        static void stop();
+        static bool isExiting();
+
+        static void gameLoop();
+
+        static void showSplashScreen();
+        static void showMenu();
+
+        static void processPlaying(sf::Event& e);
+
 };
 
 #endif // GAME_H_

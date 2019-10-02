@@ -91,6 +91,9 @@ void Game::processPlaying(sf::Event& event) {
     mainWindow.display();
 
     switch(event.type) {
+        case sf::Event::KeyPressed:
+            player.move(event.key.code);
+            break;
         case sf::Event::Closed:
             gameState = exiting;
             break;
