@@ -3,29 +3,32 @@
 
 // -------------------------------------------------------------
 
-MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
-
-    sf::Texture texture;
+MainMenu::MainMenu() {
     texture.loadFromFile("resources/main_menu.png");
+}
+
+// -------------------------------------------------------------
+
+void mainMenu::addButton(int left, int top, int width,
+                         int height, MainMenu::MenuResult action) {
+    MenuItem button;
+    button.rect.left = left;
+    button.rect.top = top;
+    button.rect.width = width;
+    button.rect.height = height;
+    button.action = action;
+
+    menuItems.push_back(button);
+}
+
+// -------------------------------------------------------------
+
+MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
     sprite.setTexture(texture);
 
-    MenuItem playButton;
-    playButton.rect.left = 0;
-    playButton.rect.top = 145;
-    playButton.rect.width = 1023; // 1023 - 0
-    playButton.rect.height = 177; // 380 - 145
-    playButton.action = play;
-
-    MenuItem exitButton;
-    exitButton.rect.left = 0;
-    exitButton.rect.top = 383;
-    exitButton.rect.width = 1023; // 0 - 1023
-    exitButton.rect.height = 223; //560 - 383
-    exitButton.action = exit;
-
-    menuItems.push_back(playButton);
-    menuItems.push_back(exitButton);
+    addButton(0, 145, 1023, 177, play);
+    addButton(0, 383, 1023, 177, exit);
 
     renderWindow.draw(sprite);
     renderWindow.display();

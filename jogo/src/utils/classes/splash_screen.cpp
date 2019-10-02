@@ -4,14 +4,14 @@
 
 // -------------------------------------------------------------
 
-void SplashScreen::show(sf::RenderWindow& renderWindow) {
-    sf::Texture texture;
-
+SplashScreen::SplashScreen() : texture() {
     if(!texture.loadFromFile("resources/splash_screen.png")) {
         std::cout << "[!] Could not load splash screen image!";
         return;
     }
+}
 
+void SplashScreen::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite(texture);
 
     renderWindow.draw(sprite);

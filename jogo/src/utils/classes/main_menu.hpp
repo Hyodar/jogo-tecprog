@@ -23,14 +23,16 @@ class MainMenu {
                 MenuResult action;
         };
 
+        MainMenu();
         MenuResult show(sf::RenderWindow& renderWindow);
 
     private:
+        void addButton()
         MenuResult getMenuResponse(sf::RenderWindow& renderWindow);
-
         MenuResult handleClick(int x, int y);
 
         std::list<MenuItem> menuItems;
+        sf::Texture texture;
 };
 
 #endif // MAIN_MENU_H_

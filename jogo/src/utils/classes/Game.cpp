@@ -26,7 +26,7 @@ void Game::start() {
         gameLoop();
     }
 
-    mainWindow.close();
+    stop();
 }
 
 // -------------------------------------------------------------
@@ -51,18 +51,9 @@ void Game::gameLoop() {
                 showSplashScreen();
                 break;
             
-            // playing stage
             case Game::playing:
-                mainWindow.clear(sf::Color(0, 255, 0));
-                mainWindow.display();
-
-                switch(event.type) {
-                    case sf::Event::Closed:
-                        gameState = exiting;
-                        break;
-                }
+                processPlaying(event);
                 break;
-
 
         }
     }
@@ -91,4 +82,23 @@ void Game::showMenu() {
             gameState = playing;
             break;
     }
+}
+
+// -------------------------------------------------------------
+
+void Game::processPlaying(sf::Event& event) {
+    mainWindow.clear(sf::Color(0, 255, 0));
+    mainWindow.display();
+
+    switch(event.type) {
+        case sf::Event::Closed:
+            gameState = exiting;
+            break;
+    }
+}
+
+// -------------------------------------------------------------
+
+void Game::stop() {
+    mainWindow.close();
 }
