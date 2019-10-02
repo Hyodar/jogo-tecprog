@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-Player::Player(int x, int y) : speed(6, 0), position(x, y) {
+Player::Player(int x, int y) : speed(600, 0), position(x, y) {
     sf::Texture texture;
     texture.loadFromFile("resources/player.png");
 
@@ -16,14 +16,14 @@ void Player::update(const float deltaTime) {
         position.x -= speed.x * deltaTime;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        if(!speed.y) speed.y -= 10;
+        if(!speed.y) speed.y -= 1000;
         //position.x -= speed.y * deltaTime;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         position.x += speed.x * deltaTime;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        if(speed.y) speed.y += 2.5;
+        if(speed.y) speed.y += 250;
         //position.y += speed.y * deltaTime;
     }
     std::cout << position.x << ", " << position.y << std::endl;

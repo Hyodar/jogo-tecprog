@@ -85,15 +85,10 @@ void Game::showMenu() {
 
 void Game::processPlaying() {
     sf::Event playingEvent;
+    sf::Clock clock;
     mainWindow.clear(sf::Color(0, 0, 255));
 
     while(mainWindow.pollEvent(playingEvent)) {
-        const float deltaTime = mainWindow.getFrameTime();
-
-        mainWindow.clear(sf::Color(0, 0, 255));
-        player.update(deltaTime);
-        player.render(mainWindow);
-        mainWindow.display();
 
         switch(playingEvent.type) {
             case sf::Event::KeyPressed:
@@ -105,6 +100,13 @@ void Game::processPlaying() {
                 gameState = exiting;
                 break;
         }
+        
+        sf::Time frameTime = clock.restart();
+
+        mainWindow.clear(sf::Color(0, 0, 255));
+        player.update(frameTime.asSeconds());
+        player.render(mainWindow);
+        mainWindow.display();
     }
 }
 

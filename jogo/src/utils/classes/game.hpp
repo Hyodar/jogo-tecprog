@@ -37,7 +37,7 @@ class Game {
         static void showSplashScreen();
         static void showMenu();
 
-        static void processPlaying(sf::Event& e);
+        static void processPlaying();
 
 };
 
