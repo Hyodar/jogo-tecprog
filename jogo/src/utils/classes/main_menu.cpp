@@ -9,7 +9,7 @@ MainMenu::MainMenu() {
 
 // -------------------------------------------------------------
 
-void mainMenu::addButton(int left, int top, int width,
+void MainMenu::addButton(int left, int top, int width,
                          int height, MainMenu::MenuResult action) {
     MenuItem button;
     button.rect.left = left;

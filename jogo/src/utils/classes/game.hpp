@@ -2,8 +2,8 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 class Game {
 
@@ -14,7 +14,9 @@ class Game {
 
     private:
 
+        static void stop();
         static bool isExiting();
+
         static void gameLoop();
 
         static void showSplashScreen();

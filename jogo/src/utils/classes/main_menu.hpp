@@ -27,7 +27,8 @@ class MainMenu {
         MenuResult show(sf::RenderWindow& renderWindow);
 
     private:
-        void addButton()
+        void addButton(int left, int top, int width,
+                       int height, MenuResult action);
         MenuResult getMenuResponse(sf::RenderWindow& renderWindow);
         MenuResult handleClick(int x, int y);
 
