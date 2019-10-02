@@ -1,8 +1,8 @@
 
-#include "Game.hpp"
+#include "game.hpp"
 
-#include "SplashScreen.hpp"
-#include "MainMenu.hpp"
+#include "splash_screen.hpp"
+#include "main_menu.hpp"
 
 // -------------------------------------------------------------
 
@@ -19,8 +19,7 @@ void Game::start() {
 
     if(gameState != uninitialized) return;
 
-    mainWindow.create(sf::VideoMode(1024, 768),
-                      "Game title");
+    mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     gameState = showingSplash;
 
     while(!isExiting()) {

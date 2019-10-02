@@ -1,5 +1,5 @@
 
-#include "SplashScreen.hpp"
+#include "splash_screen.hpp"
 #include <iostream>
 
 // -------------------------------------------------------------
