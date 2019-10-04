@@ -1,6 +1,6 @@
 # Opções do compilador
 CC = g++
-CFLAGS = -I/usr/include -Iresources/include -Isrc/utils/classes -Isrc/thirdparty -O2 -Wall -std=c++11 -DDEBUG
+CFLAGS = -I/usr/include -Iresources/include -Isrc/include -Isrc/utils/classes -Isrc/thirdparty -O2 -Wall -std=c++11 -DDEBUG
 LDFLAGS = -L/usr/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 # Diretórios

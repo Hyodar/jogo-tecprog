@@ -4,12 +4,15 @@
 #include <iostream>
 #include <string>
 
+#include "tile_manager.hpp"
+#include "game_map.hpp"
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
 
 // -------------------------------------------------------------
 
 Game::GameState Game::gameState = uninitialized;
+Game::GamePhase Game::gamePhase = noPhase;
 sf::RenderWindow Game::mainWindow;
 Player Game::player(100, 100);
 
@@ -25,7 +28,11 @@ void Game::start() {
 
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
+    // TODO - TileManager::loadTileSet();
+    GameMap::loadMap();
+    
     gameState = showingSplash;
+    gamePhase = noPhase;
 
     while(!isExiting()) {
         gameLoop();
@@ -77,6 +84,7 @@ void Game::showMenu() {
             break;
         case MainMenu::play:
             gameState = playing;
+            gamePhase = phase1;
             break;
     }
 }
@@ -86,26 +94,34 @@ void Game::showMenu() {
 void Game::processPlaying() {
     sf::Event playingEvent;
     sf::Clock clock;
+
     mainWindow.clear(sf::Color(0, 0, 255));
+    GameMap::loadMap();
 
-    while(mainWindow.pollEvent(playingEvent)) {
+    while(mainWindow.isOpen()) {
+        while(mainWindow.pollEvent(playingEvent)) {
 
-        switch(playingEvent.type) {
-            case sf::Event::KeyPressed:
-                if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
-                    showMenu();
-                }
-                break;
-            case sf::Event::Closed:
-                gameState = exiting;
-                break;
+            switch(playingEvent.type) {
+                case sf::Event::KeyPressed:
+                    if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
+                        showMenu();
+                    } else if(playingEvent.key.code == sf::Keyboard::Key::Up) {
+                        player.jump();
+                    }
+                    break;
+                case sf::Event::Closed:
+                    gameState = exiting;
+                    break;
+            }
         }
-        
         sf::Time frameTime = clock.restart();
 
         mainWindow.clear(sf::Color(0, 0, 255));
         player.update(frameTime.asSeconds());
+        
+        GameMap::drawTiles(player.getPosition());
         player.render(mainWindow);
+
         mainWindow.display();
     }
 }

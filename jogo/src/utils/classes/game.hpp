@@ -13,6 +13,8 @@ class Game {
         Game();
         static void start();
 
+        static sf::RenderWindow& getMainWindow() { return mainWindow; }
+
     private:
         enum GameState {
             uninitialized,
@@ -24,9 +26,17 @@ class Game {
             exiting
         };
 
+        enum GamePhase {
+            noPhase,
+            phase1,
+            phase2,
+            boss
+        };
+
         static Player player;
 
         static GameState gameState;
+        static GamePhase gamePhase;
         static sf::RenderWindow mainWindow;
 
         static void stop();
