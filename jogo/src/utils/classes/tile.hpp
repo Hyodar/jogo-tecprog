@@ -7,13 +7,12 @@
 class Tile {
 
 private:
-    sf::RectangleShape* TEST_rect;
+    sf::RectangleShape* rect;
     int tileNumber;
 
 public:
     Tile(int tileNumber);
     void draw(sf::Vector2f pos);
-    virtual bool collide();
 
     char getTileNumber() { return tileNumber; }
 

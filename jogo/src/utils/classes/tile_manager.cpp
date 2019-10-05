@@ -19,20 +19,14 @@ void TileManager::loadTileSet() {
     tileSetTexture.loadFromFile(tileSetPath);
 
     tileSet.insert({ EmptyTile, nullptr });
+
     createTile(StoneWoodFloor, sf::IntRect(0, 0, TILE_SIZE, TILE_SIZE));
-    createTile(WoodPillar, sf::IntRect(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
-    createTile(WoodPlatform1, sf::IntRect(2*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
-    createTile(WoodPlatform2, sf::IntRect(3*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
-    createTile(WoodPlatform3, sf::IntRect(4*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
+    createTile(WoodPlatform1,  sf::IntRect(2*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
+    createTile(WoodPlatform2,  sf::IntRect(3*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
+    createTile(WoodPlatform3,  sf::IntRect(4*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
+    createTile(WoodPillar,     sf::IntRect(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
 }
 
-/*
-sf::Texture& TileManager::getTileTexture(int tileNumber) {
-    
-    // TODO return tileSet[tileNumber];
-}
-*/
-
-sf::RectangleShape* TileManager::TEST_getTileTexture(int tileNumber) {
+sf::RectangleShape* TileManager::getTileTexture(int tileNumber) {
     return tileSet[tileNumber];
 }

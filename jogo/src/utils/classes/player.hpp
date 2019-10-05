@@ -11,6 +11,10 @@ protected:
     sf::Vector2i size;
     sf::Vector2f position;
     sf::Vector2f speed;
+
+    float hitPoints;
+    bool invulnerable;
+    sf::RectangleShape healthBar;
     
     bool onGround;
     static const int jumpSpeed;
@@ -29,6 +33,8 @@ public:
     void checkCollisionY();
 
     sf::Vector2f getPosition() { return position; }
+    bool isInvulnerable() { return invulnerable; }
+    void takeDamage(float dmg) { hitPoints -= dmg; invulnerable = true;} // TODO - colocar timer de invulnerabilidade
 
 };
 

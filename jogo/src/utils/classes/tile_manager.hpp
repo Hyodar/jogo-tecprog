@@ -26,7 +26,7 @@ private:
 
 public:
     static void loadTileSet();
-    static sf::RectangleShape* TEST_getTileTexture(int tileNumber);
+    static sf::RectangleShape* getTileTexture(int tileNumber);
 
 };
 
