@@ -14,6 +14,7 @@ protected:
     
     bool onGround;
     static const int jumpSpeed;
+    static const int walkSpeed;
 
     static sf::Texture texture;
     sf::Sprite sprite;

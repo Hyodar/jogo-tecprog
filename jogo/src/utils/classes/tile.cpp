@@ -4,12 +4,12 @@
 #include "game.hpp"
 #include "tile_manager.hpp"
 
-Tile::Tile(char tileCh) : tileChar{tileCh} {
-    TEST_rect = TileManager::TEST_getTileTexture(tileChar);
+Tile::Tile(int tileNum) : tileNumber{tileNum} {
+    TEST_rect = TileManager::TEST_getTileTexture(tileNumber);
 }
 
 void Tile::draw(sf::Vector2f pos) {
-    if(tileChar != ' ') {
+    if(tileNumber != 0) {
         TEST_rect->setPosition(pos.x, pos.y);
         Game::getMainWindow().draw(*TEST_rect);
     }
@@ -18,9 +18,5 @@ void Tile::draw(sf::Vector2f pos) {
 // TODO - fazer classe Obstacle q retorna true
 
 bool Tile::collide() {
-    return tileChar == 'B' 
-           || tileChar == 'P' 
-           || tileChar == 'a' 
-           || tileChar == 'b' 
-           || tileChar == 'c';
+    return tileNumber == 1;
 }

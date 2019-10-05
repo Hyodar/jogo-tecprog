@@ -6,6 +6,7 @@
 
 sf::Texture Player::texture;
 const int Player::jumpSpeed = 2000;
+const int Player::walkSpeed = 500;
 
 Player::Player(int x, int y) : speed(600, 0), position(x, y), size(64, 64), onGround{false} {
     texture.loadFromFile("resources/player.png");
@@ -26,29 +27,19 @@ void Player::update(const float deltaTime) {
     if(!onGround) speed.y += gravAcc * deltaTime;
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        speed.x = -500;
+        speed.x = -walkSpeed;
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        speed.x = 500;
+        speed.x = walkSpeed;
     }
     else {
         speed.x = 0;
     }
-
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         jump();
     }
-    /*
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        speed.y = 500;
-    }
-    else {
-        speed.y = 0;
-    }
-    */
-    
-    //position += speed * deltaTime;
+
     position.x += speed.x * deltaTime;
     checkCollisionX();
     position.y += speed.y * deltaTime;
@@ -79,27 +70,29 @@ void Player::jump() {
 }
 
 void Player::checkCollisionX() {
-    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
-        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
-            if(GameMap::getTile(i, j).collide()) {       
-                if(speed.x > 0) position.x = j * TILE_SIZE - size.x; 
-                else if(speed.x < 0) position.x = j * TILE_SIZE + TILE_SIZE;
+    for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
+        for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
+            if(GameMap::getCollisionTile(i, j).collide()) {       
+                if(speed.x > 0) position.x = j * COLLISION_TILE_SIZE - size.x; 
+                else if(speed.x < 0) position.x = j * COLLISION_TILE_SIZE + COLLISION_TILE_SIZE;
                 speed.x = 0;
+                return;
             }
         }
     }
 }
                     
 void Player::checkCollisionY() {
-    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
-        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
-            if(GameMap::getTile(i, j).collide()) {       
+    for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
+        for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
+            if(GameMap::getCollisionTile(i, j).collide()) {       
                 if(speed.y > 0) { 
-                    position.y = i * TILE_SIZE - size.y;
+                    position.y = i * COLLISION_TILE_SIZE - size.y;
                     onGround = true;
                 }
-                else if(speed.y < 0) position.y = i * TILE_SIZE + TILE_SIZE;
+                else if(speed.y < 0) position.y = i * COLLISION_TILE_SIZE + COLLISION_TILE_SIZE;
                 speed.y = 0;
+                return;
             }
         }
     }

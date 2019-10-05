@@ -9,15 +9,24 @@
 class TileManager {
 
 private:
-    static std::map<char, sf::RectangleShape*> tileSet;
+    static std::map<int, sf::RectangleShape*> tileSet;
     static sf::Texture tileSetTexture;
     static char tileSetPath[];
 
-    static void createTile(char tileChar, sf::IntRect rect);
+    enum TileType {
+        EmptyTile,
+        StoneWoodFloor,
+        WoodPillar,
+        WoodPlatform1,
+        WoodPlatform2,
+        WoodPlatform3
+    };
+
+    static void createTile(int tileNumber, sf::IntRect rect);
 
 public:
     static void loadTileSet();
-    static sf::RectangleShape* TEST_getTileTexture(char tileChar);
+    static sf::RectangleShape* TEST_getTileTexture(int tileNumber);
 
 };
 

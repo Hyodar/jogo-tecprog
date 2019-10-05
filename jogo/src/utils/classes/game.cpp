@@ -30,7 +30,6 @@ void Game::start() {
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     TileManager::loadTileSet();
-    GameMap::loadMap();
     
     gameState = showingSplash;
     gamePhase = noPhase;
@@ -82,6 +81,7 @@ void Game::showMenu() {
     switch(result) {
         case MainMenu::exit:
             gameState = exiting;
+            stop();
             break;
         case MainMenu::play:
             gameState = playing;
@@ -123,7 +123,7 @@ void Game::processPlaying() {
             mainWindow.clear(sf::Color(0, 0, 255));
             player.update(frameTime.asSeconds());
             
-            GameMap::drawTiles(player.getPosition());
+            GameMap::draw(player.getPosition());
             player.render(mainWindow);
 
             mainWindow.display();
