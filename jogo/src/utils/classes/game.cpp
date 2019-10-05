@@ -136,4 +136,3 @@ void Game::processPlaying() {
 void Game::stop() {
     mainWindow.close();
 }
-
