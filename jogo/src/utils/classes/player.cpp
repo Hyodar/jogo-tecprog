@@ -1,48 +1,106 @@
 
 #include "player.hpp"
+#include "game_map.hpp"
+#include <iostream>
 #include <constants.hpp>
 
-#include <iostream>
-
 sf::Texture Player::texture;
+const int Player::jumpSpeed = 2000;
 
-Player::Player(int x, int y) : speed(600, 0), position(x, y), size(32, 32) {
+Player::Player(int x, int y) : speed(600, 0), position(x, y), size(64, 64), onGround{false} {
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
+    sprite.setScale(2, 2);
 }
 
 void Player::update(const float deltaTime) {
 
+    /*
     if(position.y + size.y -windowH > -20) {
         position.y = windowH - size.y;
     } else if(position.y + size.y < windowH){
-        // ta no ar
-        speed.y += gravAcc;
+        // FIXME - speed.y += gravAcc;
     }
+    */
+    if(!onGround) speed.y += gravAcc * deltaTime;
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        speed.x = -100;
-    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        speed.x = 100;
-    } else {
+        speed.x = -500;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        speed.x = 500;
+    }
+    else {
         speed.x = 0;
     }
+
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        jump();
+    }
+    /*
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        speed.y = 500;
+    }
+    else {
+        speed.y = 0;
+    }
+    */
     
     //position += speed * deltaTime;
-    position += speed * deltaTime;
+    position.x += speed.x * deltaTime;
+    checkCollisionX();
+    position.y += speed.y * deltaTime;
+    onGround = false;
+    checkCollisionY();
 
-    std::cout << position.x << ", " << position.y << std::endl;
 }
 
 void Player::render(sf::RenderWindow& window) {
-    sprite.setPosition(position);
+    if(GameMap::IsAtEnd()) {
+        sprite.setPosition(sf::Vector2f(windowW + position.x - GameMap::getMapLength(), position.y));
+    }
+    else if(GameMap::IsAtStart()) {
+        sprite.setPosition(position);
+    }
+    else {
+        sprite.setPosition(sf::Vector2f(windowW/2, position.y));
+    }
+
     window.draw(sprite);
 }
 
 void Player::jump() {
-    if(!speed.y) {
-        speed.y -= 1000;
+    if(onGround) {
+        speed.y -= jumpSpeed;
+        onGround = false;
     }
 }
 
+void Player::checkCollisionX() {
+    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
+        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
+            if(GameMap::getTile(i, j).collide()) {       
+                if(speed.x > 0) position.x = j * TILE_SIZE - size.x; 
+                else if(speed.x < 0) position.x = j * TILE_SIZE + TILE_SIZE;
+                speed.x = 0;
+            }
+        }
+    }
+}
+                    
+void Player::checkCollisionY() {
+    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
+        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
+            if(GameMap::getTile(i, j).collide()) {       
+                if(speed.y > 0) { 
+                    position.y = i * TILE_SIZE - size.y;
+                    onGround = true;
+                }
+                else if(speed.y < 0) position.y = i * TILE_SIZE + TILE_SIZE;
+                speed.y = 0;
+            }
+        }
+    }
+}

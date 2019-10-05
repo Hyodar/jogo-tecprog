@@ -7,15 +7,17 @@
 std::vector<std::vector<Tile>> GameMap::tileMap;
 int GameMap::sizeX = -1;
 int GameMap::sizeY = -1;
+float GameMap::start = 0.0f;
 
 void GameMap::loadMap() {
-    std::string map[24];
-    map[0] = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-    for(int i = 1; i < 23; i++) map[i] = "B                              B";
-    map[23] = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+    std::string map[16];
+    map[0] = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+    for(int i = 1; i < 11; i++) map[i] = "P                                                              P";
+    map[9] = "P         abc                  abc                             P";
+    map[11] = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
 
-    sizeX = 32;
-    sizeY = 24;
+    sizeX = 64;
+    sizeY = 12;
 
     tileMap.clear();
 
@@ -28,22 +30,23 @@ void GameMap::loadMap() {
     }
 }
 
+void GameMap::setupTileStart(sf::Vector2f playerPos) {
+    if(playerPos.x - windowW/2 < 0) {
+        start = 0;
+    } 
+    else {
+        start = (playerPos.x - windowW/2) / TILE_SIZE;
+    }
+
+    if(start + windowW/TILE_SIZE > sizeX) {
+        start = sizeX - windowW/TILE_SIZE;
+    }
+}
+
 void GameMap::drawTiles(sf::Vector2f playerPos) {
     // TODO - considerar playerPos
 
-    // - window
-    int start;
-
-    if(playerPos.x - windowW/2 > 0) {
-        start = (playerPos.x - windowW/2) / TILE_SIZE;
-    } 
-    else {
-        start = 0;
-    }
-
-    if((playerPos.x + windowW/2)/TILE_SIZE > sizeX) {
-        start = sizeX - windowW/TILE_SIZE;
-    }
+    setupTileStart(playerPos);
     
     for(int vec = 0; vec < sizeY; vec++) {
         for(int i = start; i < start + windowW/TILE_SIZE; i++) {

@@ -1,4 +1,7 @@
 
+#ifndef _PLAYER_HPP
+#define _PLAYER_HPP
+
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -8,6 +11,9 @@ protected:
     sf::Vector2i size;
     sf::Vector2f position;
     sf::Vector2f speed;
+    
+    bool onGround;
+    static const int jumpSpeed;
 
     static sf::Texture texture;
     sf::Sprite sprite;
@@ -18,7 +24,11 @@ public:
     void update(const float deltaTime);
     void render(sf::RenderWindow& window);
     void jump();
+    void checkCollisionX();
+    void checkCollisionY();
 
     sf::Vector2f getPosition() { return position; }
 
 };
+
+#endif

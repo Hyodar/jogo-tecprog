@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <constants.hpp>
 
 #include "tile_manager.hpp"
 #include "game_map.hpp"
@@ -14,7 +15,7 @@
 Game::GameState Game::gameState = uninitialized;
 Game::GamePhase Game::gamePhase = noPhase;
 sf::RenderWindow Game::mainWindow;
-Player Game::player(100, 100);
+Player Game::player(windowW/2, 100);
 
 Game::Game() {
     
@@ -28,7 +29,7 @@ void Game::start() {
 
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
-    // TODO - TileManager::loadTileSet();
+    TileManager::loadTileSet();
     GameMap::loadMap();
     
     gameState = showingSplash;
@@ -104,25 +105,29 @@ void Game::processPlaying() {
             switch(playingEvent.type) {
                 case sf::Event::KeyPressed:
                     if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
+                        gameState = paused;
                         showMenu();
-                    } else if(playingEvent.key.code == sf::Keyboard::Key::Up) {
-                        player.jump();
                     }
+                    break;
+                case sf::Event::KeyReleased:
                     break;
                 case sf::Event::Closed:
                     gameState = exiting;
+                    stop();
                     break;
             }
         }
-        sf::Time frameTime = clock.restart();
+        if(gameState != paused) {
+            sf::Time frameTime = clock.restart();
 
-        mainWindow.clear(sf::Color(0, 0, 255));
-        player.update(frameTime.asSeconds());
-        
-        GameMap::drawTiles(player.getPosition());
-        player.render(mainWindow);
+            mainWindow.clear(sf::Color(0, 0, 255));
+            player.update(frameTime.asSeconds());
+            
+            GameMap::drawTiles(player.getPosition());
+            player.render(mainWindow);
 
-        mainWindow.display();
+            mainWindow.display();
+        }
     }
 }
 
