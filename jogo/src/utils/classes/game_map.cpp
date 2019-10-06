@@ -53,7 +53,7 @@ void GameMap::DEPRECATED_loadCollisionMap() {
     json mapInfo;
     file >> mapInfo;
 
-    collisionTileMap.clear();
+    DEPRECATED_collisionTileMap.clear();
 
     int collX = sizeX * (TILE_SIZE / COLLISION_TILE_SIZE);
     int collY = sizeY * (TILE_SIZE / COLLISION_TILE_SIZE);
@@ -64,7 +64,7 @@ void GameMap::DEPRECATED_loadCollisionMap() {
             int obstacleType = mapInfo["layers"][1]["data"][line*collX + col];
             lineTiles.push_back(Obstacle(obstacleType));
         }
-        collisionTileMap.push_back(lineTiles);
+        DEPRECATED_collisionTileMap.push_back(lineTiles);
     }
     
 }

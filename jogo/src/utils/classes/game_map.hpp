@@ -39,7 +39,7 @@ public:
     static std::vector<std::vector<Tile>>& getTileMap() { return tileMap; }
 
     static Tile& getTile(int line, int col) { return tileMap[line][col]; }
-    static Obstacle& getCollisionTile(int line, int col) { return collisionTileMap[line][col]; }
+    static Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
 };
 
 #endif
