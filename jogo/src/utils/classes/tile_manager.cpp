@@ -1,11 +1,22 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
 #include "tile_manager.hpp"
 
+// Internal libraries
 #include <constants.hpp>
+
+// Attribute initialization
+// ---------------------------------------------------------------------------
 
 std::map<int, Tile> TileManager::tileSet;
 sf::Texture TileManager::tileSetTexture;
 char TileManager::tileSetPath[] = "resources/sheet.png";
+
+// Methods
+// ---------------------------------------------------------------------------
 
 void TileManager::createTile(int tileNumber, sf::IntRect textureRect,
                              sf::FloatRect colliderRect) {
@@ -16,6 +27,8 @@ void TileManager::createTile(int tileNumber, sf::IntRect textureRect,
 
     tileSet.insert({ tileNumber, Tile(tileNumber, shape, colliderRect) });
 }
+
+// ---------------------------------------------------------------------------
 
 void TileManager::loadTileSet() {
     tileSetTexture.loadFromFile(tileSetPath);
@@ -28,12 +41,16 @@ void TileManager::loadTileSet() {
     createTile(WoodPillar,     sf::IntRect(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE),   sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE));
 }
 
+// ---------------------------------------------------------------------------
+
 sf::RectangleShape* TileManager::getTileTexture(int tileNumber) {
     if(tileNumber != EmptyTile) {
         return tileSet[tileNumber].getTileTexture();
     }
     else return nullptr;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::FloatRect TileManager::getTileCollider(int tileNumber) {
     if(tileNumber != EmptyTile) {

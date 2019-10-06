@@ -1,6 +1,6 @@
 
-#ifndef _GAME_MAP_HPP
-#define _GAME_MAP_HPP
+#ifndef GAME_MAP_HPP_
+#define GAME_MAP_HPP_
 
 #include <vector>
 
@@ -42,4 +42,4 @@ public:
     static Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
 };
 
-#endif
+#endif // GAME_MAP_HPP_

@@ -1,6 +1,6 @@
 
-#ifndef _PLAYER_HPP
-#define _PLAYER_HPP
+#ifndef PLAYER_HPP_
+#define PLAYER_HPP_
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -12,7 +12,8 @@ protected:
     sf::Vector2f position;
     sf::Vector2f speed;
 
-    float hitPoints;
+    double hitPoints;
+    double maxHitPoints;
     bool invulnerable;
     sf::RectangleShape healthBar;
     
@@ -39,4 +40,4 @@ public:
 
 };
 
-#endif
+#endif // PLAYER_HPP_

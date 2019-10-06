@@ -1,6 +1,6 @@
 
-#ifndef MAIN_MENU_H_
-#define MAIN_MENU_H_
+#ifndef MAIN_MENU_HPP_
+#define MAIN_MENU_HPP_
 
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
@@ -9,31 +9,32 @@
 
 class MainMenu {
     
-    public:
-        // menu options
-        enum MenuResult {
-            noop,
-            exit,
-            play
-        };
+public:
+    // menu options
+    enum MenuResult {
+        noop,
+        exit,
+        play
+    };
 
-        struct MenuItem {
-            public:
-                sf::Rect<int> rect;
-                MenuResult action;
-        };
+    struct MenuItem {
+        public:
+            sf::Rect<int> rect;
+            MenuResult action;
+    };
 
-        MainMenu();
-        MenuResult show(sf::RenderWindow& renderWindow);
+    MainMenu();
+    MenuResult show(sf::RenderWindow& renderWindow);
 
-    private:
-        void addButton(int left, int top, int width,
-                       int height, MenuResult action);
-        MenuResult getMenuResponse(sf::RenderWindow& renderWindow);
-        MenuResult handleClick(int x, int y);
+private:
+    void addButton(int left, int top, int width,
+                    int height, MenuResult action);
+    MenuResult getMenuResponse(sf::RenderWindow& renderWindow);
+    MenuResult handleClick(int x, int y);
 
-        std::list<MenuItem> menuItems;
-        sf::Texture texture;
+    std::list<MenuItem> menuItems;
+    sf::Texture texture;
+    
 };
 
-#endif // MAIN_MENU_H_
+#endif // MAIN_MENU_HPP_

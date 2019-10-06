@@ -1,16 +1,23 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
 #include "game.hpp"
 
+// Standard libraries
 #include <iostream>
 #include <string>
 #include <constants.hpp>
 
+// Internal libraries
 #include "tile_manager.hpp"
 #include "game_map.hpp"
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
 
-// -------------------------------------------------------------
+// Attribute initialization
+// ---------------------------------------------------------------------------
 
 Game::GameState Game::gameState = uninitialized;
 Game::GamePhase Game::gamePhase = noPhase;
@@ -21,11 +28,14 @@ sf::Time Game::frameTime;
 sf::RenderWindow Game::mainWindow;
 Player Game::player(windowW/2, 100);
 
+// Methods
+// ---------------------------------------------------------------------------
+
 Game::Game() {
     
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::start() {
 
@@ -45,13 +55,13 @@ void Game::start() {
     stop();
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 bool Game::isExiting() {
     return gameState == exiting;
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::gameLoop() {
     switch(gameState) {            
@@ -67,7 +77,7 @@ void Game::gameLoop() {
     }
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::showSplashScreen() {
     SplashScreen splashScreen;
@@ -76,7 +86,7 @@ void Game::showSplashScreen() {
     gameState = showingMenu;
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::showMenu() {
     MainMenu mainMenu;
@@ -96,7 +106,7 @@ void Game::showMenu() {
     refreshFrameTime();
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::processPlaying() {
     sf::Event playingEvent;
@@ -134,13 +144,13 @@ void Game::processPlaying() {
     }
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::refreshFrameTime() {
     frameTime = clock.restart();
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void Game::stop() {
     mainWindow.close();

@@ -1,13 +1,18 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
 #include "main_menu.hpp"
 
-// -------------------------------------------------------------
+// Methods
+// ---------------------------------------------------------------------------
 
 MainMenu::MainMenu() {
     texture.loadFromFile("resources/main_menu.png");
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void MainMenu::addButton(int left, int top, int width,
                          int height, MainMenu::MenuResult action) {
@@ -21,7 +26,7 @@ void MainMenu::addButton(int left, int top, int width,
     menuItems.push_back(button);
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
@@ -36,7 +41,7 @@ MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
     return getMenuResponse(renderWindow);
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 MainMenu::MenuResult MainMenu::handleClick(int x, int y) {
     std::list<MenuItem>::iterator item;
@@ -52,7 +57,7 @@ MainMenu::MenuResult MainMenu::handleClick(int x, int y) {
     return noop;
 }
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 MainMenu::MenuResult MainMenu::getMenuResponse(sf::RenderWindow& renderWindow) {
     sf::Event event;

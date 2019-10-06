@@ -1,11 +1,22 @@
 
-#include "game_map.hpp"
-#include "game.hpp"
+// Libraries
+// ---------------------------------------------------------------------------
 
+// Class header
+#include "game_map.hpp"
+
+// Standard libraries
 #include <fstream>
 
+// External libraries
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
+
+// Internal libraries
+#include "game.hpp"
+
+// Attribute initialization
+// ---------------------------------------------------------------------------
 
 std::vector<std::vector<Tile>> GameMap::tileMap;
 std::vector<std::vector<Obstacle>> GameMap::DEPRECATED_collisionTileMap;
@@ -17,10 +28,15 @@ int GameMap::sizeX = -1;
 int GameMap::sizeY = -1;
 float GameMap::start = 0.0f;
 
+// Methods
+// ---------------------------------------------------------------------------
+
 void GameMap::loadBackground() {
     backgroundTexture.loadFromFile("resources/maps/map1_background.png");
     background.setTexture(&backgroundTexture);
 }
+
+// ---------------------------------------------------------------------------
 
 void GameMap::loadMap() {
 
@@ -47,6 +63,8 @@ void GameMap::loadMap() {
     //loadCollisionMap();
 }
 
+// ---------------------------------------------------------------------------
+
 void GameMap::DEPRECATED_loadCollisionMap() {
     
     std::ifstream file("resources/maps/map1_collision.json");
@@ -69,6 +87,8 @@ void GameMap::DEPRECATED_loadCollisionMap() {
     
 }
 
+// ---------------------------------------------------------------------------
+
 void GameMap::setupTileStart(sf::Vector2f playerPos) {
     if(playerPos.x - windowW/2 < 0) {
         start = 0;
@@ -81,6 +101,8 @@ void GameMap::setupTileStart(sf::Vector2f playerPos) {
         start = sizeX - windowW / TILE_SIZE;
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void GameMap::draw(sf::Vector2f playerPos) {
 
@@ -95,3 +117,5 @@ void GameMap::draw(sf::Vector2f playerPos) {
         }
     }
 }
+
+// ---------------------------------------------------------------------------

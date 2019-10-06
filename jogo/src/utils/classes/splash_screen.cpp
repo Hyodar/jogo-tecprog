@@ -1,8 +1,15 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
 #include "splash_screen.hpp"
+
+// Standard libraries
 #include <iostream>
 
-// -------------------------------------------------------------
+// Methods
+// ---------------------------------------------------------------------------
 
 SplashScreen::SplashScreen() : texture() {
     if(!texture.loadFromFile("resources/splash_screen.png")) {
@@ -10,6 +17,8 @@ SplashScreen::SplashScreen() : texture() {
         return;
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void SplashScreen::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite(texture);
@@ -19,6 +28,8 @@ void SplashScreen::show(sf::RenderWindow& renderWindow) {
 
     processLoop(renderWindow);
 }
+
+// ---------------------------------------------------------------------------
 
 void SplashScreen::processLoop(sf::RenderWindow& renderWindow) {
     sf::Event event;

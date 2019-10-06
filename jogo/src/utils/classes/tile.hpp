@@ -1,6 +1,6 @@
 
-#ifndef _TILE_HPP
-#define _TILE_HPP
+#ifndef TILE_HPP_
+#define TILE_HPP_
 
 #include <SFML/Graphics.hpp>
 
@@ -27,4 +27,4 @@ public:
 
 };
 
-#endif
+#endif // TILE_HPP_

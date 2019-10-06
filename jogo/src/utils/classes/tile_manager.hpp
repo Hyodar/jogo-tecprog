@@ -1,6 +1,6 @@
 
-#ifndef _TILE_MANAGER_H
-#define _TILE_MANAGER_H
+#ifndef TILE_MANAGER_HPP_
+#define TILE_MANAGER_HPP_
 
 #include <map>
 #include <string>
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif
+#endif // TILE_MANAGER_HPP_
