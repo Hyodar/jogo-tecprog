@@ -19,4 +19,5 @@ bool Obstacle::collide(Player& player) {
         }
         return true;
     }
+    return false;
 }

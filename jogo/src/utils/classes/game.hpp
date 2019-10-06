@@ -39,8 +39,12 @@ class Game {
         static GamePhase gamePhase;
         static sf::RenderWindow mainWindow;
 
+        static sf::Clock clock;
+        static sf::Time frameTime;
+
         static void stop();
         static bool isExiting();
+        static void refreshFrameTime();
 
         static void gameLoop();
 

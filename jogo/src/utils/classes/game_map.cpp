@@ -8,7 +8,7 @@
 using json = nlohmann::json;
 
 std::vector<std::vector<Tile>> GameMap::tileMap;
-std::vector<std::vector<Obstacle>> GameMap::collisionTileMap;
+std::vector<std::vector<Obstacle>> GameMap::DEPRECATED_collisionTileMap;
 
 sf::Texture GameMap::backgroundTexture;
 sf::RectangleShape GameMap::background(sf::Vector2f(windowW, windowH));
@@ -35,19 +35,19 @@ void GameMap::loadMap() {
 
     tileMap.clear();
 
-    for(int line = 0; line < sizeY ; line++) {
+    for(int row = 0; row < sizeY ; row++) {
         std::vector<Tile> lineTiles;
         for(int col = 0; col < sizeX ; col++) {
-            int tile = mapInfo["layers"][0]["data"][line*sizeX + col];
-            lineTiles.push_back(Tile(tile));
+            int tile = mapInfo["layers"][0]["data"][row*sizeX + col];
+            lineTiles.push_back(Tile(tile, row, col));
         }
         tileMap.push_back(lineTiles);
     }
     
-    loadCollisionMap();
+    //loadCollisionMap();
 }
 
-void GameMap::loadCollisionMap() {
+void GameMap::DEPRECATED_loadCollisionMap() {
     
     std::ifstream file("resources/maps/map1_collision.json");
     json mapInfo;

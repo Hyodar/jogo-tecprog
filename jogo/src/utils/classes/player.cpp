@@ -9,7 +9,7 @@ const int Player::jumpSpeed = 2000;
 const int Player::walkSpeed = 500;
 
 Player::Player(int x, int y) : speed(600, 0), position(x, y), size(64, 64),
-                               onGround{false}, hitPoints{100}, healthBar(sf::Vector2f(64, 20)) {
+                               onGround{false}, hitPoints{100}, healthBar(sf::Vector2f(64, 10)) {
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
@@ -69,6 +69,40 @@ void Player::jump() {
     }
 }
 
+// TODO
+// só tá adaptado pra colliders diferentes no Y de cima pra baixo
+
+void Player::checkCollisionX() {
+    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
+        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
+            if(GameMap::getTile(i, j).collide(*this)) {       
+                if(speed.x > 0) position.x = j * TILE_SIZE - size.x; 
+                else if(speed.x < 0) position.x = j * TILE_SIZE + TILE_SIZE;
+                speed.x = 0;
+                return;
+            }
+        }
+    }
+}
+
+void Player::checkCollisionY() {
+    for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
+        for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
+            Tile tile = GameMap::getTile(i, j);
+            if(tile.collide(*this)) {
+                if(speed.y > 0) {
+                    position.y = i * TILE_SIZE - size.y;
+                    onGround = true;
+                }
+                else if(speed.y < 0) position.y = i * TILE_SIZE + tile.getTileCollider().height;
+                speed.y = 0;
+                return;
+            }
+        }
+    }
+}
+
+/*
 void Player::checkCollisionX() {
     for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
         for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
@@ -97,3 +131,4 @@ void Player::checkCollisionY() {
         }
     }
 }
+*/

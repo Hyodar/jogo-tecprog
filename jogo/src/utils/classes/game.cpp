@@ -14,6 +14,10 @@
 
 Game::GameState Game::gameState = uninitialized;
 Game::GamePhase Game::gamePhase = noPhase;
+
+sf::Clock Game::clock;
+sf::Time Game::frameTime;
+
 sf::RenderWindow Game::mainWindow;
 Player Game::player(windowW/2, 100);
 
@@ -88,13 +92,14 @@ void Game::showMenu() {
             gamePhase = phase1;
             break;
     }
+
+    refreshFrameTime();
 }
 
 // -------------------------------------------------------------
 
 void Game::processPlaying() {
     sf::Event playingEvent;
-    sf::Clock clock;
 
     mainWindow.clear(sf::Color(0, 0, 255));
     GameMap::loadMap();
@@ -117,18 +122,22 @@ void Game::processPlaying() {
                     break;
             }
         }
-        if(gameState != paused) {
-            sf::Time frameTime = clock.restart();
+        refreshFrameTime();
+        mainWindow.clear(sf::Color(0, 0, 255));
+        player.update(frameTime.asSeconds());
+        
+        GameMap::draw(player.getPosition());
+        player.render(mainWindow);
 
-            mainWindow.clear(sf::Color(0, 0, 255));
-            player.update(frameTime.asSeconds());
-            
-            GameMap::draw(player.getPosition());
-            player.render(mainWindow);
-
-            mainWindow.display();
-        }
+        mainWindow.display();
+        
     }
+}
+
+// -------------------------------------------------------------
+
+void Game::refreshFrameTime() {
+    frameTime = clock.restart();
 }
 
 // -------------------------------------------------------------
