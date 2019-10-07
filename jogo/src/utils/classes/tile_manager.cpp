@@ -38,6 +38,7 @@ void TileManager::loadTileSet() {
     createTile(WoodPlatform1,  sf::IntRect(2*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE), sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE/2));
     createTile(WoodPlatform2,  sf::IntRect(3*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE), sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE/2));
     createTile(WoodPlatform3,  sf::IntRect(4*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE), sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE/2));
+    createTile(FloorSpikes,    sf::IntRect(5*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE), sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE));
     createTile(WoodPillar,     sf::IntRect(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE),   sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE));
 }
 

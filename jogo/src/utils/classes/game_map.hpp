@@ -14,7 +14,7 @@
 class GameMap {
 
 private:
-    static std::vector<std::vector<Tile>> tileMap;
+    static std::vector<std::vector<Tile*>> tileMap;
     static std::vector<std::vector<Obstacle>> DEPRECATED_collisionTileMap;
     
     static sf::Texture backgroundTexture;
@@ -29,6 +29,7 @@ private:
 public:
     static void loadBackground();
     static void loadMap();
+    static void clearMap();
     static void DEPRECATED_loadCollisionMap();
     static void draw(sf::Vector2f playerPos);
     static bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
@@ -36,9 +37,9 @@ public:
 
     static bool getSizeX() { return sizeX; }
     static int getMapLength() { return sizeX * TILE_SIZE; }
-    static std::vector<std::vector<Tile>>& getTileMap() { return tileMap; }
+    static std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
 
-    static Tile& getTile(int line, int col) { return tileMap[line][col]; }
+    static Tile* getTile(int line, int col) { return tileMap[line][col]; }
     static Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
 };
 

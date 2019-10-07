@@ -26,10 +26,8 @@ bool Obstacle::collide(Player& player) {
     } else if(obstacleType == collideNoDamage) {
         return true;
     } else if (obstacleType == collideDamage) {
-        if(!player.isInvulnerable()) {
-            player.takeDamage(hitDamage);
-            std::cout << "Ouch!" << std::endl;
-        }
+        player.takeDamage(hitDamage);
+        std::cout << "Ouch!" << std::endl;
         return true;
     }
     return false;

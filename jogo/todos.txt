@@ -1,0 +1,22 @@
+
+ - Menu de opcoes
+ - Pode ter 2 jogadores
+ - Pelo menos 2 fases
+ - Três inimigos diferentes (incluindo chefe), em que um deles pode lançar projétil
+ - A cada fase 2 tipos de inimigos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
+ - Ter chefao na ultima fase
+ - Pelo menos 3 tipos de obstaculos
+ - A cada fase 2 tipos de obstaculos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
+ - Ter representacao grafica de cada instancia
+ - Gerenciar colisoes entre jogador e inimigos, projeteis e obstaculos
+ - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
+ - Pausar jogo
+ - Salvar jogo
+
+ TODOS
+ - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez) <<DONE!>>
+ - Ver sobre unique pointer
+ - Colocar animacao no personagem
+
+ LEMBRAR DE DAR CREDITOS
+ - Autor do json.hpp (nlohmann)

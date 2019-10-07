@@ -10,5 +10,8 @@ const int TILE_SIZE = 64;
 const int COLLISION_TILE_SIZE = 32;
 
 const int healthBarHeight = 10;
+const int INVULNERABILITY_TICKS = 1500;
+
+const float FLOORSPIKES_DMG = 20;
 
 #endif

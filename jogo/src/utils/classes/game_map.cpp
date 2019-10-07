@@ -13,12 +13,16 @@
 using json = nlohmann::json;
 
 // Internal libraries
+#include <constants.hpp>
 #include "game.hpp"
+#include "obstacle_tile.hpp"
+#include "tile.hpp"
+#include "tile_manager.hpp"
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
-std::vector<std::vector<Tile>> GameMap::tileMap;
+std::vector<std::vector<Tile*>> GameMap::tileMap;
 std::vector<std::vector<Obstacle>> GameMap::DEPRECATED_collisionTileMap;
 
 sf::Texture GameMap::backgroundTexture;
@@ -49,18 +53,39 @@ void GameMap::loadMap() {
     sizeX = mapInfo["width"];
     sizeY = mapInfo["height"];
 
-    tileMap.clear();
+    clearMap();
 
     for(int row = 0; row < sizeY ; row++) {
-        std::vector<Tile> lineTiles;
+        std::vector<Tile*> lineTiles;
         for(int col = 0; col < sizeX ; col++) {
             int tile = mapInfo["layers"][0]["data"][row*sizeX + col];
-            lineTiles.push_back(Tile(tile, row, col));
+
+            if(tile == TileManager::TileType::FloorSpikes) {
+                lineTiles.push_back(
+                    static_cast<Tile*>(new ObstacleTile(tile, row, col, FLOORSPIKES_DMG))
+                );
+            } else {
+                lineTiles.push_back(new Tile(tile, row, col));
+            }
         }
         tileMap.push_back(lineTiles);
     }
     
     //loadCollisionMap();
+}
+
+// ---------------------------------------------------------------------------
+
+void GameMap::clearMap() {
+
+    for(std::vector<Tile*>& v : tileMap) {
+        for(Tile* t : v) {
+            delete t;
+        }
+        v.clear();
+    }
+
+    tileMap.clear();
 }
 
 // ---------------------------------------------------------------------------
@@ -113,7 +138,7 @@ void GameMap::draw(sf::Vector2f playerPos) {
     
     for(int vec = 0; vec < sizeY; vec++) {
         for(int i = start; i < start + windowW/TILE_SIZE; i++) {
-            tileMap[vec][i].draw(sf::Vector2f((i-start)*TILE_SIZE, vec*TILE_SIZE));
+            tileMap[vec][i]->draw(sf::Vector2f((i-start)*TILE_SIZE, vec*TILE_SIZE));
         }
     }
 }

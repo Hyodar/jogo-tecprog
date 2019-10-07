@@ -14,7 +14,7 @@ protected:
 
     double hitPoints;
     double maxHitPoints;
-    bool invulnerable;
+    int invulnerable;
     sf::RectangleShape healthBar;
     
     bool onGround;
@@ -35,8 +35,8 @@ public:
 
     sf::Vector2f getPosition() { return position; }
     sf::FloatRect getBoundingBox() { return sf::FloatRect(position.x, position.y, size.x, size.y); }
-    bool isInvulnerable() { return invulnerable; }
-    void takeDamage(float dmg) { hitPoints -= dmg; invulnerable = true;} // TODO - colocar timer de invulnerabilidade
+    void isInvulnerable();
+    void takeDamage(float dmg); // TODO - colocar timer de invulnerabilidade
 
 };
 

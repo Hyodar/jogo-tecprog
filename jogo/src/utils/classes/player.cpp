@@ -6,6 +6,9 @@
 #include "player.hpp"
 
 // Standard libraries
+#include <chrono>
+#include <functional>
+#include <future>
 #include <iostream>
 
 // Internal libraries
@@ -24,7 +27,8 @@ const int Player::walkSpeed = 500;
 
 Player::Player(int x, int y) : speed(0, 0), position(x, y), size(64, 64),
                                onGround{false}, hitPoints{100}, maxHitPoints{100},
-                               healthBar(sf::Vector2f(64, healthBarHeight)) {
+                               healthBar(sf::Vector2f(64, healthBarHeight)),
+                               invulnerable{0} {
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
@@ -59,6 +63,7 @@ void Player::update(const float deltaTime) {
     onGround = false;
     checkCollisionY();
 
+    isInvulnerable();
 }
 
 // ---------------------------------------------------------------------------
@@ -75,7 +80,7 @@ void Player::render(sf::RenderWindow& window) {
     }
 
     healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
-    healthBar.setSize(sf::Vector2f((hitPoints/maxHitPoints) * size.x, healthBarHeight));
+    healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
 
     window.draw(sprite);
     window.draw(healthBar);
@@ -98,10 +103,10 @@ void Player::jump() {
 void Player::checkCollisionX() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
-            Tile tile = GameMap::getTile(i, j);
-            if(tile.collide(*this)) {       
-                if(speed.x > 0) position.x = tile.getTileCollider().left - size.x; 
-                else if(speed.x < 0) position.x = tile.getTileCollider().left + tile.getTileCollider().width;
+            Tile* tile = GameMap::getTile(i, j);
+            if(tile->collide(*this)) {       
+                if(speed.x > 0) position.x = tile->getTileCollider().left - size.x; 
+                else if(speed.x < 0) position.x = tile->getTileCollider().left + tile->getTileCollider().width;
                 speed.x = 0;
                 return;
             }
@@ -114,14 +119,13 @@ void Player::checkCollisionX() {
 void Player::checkCollisionY() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
-            Tile tile = GameMap::getTile(i, j);
-            if(tile.collide(*this)) {
-                if(tile.getTileNumber() == 3) takeDamage(20);
+            Tile* tile = GameMap::getTile(i, j);
+            if(tile->collide(*this)) {
                 if(speed.y > 0) {
-                    position.y = tile.getTileCollider().top - size.y;
+                    position.y = tile->getTileCollider().top - size.y;
                     onGround = true;
                 }
-                else if(speed.y < 0) position.y = tile.getTileCollider().top + tile.getTileCollider().height;
+                else if(speed.y < 0) position.y = tile->getTileCollider().top + tile->getTileCollider().height;
                 speed.y = 0;
                 return;
             }
@@ -130,6 +134,22 @@ void Player::checkCollisionY() {
 }
 
 // ---------------------------------------------------------------------------
+
+void Player::takeDamage(float dmg) {
+    if(!invulnerable) {
+        hitPoints -= dmg;
+        invulnerable = INVULNERABILITY_TICKS;
+    }
+}
+
+// ---------------------------------------------------------------------------
+
+void Player::isInvulnerable() {
+    if(invulnerable) {
+        invulnerable--;
+        sprite.setColor(sf::Color(255, 255, 255, 128));
+    } else sprite.setColor(sf::Color::White);
+}
 
 /* DEPRECATED
 
