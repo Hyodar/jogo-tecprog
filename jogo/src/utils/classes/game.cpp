@@ -64,7 +64,7 @@ bool Game::isExiting() {
 // ---------------------------------------------------------------------------
 
 void Game::gameLoop() {
-    switch(gameState) {            
+    switch(gameState) {           
         case showingMenu:
             showMenu();
             break;
@@ -95,7 +95,6 @@ void Game::showMenu() {
     switch(result) {
         case MainMenu::exit:
             gameState = exiting;
-            stop();
             break;
         case MainMenu::play:
             gameState = playing;
@@ -111,12 +110,11 @@ void Game::showMenu() {
 void Game::processPlaying() {
     sf::Event playingEvent;
 
-    mainWindow.clear(sf::Color(0, 0, 255));
+    mainWindow.clear(sf::Color::Blue);
     GameMap::loadMap();
 
-    while(mainWindow.isOpen()) {
+    while(gameState != exiting) {
         while(mainWindow.pollEvent(playingEvent)) {
-
             switch(playingEvent.type) {
                 case sf::Event::KeyPressed:
                     if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
@@ -128,10 +126,10 @@ void Game::processPlaying() {
                     break;
                 case sf::Event::Closed:
                     gameState = exiting;
-                    stop();
                     break;
             }
         }
+
         refreshFrameTime();
         mainWindow.clear(sf::Color(0, 0, 255));
         player.update(frameTime.asSeconds());
@@ -140,7 +138,6 @@ void Game::processPlaying() {
         player.render(mainWindow);
 
         mainWindow.display();
-        
     }
 }
 
