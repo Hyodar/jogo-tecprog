@@ -9,6 +9,7 @@ class SplashScreen {
 
 public:
     SplashScreen();
+    ~SplashScreen();
     void show(sf::RenderWindow& window);
 
 private:

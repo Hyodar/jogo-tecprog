@@ -13,17 +13,19 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-Tile::Tile(int tileNum, int row, int col) : tileNumber{tileNum} {
-    rect = TileManager::getTileTexture(tileNumber);
-    collider = TileManager::getTileCollider(tileNumber);
-    
+Tile::Tile(int tileNum, int row, int col)
+  : tileNumber{tileNum},
+  rect{TileManager::getTileTexture(tileNumber)},
+  collider{TileManager::getTileCollider(tileNumber)}
+ {
+
     collider.top  += row * TILE_SIZE;
     collider.left += col * TILE_SIZE;
 }
 
 // ---------------------------------------------------------------------------
 
-Tile::Tile(int tileNum, sf::RectangleShape* shape, sf::FloatRect coll) 
+Tile::Tile(int tileNum, sf::RectangleShape* shape, sf::FloatRect coll)
 : tileNumber{tileNum}, rect{shape}, collider{coll} {
     // noop
 }

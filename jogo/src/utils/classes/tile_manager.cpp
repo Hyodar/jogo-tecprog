@@ -18,6 +18,14 @@ char TileManager::tileSetPath[] = "resources/sheet.png";
 // Methods
 // ---------------------------------------------------------------------------
 
+TileManager::TileManager() {
+
+}
+
+TileManager::~TileManager() {
+
+}
+
 void TileManager::createTile(int tileNumber, sf::IntRect textureRect,
                              sf::FloatRect colliderRect) {
     sf::RectangleShape* shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
@@ -56,6 +64,6 @@ sf::RectangleShape* TileManager::getTileTexture(int tileNumber) {
 sf::FloatRect TileManager::getTileCollider(int tileNumber) {
     if(tileNumber != EmptyTile) {
         return tileSet[tileNumber].getTileCollider();
-    }    
+    }
     else return sf::FloatRect(0, 0, 0, 0);
 }

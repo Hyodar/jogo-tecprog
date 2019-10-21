@@ -9,9 +9,9 @@
 class Tile {
 
 protected:
+    int tileNumber;
     sf::RectangleShape* rect;
     sf::FloatRect collider;
-    int tileNumber;
 
 public:
     Tile(int tileNumber, sf::RectangleShape* shape, sf::FloatRect coll);

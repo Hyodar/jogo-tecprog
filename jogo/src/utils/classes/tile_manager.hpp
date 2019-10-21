@@ -18,7 +18,9 @@ private:
     static void createTile(int tileNumber, sf::IntRect textureRect, sf::FloatRect colliderRect);
 
 public:
-    
+    TileManager();
+    ~TileManager();
+
     enum TileType {
         EmptyTile = 0,
         StoneWoodFloor = 1,

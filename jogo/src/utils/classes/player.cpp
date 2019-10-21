@@ -19,16 +19,18 @@
 // ---------------------------------------------------------------------------
 
 sf::Texture Player::texture;
-const int Player::jumpSpeed = 2000;
-const int Player::walkSpeed = 500;
+const int Player::jumpSpeed{2000};
+const int Player::walkSpeed{500};
 
 // Methods
 // ---------------------------------------------------------------------------
 
-Player::Player(int x, int y) : speed(0, 0), position(x, y), size(64, 64),
-                               onGround{false}, hitPoints{100}, maxHitPoints{100},
-                               healthBar(sf::Vector2f(64, healthBarHeight)),
-                               invulnerable{0} {
+Player::Player(int x, int y) :
+    size(64, 64),  position(x, y), speed(0, 0),
+    hitPoints{100}, maxHitPoints{100}, invulnerable{0},
+    healthBar(sf::Vector2f(64, healthBarHeight)),
+    onGround{false}
+{
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
@@ -42,7 +44,7 @@ Player::Player(int x, int y) : speed(0, 0), position(x, y), size(64, 64),
 void Player::update(const float deltaTime) {
 
     if(!onGround) speed.y += gravAcc * deltaTime;
-    
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         speed.x = -walkSpeed;
     }
@@ -52,7 +54,7 @@ void Player::update(const float deltaTime) {
     else {
         speed.x = 0;
     }
-    
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         jump();
     }
@@ -104,8 +106,8 @@ void Player::checkCollisionX() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
             Tile* tile = GameMap::getTile(i, j);
-            if(tile->collide(*this)) {       
-                if(speed.x > 0) position.x = tile->getTileCollider().left - size.x; 
+            if(tile->collide(*this)) {
+                if(speed.x > 0) position.x = tile->getTileCollider().left - size.x;
                 else if(speed.x < 0) position.x = tile->getTileCollider().left + tile->getTileCollider().width;
                 speed.x = 0;
                 return;
@@ -156,8 +158,8 @@ void Player::isInvulnerable() {
 void Player::checkCollisionX() {
     for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
         for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
-            if(GameMap::getCollisionTile(i, j).collide(*this)) {       
-                if(speed.x > 0) position.x = j * COLLISION_TILE_SIZE - size.x; 
+            if(GameMap::getCollisionTile(i, j).collide(*this)) {
+                if(speed.x > 0) position.x = j * COLLISION_TILE_SIZE - size.x;
                 else if(speed.x < 0) position.x = j * COLLISION_TILE_SIZE + COLLISION_TILE_SIZE;
                 speed.x = 0;
                 return;
@@ -165,7 +167,7 @@ void Player::checkCollisionX() {
         }
     }
 }
-                    
+
 void Player::checkCollisionY() {
     for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
         for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {

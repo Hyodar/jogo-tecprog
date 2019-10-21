@@ -48,7 +48,7 @@ MainMenu::MenuResult MainMenu::handleClick(int x, int y) {
 
     for(item = menuItems.begin(); item != menuItems.end(); item++) {
         sf::Rect<int> menuItemRect = item->rect;
-        
+
         if(menuItemRect.contains(x, y)){
             return item->action;
         }
@@ -69,6 +69,7 @@ MainMenu::MenuResult MainMenu::getMenuResponse(sf::RenderWindow& renderWindow) {
                     return handleClick(event.mouseButton.x, event.mouseButton.y);
                 case sf::Event::Closed:
                     return exit;
+                default:;
             }
         }
     }

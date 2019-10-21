@@ -18,6 +18,13 @@ SplashScreen::SplashScreen() : texture() {
     }
 }
 
+//----------------------------------------------------------------------------
+
+SplashScreen::~SplashScreen() {
+  
+}
+
+
 // ---------------------------------------------------------------------------
 
 void SplashScreen::show(sf::RenderWindow& renderWindow) {
@@ -42,7 +49,8 @@ void SplashScreen::processLoop(sf::RenderWindow& renderWindow) {
                 case sf::Event::KeyPressed:
                 case sf::Event::Closed:
                     return;
-                
+                default:;
+
             }
         }
     }

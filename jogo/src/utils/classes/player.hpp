@@ -16,7 +16,7 @@ protected:
     double maxHitPoints;
     int invulnerable;
     sf::RectangleShape healthBar;
-    
+
     bool onGround;
     static const int jumpSpeed;
     static const int walkSpeed;
@@ -26,13 +26,12 @@ protected:
 
 public:
     Player(int x=0, int y=0);
-    
+
     void update(const float deltaTime);
     void render(sf::RenderWindow& window);
     void jump();
     void checkCollisionX();
     void checkCollisionY();
-
     sf::Vector2f getPosition() { return position; }
     sf::FloatRect getBoundingBox() { return sf::FloatRect(position.x, position.y, size.x, size.y); }
     void isInvulnerable();
