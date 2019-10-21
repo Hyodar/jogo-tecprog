@@ -5,27 +5,27 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-class Player {
+class Player: public Character {
 
 protected:
-    sf::Vector2i size;
-    sf::Vector2f position;
-    sf::Vector2f speed;
+    //sf::Vector2i size;
+    //sf::Vector2f position;
+    //sf::Vector2f speed;
 
-    double hitPoints;
-    double maxHitPoints;
+    //double hitPoints;
+    //double maxHitPoints;
     int invulnerable;
     sf::RectangleShape healthBar;
 
-    bool onGround;
-    static const int jumpSpeed;
-    static const int walkSpeed;
+    //bool onGround;
+    //static const int jumpSpeed;
+    //static const int walkSpeed;
 
     static sf::Texture texture;
     sf::Sprite sprite;
 
 public:
-    Player(int x=0, int y=0);
+    Player(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0);
 
     void update(const float deltaTime);
     void render(sf::RenderWindow& window);

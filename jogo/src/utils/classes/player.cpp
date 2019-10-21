@@ -25,12 +25,11 @@ const int Player::walkSpeed{500};
 // Methods
 // ---------------------------------------------------------------------------
 
-Player::Player(int x, int y) :
-    size(64, 64),  position(x, y), speed(0, 0),
+Player::Player(int x, int y, int sizeX, int sizeY, double maxHP); :
+    size(64, 64),  Character(x, y), speed(0, 0),
     hitPoints{100}, maxHitPoints{100}, invulnerable{0},
     healthBar(sf::Vector2f(64, healthBarHeight)),
-    onGround{false}
-{
+    onGround{false}{
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
