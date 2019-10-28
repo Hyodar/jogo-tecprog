@@ -19,17 +19,16 @@
 // ---------------------------------------------------------------------------
 
 sf::Texture Player::texture;
-const int Player::jumpSpeed{2000};
-const int Player::walkSpeed{500};
+
 
 // Methods
 // ---------------------------------------------------------------------------
 
-Player::Player(int x, int y, int sizeX, int sizeY, double maxHP); :
-    size(64, 64),  Character(x, y), speed(0, 0),
-    hitPoints{100}, maxHitPoints{100}, invulnerable{0},
-    healthBar(sf::Vector2f(64, healthBarHeight)),
-    onGround{false}{
+Player::Player(int x, int y, int sizeX, int sizeY, double maxHP) :
+    Character(x, y, 64, 64, 100),
+    invulnerable{0},
+    healthBar(sf::Vector2f(64, healthBarHeight))
+    {
     texture.loadFromFile("resources/player.png");
 
     sprite.setTexture(texture);
@@ -149,7 +148,7 @@ void Player::isInvulnerable() {
     if(invulnerable) {
         invulnerable--;
         sprite.setColor(sf::Color(255, 255, 255, 128));
-    } else sprite.setColor(sf::Color::White);
+    } else sprite.setColor(sf::Color::Black);
 }
 
 /* DEPRECATED

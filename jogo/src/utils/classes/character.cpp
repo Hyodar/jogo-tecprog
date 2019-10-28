@@ -10,12 +10,17 @@
 #include <constants.hpp>
 
 // Attribute initialization
+const int Character::jumpSpeed{1670};
+const int Character::walkSpeed{500};
 // ---------------------------------------------------------------------------
 
-sf::Texture Player::texture;
-const int Player::jumpSpeed{2000};
-const int Player::walkSpeed{500};
 
 // Methods
 // ---------------------------------------------------------------------------
-Character::Character (int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0)
+Character::Character (int x, int y, int sizeX, int sizeY, double maxHP)
+    : Entity(x, y, sizeX, sizeY), speed(0, 0), hitPoints{100},
+     maxHitPoints(maxHP),onGround{false} {
+
+}
+
+Character :: ~Character( ) { }

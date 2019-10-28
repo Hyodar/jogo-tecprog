@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include"entity.hpp"
+
 class Character : public Entity {
 
     protected:

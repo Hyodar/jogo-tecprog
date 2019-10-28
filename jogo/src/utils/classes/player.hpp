@@ -5,6 +5,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "character.hpp"
+
 class Player: public Character {
 
 protected:
