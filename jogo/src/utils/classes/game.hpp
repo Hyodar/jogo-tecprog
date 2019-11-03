@@ -14,6 +14,7 @@ public:
     static Game* getInstance();
     
     void start();
+    Bardo& getPlayer() { return player; }
     sf::RenderWindow& getMainWindow() { return mainWindow; }
 
 private:

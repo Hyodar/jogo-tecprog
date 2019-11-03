@@ -16,9 +16,8 @@
 
 Tile::Tile(int tileNum, int row, int col)
   : tileNumber{tileNum},
-  rect{TileManager::getInstance()->getTileTexture(tileNumber)},
-  collider{TileManager::getInstance()->getTileCollider(tileNumber)}
- {
+    rect{TileManager::getInstance()->getTileTexture(tileNumber)},
+    collider{TileManager::getInstance()->getTileCollider(tileNumber)} {
 
     collider.top  += row * TILE_SIZE;
     collider.left += col * TILE_SIZE;

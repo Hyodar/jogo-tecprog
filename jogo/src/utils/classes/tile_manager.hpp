@@ -37,6 +37,7 @@ public:
     void loadTileSet();
     sf::RectangleShape* getTileTexture(int tileNumber);
     sf::FloatRect getTileCollider(int tileNumber);
+    sf::Texture* getTileSetTexture() { return &tileSetTexture; }
 
 };
 

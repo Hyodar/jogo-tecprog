@@ -15,7 +15,6 @@ using json = nlohmann::json;
 // Internal libraries
 #include <constants.hpp>
 #include "game.hpp"
-#include "obstacle_tile.hpp"
 #include "tile.hpp"
 #include "tile_manager.hpp"
 
@@ -72,13 +71,12 @@ void GameMap::loadMap() {
         for(int col = 0; col < sizeX ; col++) {
             int tile = mapInfo["layers"][0]["data"][row*sizeX + col];
 
-            if(tile == TileManager::getInstance()->TileType::FloorSpikes) {
+            /*if(tile == TileManager::getInstance()->TileType::FloorSpikes) {
                 lineTiles.push_back(
                     static_cast<Tile*>(new ObstacleTile(tile, row, col, FLOORSPIKES_DMG))
                 );
-            } else {
-                lineTiles.push_back(new Tile(tile, row, col));
-            }
+            }*/
+            lineTiles.push_back(new Tile(tile, row, col));
         }
         tileMap.push_back(lineTiles);
     }
@@ -101,7 +99,7 @@ void GameMap::clearMap() {
 }
 
 // ---------------------------------------------------------------------------
-
+/*
 void GameMap::DEPRECATED_loadCollisionMap() {
     
     std::ifstream file("resources/maps/map1_collision.json");
@@ -123,7 +121,7 @@ void GameMap::DEPRECATED_loadCollisionMap() {
     }
     
 }
-
+*/
 // ---------------------------------------------------------------------------
 
 void GameMap::setupTileStart(sf::Vector2f playerPos) {

@@ -16,6 +16,8 @@
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
 
+#include "spike.hpp"
+
 // Attribute Initialization
 // ---------------------------------------------------------------------------
 
@@ -126,6 +128,8 @@ void Game::processPlaying() {
     mainWindow.clear(sf::Color::Blue);
     GameMap::getInstance()->loadMap();
 
+    Spike s(100, 500);
+
     while(gameState != exiting) {
         while(mainWindow.pollEvent(playingEvent)) {
             switch(playingEvent.type) {
@@ -151,6 +155,8 @@ void Game::processPlaying() {
 
         GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
+        s.draw(mainWindow);
+        s.collide(player);
 
         mainWindow.display();
     }

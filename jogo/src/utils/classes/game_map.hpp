@@ -38,6 +38,7 @@ public:
     void clearMap();
     void DEPRECATED_loadCollisionMap();
     void draw(sf::Vector2f playerPos);
+    float getStart() { return start; }
     bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
     bool IsAtStart() { return start == 0; }
 

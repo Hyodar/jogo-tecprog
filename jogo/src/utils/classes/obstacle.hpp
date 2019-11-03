@@ -2,24 +2,21 @@
 #ifndef OBSTACLE_HPP_
 #define OBSTACLE_HPP_
 
-#include "bardo.hpp"
+#include "collidable.hpp"
+#include "entity.hpp"
 
-class Obstacle {
-
-private:
-    enum ObstacleType {
-        noCollider,
-        nSeiOq,
-        collideNoDamage,
-        collideDamage
-    };
-
-    int obstacleType;
-    static int hitDamage;
+class Obstacle : public Entity, public Collidable {
 
 public:
-    Obstacle(int type);
-    bool collide(Bardo& player);
+    Obstacle(int posX, int posY, int sizeX, int sizeY) : Entity(posX, posY, sizeX, sizeY) {
+        // noop
+    }
+
+    virtual bool collide(Collidable& c) = 0;
+    virtual sf::FloatRect getBoundingBox() = 0;
+    void takeDamage(float dmg) { 
+        // noop
+    }
 };
 
 #endif // OBSTACLE_HPP_
