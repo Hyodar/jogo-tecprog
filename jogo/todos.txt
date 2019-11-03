@@ -1,4 +1,5 @@
 
+OBJETIVOS
  - Menu de opcoes
  - Pode ter 2 jogadores
  - Pelo menos 2 fases
@@ -13,8 +14,11 @@
  - Pausar jogo
  - Salvar jogo
 
- TODOS
- - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez) <<DONE!>>
+TODOS DONES
+ - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez)
+
+TODOS
+ - Transformar GameMap, TileManager para singleton
  - Ver sobre unique pointer
  - Colocar animacao no personagem
 

@@ -16,23 +16,34 @@
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
 
-// Attribute initialization
+// Attribute Initialization
 // ---------------------------------------------------------------------------
 
-Game::GameState Game::gameState = uninitialized;
-Game::GamePhase Game::gamePhase = noPhase;
-
-sf::Clock Game::clock;
-sf::Time Game::frameTime;
-
-sf::RenderWindow Game::mainWindow;
-Player Game::player(windowW/2, 100);
+Game* Game::instance = nullptr;
 
 // Methods
 // ---------------------------------------------------------------------------
 
-Game::Game() {
+Game::Game() : player(windowW/2, 100) {
+    instance = nullptr;
 
+    gameState = uninitialized;
+    gamePhase = noPhase;
+}
+
+// ---------------------------------------------------------------------------
+
+Game::~Game() {
+    delete instance;
+}
+
+// ---------------------------------------------------------------------------
+
+Game* Game::getInstance() {
+    if(!instance) {
+        instance = new Game;
+    }
+    return instance;
 }
 
 // ---------------------------------------------------------------------------
@@ -43,7 +54,7 @@ void Game::start() {
 
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
-    TileManager::loadTileSet();
+    TileManager::getInstance()->loadTileSet();
 
     gameState = showingSplash;
     gamePhase = noPhase;
@@ -113,7 +124,7 @@ void Game::processPlaying() {
     sf::Event playingEvent;
 
     mainWindow.clear(sf::Color::Blue);
-    GameMap::loadMap();
+    GameMap::getInstance()->loadMap();
 
     while(gameState != exiting) {
         while(mainWindow.pollEvent(playingEvent)) {
@@ -138,7 +149,7 @@ void Game::processPlaying() {
         mainWindow.clear(sf::Color(0, 0, 255));
         player.update(frameTime.asSeconds());
 
-        GameMap::draw(player.getPosition());
+        GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
 
         mainWindow.display();

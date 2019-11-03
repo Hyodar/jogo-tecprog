@@ -8,6 +8,7 @@
 // Internal libraries
 #include "game.hpp"
 #include "tile_manager.hpp"
+
 #include <constants.hpp>
 
 // Methods
@@ -15,8 +16,8 @@
 
 Tile::Tile(int tileNum, int row, int col)
   : tileNumber{tileNum},
-  rect{TileManager::getTileTexture(tileNumber)},
-  collider{TileManager::getTileCollider(tileNumber)}
+  rect{TileManager::getInstance()->getTileTexture(tileNumber)},
+  collider{TileManager::getInstance()->getTileCollider(tileNumber)}
  {
 
     collider.top  += row * TILE_SIZE;
@@ -35,12 +36,6 @@ Tile::Tile(int tileNum, sf::RectangleShape* shape, sf::FloatRect coll)
 void Tile::draw(sf::Vector2f pos) {
     if(tileNumber != 0) {
         rect->setPosition(pos.x, pos.y);
-        Game::getMainWindow().draw(*rect);
+        Game::getInstance()->getMainWindow().draw(*rect);
     }
-}
-
-// ---------------------------------------------------------------------------
-
-bool Tile::collide(Player& player) const {
-    return player.getBoundingBox().intersects(collider);
 }

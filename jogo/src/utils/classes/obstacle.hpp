@@ -2,7 +2,7 @@
 #ifndef OBSTACLE_HPP_
 #define OBSTACLE_HPP_
 
-#include "player.hpp"
+#include "bardo.hpp"
 
 class Obstacle {
 
@@ -19,7 +19,7 @@ private:
 
 public:
     Obstacle(int type);
-    bool collide(Player& player);
+    bool collide(Bardo& player);
 };
 
 #endif // OBSTACLE_HPP_

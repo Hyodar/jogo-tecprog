@@ -11,15 +11,18 @@
 class TileManager {
 
 private:
-    static std::map<int, Tile> tileSet;
-    static sf::Texture tileSetTexture;
-    static char tileSetPath[];
+    static TileManager* instance;
+    TileManager();
 
-    static void createTile(int tileNumber, sf::IntRect textureRect, sf::FloatRect colliderRect);
+    std::map<int, Tile> tileSet;
+    sf::Texture tileSetTexture;
+    char tileSetPath[];
+
+    void createTile(int tileNumber, sf::IntRect textureRect, sf::FloatRect colliderRect);
 
 public:
-    TileManager();
     ~TileManager();
+    static TileManager* getInstance();
 
     enum TileType {
         EmptyTile = 0,
@@ -31,9 +34,9 @@ public:
         FloorSpikes = 6
     };
 
-    static void loadTileSet();
-    static sf::RectangleShape* getTileTexture(int tileNumber);
-    static sf::FloatRect getTileCollider(int tileNumber);
+    void loadTileSet();
+    sf::RectangleShape* getTileTexture(int tileNumber);
+    sf::FloatRect getTileCollider(int tileNumber);
 
 };
 

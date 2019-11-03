@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv) {
 
-    Game::start();
+    Game::getInstance()->start();
 
     return 0;
 }

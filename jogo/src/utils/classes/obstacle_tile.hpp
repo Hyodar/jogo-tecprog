@@ -3,7 +3,8 @@
 #define OBSTACLE_TILE_HPP_
 
 #include "tile.hpp"
-#include "player.hpp"
+#include "collidable.hpp"
+#include "bardo.hpp"
 
 class ObstacleTile : public Tile {
 
@@ -14,7 +15,7 @@ public:
     ObstacleTile(int tileNum, int row, int col, float collDmg);
     ~ObstacleTile() {}
 
-    bool collide(Player& player) const;
+    bool collide(Collidable& c);
 
 };
 

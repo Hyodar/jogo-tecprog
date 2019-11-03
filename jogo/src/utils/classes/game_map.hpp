@@ -14,33 +14,39 @@
 class GameMap {
 
 private:
-    static std::vector<std::vector<Tile*>> tileMap;
-    static std::vector<std::vector<Obstacle>> DEPRECATED_collisionTileMap;
+    GameMap();
+    static GameMap* instance;
+
+    std::vector<std::vector<Tile*>> tileMap;
+    std::vector<std::vector<Obstacle>> DEPRECATED_collisionTileMap;
     
-    static sf::Texture backgroundTexture;
-    static sf::RectangleShape background;
+    sf::Texture backgroundTexture;
+    sf::RectangleShape background;
 
-    static int sizeX;
-    static int sizeY;
-    static float start;
+    int sizeX;
+    int sizeY;
+    float start;
 
-    static void setupTileStart(sf::Vector2f playerPos);
+    void setupTileStart(sf::Vector2f playerPos);
 
 public:
-    static void loadBackground();
-    static void loadMap();
-    static void clearMap();
-    static void DEPRECATED_loadCollisionMap();
-    static void draw(sf::Vector2f playerPos);
-    static bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
-    static bool IsAtStart() { return start == 0; }
+    ~GameMap();
+    static GameMap* getInstance();
 
-    static bool getSizeX() { return sizeX; }
-    static int getMapLength() { return sizeX * TILE_SIZE; }
-    static std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
+    void loadBackground();
+    void loadMap();
+    void clearMap();
+    void DEPRECATED_loadCollisionMap();
+    void draw(sf::Vector2f playerPos);
+    bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
+    bool IsAtStart() { return start == 0; }
 
-    static Tile* getTile(int line, int col) { return tileMap[line][col]; }
-    static Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
+    bool getSizeX() { return sizeX; }
+    int getMapLength() { return sizeX * TILE_SIZE; }
+    std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
+
+    Tile* getTile(int line, int col) { return tileMap[line][col]; }
+    Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
 };
 
 #endif // GAME_MAP_HPP_

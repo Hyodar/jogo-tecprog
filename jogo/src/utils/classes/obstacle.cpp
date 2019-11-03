@@ -20,7 +20,7 @@ Obstacle::Obstacle(int type) : obstacleType{type} {}
 
 // ---------------------------------------------------------------------------
 
-bool Obstacle::collide(Player& player) {
+bool Obstacle::collide(Bardo& player) {
     if(obstacleType == noCollider) {
         return false;
     } else if(obstacleType == collideNoDamage) {

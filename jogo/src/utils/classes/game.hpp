@@ -5,17 +5,20 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "player.hpp"
+#include "bardo.hpp"
 
 class Game {
 
-public: 
-    Game();
-    static void start();
-
-    static sf::RenderWindow& getMainWindow() { return mainWindow; }
+public:
+    ~Game();
+    static Game* getInstance();
+    
+    void start();
+    sf::RenderWindow& getMainWindow() { return mainWindow; }
 
 private:
+    Game();
+    
     enum GameState {
         uninitialized,
         showingSplash,
@@ -33,25 +36,27 @@ private:
         boss
     };
 
-    static Player player;
+    static Game* instance;
 
-    static GameState gameState;
-    static GamePhase gamePhase;
-    static sf::RenderWindow mainWindow;
+    Bardo player;
 
-    static sf::Clock clock;
-    static sf::Time frameTime;
+    GameState gameState;
+    GamePhase gamePhase;
+    sf::RenderWindow mainWindow;
 
-    static void stop();
-    static bool isExiting();
-    static void refreshFrameTime();
+    sf::Clock clock;
+    sf::Time frameTime;
 
-    static void gameLoop();
+    void stop();
+    bool isExiting();
+    void refreshFrameTime();
 
-    static void showSplashScreen();
-    static void showMenu();
+    void gameLoop();
 
-    static void processPlaying();
+    void showSplashScreen();
+    void showMenu();
+
+    void processPlaying();
 
 };
 

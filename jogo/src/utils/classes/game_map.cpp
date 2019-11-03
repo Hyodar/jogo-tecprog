@@ -22,17 +22,29 @@ using json = nlohmann::json;
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
-std::vector<std::vector<Tile*>> GameMap::tileMap;
-std::vector<std::vector<Obstacle>> GameMap::DEPRECATED_collisionTileMap;
-
-sf::Texture GameMap::backgroundTexture;
-sf::RectangleShape GameMap::background(sf::Vector2f(windowW, windowH));
-
-int GameMap::sizeX = -1;
-int GameMap::sizeY = -1;
-float GameMap::start = 0.0f;
+GameMap* GameMap::instance = nullptr;
 
 // Methods
+// ---------------------------------------------------------------------------
+
+GameMap::GameMap() : sizeX{-1}, sizeY{-1}, start{0.0f},
+                     background(sf::Vector2f(windowW, windowH)) {
+    // noop
+}
+
+// ---------------------------------------------------------------------------
+
+GameMap::~GameMap() {
+    delete instance;
+}
+
+// ---------------------------------------------------------------------------
+
+GameMap* GameMap::getInstance() {
+    if(!instance) instance = new GameMap;
+    return instance;
+}
+
 // ---------------------------------------------------------------------------
 
 void GameMap::loadBackground() {
@@ -60,7 +72,7 @@ void GameMap::loadMap() {
         for(int col = 0; col < sizeX ; col++) {
             int tile = mapInfo["layers"][0]["data"][row*sizeX + col];
 
-            if(tile == TileManager::TileType::FloorSpikes) {
+            if(tile == TileManager::getInstance()->TileType::FloorSpikes) {
                 lineTiles.push_back(
                     static_cast<Tile*>(new ObstacleTile(tile, row, col, FLOORSPIKES_DMG))
                 );
@@ -134,7 +146,7 @@ void GameMap::draw(sf::Vector2f playerPos) {
     setupTileStart(playerPos);
 
     background.setTextureRect(sf::IntRect(start * TILE_SIZE, 0, windowW, windowH));
-    Game::getMainWindow().draw(background);
+    Game::getInstance()->getMainWindow().draw(background);
     
     for(int vec = 0; vec < sizeY; vec++) {
         for(int i = start; i < start + windowW/TILE_SIZE; i++) {
