@@ -4,6 +4,7 @@
 
 #include "collidable.hpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Entity : public Collidable {
     protected:

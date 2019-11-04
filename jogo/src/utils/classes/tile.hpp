@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "collidable.hpp"
 
+#include <iostream>
 #include "entity.hpp"
 
 class Tile : public Collidable {

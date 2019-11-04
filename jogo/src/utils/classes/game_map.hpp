@@ -18,7 +18,6 @@ private:
     static GameMap* instance;
 
     std::vector<std::vector<Tile*>> tileMap;
-    std::vector<std::vector<Obstacle>> DEPRECATED_collisionTileMap;
     
     sf::Texture backgroundTexture;
     sf::RectangleShape background;
@@ -36,7 +35,6 @@ public:
     void loadBackground();
     void loadMap();
     void clearMap();
-    void DEPRECATED_loadCollisionMap();
     void draw(sf::Vector2f playerPos);
     float getStart() { return start; }
     bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
@@ -47,7 +45,6 @@ public:
     std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
 
     Tile* getTile(int line, int col) { return tileMap[line][col]; }
-    Obstacle& DEPRECATED_getCollisionTile(int line, int col) { return DEPRECATED_collisionTileMap[line][col]; }
 };
 
 #endif // GAME_MAP_HPP_

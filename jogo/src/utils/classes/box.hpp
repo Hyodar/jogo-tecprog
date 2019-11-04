@@ -1,6 +1,6 @@
 
-#ifndef SPIKE_HPP_
-#define SPIKE_HPP_
+#ifndef BOX_HPP_
+#define BOX_HPP_
 
 #include <SFML/Graphics.hpp>
 
@@ -12,30 +12,32 @@
 #include "game_map.hpp"
 #include "game.hpp"
 
-class Spike : public Obstacle {
+class Box : public Obstacle {
 
 private:
     sf::RectangleShape* shape;
-    static float hitDmg;
-    static sf::Vector2f spikeSize;
+    static sf::Vector2f boxSize;
+
+    float durability;
 
 public:
-    Spike(int posX, int posY) : Obstacle(posX, posY, Spike::spikeSize.x, Spike::spikeSize.y) {
+    Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y),
+                              durability{100} {
         shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
         shape->setTexture(TileManager::getInstance()->getTileSetTexture());
-        shape->setTextureRect(sf::IntRect(5*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
+        shape->setTextureRect(sf::IntRect(5*TILE_SIZE, 0, 2*TILE_SIZE, 2*TILE_SIZE));
     }
 
-    ~Spike() {
+    ~Box() {
         delete shape;
     }
 
     bool collide(Collidable& c) {
-        if(c.getBoundingBox().intersects(getBoundingBox())) {
-            c.takeDamage(hitDmg);
-            return true;
-        }
-        return false;
+        return c.getBoundingBox().intersects(getBoundingBox());
+    }
+
+    void takeDamage(float dmg) {
+        durability -= dmg;
     }
 
     sf::FloatRect getBoundingBox() const {
@@ -43,11 +45,10 @@ public:
     }
 
     void draw(sf::RenderWindow& window) {
-
         shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
         window.draw(*shape);
         //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
     }
 };
 
-#endif // SPIKE_HPP_
+#endif // BOX_HPP_

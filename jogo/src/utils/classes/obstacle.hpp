@@ -5,7 +5,7 @@
 #include "collidable.hpp"
 #include "entity.hpp"
 
-class Obstacle : public Entity, public Collidable {
+class Obstacle : public Entity {
 
 public:
     Obstacle(int posX, int posY, int sizeX, int sizeY) : Entity(posX, posY, sizeX, sizeY) {
@@ -13,8 +13,8 @@ public:
     }
 
     virtual bool collide(Collidable& c) = 0;
-    virtual sf::FloatRect getBoundingBox() = 0;
-    void takeDamage(float dmg) { 
+    virtual sf::FloatRect getBoundingBox() const = 0;
+    virtual void takeDamage(float dmg) { 
         // noop
     }
 };

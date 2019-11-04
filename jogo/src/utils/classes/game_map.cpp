@@ -99,30 +99,6 @@ void GameMap::clearMap() {
 }
 
 // ---------------------------------------------------------------------------
-/*
-void GameMap::DEPRECATED_loadCollisionMap() {
-    
-    std::ifstream file("resources/maps/map1_collision.json");
-    json mapInfo;
-    file >> mapInfo;
-
-    DEPRECATED_collisionTileMap.clear();
-
-    int collX = sizeX * (TILE_SIZE / COLLISION_TILE_SIZE);
-    int collY = sizeY * (TILE_SIZE / COLLISION_TILE_SIZE);
-
-    for(int line = 0; line < collY; line++) {
-        std::vector<Obstacle> lineTiles;
-        for(int col = 0; col < collX; col++) {
-            int obstacleType = mapInfo["layers"][1]["data"][line*collX + col];
-            lineTiles.push_back(Obstacle(obstacleType));
-        }
-        DEPRECATED_collisionTileMap.push_back(lineTiles);
-    }
-    
-}
-*/
-// ---------------------------------------------------------------------------
 
 void GameMap::setupTileStart(sf::Vector2f playerPos) {
     if(playerPos.x - windowW/2 < 0) {
