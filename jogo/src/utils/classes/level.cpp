@@ -16,15 +16,22 @@ Level::~Level() {
 }
 
 void Level::init() {
-    std::ifstream file("resources/maps/map1.json");
+    std::ifstream file(configPath);
     json mapInfo;
     file >> mapInfo;
 
-    spawnAll(mapInfo["layers"][1]["data"]);
+    std::vector<int> matrix;
+    auto jsonMat = mapInfo["layers"][1]["data"];
+    
+    for(int n : jsonMat) {
+        matrix.push_back(n);
+    }
+
+    spawnAll(matrix, static_cast<int>(mapInfo["height"]));
     // Game.loadBackground(mapInfo["backgroundPath"]); - TODO
 }
 
-void Level::spawnAll(std::vector<int> mat, int layerHeight) {
+void Level::spawnAll(std::vector<int>& mat, int layerHeight) {
     spawnEnemies(mat, layerHeight);
     spawnObstacles(mat, layerHeight);
 }

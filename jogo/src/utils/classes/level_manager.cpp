@@ -3,7 +3,7 @@
 
 #include "taberna.hpp"
 
-LevelManager::instance = nullptr;
+LevelManager* LevelManager::instance = nullptr;
 
 LevelManager::LevelManager() : currentLevel{-1} {
     levels[0] = static_cast<Level*>(new Taberna);
@@ -28,7 +28,13 @@ void LevelManager::nextLevel() {
 }
 
 void LevelManager::changeLevel(int levelNum) {
-    // TODO - recarregar mapa
+    if(levelNum < 0 || levelNum > 3) return;
+
+    cleanLevel();
     currentLevel = levelNum;
     levels[currentLevel]->init();
+}
+
+void LevelManager::cleanLevel() {
+    entityManager.clean();
 }

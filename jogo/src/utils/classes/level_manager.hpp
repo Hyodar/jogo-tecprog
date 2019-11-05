@@ -21,6 +21,7 @@ private:
     EntityManager entityManager;
     void nextLevel();
     void changeLevel(int levelNum);
+    void cleanLevel();
 
 };
 
