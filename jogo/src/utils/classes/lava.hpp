@@ -20,33 +20,12 @@ private:
     static sf::Vector2f lavaSize;
 
 public:
-    Lava(int posX, int posY) : Obstacle(posX, posY, Lava::lavaSize.x, Lava::lavaSize.y) {
-        shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
-        shape->setTexture(TileManager::getInstance()->getTileSetTexture());
-        shape->setTextureRect(sf::IntRect(5*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
-    }
+    Lava(int posX, int posY) ;
+    ~Lava();
 
-    ~Lava() {
-        delete shape;
-    }
-
-    bool collide(Collidable& c) {
-        if(c.getBoundingBox().intersects(getBoundingBox())) {
-            c.takeDamage(hitDmg);
-            return true;
-        }
-        return false;
-    }
-
-    sf::FloatRect getBoundingBox() const {
-        return sf::FloatRect(position.x, position.y, size.x, size.y);
-    }
-
-    void draw(sf::RenderWindow& window) {
-        shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
-        window.draw(*shape);
-        //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
-    }
+    bool collide(Collidable& c);
+    sf::FloatRect getBoundingBox() const;
+    void draw(sf::RenderWindow& window);
 };
 
 #endif // LAVA_HPP_

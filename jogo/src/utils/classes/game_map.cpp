@@ -26,8 +26,8 @@ GameMap* GameMap::instance = nullptr;
 // Methods
 // ---------------------------------------------------------------------------
 
-GameMap::GameMap() : sizeX{-1}, sizeY{-1}, start{0.0f},
-                     background(sf::Vector2f(windowW, windowH)) {
+GameMap::GameMap() : background(sf::Vector2f(windowW, windowH)),
+ sizeX{-1}, sizeY{-1}, start{0.0f}                      {
     // noop
 }
 
@@ -80,7 +80,7 @@ void GameMap::loadMap() {
         }
         tileMap.push_back(lineTiles);
     }
-    
+
     //loadCollisionMap();
 }
 
@@ -103,7 +103,7 @@ void GameMap::clearMap() {
 void GameMap::setupTileStart(sf::Vector2f playerPos) {
     if(playerPos.x - windowW/2 < 0) {
         start = 0;
-    } 
+    }
     else {
         start = (playerPos.x - windowW/2) / TILE_SIZE;
     }
@@ -121,7 +121,7 @@ void GameMap::draw(sf::Vector2f playerPos) {
 
     background.setTextureRect(sf::IntRect(start * TILE_SIZE, 0, windowW, windowH));
     Game::getInstance()->getMainWindow().draw(background);
-    
+
     for(int vec = 0; vec < sizeY; vec++) {
         for(int i = start; i < start + windowW/TILE_SIZE; i++) {
             tileMap[vec][i]->draw(sf::Vector2f((i-start)*TILE_SIZE, vec*TILE_SIZE));
