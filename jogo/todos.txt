@@ -21,6 +21,7 @@ TODOS
  - Transformar GameMap, TileManager para singleton
  - Ver sobre unique pointer
  - Colocar animacao no personagem
+ - deltaTime inutil em updateStartPosition
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)

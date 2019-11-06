@@ -15,10 +15,14 @@ class Entity : public Collidable {
         Entity(int x=0, int y=0, int sizeX=0, int sizeY=0);
         ~Entity();
 
+        int getSizeX() { return size.x; }
+        int getSizeY() { return size.y; }
+
         sf::Vector2f getPosition() { return position; }
-        virtual void updatePosition() { /* noop */}
+        virtual void updatePosition(float deltaTime) { /* noop */ }
         sf::FloatRect getBoundingBox() const { return sf::FloatRect(position.x, position.y, size.x, size.y); }
         virtual void takeDamage(float dmg) = 0;
+        virtual bool collide(Collidable& e) { /* noop */ return false; }
 
 };
 

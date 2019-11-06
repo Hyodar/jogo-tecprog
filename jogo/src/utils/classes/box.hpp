@@ -28,7 +28,7 @@ public:
     void takeDamage(float dmg);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
-    void updatePosition() { draw(Game::getInstance()->getMainWindow()); }
+    void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
 
 };
 

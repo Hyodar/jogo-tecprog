@@ -154,16 +154,17 @@ void Game::processPlaying() {
 
         refreshFrameTime();
         mainWindow.clear(sf::Color(0, 0, 255));
-        player.update(frameTime.asSeconds());
+        //player.update(frameTime.asSeconds());
 
         GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
+        player.updateStartPosition(0);
         
         /*
         s.draw(mainWindow);
         s.collide(player);
         */
-        LevelManager::getInstance()->process();
+        LevelManager::getInstance()->process(frameTime.asSeconds());
 
         mainWindow.display();
     }

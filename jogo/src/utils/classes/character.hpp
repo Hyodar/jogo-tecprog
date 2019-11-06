@@ -4,7 +4,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include"entity.hpp"
+#include "entity.hpp"
+#include "level_manager.hpp"
+#include "entity_manager.hpp"
 
 class Character : public Entity {
 
@@ -30,7 +32,7 @@ class Character : public Entity {
         void jump();
         
         void update(const float deltaTime);
-        virtual void updatePosition();
+        virtual void updatePosition(float deltaTime);
         void render(sf::RenderWindow& window);
         
         void isInvulnerable();
@@ -38,6 +40,18 @@ class Character : public Entity {
                 
         void checkCollisionX();
         void checkCollisionY();
+        bool collide(Collidable& c);
+
+        void setOnGround(bool b) { onGround = b; }
+
+        float getSpeedX() { return speed.x; }
+        float getSpeedY() { return speed.y; }
+
+        void setSpeedX(float s) { speed.x = s; }
+        void setSpeedY(float s) { speed.y = s; }
+
+        void setPosX(float p) { position.x = p; }
+        void setPosY(float p) { position.y = p; }
 
 };
 

@@ -19,7 +19,9 @@ public:
     void cleanLevel();
 
     void init() { levels[currentLevel]->init(); }
-    void process() { entityManager.process(); }
+    void process(float deltaTime) { entityManager.process(deltaTime); }
+
+    EntityManager& getEntityManager() { return entityManager; }
 
 private:
     LevelManager();

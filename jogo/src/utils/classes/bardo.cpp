@@ -56,7 +56,7 @@ void Bardo::checkKeys() {
 
 // ---------------------------------------------------------------------------
 
-void Bardo::updatePosition() {
+void Bardo::updateStartPosition(float deltaTime) {
     if(GameMap::getInstance()->IsAtEnd()) {
         sprite.setPosition(sf::Vector2f(windowW + position.x - GameMap::getInstance()->getMapLength(), position.y));
     }
@@ -69,37 +69,3 @@ void Bardo::updatePosition() {
 }
 
 // ---------------------------------------------------------------------------
-
-
-
-/* DEPRECATED
-
-void Bardo::checkCollisionX() {
-    for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
-        for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
-            if(GameMap::getInstance()->getCollisionTile(i, j).collide(*this)) {
-                if(speed.x > 0) position.x = j * COLLISION_TILE_SIZE - size.x;
-                else if(speed.x < 0) position.x = j * COLLISION_TILE_SIZE + COLLISION_TILE_SIZE;
-                speed.x = 0;
-                return;
-            }
-        }
-    }
-}
-
-void Bardo::checkCollisionY() {
-    for(int i = position.y/COLLISION_TILE_SIZE; i < (position.y + size.y)/COLLISION_TILE_SIZE; i++) {
-        for(int j = position.x/COLLISION_TILE_SIZE; j < (position.x + size.x)/COLLISION_TILE_SIZE; j++) {
-            if(GameMap::getInstance()->getCollisionTile(i, j).collide(*this)) {
-                if(speed.y > 0) {
-                    position.y = i * COLLISION_TILE_SIZE - size.y;
-                    onGround = true;
-                }
-                else if(speed.y < 0) position.y = i * COLLISION_TILE_SIZE + COLLISION_TILE_SIZE;
-                speed.y = 0;
-                return;
-            }
-        }
-    }
-}
-*/

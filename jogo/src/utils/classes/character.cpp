@@ -44,17 +44,7 @@ void Character::jump() {
 // ---------------------------------------------------------------------------
 
 void Character::update(const float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
-
-    checkKeys();
-
-    position.x += speed.x * deltaTime;
-    checkCollisionX();
-    position.y += speed.y * deltaTime;
-    onGround = false;
-    checkCollisionY();
-
-    isInvulnerable();
+    // noop
 }
 
 // ---------------------------------------------------------------------------
@@ -83,14 +73,28 @@ void Character::takeDamage(float dmg) {
 
 // ---------------------------------------------------------------------------
 
-void Character::updatePosition() {
-    // noop
+void Character::updatePosition(float deltaTime) {
+    //updateStartPosition(deltaTime);    
+
+    if(!onGround) speed.y += gravAcc * deltaTime;
+
+    checkKeys();
+
+    position.x += speed.x * deltaTime;
+    checkCollisionX();
+    LevelManager::getInstance()->getEntityManager().checkCharacterXCollision(this);
+    position.y += speed.y * deltaTime;
+    onGround = false;
+    LevelManager::getInstance()->getEntityManager().checkCharacterYCollision(this);
+    checkCollisionY();
+
+    isInvulnerable();
 }
 
 // ---------------------------------------------------------------------------
 
 void Character::render(sf::RenderWindow& window) {
-    updatePosition();
+    //updatePosition();
 
     healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
@@ -135,4 +139,25 @@ void Character::checkCollisionY() {
             }
         }
     }
+}
+
+// ---------------------------------------------------------------------------
+
+bool Character::collide(Collidable& e) {
+    if(!e.getBoundingBox().intersects(getBoundingBox())) return false;
+
+    if(speed.y > 0) {
+        position.y = e.getBoundingBox().top - size.y;
+        onGround = true;
+    }
+    else if(speed.y < 0) position.y = e.getBoundingBox().top + e.getBoundingBox().height;
+    speed.y = 0;
+
+    if(speed.x > 0) {
+        position.x = e.getBoundingBox().left - size.x;
+    }
+    else if(speed.x < 0) position.x = e.getBoundingBox().left + e.getBoundingBox().width;
+    speed.x = 0;
+
+    return true;
 }
