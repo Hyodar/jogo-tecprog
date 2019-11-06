@@ -14,11 +14,17 @@ EntityManager::~EntityManager() {
 }
 
 void EntityManager::clean() {
-    for(Entity* e : entities) {
+    for(Entity* e : obstacles) {
         delete e;
     }
 
-    entities.clear();
+    obstacles.clear();
+
+    for(Entity* e : characters) {
+        delete e;
+    }
+
+    characters.clear();
 }
 
 void EntityManager::process(float deltaTime) {
@@ -27,13 +33,13 @@ void EntityManager::process(float deltaTime) {
     // TROCAR PRA OBSTACLES E ENEMIES SEPARADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    for(uint i = 0; i < entities.size(); i++) {
-        entities[i]->updatePosition(deltaTime);
+    for(uint i = 0; i < obstacles.size(); i++) {
+        obstacles[i]->updatePosition(deltaTime);
         // aqui talvez seria certo testar 1 a 1 todas as combinações,
         // pra pegar a colisao se cada um se movimentar, mas n sei
         // se vale a pena pq isso vai ser executado bem rápido
-        for(uint j = i + 1; j < entities.size(); j++) {
-            CollisionManager::processCollision(entities[i], entities[j]);
+        for(uint j = i + 1; j < obstacles.size(); j++) {
+            CollisionManager::processCollision(obstacles[i], obstacles[j]);
         }
     }
 
@@ -41,12 +47,12 @@ void EntityManager::process(float deltaTime) {
 
 }
 
-#include <iostream>
-
 void EntityManager::checkCharacterYCollision(Character* c) {
-    for(uint i = 0; i < entities.size(); i++) {
-        const Entity& e = *(entities[i]);
+    for(uint i = 0; i < obstacles.size(); i++) {
+        Entity& e = *(obstacles[i]);
         if(!e.getBoundingBox().intersects(c->getBoundingBox())) continue;
+
+        e.collide(*c);
 
         if(c->getSpeedY() > 0) {
             c->setPosY(e.getBoundingBox().top - c->getSizeY());
@@ -58,9 +64,11 @@ void EntityManager::checkCharacterYCollision(Character* c) {
 }
 
 void EntityManager::checkCharacterXCollision(Character* c) {
-    for(uint i = 0; i < entities.size(); i++) {
-        const Entity& e = *(entities[i]);
+    for(uint i = 0; i < obstacles.size(); i++) {
+        Entity& e = *(obstacles[i]);
         if(!e.getBoundingBox().intersects(c->getBoundingBox())) continue;
+
+        e.collide(*c);
 
         if(c->getSpeedX() > 0) {
             c->setPosX(e.getBoundingBox().left - c->getSizeX());
@@ -71,9 +79,13 @@ void EntityManager::checkCharacterXCollision(Character* c) {
 }
 
 void EntityManager::checkAttack(sf::FloatRect hitBox, float dmg) {
-    // noop
+    // TODO
 }
 
-void EntityManager::addEntity(Entity* e) {
-    entities.push_back(e);
+void EntityManager::addObstacle(Entity* e) {
+    obstacles.push_back(e);
+}
+
+void EntityManager::addCharacter(Entity* e) {
+    characters.push_back(e);
 }

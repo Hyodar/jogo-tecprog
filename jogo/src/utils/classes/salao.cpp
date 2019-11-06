@@ -1,5 +1,5 @@
 
-#include "taberna.hpp"
+#include "salao.hpp"
 
 #include "level_manager.hpp"
 #include "entity_manager.hpp"
@@ -10,15 +10,15 @@
 
 #include <SFML/Graphics.hpp>
 
-Taberna::Taberna() : Level{"resources/maps/map1.json"} {
+Salao::Salao() : Level{"resources/maps/map2.json"} {
     // noop
 }
 
-Taberna::~Taberna() {
+Salao::~Salao() {
     // noop
 }
 
-void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
+void Salao::spawnObstacles(std::vector<int>& mat, int layerWidth) {
     for(int i = 0; i < mat.size(); i++) {
         if(!mat[i]) continue;
 
@@ -56,6 +56,6 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
     }
 }
 
-void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
+void Salao::spawnEnemies(std::vector<int>& mat, int layerWidth) {
     // noop
 }

@@ -59,6 +59,8 @@ void Game::start() {
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     TileManager::getInstance()->loadTileSet();
 
+    LevelManager::getInstance()->changeLevel(0);
+
     gameState = showingSplash;
     gamePhase = noPhase;
 
@@ -128,10 +130,6 @@ void Game::processPlaying() {
 
     mainWindow.clear(sf::Color::Blue);
     GameMap::getInstance()->loadMap();
-    LevelManager::getInstance()->changeLevel(0);
-    LevelManager::getInstance()->init();
-
-    Spike s(100, 500);
 
     while(gameState != exiting) {
         while(mainWindow.pollEvent(playingEvent)) {
@@ -154,16 +152,17 @@ void Game::processPlaying() {
 
         refreshFrameTime();
         mainWindow.clear(sf::Color(0, 0, 255));
-        //player.update(frameTime.asSeconds());
 
         GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
         player.updateStartPosition(0);
+
+        if(player.getPosition().x == 48*TILE_SIZE) {
+            LevelManager::getInstance()->nextLevel();
+
+            player.setPosX(windowW/2);
+        }
         
-        /*
-        s.draw(mainWindow);
-        s.collide(player);
-        */
         LevelManager::getInstance()->process(frameTime.asSeconds());
 
         mainWindow.display();

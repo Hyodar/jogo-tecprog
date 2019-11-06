@@ -16,9 +16,9 @@ public:
     };
 
     enum ObstacleClassification {
-        Spikes = 1,
-        Lava = 2,
-        Box = 6
+        SpikeObstacle = 1,
+        LavaObstacle = 2,
+        BoxObstacle = 6
     };
 
     Level(const char* configFile);
@@ -27,6 +27,8 @@ public:
     void init(); // inicializa o nivel
 
     sf::Vector2f getSpawnPosition(uint pos, int layerWidth);
+    
+    const char* getConfigPath() { return configPath; }
 
 private:
     const char* configPath;

@@ -12,11 +12,12 @@ public:
     ~LevelManager();
     static LevelManager* getInstance();
 
-    void addEntity(Entity* e) { entityManager.addEntity(e); }
+    void addObstacle(Entity* e) { entityManager.addObstacle(e); }
 
     void nextLevel();
     void changeLevel(int levelNum);
     void cleanLevel();
+    Level* getLevel() { return levels[currentLevel]; };
 
     void init() { levels[currentLevel]->init(); }
     void process(float deltaTime) { entityManager.process(deltaTime); }

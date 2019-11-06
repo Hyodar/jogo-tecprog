@@ -2,11 +2,13 @@
 #include "level_manager.hpp"
 
 #include "taberna.hpp"
+#include "salao.hpp"
 
 LevelManager* LevelManager::instance = nullptr;
 
 LevelManager::LevelManager() : currentLevel{-1} {
     levels[0] = static_cast<Level*>(new Taberna);
+    levels[1] = static_cast<Level*>(new Salao);
     /*
     levels[1] = new Level2;
     levels[2] = new Level3;

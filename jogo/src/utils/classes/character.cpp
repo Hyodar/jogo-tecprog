@@ -81,12 +81,12 @@ void Character::updatePosition(float deltaTime) {
     checkKeys();
 
     position.x += speed.x * deltaTime;
-    checkCollisionX();
+    checkMapCollisionX();
     LevelManager::getInstance()->getEntityManager().checkCharacterXCollision(this);
     position.y += speed.y * deltaTime;
     onGround = false;
     LevelManager::getInstance()->getEntityManager().checkCharacterYCollision(this);
-    checkCollisionY();
+    checkMapCollisionY();
 
     isInvulnerable();
 }
@@ -108,7 +108,7 @@ void Character::render(sf::RenderWindow& window) {
 // TODO
 // só tá adaptado pra colliders diferentes no Y de cima pra baixo
 
-void Character::checkCollisionX() {
+void Character::checkMapCollisionX() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
             Tile* tile = GameMap::getInstance()->getTile(i, j);
@@ -124,7 +124,7 @@ void Character::checkCollisionX() {
 
 // ---------------------------------------------------------------------------
 
-void Character::checkCollisionY() {
+void Character::checkMapCollisionY() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
             Tile* tile = GameMap::getInstance()->getTile(i, j);

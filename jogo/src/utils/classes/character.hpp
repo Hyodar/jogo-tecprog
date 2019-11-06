@@ -38,8 +38,8 @@ class Character : public Entity {
         void isInvulnerable();
         void takeDamage(float dmg);
                 
-        void checkCollisionX();
-        void checkCollisionY();
+        void checkMapCollisionX();
+        void checkMapCollisionY();
         bool collide(Collidable& c);
 
         void setOnGround(bool b) { onGround = b; }

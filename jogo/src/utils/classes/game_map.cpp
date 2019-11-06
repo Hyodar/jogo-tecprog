@@ -17,6 +17,7 @@ using json = nlohmann::json;
 #include "game.hpp"
 #include "tile.hpp"
 #include "tile_manager.hpp"
+#include "level_manager.hpp"
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -57,7 +58,7 @@ void GameMap::loadMap() {
 
     loadBackground();
 
-    std::ifstream file("resources/maps/map1.json");
+    std::ifstream file(LevelManager::getInstance()->getLevel()->getConfigPath());
     json mapInfo;
     file >> mapInfo;
 
@@ -71,11 +72,6 @@ void GameMap::loadMap() {
         for(int col = 0; col < sizeX ; col++) {
             int tile = mapInfo["layers"][0]["data"][row*sizeX + col];
 
-            /*if(tile == TileManager::getInstance()->TileType::FloorSpikes) {
-                lineTiles.push_back(
-                    static_cast<Tile*>(new ObstacleTile(tile, row, col, FLOORSPIKES_DMG))
-                );
-            }*/
             lineTiles.push_back(new Tile(tile, row, col));
         }
         tileMap.push_back(lineTiles);

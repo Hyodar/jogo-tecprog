@@ -16,14 +16,16 @@ class EntityManager {
 private:
 
     // List entities;
-    std::vector<Entity*> entities;
+    std::vector<Entity*> obstacles;
+    std::vector<Entity*> characters;
 
 public:
 
     EntityManager();
     ~EntityManager();
 
-    void addEntity(Entity* entity);
+    void addObstacle(Entity* entity);
+    void addCharacter(Entity* entity);
     void clean();
     void process(float deltaTime); // processa movimento e colisao
 

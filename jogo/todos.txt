@@ -7,21 +7,23 @@ OBJETIVOS
  - A cada fase 2 tipos de inimigos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
  - Ter chefao na ultima fase
  - Pelo menos 3 tipos de obstaculos
- - A cada fase 2 tipos de obstaculos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
  - Ter representacao grafica de cada instancia
  - Gerenciar colisoes entre jogador e inimigos, projeteis e obstaculos
  - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
- - Pausar jogo
+
  - Salvar jogo
+
+OBJETIVOS DONES
+ - Pausar jogo <DONE>
+ - A cada fase 2 tipos de obstaculos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
 
 TODOS DONES
  - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez)
+ - Transformar GameMap, TileManager para singleton
 
 TODOS
- - Transformar GameMap, TileManager para singleton
- - Ver sobre unique pointer
- - Colocar animacao no personagem
  - deltaTime inutil em updateStartPosition
+ - limpar bagunça de collide
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)

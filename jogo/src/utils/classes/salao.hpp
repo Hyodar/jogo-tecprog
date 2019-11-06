@@ -1,6 +1,6 @@
 
-#ifndef TABERNA_HPP_
-#define TABERNA_HPP_
+#ifndef SALAO_HPP_
+#define SALAO_HPP_
 
 #include <vector>
 
@@ -10,11 +10,11 @@
 #include "lava.hpp"
 #include "box.hpp"
 
-class Taberna : public Level {
+class Salao : public Level {
 
 public:
-    Taberna();
-    ~Taberna();
+    Salao();
+    ~Salao();
 
     void spawnEnemies(std::vector<int>& mat, int layerWidth);
     void spawnObstacles(std::vector<int>& mat, int layerWidth);
@@ -23,4 +23,4 @@ private:
 
 };
 
-#endif // TABERNA_HPP_
+#endif // SALAO_HPP_
