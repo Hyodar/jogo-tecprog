@@ -12,6 +12,7 @@
 
 // Internal libraries
 #include "tile_manager.hpp"
+#include "level_manager.hpp"
 #include "game_map.hpp"
 #include "splash_screen.hpp"
 #include "main_menu.hpp"
@@ -127,6 +128,8 @@ void Game::processPlaying() {
 
     mainWindow.clear(sf::Color::Blue);
     GameMap::getInstance()->loadMap();
+    LevelManager::getInstance()->changeLevel(0);
+    LevelManager::getInstance()->init();
 
     Spike s(100, 500);
 
@@ -155,8 +158,12 @@ void Game::processPlaying() {
 
         GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
+        
+        /*
         s.draw(mainWindow);
         s.collide(player);
+        */
+        LevelManager::getInstance()->process();
 
         mainWindow.display();
     }

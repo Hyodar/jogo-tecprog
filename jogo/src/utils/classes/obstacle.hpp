@@ -17,6 +17,7 @@ public:
     virtual void takeDamage(float dmg) { 
         // noop
     }
+    virtual void updatePosition() { /* noop */ }
 };
 
 #endif // OBSTACLE_HPP_

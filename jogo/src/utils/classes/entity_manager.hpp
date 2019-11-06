@@ -1,16 +1,32 @@
 
+#ifndef ENTITY_MANAGER_HPP_
+#define ENTITY_MANAGER_HPP_
+
 #include <SFML/Graphics.hpp>
 
-#include "attack.hpp"
+#include <vector>
+#include "entity.hpp"
+// #include "attack.hpp"
 
 class EntityManager {
 
-public:
+private:
+
     // List entities;
+    std::vector<Entity*> entities;
+
+public:
+
+    EntityManager();
+    ~EntityManager();
+
+    void addEntity(Entity* entity);
     void clean();
     void process(); // processa movimento e colisao
 
-     void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
-    //void checkAttack(Attack attack); // Attack -> box, dano
+    //void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
+    void checkAttack(sf::FloatRect hitBox, float dmg); // Attack -> box, dano
 
 };
+
+#endif // ENTITY_MANAGER_HPP_

@@ -28,6 +28,8 @@ public:
     void takeDamage(float dmg);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
+    void updatePosition() { draw(Game::getInstance()->getMainWindow()); }
+
 };
 
 #endif // BOX_HPP_

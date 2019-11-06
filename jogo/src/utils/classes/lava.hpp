@@ -20,12 +20,14 @@ private:
     static sf::Vector2f lavaSize;
 
 public:
-    Lava(int posX, int posY) ;
+    Lava(int posX, int posY);
     ~Lava();
 
     bool collide(Collidable& c);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
+    void updatePosition() { draw(Game::getInstance()->getMainWindow()); }
+
 };
 
 #endif // LAVA_HPP_

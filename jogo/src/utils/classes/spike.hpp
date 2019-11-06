@@ -26,6 +26,8 @@ public:
     bool collide(Collidable& c);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
+    void updatePosition() { draw(Game::getInstance()->getMainWindow()); }
+    
 };
 
 #endif // SPIKE_HPP_

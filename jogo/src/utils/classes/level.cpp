@@ -7,6 +7,8 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
+#include <constants.hpp>
+
 Level::Level(const char* configFile) : configPath{configFile} {
     // TODO
 }
@@ -27,11 +29,20 @@ void Level::init() {
         matrix.push_back(n);
     }
 
-    spawnAll(matrix, static_cast<int>(mapInfo["height"]));
+    spawnAll(matrix, static_cast<int>(mapInfo["width"]));
     // Game.loadBackground(mapInfo["backgroundPath"]); - TODO
 }
 
-void Level::spawnAll(std::vector<int>& mat, int layerHeight) {
-    spawnEnemies(mat, layerHeight);
-    spawnObstacles(mat, layerHeight);
+void Level::spawnAll(std::vector<int>& mat, int layerWidth) {
+    spawnEnemies(mat, layerWidth);
+    spawnObstacles(mat, layerWidth);
+}
+
+#include <iostream>
+
+sf::Vector2f Level::getSpawnPosition(uint pos, int layerWidth) {
+    const int x = pos % layerWidth;
+    const int y = pos / layerWidth;
+    std::cout << x << " " << y << std::endl;
+    return sf::Vector2f(x * TILE_SIZE, y * TILE_SIZE);
 }
