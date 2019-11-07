@@ -38,11 +38,8 @@ void Level::spawnAll(std::vector<int>& mat, int layerWidth) {
     spawnObstacles(mat, layerWidth);
 }
 
-#include <iostream>
-
 sf::Vector2f Level::getSpawnPosition(uint pos, int layerWidth) {
     const int x = pos % layerWidth;
     const int y = pos / layerWidth;
-    std::cout << x << " " << y << std::endl;
     return sf::Vector2f(x * TILE_SIZE, y * TILE_SIZE);
 }
