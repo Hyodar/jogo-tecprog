@@ -3,19 +3,19 @@
 // ---------------------------------------------------------------------------
 
 // Class header
-#include "main_menu.hpp"
+#include "pause_menu.hpp"
 
 // Methods
 // ---------------------------------------------------------------------------
 
-MainMenu::MainMenu() {
-    texture.loadFromFile("resources/main_menu.png");
+PauseMenu::PauseMenu() {
+    texture.loadFromFile("resources/pause_menu.png");
 }
 
 // ---------------------------------------------------------------------------
 
-void MainMenu::addButton(int left, int top, int width,
-                         int height, MainMenu::MenuResult action) {
+void PauseMenu::addButton(int left, int top, int width,
+                         int height, PauseMenu::MenuResult action) {
     MenuItem button;
     button.rect.left = left;
     button.rect.top = top;
@@ -28,12 +28,13 @@ void MainMenu::addButton(int left, int top, int width,
 
 // ---------------------------------------------------------------------------
 
-MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
+PauseMenu::MenuResult PauseMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
     sprite.setTexture(texture);
 
-    addButton(0, 145, 1023, 177, play);
-    addButton(0, 383, 1023, 177, exit);
+    addButton(0, 260, 1023, 110, resume);
+    addButton(0, 420, 1023, 80, save);
+    addButton(0, 550, 1023, 80, exit);
 
     renderWindow.draw(sprite);
     renderWindow.display();
@@ -43,7 +44,7 @@ MainMenu::MenuResult MainMenu::show(sf::RenderWindow& renderWindow) {
 
 // ---------------------------------------------------------------------------
 
-MainMenu::MenuResult MainMenu::handleClick(int x, int y) {
+PauseMenu::MenuResult PauseMenu::handleClick(int x, int y) {
     std::list<MenuItem>::iterator item;
 
     for(item = menuItems.begin(); item != menuItems.end(); item++) {
@@ -59,7 +60,7 @@ MainMenu::MenuResult MainMenu::handleClick(int x, int y) {
 
 // ---------------------------------------------------------------------------
 
-MainMenu::MenuResult MainMenu::getMenuResponse(sf::RenderWindow& renderWindow) {
+PauseMenu::MenuResult PauseMenu::getMenuResponse(sf::RenderWindow& renderWindow) {
     sf::Event event;
 
     while(true) {

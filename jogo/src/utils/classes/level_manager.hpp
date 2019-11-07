@@ -28,7 +28,7 @@ private:
     LevelManager();
     static LevelManager* instance;
 
-    Level* levels[3];
+    Level* levels[2];
     int currentLevel;
 
     EntityManager entityManager;

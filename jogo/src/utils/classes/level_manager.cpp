@@ -3,6 +3,7 @@
 
 #include "taberna.hpp"
 #include "salao.hpp"
+#include "game_map.hpp"
 
 LevelManager* LevelManager::instance = nullptr;
 
@@ -29,12 +30,17 @@ void LevelManager::nextLevel() {
     changeLevel(currentLevel);
 }
 
+#include <iostream>
+
 void LevelManager::changeLevel(int levelNum) {
-    if(levelNum < 0 || levelNum > 3) return;
+    std::cout << "Changing to level " << levelNum << "..." << std::endl;
+
+    if(levelNum < 0 || levelNum > 2) return;
 
     cleanLevel();
     currentLevel = levelNum;
     levels[currentLevel]->init();
+    GameMap::getInstance()->loadMap();
 }
 
 void LevelManager::cleanLevel() {

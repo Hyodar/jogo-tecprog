@@ -24,17 +24,16 @@ private:
         uninitialized,
         showingSplash,
         paused,
-        showingMenu,
-        showingPreferences,
+        showingStartMenu,
+        showingPauseMenu,
         playing,
         exiting
     };
 
     enum GamePhase {
-        noPhase,
-        phase1,
-        phase2,
-        boss
+        noPhase = -1,
+        phase1 = 0,
+        phase2 = 1
     };
 
     static Game* instance;
@@ -55,7 +54,8 @@ private:
     void gameLoop();
 
     void showSplashScreen();
-    void showMenu();
+    void showPauseMenu();
+    void showStartMenu();
 
     void processPlaying();
 

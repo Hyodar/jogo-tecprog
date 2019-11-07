@@ -1,21 +1,20 @@
 
 OBJETIVOS
- - Menu de opcoes
  - Pode ter 2 jogadores
- - Pelo menos 2 fases
  - Três inimigos diferentes (incluindo chefe), em que um deles pode lançar projétil
  - A cada fase 2 tipos de inimigos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
  - Ter chefao na ultima fase
- - Pelo menos 3 tipos de obstaculos
- - Ter representacao grafica de cada instancia
  - Gerenciar colisoes entre jogador e inimigos, projeteis e obstaculos
  - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
-
  - Salvar jogo
 
 OBJETIVOS DONES
- - Pausar jogo <DONE>
+ - Pausar jogo
+ - Menu de opcoes
  - A cada fase 2 tipos de obstaculos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
+ - Pelo menos 2 fases
+ - Pelo menos 3 tipos de obstaculos
+ - Ter representacao grafica de cada instancia
 
 TODOS DONES
  - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez)

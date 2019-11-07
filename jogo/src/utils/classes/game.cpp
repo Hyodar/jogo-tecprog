@@ -15,7 +15,8 @@
 #include "level_manager.hpp"
 #include "game_map.hpp"
 #include "splash_screen.hpp"
-#include "main_menu.hpp"
+#include "start_menu.hpp"
+#include "pause_menu.hpp"
 
 #include "spike.hpp"
 
@@ -59,8 +60,6 @@ void Game::start() {
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     TileManager::getInstance()->loadTileSet();
 
-    LevelManager::getInstance()->changeLevel(0);
-
     gameState = showingSplash;
     gamePhase = noPhase;
 
@@ -81,8 +80,11 @@ bool Game::isExiting() {
 
 void Game::gameLoop() {
     switch(gameState) {
-        case showingMenu:
-            showMenu();
+        case showingStartMenu:
+            showStartMenu();
+            break;
+        case showingPauseMenu:
+            showPauseMenu();
             break;
         case showingSplash:
             showSplashScreen();
@@ -100,22 +102,64 @@ void Game::showSplashScreen() {
     SplashScreen splashScreen;
 
     splashScreen.show(mainWindow);
-    gameState = showingMenu;
+    gameState = showingStartMenu;
 }
 
 // ---------------------------------------------------------------------------
 
-void Game::showMenu() {
-    MainMenu mainMenu;
+void Game::showStartMenu() {
+    StartMenu startMenu;
 
-    MainMenu::MenuResult result = mainMenu.show(mainWindow);
+    StartMenu::MenuResult result = startMenu.show(mainWindow);
     switch(result) {
-        case MainMenu::exit:
+        case StartMenu::exit:
             gameState = exiting;
             break;
-        case MainMenu::play:
+        case StartMenu::play1tab:
             gameState = playing;
             gamePhase = phase1;
+            LevelManager::getInstance()->changeLevel(gamePhase);
+            break;
+        case StartMenu::play1sal:
+            gameState = playing;
+            gamePhase = phase2;
+            LevelManager::getInstance()->changeLevel(gamePhase);
+            break;
+        case StartMenu::play2tab:
+            gameState = playing;
+            gamePhase = phase1;
+            LevelManager::getInstance()->changeLevel(gamePhase);
+            break;
+        case StartMenu::play2sal:
+            gameState = playing;
+            gamePhase = phase2;
+            LevelManager::getInstance()->changeLevel(gamePhase);
+            break;
+        case StartMenu::resume:
+            // TODO logic
+            break;
+        default:;
+    }
+    // TODO - talvez colocar aqui o negocio pra pegar o numero de jogadores
+
+    refreshFrameTime();
+}
+
+// ---------------------------------------------------------------------------
+
+void Game::showPauseMenu() {
+    PauseMenu pauseMenu;
+
+    PauseMenu::MenuResult result = pauseMenu.show(mainWindow);
+    switch(result) {
+        case PauseMenu::exit:
+            gameState = exiting;
+            break;
+        case PauseMenu::resume:
+            gameState = playing;
+            break;
+        case PauseMenu::save:
+            // TODO - logic
             break;
         default:;
     }
@@ -129,15 +173,14 @@ void Game::processPlaying() {
     sf::Event playingEvent;
 
     mainWindow.clear(sf::Color::Blue);
-    GameMap::getInstance()->loadMap();
 
     while(gameState != exiting) {
         while(mainWindow.pollEvent(playingEvent)) {
             switch(playingEvent.type) {
                 case sf::Event::KeyPressed:
                     if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
-                        gameState = paused;
-                        showMenu();
+                        gameState = showingPauseMenu;
+                        showPauseMenu();
                     }
                     break;
                 case sf::Event::KeyReleased:
@@ -164,7 +207,6 @@ void Game::processPlaying() {
         }
         
         LevelManager::getInstance()->process(frameTime.asSeconds());
-
         mainWindow.display();
     }
 }

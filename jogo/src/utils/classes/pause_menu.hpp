@@ -1,20 +1,21 @@
 
-#ifndef MAIN_MENU_HPP_
-#define MAIN_MENU_HPP_
+#ifndef PAUSE_MENU_HPP_
+#define PAUSE_MENU_HPP_
 
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
 
 #include <list>
 
-class MainMenu {
+class PauseMenu {
     
 public:
     // menu options
     enum MenuResult {
-        noop,
         exit,
-        play
+        noop,
+        resume,
+        save
     };
 
     struct MenuItem {
@@ -23,7 +24,7 @@ public:
             MenuResult action;
     };
 
-    MainMenu();
+    PauseMenu();
     MenuResult show(sf::RenderWindow& renderWindow);
 
 private:
@@ -37,4 +38,4 @@ private:
     
 };
 
-#endif // MAIN_MENU_HPP_
+#endif // PAUSE_MENU_HPP_

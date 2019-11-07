@@ -13,7 +13,7 @@ class Entity : public Collidable {
 
     public:
         Entity(int x=0, int y=0, int sizeX=0, int sizeY=0);
-        ~Entity();
+        virtual ~Entity();
 
         int getSizeX() { return size.x; }
         int getSizeY() { return size.y; }
