@@ -28,7 +28,8 @@ Game* Game::instance = nullptr;
 // Methods
 // ---------------------------------------------------------------------------
 
-Game::Game() : player(windowW/2, 100) {
+Game::Game() : player(windowW/2, 100), fielEscudeiro(windowW/2 - 100, 100),
+               hasEscudeiro{false} {
     instance = nullptr;
 
     gameState = uninitialized;
@@ -128,11 +129,13 @@ void Game::showStartMenu() {
         case StartMenu::play2tab:
             gameState = playing;
             gamePhase = phase1;
+            hasEscudeiro = true;
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::play2sal:
             gameState = playing;
             gamePhase = phase2;
+            hasEscudeiro = true;
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::resume:
@@ -198,6 +201,7 @@ void Game::processPlaying() {
 
         GameMap::getInstance()->draw(player.getPosition());
         player.render(mainWindow);
+        if(hasEscudeiro) fielEscudeiro.render(mainWindow);
         player.updateStartPosition(0);
 
         if(player.getPosition().x == 48*TILE_SIZE) {

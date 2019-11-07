@@ -1,6 +1,6 @@
 
-#ifndef PLAYER_HPP_
-#define PLAYER_HPP_
+#ifndef BARDO_HPP_
+#define BARDO_HPP_
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -19,4 +19,4 @@ public:
 
 };
 
-#endif // PLAYER_HPP_
+#endif // BARDO_HPP_

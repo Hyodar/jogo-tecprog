@@ -44,6 +44,9 @@ void EntityManager::process(float deltaTime) {
     }
 
     Game::getInstance()->getPlayer().updatePosition(deltaTime);
+    if(Game::getInstance()->getHasEscudeiro()) {
+        Game::getInstance()->getFielEscudeiro().updatePosition(deltaTime);
+    }
 
 }
 

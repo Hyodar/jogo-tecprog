@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
 
 class Game {
 
@@ -15,6 +16,8 @@ public:
     
     void start();
     Bardo& getPlayer() { return player; }
+    FielEscudeiro& getFielEscudeiro() { return fielEscudeiro; }
+    bool getHasEscudeiro() { return hasEscudeiro; }
     sf::RenderWindow& getMainWindow() { return mainWindow; }
 
     int getScore() { return score; }
@@ -42,6 +45,8 @@ private:
     static Game* instance;
 
     Bardo player;
+    FielEscudeiro fielEscudeiro;
+    bool hasEscudeiro;
 
     GameState gameState;
     GamePhase gamePhase;

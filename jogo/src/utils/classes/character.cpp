@@ -59,7 +59,7 @@ void Character::isInvulnerable() {
     if(invulnerable) {
         invulnerable--;
         sprite.setColor(sf::Color(255, 255, 255, 128));
-    } else sprite.setColor(sf::Color::Black);
+    } else sprite.setColor(sf::Color(255, 255, 255, 255));
 }
 
 // ---------------------------------------------------------------------------
@@ -98,6 +98,8 @@ void Character::render(sf::RenderWindow& window) {
 
     healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
+
+    sprite.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
 
     window.draw(sprite);
     window.draw(healthBar);

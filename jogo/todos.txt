@@ -1,6 +1,5 @@
 
 OBJETIVOS
- - Pode ter 2 jogadores
  - Três inimigos diferentes (incluindo chefe), em que um deles pode lançar projétil
  - A cada fase 2 tipos de inimigos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
  - Ter chefao na ultima fase
@@ -8,6 +7,7 @@ OBJETIVOS
  - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
 
 OBJETIVOS DONES
+ - Pode ter 2 jogadores
  - Pausar jogo
  - Menu de opcoes
  - A cada fase 2 tipos de obstaculos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
