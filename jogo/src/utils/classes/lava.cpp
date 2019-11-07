@@ -13,6 +13,7 @@
 // Attribute initialization
 float Lava::hitDmg = 20;
 sf::Vector2f Lava::lavaSize(TILE_SIZE, TILE_SIZE);
+int Lava::obstacleNum = 1;
 
 // Methods
 // ---------------------------------------------------------------------------
@@ -42,7 +43,7 @@ bool Lava::collide(Collidable& c) {
 // ---------------------------------------------------------------------------
 
 sf::FloatRect Lava::getBoundingBox() const {
-    return sf::FloatRect(position.x, position.y, size.x, size.y);
+    return sf::FloatRect(position.x, position.y + 10, size.x, size.y - 10);
 }
 
 // ---------------------------------------------------------------------------

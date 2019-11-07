@@ -86,6 +86,6 @@ void EntityManager::addObstacle(Entity* e) {
     obstacles.push_back(e);
 }
 
-void EntityManager::addCharacter(Entity* e) {
-    characters.push_back(e);
+void EntityManager::addCharacter(Character* c) {
+    characters.push_back(c);
 }

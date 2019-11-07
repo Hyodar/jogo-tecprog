@@ -14,6 +14,7 @@
 // Attribute initialization
 float Spike::hitDmg = 20;
 sf::Vector2f Spike::spikeSize(TILE_SIZE, TILE_SIZE);
+int Spike::obstacleNum = 0;
 
 // Methods
 // ---------------------------------------------------------------------------

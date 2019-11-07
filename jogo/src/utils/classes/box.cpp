@@ -13,6 +13,7 @@
 
 // Attribute initialization
 sf::Vector2f Box::boxSize(2*TILE_SIZE, 2*TILE_SIZE);
+int Box::obstacleNum = 2;
 
 // Methods
 // ---------------------------------------------------------------------------

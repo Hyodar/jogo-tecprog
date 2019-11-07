@@ -53,6 +53,9 @@ class Character : public Entity {
         void setPosX(float p) { position.x = p; }
         void setPosY(float p) { position.y = p; }
 
+        float getHP() { return hitPoints; }
+        void setHP(float hp) { hitPoints = hp; }
+
 };
 
 #endif //Character.hpp

@@ -6,7 +6,6 @@ OBJETIVOS
  - Ter chefao na ultima fase
  - Gerenciar colisoes entre jogador e inimigos, projeteis e obstaculos
  - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
- - Salvar jogo
 
 OBJETIVOS DONES
  - Pausar jogo
@@ -23,6 +22,7 @@ TODOS DONES
 TODOS
  - deltaTime inutil em updateStartPosition
  - limpar bagunça de collide
+ - trocar de Entity* pra Obstacle* em obstacles do entityManager
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)

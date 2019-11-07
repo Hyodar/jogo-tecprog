@@ -18,6 +18,7 @@ private:
     sf::RectangleShape* shape;
     static float hitDmg;
     static sf::Vector2f spikeSize;
+    static int obstacleNum;
 
 public:
     Spike(int posX, int posY);

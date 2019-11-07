@@ -24,9 +24,9 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
 
         sf::Vector2f pos = getSpawnPosition(i, layerWidth);
 
-        int spikeNum = rand()%5 + 5;
-        int lavaNum = rand()%5 + 5;
-        int boxNum = rand()%5 + 5;
+        int spikeNum = rand() % 5 + 5;
+        int lavaNum = rand() % 5 + 5;
+        int boxNum = rand() % 5 + 5;
 
         int spikeCount = 0;
         int lavaCount = 0;

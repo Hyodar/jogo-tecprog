@@ -14,4 +14,4 @@ const int INVULNERABILITY_TICKS = 1500;
 
 const float FLOORSPIKES_DMG = 20;
 
-#endif
+#endif // CONSTANTS_HPP_

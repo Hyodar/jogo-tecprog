@@ -17,6 +17,7 @@ class Box : public Obstacle {
 private:
     sf::RectangleShape* shape;
     static sf::Vector2f boxSize;
+    static int obstacleNum;
 
     float durability;
 

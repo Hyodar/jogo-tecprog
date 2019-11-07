@@ -17,6 +17,9 @@ public:
     Bardo& getPlayer() { return player; }
     sf::RenderWindow& getMainWindow() { return mainWindow; }
 
+    int getScore() { return score; }
+    void setScore(int s) { score = s; }
+
 private:
     Game();
     
@@ -46,6 +49,8 @@ private:
 
     sf::Clock clock;
     sf::Time frameTime;
+
+    int score;
 
     void stop();
     bool isExiting();

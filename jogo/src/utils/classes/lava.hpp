@@ -18,6 +18,7 @@ private:
     sf::RectangleShape* shape;
     static float hitDmg;
     static sf::Vector2f lavaSize;
+    static int obstacleNum;
 
 public:
     Lava(int posX, int posY);

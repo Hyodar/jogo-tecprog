@@ -2,9 +2,12 @@
 #ifndef LEVEL_MANAGER_HPP_
 #define LEVEL_MANAGER_HPP_
 
+#include <vector>
+
 #include "entity_manager.hpp"
 #include "entity.hpp"
 #include "level.hpp"
+#include "character.hpp"
 
 class LevelManager {
 
@@ -13,11 +16,17 @@ public:
     static LevelManager* getInstance();
 
     void addObstacle(Entity* e) { entityManager.addObstacle(e); }
+    void addEnemy(Character* c) { entityManager.addCharacter(c); }
 
     void nextLevel();
     void changeLevel(int levelNum);
     void cleanLevel();
-    Level* getLevel() { return levels[currentLevel]; };
+    
+    Level* getLevel() { return levels[currentLevel]; }
+    int getCurrentLevel() { return currentLevel; }
+
+    std::vector<Entity*> getObstacles() { return entityManager.getObstacles(); }
+    std::vector<Character*> getEnemies() { return entityManager.getCharacters(); }
 
     void init() { levels[currentLevel]->init(); }
     void process(float deltaTime) { entityManager.process(deltaTime); }
