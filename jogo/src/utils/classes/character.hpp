@@ -38,8 +38,8 @@ class Character : public Entity {
         void isInvulnerable();
         void takeDamage(float dmg);
                 
-        void checkMapCollisionX();
-        void checkMapCollisionY();
+        bool checkMapCollisionX();
+        bool checkMapCollisionY();
         bool collide(Collidable& c);
 
         void setOnGround(bool b) { onGround = b; }
@@ -52,6 +52,8 @@ class Character : public Entity {
 
         void setPosX(float p) { position.x = p; }
         void setPosY(float p) { position.y = p; }
+        float getPosX() { return position.x; }
+        float getPosY() { return position.y; }
 
         float getHP() { return hitPoints; }
         void setHP(float hp) { hitPoints = hp; }

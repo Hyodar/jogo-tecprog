@@ -35,19 +35,19 @@ void Salao::spawnObstacles(std::vector<int>& mat, int layerWidth) {
         switch(mat[i]) {
             case ObstacleClassification::SpikeObstacle:
                 if(spikeCount < spikeNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Spike(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Spike(pos.x, pos.y)));
                     spikeCount++;
                 }
                 break;
             case ObstacleClassification::LavaObstacle:
                 if(lavaCount < lavaNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Lava(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Lava(pos.x, pos.y)));
                     lavaCount++;
                 }
                 break;
             case ObstacleClassification::BoxObstacle:
                 if(boxCount < boxNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Box(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Box(pos.x, pos.y)));
                     boxCount++;
                 }
                 break;

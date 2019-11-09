@@ -29,6 +29,8 @@ public:
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
 
+    std::vector<float> store();
+
 };
 
 #endif // LAVA_HPP_

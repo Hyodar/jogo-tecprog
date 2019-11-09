@@ -28,6 +28,8 @@ public:
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
+
+    std::vector<float> store();
     
 };
 

@@ -6,17 +6,23 @@
 
 #include <vector>
 #include "entity.hpp"
+#include "obstacle.hpp"
 
-// #include "attack.hpp"
-
+class Bardo;
+class FielEscudeiro;
 class Character;
 
 class EntityManager {
 
 private:
 
+    Bardo* bardo;
+    FielEscudeiro* fielEscudeiro;
+
+    bool hasEscudeiro;
+
     // List entities;
-    std::vector<Entity*> obstacles;
+    std::vector<Obstacle*> obstacles;
     std::vector<Character*> characters;
 
 public:
@@ -24,18 +30,22 @@ public:
     EntityManager();
     ~EntityManager();
 
-    void addObstacle(Entity* entity);
+    void addObstacle(Obstacle* o);
     void addCharacter(Character* c);
     void clean();
     void process(float deltaTime); // processa movimento e colisao
 
     //void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
     void checkAttack(sf::FloatRect hitBox, float dmg); // Attack -> box, dano
-    void checkCharacterXCollision(Character* c);
-    void checkCharacterYCollision(Character* c);
+    bool checkCharacterXCollision(Character* c);
+    bool checkCharacterYCollision(Character* c);
 
-    std::vector<Entity*> getObstacles() { return obstacles; }
+    std::vector<Obstacle*> getObstacles() { return obstacles; }
     std::vector<Character*> getCharacters() { return characters; }
+
+    void setBardo(Bardo* b) { bardo = b; }
+    void setFielEscudeiro(FielEscudeiro* f) { fielEscudeiro = f; }
+    void setHasEscudeiro(bool b) { hasEscudeiro = b; }
 
 };
 

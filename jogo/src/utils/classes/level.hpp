@@ -4,22 +4,13 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <constants.hpp>
+
+#include "obstacle.hpp"
 
 class Level {
 
 public:
-
-    enum EnemyClassification {
-        EsqueletoGuerreiro,
-        MagoTrevoso,
-        Dragao
-    };
-
-    enum ObstacleClassification {
-        SpikeObstacle = 1,
-        LavaObstacle = 2,
-        BoxObstacle = 6
-    };
 
     Level(const char* configFile);
     ~Level();
@@ -33,7 +24,7 @@ public:
 private:
     const char* configPath;
 
-    void spawnAll(std::vector<int>& mat, int layerWidth);
+    void spawnAll(std::vector<int>& mat1, std::vector<int>& mat2, int layerWidth);
     virtual void spawnEnemies(std::vector<int>& mat, int layerWidth) = 0;
     virtual void spawnObstacles(std::vector<int>& mat, int layerWidth) = 0;
 

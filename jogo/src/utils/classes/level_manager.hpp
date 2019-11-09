@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "entity_manager.hpp"
-#include "entity.hpp"
+#include "obstacle.hpp"
 #include "level.hpp"
 #include "character.hpp"
 
@@ -15,7 +15,7 @@ public:
     ~LevelManager();
     static LevelManager* getInstance();
 
-    void addObstacle(Entity* e) { entityManager.addObstacle(e); }
+    void addObstacle(Obstacle* e) { entityManager.addObstacle(e); }
     void addEnemy(Character* c) { entityManager.addCharacter(c); }
 
     void nextLevel();
@@ -25,7 +25,7 @@ public:
     Level* getLevel() { return levels[currentLevel]; }
     int getCurrentLevel() { return currentLevel; }
 
-    std::vector<Entity*> getObstacles() { return entityManager.getObstacles(); }
+    std::vector<Obstacle*> getObstacles() { return entityManager.getObstacles(); }
     std::vector<Character*> getEnemies() { return entityManager.getCharacters(); }
 
     void init() { levels[currentLevel]->init(); }

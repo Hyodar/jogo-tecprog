@@ -96,10 +96,10 @@ void Character::updatePosition(float deltaTime) {
 void Character::render(sf::RenderWindow& window) {
     //updatePosition();
 
+    sprite.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
+
     healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
-
-    sprite.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
 
     window.draw(sprite);
     window.draw(healthBar);
@@ -110,7 +110,7 @@ void Character::render(sf::RenderWindow& window) {
 // TODO
 // só tá adaptado pra colliders diferentes no Y de cima pra baixo
 
-void Character::checkMapCollisionX() {
+bool Character::checkMapCollisionX() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
             Tile* tile = GameMap::getInstance()->getTile(i, j);
@@ -118,15 +118,16 @@ void Character::checkMapCollisionX() {
                 if(speed.x > 0) position.x = tile->getBoundingBox().left - size.x;
                 else if(speed.x < 0) position.x = tile->getBoundingBox().left + tile->getBoundingBox().width;
                 speed.x = 0;
-                return;
+                return true;
             }
         }
     }
+    return false;
 }
 
 // ---------------------------------------------------------------------------
 
-void Character::checkMapCollisionY() {
+bool Character::checkMapCollisionY() {
     for(int i = position.y/TILE_SIZE; i < (position.y + size.y)/TILE_SIZE; i++) {
         for(int j = position.x/TILE_SIZE; j < (position.x + size.x)/TILE_SIZE; j++) {
             Tile* tile = GameMap::getInstance()->getTile(i, j);
@@ -137,10 +138,11 @@ void Character::checkMapCollisionY() {
                 }
                 else if(speed.y < 0) position.y = tile->getBoundingBox().top + tile->getBoundingBox().height;
                 speed.y = 0;
-                return;
+                return true;
             }
         }
     }
+    return false;
 }
 
 // ---------------------------------------------------------------------------

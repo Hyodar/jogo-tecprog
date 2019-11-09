@@ -5,6 +5,7 @@
 #include "entity_manager.hpp"
 
 #include "entity.hpp"
+#include "game.hpp"
 
 #include <cstdlib>
 
@@ -19,7 +20,7 @@ Taberna::~Taberna() {
 }
 
 void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
-    for(int i = 0; i < mat.size(); i++) {
+    for(uint i = 0; i < mat.size(); i++) {
         if(!mat[i]) continue;
 
         sf::Vector2f pos = getSpawnPosition(i, layerWidth);
@@ -35,19 +36,19 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
         switch(mat[i]) {
             case ObstacleClassification::SpikeObstacle:
                 if(spikeCount < spikeNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Spike(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Spike(pos.x, pos.y)));
                     spikeCount++;
                 }
                 break;
             case ObstacleClassification::LavaObstacle:
                 if(lavaCount < lavaNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Lava(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Lava(pos.x, pos.y)));
                     lavaCount++;
                 }
                 break;
             case ObstacleClassification::BoxObstacle:
                 if(boxCount < boxNum) {
-                    LevelManager::getInstance()->addObstacle(static_cast<Entity*>(new Box(pos.x, pos.y)));
+                    LevelManager::getInstance()->addObstacle(static_cast<Obstacle*>(new Box(pos.x, pos.y)));
                     boxCount++;
                 }
                 break;
@@ -57,5 +58,25 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
 }
 
 void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
-    // noop
+    for(uint i = 0; i < mat.size(); i++) {
+        if(!mat[i]) continue;
+
+        sf::Vector2f pos = getSpawnPosition(i, layerWidth);
+
+        int skeletonNum = rand() % 5 + 5;
+        int mageNum = rand() % 5 + 5;
+
+        int skeletonCount = 0;
+        int mageCount = 0;
+
+        switch(mat[i]) {
+            case CharacterClassification::SKELETON:
+                if(skeletonCount < skeletonNum) {
+                    LevelManager::getInstance()->addEnemy(static_cast<Character*>(new Skeleton(pos.x, pos.y, &(Game::getInstance()->getPlayer()))));
+                    skeletonCount++;
+                }
+                break;
+            default:;
+        }
+    }
 }

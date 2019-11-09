@@ -22,20 +22,27 @@ void Level::init() {
     json mapInfo;
     file >> mapInfo;
 
-    std::vector<int> matrix;
+    std::vector<int> matrix1;
     auto jsonMat = mapInfo["layers"][1]["data"];
     
     for(int n : jsonMat) {
-        matrix.push_back(n);
+        matrix1.push_back(n);
     }
 
-    spawnAll(matrix, static_cast<int>(mapInfo["width"]));
+    std::vector<int> matrix2;
+    jsonMat = mapInfo["layers"][2]["data"];
+    
+    for(int n : jsonMat) {
+        matrix2.push_back(n);
+    }
+
+    spawnAll(matrix1, matrix2, static_cast<int>(mapInfo["width"]));
     // Game.loadBackground(mapInfo["backgroundPath"]); - TODO
 }
 
-void Level::spawnAll(std::vector<int>& mat, int layerWidth) {
-    spawnEnemies(mat, layerWidth);
-    spawnObstacles(mat, layerWidth);
+void Level::spawnAll(std::vector<int>& mat1, std::vector<int>& mat2, int layerWidth) {
+    spawnObstacles(mat1, layerWidth);
+    spawnEnemies(mat2, layerWidth);
 }
 
 sf::Vector2f Level::getSpawnPosition(uint pos, int layerWidth) {

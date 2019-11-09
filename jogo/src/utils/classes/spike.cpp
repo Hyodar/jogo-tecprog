@@ -54,3 +54,15 @@ void Spike::draw(sf::RenderWindow& window) {
     window.draw(*shape);
     //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
 }
+
+// ---------------------------------------------------------------------------
+
+std::vector<float> Spike::store() {
+    std::vector<float> resp;
+    
+    resp.push_back(ObstacleClassification::SpikeObstacle);
+    resp.push_back(position.x);
+    resp.push_back(position.y);
+    
+    return resp;
+}

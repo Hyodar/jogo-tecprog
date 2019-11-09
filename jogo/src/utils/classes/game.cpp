@@ -34,6 +34,9 @@ Game::Game() : player(windowW/2, 100), fielEscudeiro(windowW/2 - 100, 100),
 
     gameState = uninitialized;
     gamePhase = noPhase;
+
+    LevelManager::getInstance()->getEntityManager().setBardo(&player);
+    LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
 }
 
 // ---------------------------------------------------------------------------
@@ -129,13 +132,14 @@ void Game::showStartMenu() {
         case StartMenu::play2tab:
             gameState = playing;
             gamePhase = phase1;
-            hasEscudeiro = true;
+            LevelManager::getInstance()->getEntityManager().setHasEscudeiro(true);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::play2sal:
             gameState = playing;
             gamePhase = phase2;
             hasEscudeiro = true;
+            LevelManager::getInstance()->getEntityManager().setHasEscudeiro(true);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::resume:

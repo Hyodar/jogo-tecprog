@@ -4,8 +4,9 @@
 
 #include "collidable.hpp"
 #include "entity.hpp"
+#include "database_model.hpp"
 
-class Obstacle : public Entity {
+class Obstacle : public Entity, public DatabaseModel<Obstacle*> {
 
 public:
     Obstacle(int posX, int posY, int sizeX, int sizeY) : Entity(posX, posY, sizeX, sizeY) {

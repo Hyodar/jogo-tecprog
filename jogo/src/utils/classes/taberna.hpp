@@ -9,6 +9,7 @@
 #include "spike.hpp"
 #include "lava.hpp"
 #include "box.hpp"
+#include "skeleton.hpp"
 
 class Taberna : public Level {
 

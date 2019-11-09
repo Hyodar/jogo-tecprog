@@ -6,9 +6,6 @@
 #include "fiel_escudeiro.hpp"
 
 // Standard libraries
-#include <chrono>
-#include <functional>
-#include <future>
 #include <iostream>
 
 // Internal libraries

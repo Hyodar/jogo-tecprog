@@ -10,6 +10,12 @@
 
 StartMenu::StartMenu() {
     texture.loadFromFile("resources/start_menu.png");
+    
+    addButton(0, 210, 1023, 80, play1tab);
+    addButton(0, 300, 1023, 80, play1sal);
+    addButton(0, 380, 1023, 80, play2tab);
+    addButton(0, 470, 1023, 80, play2sal);
+    addButton(0, 620, 1023, 80, resume);
 }
 
 // ---------------------------------------------------------------------------
@@ -31,12 +37,6 @@ void StartMenu::addButton(int left, int top, int width,
 StartMenu::MenuResult StartMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
     sprite.setTexture(texture);
-
-    addButton(0, 210, 1023, 80, play1tab);
-    addButton(0, 300, 1023, 80, play1sal);
-    addButton(0, 380, 1023, 80, play2tab);
-    addButton(0, 470, 1023, 80, play2sal);
-    addButton(0, 620, 1023, 80, resume);
 
     renderWindow.draw(sprite);
     renderWindow.display();
