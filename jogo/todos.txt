@@ -23,6 +23,7 @@ TODOS DONES
 TODOS
  - deltaTime inutil em updateStartPosition
  - limpar bagunça de collide
+ - consertar os random do salao (comparar com taberna)
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)

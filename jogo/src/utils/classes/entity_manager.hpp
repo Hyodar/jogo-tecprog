@@ -37,8 +37,11 @@ public:
 
     //void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
     void checkAttack(sf::FloatRect hitBox, float dmg); // Attack -> box, dano
-    bool checkCharacterXCollision(Character* c);
-    bool checkCharacterYCollision(Character* c);
+    
+    void moveBardo(const float deltaTime);
+    void moveEscudeiro(const float deltaTime);
+    void moveEnemies(const float deltaTime);
+    void moveObstacles(const float deltaTime);
 
     std::vector<Obstacle*> getObstacles() { return obstacles; }
     std::vector<Character*> getCharacters() { return characters; }

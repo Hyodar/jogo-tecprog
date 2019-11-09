@@ -32,14 +32,13 @@ class Character : public Entity {
         void jump();
         
         void update(const float deltaTime);
-        virtual void updatePosition(float deltaTime);
+        virtual void updatePositionX(float deltaTime);
+        virtual void updatePositionY(float deltaTime);
         void render(sf::RenderWindow& window);
         
         void isInvulnerable();
         void takeDamage(float dmg);
-                
-        bool checkMapCollisionX();
-        bool checkMapCollisionY();
+        
         bool collide(Collidable& c);
 
         void setOnGround(bool b) { onGround = b; }

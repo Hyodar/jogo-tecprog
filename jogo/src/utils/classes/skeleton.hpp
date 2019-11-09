@@ -12,13 +12,15 @@ class Skeleton : public Character {
 private:
     static sf::Texture texture;
     Bardo* player;
+    int jumpCounter;
 
 public:
     Skeleton(int x=0, int y=0, Bardo* pp = nullptr);
     ~Skeleton();
     void checkPlayerPos();
     void update(const float deltaTime);
-    void updatePosition(float deltaTime);
+    void updatePositionX(float deltaTime);
+    void updatePositionY(float deltaTime);
 
 };
 #endif //SKELETON_HPP_

@@ -20,18 +20,18 @@ Taberna::~Taberna() {
 }
 
 void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
+    int spikeNum = rand() % 5 + 5;
+    int lavaNum = rand() % 5 + 5;
+    int boxNum = rand() % 5 + 5;
+
+    int spikeCount = 0;
+    int lavaCount = 0;
+    int boxCount = 0;
+
     for(uint i = 0; i < mat.size(); i++) {
         if(!mat[i]) continue;
 
         sf::Vector2f pos = getSpawnPosition(i, layerWidth);
-
-        int spikeNum = rand() % 5 + 5;
-        int lavaNum = rand() % 5 + 5;
-        int boxNum = rand() % 5 + 5;
-
-        int spikeCount = 0;
-        int lavaCount = 0;
-        int boxCount = 0;
 
         switch(mat[i]) {
             case ObstacleClassification::SpikeObstacle:
@@ -58,16 +58,16 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
 }
 
 void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
+    int skeletonNum = rand() % 5 + 5;
+    int mageNum = rand() % 5 + 5;
+
+    int skeletonCount = 0;
+    int mageCount = 0;
+    
     for(uint i = 0; i < mat.size(); i++) {
         if(!mat[i]) continue;
 
         sf::Vector2f pos = getSpawnPosition(i, layerWidth);
-
-        int skeletonNum = rand() % 5 + 5;
-        int mageNum = rand() % 5 + 5;
-
-        int skeletonCount = 0;
-        int mageCount = 0;
 
         switch(mat[i]) {
             case CharacterClassification::SKELETON:

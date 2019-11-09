@@ -6,6 +6,7 @@
 #include "game.hpp"
 
 // Standard libraries
+#include <cstdlib>
 #include <iostream>
 
 // Internal libraries
@@ -20,7 +21,7 @@ sf::Texture Skeleton::texture;
 // ---------------------------------------------------------------------------
 
 Skeleton::Skeleton(int x, int y, Bardo* pp)
-   : Character(x, y, 84, 128, 100) {
+   : Character(x, y, 84, 128, 100), jumpCounter{rand() % 401} {
 
     texture.loadFromFile("resources/skeleton.png");
 
@@ -42,14 +43,13 @@ Skeleton::~Skeleton(){
 
  void Skeleton::checkPlayerPos(){
 
-     float playerpos = player->getPosX();
+    float playerpos = player->getPosX();
 
-     if(abs(playerpos-position.x) < 600){
-         if(playerpos-position.x > 0) speed.x = walkSpeed/2;
-         else speed.x = -walkSpeed/2;
-     }
-     else
-        speed.x = 0;
+    if(abs(playerpos-position.x) < 600){
+        if(playerpos-position.x > 0) speed.x = walkSpeed/2;
+        else speed.x = -walkSpeed/2;
+    }
+    else speed.x = 0;
  }
 
 // ---------------------------------------------------------------------------
@@ -60,19 +60,22 @@ void Skeleton::update(const float deltaTime) {
 
 // ---------------------------------------------------------------------------
 
-void Skeleton::updatePosition(float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
-
+void Skeleton::updatePositionX(float deltaTime) {
     checkPlayerPos();
 
     position.x += speed.x * deltaTime;
-    if(checkMapCollisionX() || LevelManager::getInstance()->getEntityManager().checkCharacterXCollision(this)) {
+    
+    if(jumpCounter == 400) {
+        jumpCounter = 0;
         jump();
-    } 
+    } else jumpCounter++;
+}
+
+void Skeleton::updatePositionY(float deltaTime) {
+    if(!onGround) speed.y += gravAcc * deltaTime;
+
     position.y += speed.y * deltaTime;
     onGround = false;
-    LevelManager::getInstance()->getEntityManager().checkCharacterYCollision(this);
-    checkMapCollisionY();
 
     sprite.setPosition(sf::Vector2f(position.x, position.y));
     render(Game::getInstance()->getMainWindow());

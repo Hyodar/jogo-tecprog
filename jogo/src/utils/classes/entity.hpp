@@ -19,7 +19,8 @@ class Entity : public Collidable {
         int getSizeY() { return size.y; }
 
         sf::Vector2f getPosition() { return position; }
-        virtual void updatePosition(float deltaTime) { /* noop */ }
+        virtual void updatePositionX(float deltaTime) { /* noop */ }
+        virtual void updatePositionY(float deltaTime) { /* noop */ }
         sf::FloatRect getBoundingBox() const { return sf::FloatRect(position.x, position.y, size.x, size.y); }
         virtual void takeDamage(float dmg) = 0;
         virtual bool collide(Collidable& e) { /* noop */ return false; }

@@ -19,6 +19,8 @@ public:
         // noop
     }
     virtual void updatePosition(float deltaTime) { /* noop */ }
+
+    virtual float getCollisionDmg() { return 10; }
 };
 
 #endif // OBSTACLE_HPP_

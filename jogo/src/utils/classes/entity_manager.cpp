@@ -1,12 +1,12 @@
 
 #include "entity_manager.hpp"
 
-#include "collision_manager.hpp"
 #include "character.hpp"
 #include "game.hpp"
-
+#include "game_map.hpp"
 #include "bardo.hpp"
 #include "fiel_escudeiro.hpp"
+#include "collision_resolver.hpp"
 
 EntityManager::EntityManager() : bardo{nullptr}, fielEscudeiro{nullptr}, hasEscudeiro{false} {
     // noop
@@ -32,56 +32,53 @@ void EntityManager::clean() {
 
 void EntityManager::process(float deltaTime) {
 
-    bardo->updatePosition(deltaTime);
-    if(hasEscudeiro) {
-        fielEscudeiro->updatePosition(deltaTime);
-    }
-    
-    for(Obstacle* e : obstacles) {
-        e->updatePosition(deltaTime);
-    }
-
-    for(Character* e : characters) {
-        e->updatePosition(deltaTime);
-    }
-
+    moveBardo(deltaTime);
+    if(hasEscudeiro) moveEscudeiro(deltaTime);
+    moveObstacles(deltaTime);
+    moveEnemies(deltaTime);
 }
 
-bool EntityManager::checkCharacterYCollision(Character* c) {
-    for(uint i = 0; i < obstacles.size(); i++) {
-        Obstacle& e = *(obstacles[i]);
-        if(!e.getBoundingBox().intersects(c->getBoundingBox())) continue;
+void EntityManager::moveBardo(const float deltaTime) {
+    bardo->updatePositionX(deltaTime);
 
-        e.collide(*c);
+    CollisionResolver::collideX(bardo, GameMap::getInstance());
+    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideX(bardo, obstacles[i]);
+    for(uint i = 0; i < characters.size(); i++) CollisionResolver::collideX(bardo, characters[i]);
 
-        if(c->getSpeedY() > 0) {
-            c->setPosY(e.getBoundingBox().top - c->getSizeY());
-            c->setOnGround(true);
-        }
-        else if(c->getSpeedY() < 0) c->setPosY(e.getBoundingBox().top + e.getBoundingBox().height);
-        c->setSpeedY(0);
-        
-        return true;
-    }
-    return false;
+    bardo->updatePositionY(deltaTime);
+
+    CollisionResolver::collideY(bardo, GameMap::getInstance());
+    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideY(bardo, obstacles[i]);
+    for(uint i = 0; i < characters.size(); i++) CollisionResolver::collideY(bardo, characters[i]);
 }
 
-bool EntityManager::checkCharacterXCollision(Character* c) {
-    for(uint i = 0; i < obstacles.size(); i++) {
-        Obstacle& e = *(obstacles[i]);
-        if(!e.getBoundingBox().intersects(c->getBoundingBox())) continue;
+void EntityManager::moveEscudeiro(const float deltaTime) {
+    fielEscudeiro->updatePositionX(deltaTime);
 
-        e.collide(*c);
+    CollisionResolver::collideX(fielEscudeiro, GameMap::getInstance());
+    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideX(fielEscudeiro, obstacles[i]);
+    for(uint i = 0; i < characters.size(); i++) CollisionResolver::collideX(fielEscudeiro, characters[i]);
 
-        if(c->getSpeedX() > 0) {
-            c->setPosX(e.getBoundingBox().left - c->getSizeX());
-        }
-        else if(c->getSpeedX() < 0) c->setPosX(e.getBoundingBox().left + e.getBoundingBox().width);
-        c->setSpeedX(0);
+    fielEscudeiro->updatePositionY(deltaTime);
 
-        return true;
+    CollisionResolver::collideY(fielEscudeiro, GameMap::getInstance());
+    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideY(fielEscudeiro, obstacles[i]);
+    for(uint i = 0; i < characters.size(); i++) CollisionResolver::collideY(fielEscudeiro, characters[i]);
+}
+
+void EntityManager::moveEnemies(const float deltaTime) {
+    for(uint i = 0; i < characters.size(); i++) {
+        characters[i]->updatePositionX(deltaTime);
+        CollisionResolver::collideX(characters[i], GameMap::getInstance());
+        characters[i]->updatePositionY(deltaTime);
+        CollisionResolver::collideY(characters[i], GameMap::getInstance());
     }
-    return false;
+}
+
+void EntityManager::moveObstacles(const float deltaTime) {
+    for(uint i = 0; i < obstacles.size(); i++) {
+        obstacles[i]->updatePosition(deltaTime);
+    }
 }
 
 void EntityManager::checkAttack(sf::FloatRect hitBox, float dmg) {
