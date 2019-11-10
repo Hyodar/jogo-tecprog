@@ -18,7 +18,6 @@ private:
 
     std::vector<std::vector<Tile*>> tileMap;
     
-    sf::Texture backgroundTexture;
     sf::RectangleShape background;
 
     int sizeX;

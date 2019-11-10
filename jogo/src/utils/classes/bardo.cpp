@@ -16,12 +16,8 @@
 // ---------------------
 
 #include "game_map.hpp"
+#include "graphics_manager.hpp"
 #include <constants.hpp>
-
-// Attribute initialization
-// ---------------------------------------------------------------------------
-
-sf::Texture Bardo::texture;
 
 // Methods
 // ---------------------------------------------------------------------------
@@ -29,9 +25,7 @@ sf::Texture Bardo::texture;
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP) 
    : Character(x, y, 64, 64, 100) {
 
-    texture.loadFromFile("resources/bardo.png");
-
-    sprite.setTexture(texture);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Red);

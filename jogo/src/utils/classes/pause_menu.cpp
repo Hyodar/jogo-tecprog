@@ -7,11 +7,15 @@
 
 #include "pause_menu.hpp"
 
+// Internal libraries
+// ---------------------
+
+#include "graphics_manager.hpp"
+
 // Methods
 // ---------------------------------------------------------------------------
 
 PauseMenu::PauseMenu() {
-    texture.loadFromFile("resources/pause_menu.png");
     
     addButton(0, 260, 1023, 110, resume);
     addButton(0, 420, 1023, 80, save);
@@ -36,7 +40,7 @@ void PauseMenu::addButton(int left, int top, int width,
 
 PauseMenu::MenuResult PauseMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
-    sprite.setTexture(texture);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getPauseMenuTexture()));
 
     renderWindow.draw(sprite);
     renderWindow.display();

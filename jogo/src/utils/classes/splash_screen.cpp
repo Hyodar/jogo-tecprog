@@ -12,14 +12,16 @@
 
 #include <iostream>
 
+// Standard libraries
+// ---------------------
+
+#include "graphics_manager.hpp"
+
 // Methods
 // ---------------------------------------------------------------------------
 
-SplashScreen::SplashScreen() : texture() {
-    if(!texture.loadFromFile("resources/splash_screen.png")) {
-        std::cout << "[!] Could not load splash screen image!";
-        return;
-    }
+SplashScreen::SplashScreen() {
+    
 }
 
 //----------------------------------------------------------------------------
@@ -32,7 +34,7 @@ SplashScreen::~SplashScreen() {
 // ---------------------------------------------------------------------------
 
 void SplashScreen::show(sf::RenderWindow& renderWindow) {
-    sf::Sprite sprite(texture);
+    sf::Sprite sprite(*(GraphicsManager::getInstance()->getSplashScreenTexture()));
 
     renderWindow.draw(sprite);
     renderWindow.display();

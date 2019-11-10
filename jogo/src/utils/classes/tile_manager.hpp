@@ -14,7 +14,6 @@ private:
     TileManager();
 
     std::map<int, Tile> tileSet;
-    sf::Texture tileSetTexture;
 
     void createTile(int tileNumber, sf::IntRect textureRect, sf::FloatRect colliderRect);
 
@@ -35,7 +34,6 @@ public:
     void loadTileSet();
     sf::RectangleShape* getTileTexture(int tileNumber);
     sf::FloatRect getTileCollider(int tileNumber);
-    sf::Texture* getTileSetTexture() { return &tileSetTexture; }
 
 };
 

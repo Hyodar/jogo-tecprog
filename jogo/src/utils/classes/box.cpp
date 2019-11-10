@@ -7,6 +7,11 @@
 
 #include "box.hpp"
 
+// Internal libraries
+// ---------------------
+
+#include "graphics_manager.hpp"
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -18,7 +23,7 @@ int Box::obstacleNum = 2;
 
 Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(2*TILE_SIZE, 2*TILE_SIZE));
-    shape->setTexture(TileManager::getInstance()->getTileSetTexture());
+    shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(sf::IntRect(7*TILE_SIZE, 0, 2*TILE_SIZE, 2*TILE_SIZE));
 }
 

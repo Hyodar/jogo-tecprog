@@ -7,11 +7,15 @@
 
 #include "start_menu.hpp"
 
+// Internal libraries
+// ---------------------
+
+#include "graphics_manager.hpp"
+
 // Methods
 // ---------------------------------------------------------------------------
 
 StartMenu::StartMenu() {
-    texture.loadFromFile("resources/start_menu.png");
     
     addButton(0, 210, 1023, 80, play1tab);
     addButton(0, 300, 1023, 80, play1sal);
@@ -38,7 +42,7 @@ void StartMenu::addButton(int left, int top, int width,
 
 StartMenu::MenuResult StartMenu::show(sf::RenderWindow& renderWindow) {
     sf::Sprite sprite;
-    sprite.setTexture(texture);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getStartMenuTexture()));
 
     renderWindow.draw(sprite);
     renderWindow.display();

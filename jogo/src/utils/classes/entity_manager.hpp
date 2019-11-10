@@ -11,6 +11,7 @@ class Enemy;
 class Bardo;
 class FielEscudeiro;
 class Obstacle;
+class Projectile;
 
 class EntityManager {
 
@@ -24,6 +25,7 @@ private:
     // List entities;
     List<Obstacle*> obstacles;
     List<Enemy*> enemies;
+    List<Projectile*> projectiles;
 
 public:
 
@@ -32,6 +34,7 @@ public:
 
     void addObstacle(Obstacle* o);
     void addEnemy(Enemy* c);
+    void addProjectile(Projectile* p);
     void clean();
     void process(float deltaTime); // processa movimento e colisao
     void render(sf::RenderWindow& window);

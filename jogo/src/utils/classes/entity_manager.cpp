@@ -15,6 +15,7 @@
 #include "bardo.hpp"
 #include "fiel_escudeiro.hpp"
 #include "enemy.hpp"
+#include "projectile.hpp"
 
 #include "game.hpp"
 #include "game_map.hpp"
@@ -135,4 +136,10 @@ void EntityManager::addObstacle(Obstacle* e) {
 
 void EntityManager::addEnemy(Enemy* c) {
     enemies.push_back(c);
+}
+
+// ---------------------------------------------------------------------------
+
+void EntityManager::addProjectile(Projectile* p) {
+    projectiles.push_back(p);
 }

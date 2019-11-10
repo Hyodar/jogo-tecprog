@@ -11,7 +11,6 @@ class Bardo;
 class Skeleton : public Enemy {
 
 private:
-    static sf::Texture texture;
     
     int jumpCounter;
     int jumpInterval;

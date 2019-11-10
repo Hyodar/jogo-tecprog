@@ -17,12 +17,8 @@
 
 #include "bardo.hpp"
 #include "game.hpp"
+#include "graphics_manager.hpp"
 #include <constants.hpp>
-
-// Attribute initialization
-// ---------------------------------------------------------------------------
-
-sf::Texture Skeleton::texture;
 
 // Methods
 // ---------------------------------------------------------------------------
@@ -31,9 +27,7 @@ Skeleton::Skeleton(int x, int y, Bardo* pp)
    : Enemy(x, y, 86, 128, 100, pp), jumpCounter{-rand() % 101},
      jumpInterval{rand() % 501} {
 
-    texture.loadFromFile("resources/skeleton.png");
-
-    sprite.setTexture(texture);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Blue);

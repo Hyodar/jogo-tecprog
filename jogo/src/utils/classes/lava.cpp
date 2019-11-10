@@ -5,6 +5,7 @@
 // ---------------------
 
 #include "lava.hpp"
+#include "graphics_manager.hpp"
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -19,7 +20,7 @@ int Lava::obstacleNum = 1;
 Lava::Lava(int posX, int posY):
     Obstacle(posX, posY, Lava::lavaSize.x, Lava::lavaSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
-    shape->setTexture(TileManager::getInstance()->getTileSetTexture());
+    shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(sf::IntRect(6*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
 }
 

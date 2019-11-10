@@ -10,6 +10,7 @@
 // Internal libraries
 // ---------------------
 
+#include "graphics_manager.hpp"
 #include <constants.hpp>
 
 // Attribute initialization
@@ -42,7 +43,7 @@ TileManager* TileManager::getInstance() {
 void TileManager::createTile(int tileNumber, sf::IntRect textureRect,
                              sf::FloatRect colliderRect) {
     sf::RectangleShape* shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
-    shape->setTexture(&tileSetTexture);
+    shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(textureRect);
     Tile tile(tileNumber, shape, colliderRect);
 
@@ -52,7 +53,6 @@ void TileManager::createTile(int tileNumber, sf::IntRect textureRect,
 // ---------------------------------------------------------------------------
 
 void TileManager::loadTileSet() {
-    tileSetTexture.loadFromFile("resources/sheet.png");
 
     //            TILE_ID                TILE_POSITION_ON_SHEET                                 TILE_COLLIDER
     createTile(StoneWoodFloor, sf::IntRect(0,           0, TILE_SIZE, TILE_SIZE), sf::FloatRect(0, 0, TILE_SIZE, TILE_SIZE));

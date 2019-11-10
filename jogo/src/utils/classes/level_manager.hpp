@@ -5,9 +5,11 @@
 #include <vector>
 
 #include "entity_manager.hpp"
-#include "obstacle.hpp"
 #include "level.hpp"
-#include "enemy.hpp"
+
+class Obstacle;
+class Enemy;
+class Projectile;
 
 class LevelManager {
 

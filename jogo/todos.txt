@@ -24,6 +24,7 @@ TODOS
  - deltaTime inutil em updateStartPosition
  - limpar bagunça de collide
  - consertar os random do salao (comparar com taberna)
+ - fazer as textures so darem loadFromFile uma vez -> colocar tudo em um GraphicsManager
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)

@@ -13,7 +13,6 @@ public:
     void show(sf::RenderWindow& window);
 
 private:
-    sf::Texture texture;
     void processLoop(sf::RenderWindow& window);
 };
 

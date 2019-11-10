@@ -23,6 +23,7 @@ using json = nlohmann::json;
 
 #include "game.hpp"
 #include "tile.hpp"
+#include "graphics_manager.hpp"
 #include "level_manager.hpp"
 
 #include <constants.hpp>
@@ -56,8 +57,7 @@ GameMap* GameMap::getInstance() {
 // ---------------------------------------------------------------------------
 
 void GameMap::loadBackground() {
-    backgroundTexture.loadFromFile("resources/maps/map1_background.png");
-    background.setTexture(&backgroundTexture);
+    background.setTexture(GraphicsManager::getInstance()->getBackgroundTexture());
 }
 
 // ---------------------------------------------------------------------------

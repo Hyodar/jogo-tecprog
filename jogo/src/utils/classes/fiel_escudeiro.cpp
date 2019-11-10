@@ -10,6 +10,7 @@
 // Internal libraries
 // ---------------------
 
+#include "graphics_manager.hpp"
 #include <constants.hpp>
 
 // Attribute initialization
@@ -23,9 +24,7 @@ sf::Texture FielEscudeiro::texture;
 FielEscudeiro::FielEscudeiro(int x, int y, int sizeX, int sizeY, double maxHP) 
    : Character(x, y, 64, 64, 100) {
 
-    texture.loadFromFile("resources/fiel_escudeiro.png");
-
-    sprite.setTexture(texture);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getFielEscudeiroTexture()));
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Red);

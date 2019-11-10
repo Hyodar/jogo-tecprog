@@ -37,7 +37,6 @@ private:
     MenuResult handleClick(int x, int y);
 
     std::list<MenuItem> menuItems;
-    sf::Texture texture;
     
 };
 
