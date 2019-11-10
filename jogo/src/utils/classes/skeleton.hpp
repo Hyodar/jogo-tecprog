@@ -4,15 +4,16 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "character.hpp"
+#include "enemy.hpp"
 #include "bardo.hpp"
 
-class Skeleton : public Character {
+class Skeleton : public Enemy {
 
 private:
     static sf::Texture texture;
-    Bardo* player;
+    
     int jumpCounter;
+    int jumpInterval;
 
 public:
     Skeleton(int x=0, int y=0, Bardo* pp = nullptr);

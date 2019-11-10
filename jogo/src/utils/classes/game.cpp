@@ -8,7 +8,8 @@
 // Standard libraries
 #include <iostream>
 #include <string>
-#include <constants.hpp>
+#include <cstdlib>
+#include <ctime>
 
 // Internal libraries
 #include "tile_manager.hpp"
@@ -17,8 +18,7 @@
 #include "splash_screen.hpp"
 #include "start_menu.hpp"
 #include "pause_menu.hpp"
-
-#include "spike.hpp"
+#include <constants.hpp>
 
 // Attribute Initialization
 // ---------------------------------------------------------------------------
@@ -37,6 +37,8 @@ Game::Game() : player(windowW/2, 100), fielEscudeiro(windowW/2 - 100, 100),
 
     LevelManager::getInstance()->getEntityManager().setBardo(&player);
     LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
+
+    srand(time(0));
 }
 
 // ---------------------------------------------------------------------------
@@ -204,8 +206,6 @@ void Game::processPlaying() {
         mainWindow.clear(sf::Color(0, 0, 255));
 
         GameMap::getInstance()->draw(player.getPosition());
-        player.render(mainWindow);
-        if(hasEscudeiro) fielEscudeiro.render(mainWindow);
         player.updateStartPosition(0);
 
         if(player.getPosition().x == 48*TILE_SIZE) {

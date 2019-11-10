@@ -29,6 +29,8 @@ public:
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
 
+    float getCollisionDmg() { return hitDmg; }
+
     std::vector<float> store();
 
 };

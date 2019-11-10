@@ -21,7 +21,8 @@ sf::Texture Skeleton::texture;
 // ---------------------------------------------------------------------------
 
 Skeleton::Skeleton(int x, int y, Bardo* pp)
-   : Character(x, y, 84, 128, 100), jumpCounter{rand() % 401} {
+   : Enemy(x, y, 86, 128, 100, pp), jumpCounter{rand() % 401},
+     jumpInterval{rand() % 501} {
 
     texture.loadFromFile("resources/skeleton.png");
 
@@ -29,8 +30,6 @@ Skeleton::Skeleton(int x, int y, Bardo* pp)
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Blue);
-
-    player = pp;
 }
 
 // ---------------------------------------------------------------------------
@@ -44,10 +43,22 @@ Skeleton::~Skeleton(){
  void Skeleton::checkPlayerPos(){
 
     float playerpos = player->getPosX();
+    const float dist = playerpos - position.x;
 
-    if(abs(playerpos-position.x) < 600){
-        if(playerpos-position.x > 0) speed.x = walkSpeed/2;
-        else speed.x = -walkSpeed/2;
+    if(abs(dist) < 600) {
+        if(dist > 0) {
+            speed.x = walkSpeed/2;
+        }
+        else {
+            speed.x = -walkSpeed/2;
+        }
+
+        // pra prevenir q os esqueletos fiquem girando sem parar
+        // quando tao perto do player
+
+        if(abs(dist) > 20) {
+            walkingRight = (speed.x >= 0);
+        }
     }
     else speed.x = 0;
  }
@@ -65,11 +76,14 @@ void Skeleton::updatePositionX(float deltaTime) {
 
     position.x += speed.x * deltaTime;
     
-    if(jumpCounter == 400) {
+    if(jumpCounter == jumpInterval) {
         jumpCounter = 0;
+        jumpInterval = rand() % 401;
         jump();
     } else jumpCounter++;
 }
+
+// ---------------------------------------------------------------------------
 
 void Skeleton::updatePositionY(float deltaTime) {
     if(!onGround) speed.y += gravAcc * deltaTime;

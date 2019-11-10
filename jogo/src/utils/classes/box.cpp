@@ -17,8 +17,7 @@ int Box::obstacleNum = 2;
 
 // Methods
 // ---------------------------------------------------------------------------
-Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y),
-                          durability{100} {
+Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(2*TILE_SIZE, 2*TILE_SIZE));
     shape->setTexture(TileManager::getInstance()->getTileSetTexture());
     shape->setTextureRect(sf::IntRect(7*TILE_SIZE, 0, 2*TILE_SIZE, 2*TILE_SIZE));
@@ -39,7 +38,7 @@ bool Box::collide(Collidable& c) {
 // ---------------------------------------------------------------------------
 
 void Box::takeDamage(float dmg) {
-    durability -= dmg;
+    // noop
 }
 
 // ---------------------------------------------------------------------------

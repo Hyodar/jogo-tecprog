@@ -5,8 +5,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "entity.hpp"
-#include "level_manager.hpp"
-#include "entity_manager.hpp"
 
 class Character : public Entity {
 
@@ -18,11 +16,14 @@ class Character : public Entity {
 
         double hitPoints;
         double maxHitPoints;
+        
         bool onGround;
-        static const int jumpSpeed;
-        static const int walkSpeed;
 
         int invulnerable;
+        bool walkingRight;
+
+        static const int jumpSpeed;
+        static const int walkSpeed;
 
     public:
         Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0);
@@ -38,7 +39,7 @@ class Character : public Entity {
         
         void isInvulnerable();
         void takeDamage(float dmg);
-        
+
         bool collide(Collidable& c);
 
         void setOnGround(bool b) { onGround = b; }

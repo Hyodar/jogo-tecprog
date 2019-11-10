@@ -22,8 +22,8 @@ const int Character::walkSpeed{500};
 
 Character::Character (int x, int y, int sizeX, int sizeY, double maxHP)
     : Entity(x, y, sizeX, sizeY), healthBar(sf::Vector2f(64, healthBarHeight)),
-      speed(0, 0), hitPoints{100},
-      maxHitPoints(maxHP), onGround{false}, invulnerable{0} {
+      speed(0, 0), hitPoints{100}, maxHitPoints(maxHP), onGround{false},
+      invulnerable{0}, walkingRight{true} {
 
     // noop
 }
@@ -81,12 +81,13 @@ void Character::updatePositionX(float deltaTime) {
     position.x += speed.x * deltaTime;
 }
 
+// ---------------------------------------------------------------------------
+
 void Character::updatePositionY(float deltaTime) {
     if(!onGround) speed.y += gravAcc * deltaTime;
 
     position.y += speed.y * deltaTime;
     onGround = false;
-    //LevelManager::getInstance()->getEntityManager().checkCharacterYCollision(this);
 
     isInvulnerable();
 }
@@ -94,11 +95,21 @@ void Character::updatePositionY(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void Character::render(sf::RenderWindow& window) {
-    //updatePosition();
 
     sprite.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
 
-    healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
+    const auto scale = sprite.getScale().x;
+
+    if(walkingRight) {
+        sprite.setTextureRect(sf::IntRect(0, 0, size.x/scale, size.y/scale));
+        healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
+    }
+    else {
+        sprite.setTextureRect(sf::IntRect(size.x/scale, 0, -size.x/scale, size.y/scale));
+        healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
+    }
+
+    //healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
 
     window.draw(sprite);
@@ -108,6 +119,7 @@ void Character::render(sf::RenderWindow& window) {
 // ---------------------------------------------------------------------------
 
 bool Character::collide(Collidable& e) {
+    // DEPRECATED!!!!!!!!!!!!!
     if(!e.getBoundingBox().intersects(getBoundingBox())) return false;
 
     if(speed.y > 0) {

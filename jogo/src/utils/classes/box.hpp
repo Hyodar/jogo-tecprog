@@ -19,8 +19,6 @@ private:
     static sf::Vector2f boxSize;
     static int obstacleNum;
 
-    float durability;
-
 public:
     Box(int posX, int posY);
     ~Box();
@@ -30,6 +28,8 @@ public:
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
+
+    float getCollisionDmg() { return 0; }
 
     std::vector<float> store();
 

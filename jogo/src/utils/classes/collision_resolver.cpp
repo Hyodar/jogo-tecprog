@@ -55,7 +55,7 @@ bool CollisionResolver::collideX(Character* c, Tile* t) {
 }
 
 
-bool CollisionResolver::collideX(Bardo* b, Character* c) {
+bool CollisionResolver::collideX(Bardo* b, Enemy* c) {
     if(!isColliding(b, c)) return false;
 
     b->takeDamage(20); // TODO - TROCAR PRA c->attackb
@@ -63,7 +63,7 @@ bool CollisionResolver::collideX(Bardo* b, Character* c) {
     return true;
 }
 
-bool CollisionResolver::collideY(Bardo* b, Character* c) {
+bool CollisionResolver::collideY(Bardo* b, Enemy* c) {
     if(!isColliding(b, c)) return false;
 
     b->jump();
@@ -72,7 +72,7 @@ bool CollisionResolver::collideY(Bardo* b, Character* c) {
     return true;
 }
 
-bool CollisionResolver::collideX(FielEscudeiro* f, Character* c) {
+bool CollisionResolver::collideX(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
 
     f->takeDamage(10);
@@ -80,7 +80,7 @@ bool CollisionResolver::collideX(FielEscudeiro* f, Character* c) {
     return true;
 }
 
-bool CollisionResolver::collideY(FielEscudeiro* f, Character* c) {
+bool CollisionResolver::collideY(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
 
     f->jump();
@@ -119,6 +119,65 @@ bool CollisionResolver::collideY(Bardo* b, Obstacle* o) {
 
     return true;
 }
+
+bool CollisionResolver::collideX(Enemy* e, Obstacle* o) {
+    if(!isColliding(e, o)) return false;
+
+    if(e->getSpeedX() > 0) {
+        e->setPosX(o->getBoundingBox().left - e->getSizeX());
+    }
+    else if(e->getSpeedX() < 0) e->setPosX(o->getBoundingBox().left + o->getBoundingBox().width);
+    e->setSpeedX(0);
+
+    return true;
+}
+
+bool CollisionResolver::collideY(Enemy* e, Obstacle* o) {
+    if(!isColliding(e, o)) return false;
+
+    if(e->getSpeedY() > 0) {
+        e->setPosY(o->getBoundingBox().top - e->getSizeY());
+        e->setOnGround(true);
+    }
+    else if(e->getSpeedY() < 0) {
+        e->setPosY(o->getBoundingBox().top + o->getBoundingBox().height);
+    }
+    e->setSpeedY(0);
+
+    return true;
+}
+
+/*
+// Tentei adicionar colisão inimigo-inimigo, funcionou mas n ficou mt legal
+
+bool CollisionResolver::collideX(Enemy* e1, Enemy* e2) {
+    if(!isColliding(e1, e2)) return false;
+
+    if(e1->getSpeedX() > 0) {
+        e1->setPosX(e2->getBoundingBox().left - e1->getSizeX());
+    }
+    else if(e1->getSpeedX() < 0) e1->setPosX(e2->getBoundingBox().left + e2->getBoundingBox().width);
+    e1->setSpeedX(0);
+
+    return true;
+}
+
+bool CollisionResolver::collideY(Enemy* e1, Enemy* e2) {
+    if(!isColliding(e1, e2)) return false;
+
+    if(e1->getSpeedY() > 0) {
+        e1->setPosY(e2->getBoundingBox().top - e1->getSizeY());
+        e1->setOnGround(true);
+    }
+    else if(e1->getSpeedY() < 0) {
+        e1->setPosY(e2->getBoundingBox().top + e2->getBoundingBox().height);
+    }
+    e1->setSpeedY(0);
+
+    return true;
+}
+
+*/
 
 bool CollisionResolver::collideX(FielEscudeiro* f, Obstacle* o) {
     if(!isColliding(f, o)) return false;

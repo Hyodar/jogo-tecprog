@@ -7,6 +7,7 @@
 #include "tile.hpp"
 #include "bardo.hpp"
 #include "fiel_escudeiro.hpp"
+#include "enemy.hpp"
 #include "character.hpp"
 #include "obstacle.hpp"
 #include "game_map.hpp"
@@ -21,15 +22,21 @@ public:
     static bool collideX(Character* c, Tile* t);
     static bool collideY(Character* c, Tile* t);
 
-    static bool collideX(Bardo* b, Character* c);
-    static bool collideY(Bardo* b, Character* c);
+    static bool collideX(Enemy* e, Obstacle* o);
+    static bool collideY(Enemy* e, Obstacle* o);
 
-    static bool collideX(FielEscudeiro* f, Character* c);
-    static bool collideY(FielEscudeiro* f, Character* c);
-    
+    //static bool collideX(Enemy* e1, Enemy* e2);
+    //static bool collideY(Enemy* e1, Enemy* e2);
+
+    static bool collideX(Bardo* b, Enemy* c);
+    static bool collideY(Bardo* b, Enemy* c);
+
     static bool collideX(Bardo* b, Obstacle* o);
     static bool collideY(Bardo* b, Obstacle* o);
 
+    static bool collideX(FielEscudeiro* f, Enemy* c);
+    static bool collideY(FielEscudeiro* f, Enemy* c);
+    
     static bool collideX(FielEscudeiro* f, Obstacle* o);
     static bool collideY(FielEscudeiro* f, Obstacle* o);
 

@@ -8,9 +8,9 @@
 #include "entity.hpp"
 #include "obstacle.hpp"
 
-class Bardo;
-class FielEscudeiro;
-class Character;
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+#include "enemy.hpp"
 
 class EntityManager {
 
@@ -23,7 +23,7 @@ private:
 
     // List entities;
     std::vector<Obstacle*> obstacles;
-    std::vector<Character*> characters;
+    std::vector<Enemy*> enemies;
 
 public:
 
@@ -31,9 +31,10 @@ public:
     ~EntityManager();
 
     void addObstacle(Obstacle* o);
-    void addCharacter(Character* c);
+    void addEnemy(Enemy* c);
     void clean();
     void process(float deltaTime); // processa movimento e colisao
+    void render(sf::RenderWindow& window);
 
     //void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
     void checkAttack(sf::FloatRect hitBox, float dmg); // Attack -> box, dano
@@ -44,7 +45,7 @@ public:
     void moveObstacles(const float deltaTime);
 
     std::vector<Obstacle*> getObstacles() { return obstacles; }
-    std::vector<Character*> getCharacters() { return characters; }
+    std::vector<Enemy*> getEnemies() { return enemies; }
 
     void setBardo(Bardo* b) { bardo = b; }
     void setFielEscudeiro(FielEscudeiro* f) { fielEscudeiro = f; }

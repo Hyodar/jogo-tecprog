@@ -37,9 +37,11 @@ void FielEscudeiro::checkKeys() {
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         speed.x = -walkSpeed;
+        walkingRight = false;
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         speed.x = walkSpeed;
+        walkingRight = true;
     }
     else {
         speed.x = 0;

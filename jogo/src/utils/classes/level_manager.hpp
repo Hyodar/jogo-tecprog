@@ -7,7 +7,7 @@
 #include "entity_manager.hpp"
 #include "obstacle.hpp"
 #include "level.hpp"
-#include "character.hpp"
+#include "enemy.hpp"
 
 class LevelManager {
 
@@ -16,7 +16,7 @@ public:
     static LevelManager* getInstance();
 
     void addObstacle(Obstacle* e) { entityManager.addObstacle(e); }
-    void addEnemy(Character* c) { entityManager.addCharacter(c); }
+    void addEnemy(Enemy* e) { entityManager.addEnemy(e); }
 
     void nextLevel();
     void changeLevel(int levelNum);
@@ -26,7 +26,7 @@ public:
     int getCurrentLevel() { return currentLevel; }
 
     std::vector<Obstacle*> getObstacles() { return entityManager.getObstacles(); }
-    std::vector<Character*> getEnemies() { return entityManager.getCharacters(); }
+    std::vector<Enemy*> getEnemies() { return entityManager.getEnemies(); }
 
     void init() { levels[currentLevel]->init(); }
     void process(float deltaTime) { entityManager.process(deltaTime); }

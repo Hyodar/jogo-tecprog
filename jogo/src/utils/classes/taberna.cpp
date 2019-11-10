@@ -72,7 +72,7 @@ void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
         switch(mat[i]) {
             case CharacterClassification::SKELETON:
                 if(skeletonCount < skeletonNum) {
-                    LevelManager::getInstance()->addEnemy(static_cast<Character*>(new Skeleton(pos.x, pos.y, &(Game::getInstance()->getPlayer()))));
+                    LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Skeleton(pos.x, pos.y, &(Game::getInstance()->getPlayer()))));
                     skeletonCount++;
                 }
                 break;

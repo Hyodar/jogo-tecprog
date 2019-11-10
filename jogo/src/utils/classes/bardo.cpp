@@ -37,9 +37,11 @@ void Bardo::checkKeys() {
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         speed.x = -walkSpeed;
+        walkingRight = false;
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         speed.x = walkSpeed;
+        walkingRight = true;
     }
     else {
         speed.x = 0;
