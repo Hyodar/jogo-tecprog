@@ -26,12 +26,14 @@ void GameSaver::saveState() {
     // //j["fielescudeiro"] = { f.getPosX(), f.getPosY(), f.getHP() };
     // // TODO - player 2
 
+    /*
     auto obstacles = json::array();
     for(Obstacle* e : LevelManager::getInstance()->getObstacles()) {
        obstacles.push_back(e->store());
     }
+    */
 
-    j["obstacles"] = obstacles;
+    //j["obstacles"] = obstacles;
 
     // auto enemies = json::array();
     // for(Character* c : LevelManager::getInstance()->getEnemies()) {

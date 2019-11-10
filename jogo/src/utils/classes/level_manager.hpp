@@ -25,8 +25,8 @@ public:
     Level* getLevel() { return levels[currentLevel]; }
     int getCurrentLevel() { return currentLevel; }
 
-    std::vector<Obstacle*> getObstacles() { return entityManager.getObstacles(); }
-    std::vector<Enemy*> getEnemies() { return entityManager.getEnemies(); }
+    //std::vector<Obstacle*> getObstacles() { return entityManager.getObstacles(); }
+    //std::vector<Enemy*> getEnemies() { return entityManager.getEnemies(); }
 
     void init() { levels[currentLevel]->init(); }
     void process(float deltaTime) { entityManager.process(deltaTime); }

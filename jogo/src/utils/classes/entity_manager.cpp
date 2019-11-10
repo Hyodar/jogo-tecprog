@@ -14,17 +14,8 @@ EntityManager::~EntityManager() {
 }
 
 void EntityManager::clean() {
-    for(Obstacle* e : obstacles) {
-        delete e;
-    }
-
-    obstacles.clear();
-
-    for(Enemy* e : enemies) {
-        delete e;
-    }
-
-    enemies.clear();
+    obstacles.deallocate();
+    enemies.deallocate();
 }
 
 void EntityManager::process(float deltaTime) {
@@ -40,57 +31,57 @@ void EntityManager::process(float deltaTime) {
 void EntityManager::render(sf::RenderWindow& window) {
     bardo->render(window);
     if(hasEscudeiro) fielEscudeiro->render(window);
-    //for(uint i = 0; i < obstacles.size(); i++) obstacles[i]->render(window);
-    for(uint i = 0; i < enemies.size(); i++) enemies[i]->render(window);
+    //for(auto it = obstacles.begin(); it != obstacles.end(); it++) (*it)->render(window);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) (*it)->render(window);
 }
 
 void EntityManager::moveBardo(const float deltaTime) {
     bardo->updatePositionX(deltaTime);
 
     CollisionResolver::collideX(bardo, GameMap::getInstance());
-    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideX(bardo, obstacles[i]);
-    for(uint i = 0; i < enemies.size(); i++) CollisionResolver::collideX(bardo, enemies[i]);
+    for(auto it = obstacles.begin(); it != obstacles.end(); it++) CollisionResolver::collideX(bardo, *it);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) CollisionResolver::collideX(bardo, *it);
 
     bardo->updatePositionY(deltaTime);
 
     CollisionResolver::collideY(bardo, GameMap::getInstance());
-    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideY(bardo, obstacles[i]);
-    for(uint i = 0; i < enemies.size(); i++) CollisionResolver::collideY(bardo, enemies[i]);
+    for(auto it = obstacles.begin(); it != obstacles.end(); it++) CollisionResolver::collideY(bardo, *it);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) CollisionResolver::collideY(bardo, *it);
 }
 
 void EntityManager::moveEscudeiro(const float deltaTime) {
     fielEscudeiro->updatePositionX(deltaTime);
 
     CollisionResolver::collideX(fielEscudeiro, GameMap::getInstance());
-    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideX(fielEscudeiro, obstacles[i]);
-    for(uint i = 0; i < enemies.size(); i++) CollisionResolver::collideX(fielEscudeiro, enemies[i]);
+    for(auto it = obstacles.begin(); it != obstacles.end(); it++) CollisionResolver::collideX(fielEscudeiro, *it);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) CollisionResolver::collideX(fielEscudeiro, *it);
 
     fielEscudeiro->updatePositionY(deltaTime);
 
     CollisionResolver::collideY(fielEscudeiro, GameMap::getInstance());
-    for(uint i = 0; i < obstacles.size(); i++) CollisionResolver::collideY(fielEscudeiro, obstacles[i]);
-    for(uint i = 0; i < enemies.size(); i++) CollisionResolver::collideY(fielEscudeiro, enemies[i]);
+    for(auto it = obstacles.begin(); it != obstacles.end(); it++) CollisionResolver::collideY(fielEscudeiro, *it);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) CollisionResolver::collideY(fielEscudeiro, *it);
 }
 
 // Tentei adicionar colisão inimigo-inimigo, mas n ficou mt legal
 
 void EntityManager::moveEnemies(const float deltaTime) {
-    for(uint i = 0; i < enemies.size(); i++) {
-        enemies[i]->updatePositionX(deltaTime);
-        CollisionResolver::collideX(enemies[i], GameMap::getInstance());
-        for(uint j = 0; j < obstacles.size(); j++) CollisionResolver::collideX(enemies[i], obstacles[j]);
-        // for(uint j = i + 1; j < enemies.size(); j++) CollisionResolver::collideX(enemies[i], enemies[j]);
+    for(auto it = enemies.begin(); it != enemies.end(); it++) {
+        (*it)->updatePositionX(deltaTime);
+        CollisionResolver::collideX(*it, GameMap::getInstance());
+        for(auto it2 = obstacles.begin(); it2 != obstacles.end(); it2++) CollisionResolver::collideX(*it, *it2);
+        // for(uint j = i + 1; j < enemies.size(); j++) CollisionResolver::collideX(*it, enemies[j]);
         
-        enemies[i]->updatePositionY(deltaTime);
-        CollisionResolver::collideY(enemies[i], GameMap::getInstance());
-        for(uint j = 0; j < obstacles.size(); j++) CollisionResolver::collideY(enemies[i], obstacles[j]);
-        // for(uint j = i + 1; j < enemies.size(); j++) CollisionResolver::collideY(enemies[i], enemies[j]);
+        (*it)->updatePositionY(deltaTime);
+        CollisionResolver::collideY(*it, GameMap::getInstance());
+        for(auto it2 = obstacles.begin(); it2 != obstacles.end(); it2++) CollisionResolver::collideY(*it, *it2);
+        // for(uint j = i + 1; j < enemies.size(); j++) CollisionResolver::collideY(*it, enemies[j]);
     }
 }
 
 void EntityManager::moveObstacles(const float deltaTime) {
-    for(uint i = 0; i < obstacles.size(); i++) {
-        obstacles[i]->updatePosition(deltaTime);
+    for(auto it = obstacles.begin(); it != obstacles.end(); it++) {
+        (*it)->updatePosition(deltaTime);
     }
 }
 

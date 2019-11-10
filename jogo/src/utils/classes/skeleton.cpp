@@ -21,7 +21,7 @@ sf::Texture Skeleton::texture;
 // ---------------------------------------------------------------------------
 
 Skeleton::Skeleton(int x, int y, Bardo* pp)
-   : Enemy(x, y, 86, 128, 100, pp), jumpCounter{rand() % 401},
+   : Enemy(x, y, 86, 128, 100, pp), jumpCounter{-rand() % 101},
      jumpInterval{rand() % 501} {
 
     texture.loadFromFile("resources/skeleton.png");

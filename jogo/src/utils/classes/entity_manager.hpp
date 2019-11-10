@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <vector>
+#include "list.hpp"
 #include "entity.hpp"
 #include "obstacle.hpp"
 
@@ -22,8 +22,8 @@ private:
     bool hasEscudeiro;
 
     // List entities;
-    std::vector<Obstacle*> obstacles;
-    std::vector<Enemy*> enemies;
+    List<Obstacle*> obstacles;
+    List<Enemy*> enemies;
 
 public:
 
@@ -44,8 +44,8 @@ public:
     void moveEnemies(const float deltaTime);
     void moveObstacles(const float deltaTime);
 
-    std::vector<Obstacle*> getObstacles() { return obstacles; }
-    std::vector<Enemy*> getEnemies() { return enemies; }
+    //std::vector<Obstacle*> getObstacles() { return obstacles; }
+    //std::vector<Enemy*> getEnemies() { return enemies; }
 
     void setBardo(Bardo* b) { bardo = b; }
     void setFielEscudeiro(FielEscudeiro* f) { fielEscudeiro = f; }
