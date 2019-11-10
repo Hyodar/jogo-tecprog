@@ -40,24 +40,16 @@ class Character : public Entity {
         void isInvulnerable();
         void takeDamage(float dmg);
 
-        bool collide(Collidable& c);
-
         void setOnGround(bool b) { onGround = b; }
 
         float getSpeedX() { return speed.x; }
         float getSpeedY() { return speed.y; }
-
         void setSpeedX(float s) { speed.x = s; }
         void setSpeedY(float s) { speed.y = s; }
-
-        void setPosX(float p) { position.x = p; }
-        void setPosY(float p) { position.y = p; }
-        float getPosX() { return position.x; }
-        float getPosY() { return position.y; }
 
         float getHP() { return hitPoints; }
         void setHP(float hp) { hitPoints = hp; }
 
 };
 
-#endif //Character.hpp
+#endif // CHARACTER_HPP_

@@ -6,10 +6,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "tile.hpp"
-#include "obstacle.hpp"
-
 #include <constants.hpp>
+
+class Tile;
 
 class GameMap {
 

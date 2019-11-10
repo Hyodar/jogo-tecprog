@@ -3,9 +3,13 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "tile_manager.hpp"
 
 // Internal libraries
+// ---------------------
+
 #include <constants.hpp>
 
 // Attribute initialization

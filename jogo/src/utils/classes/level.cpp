@@ -1,21 +1,42 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
+// ---------------------
+
 #include "level.hpp"
+
+// Standard libraries
+// ---------------------
 
 #include <fstream>
 
 // External libraries
+// ---------------------
+
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
+// Internal libraries
+// ---------------------
+
 #include <constants.hpp>
+
+// Methods
+// ---------------------------------------------------------------------------
 
 Level::Level(const char* configFile) : configPath{configFile} {
     // TODO
 }
 
+// ---------------------------------------------------------------------------
+
 Level::~Level() {
     // noop
 }
+
+// ---------------------------------------------------------------------------
 
 void Level::init() {
     std::ifstream file(configPath);
@@ -40,10 +61,14 @@ void Level::init() {
     // Game.loadBackground(mapInfo["backgroundPath"]); - TODO
 }
 
+// ---------------------------------------------------------------------------
+
 void Level::spawnAll(std::vector<int>& mat1, std::vector<int>& mat2, int layerWidth) {
     spawnObstacles(mat1, layerWidth);
     spawnEnemies(mat2, layerWidth);
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Vector2f Level::getSpawnPosition(uint pos, int layerWidth) {
     const int x = pos % layerWidth;

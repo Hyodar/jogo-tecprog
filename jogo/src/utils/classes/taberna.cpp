@@ -1,23 +1,46 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
+// ---------------------
+
 #include "taberna.hpp"
 
-#include "level_manager.hpp"
-#include "entity_manager.hpp"
-
-#include "entity.hpp"
-#include "game.hpp"
+// Standard libraries
+// ---------------------
 
 #include <cstdlib>
 
+// External libraries
+// ---------------------
+
 #include <SFML/Graphics.hpp>
+
+// Internal libraries
+// ---------------------
+
+#include "spike.hpp"
+#include "lava.hpp"
+#include "box.hpp"
+#include "skeleton.hpp"
+#include "level_manager.hpp"
+#include "game.hpp"
+
+// Methods
+// ---------------------------------------------------------------------------
 
 Taberna::Taberna() : Level{"resources/maps/map1.json"} {
     // noop
 }
 
+// ---------------------------------------------------------------------------
+
 Taberna::~Taberna() {
     // noop
 }
+
+// ---------------------------------------------------------------------------
 
 void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
     int spikeNum = rand() % 5 + 5;
@@ -56,6 +79,8 @@ void Taberna::spawnObstacles(std::vector<int>& mat, int layerWidth) {
         }
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
     int skeletonNum = rand() % 5 + 5;

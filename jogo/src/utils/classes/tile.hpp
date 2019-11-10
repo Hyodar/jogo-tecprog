@@ -3,10 +3,8 @@
 #define TILE_HPP_
 
 #include <SFML/Graphics.hpp>
-#include "collidable.hpp"
 
-#include <iostream>
-#include "entity.hpp"
+#include "collidable.hpp"
 
 class Tile : public Collidable {
 
@@ -22,10 +20,7 @@ public:
     virtual ~Tile() {}
 
     void draw(sf::Vector2f pos);
-    virtual bool collide(Collidable& c) {
-        return c.getBoundingBox().intersects(this->getBoundingBox());
-    };
-
+    
     char getTileNumber() { return tileNumber; }
     sf::RectangleShape* getTileTexture() const { return rect; }
     sf::FloatRect getBoundingBox() const { return collider; }

@@ -3,21 +3,29 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "game_map.hpp"
 
 // Standard libraries
+// ---------------------
+
 #include <fstream>
 
 // External libraries
+// ---------------------
+
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
 // Internal libraries
-#include <constants.hpp>
+// ---------------------
+
 #include "game.hpp"
 #include "tile.hpp"
-#include "tile_manager.hpp"
 #include "level_manager.hpp"
+
+#include <constants.hpp>
 
 // Attribute initialization
 // ---------------------------------------------------------------------------

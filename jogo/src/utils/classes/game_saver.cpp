@@ -1,8 +1,20 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
+// ---------------------
+
 #include "game_saver.hpp"
+
+// External libraries
+// ---------------------
 
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
+
+// Internal libraries
+// ---------------------
 
 #include "level_manager.hpp"
 #include "spike.hpp"
@@ -12,6 +24,9 @@ using json = nlohmann::json;
 #include "entity.hpp"
 #include "character.hpp"
 #include "bardo.hpp"
+
+// Methods
+// ---------------------------------------------------------------------------
 
 void GameSaver::saveState() {
 
@@ -43,6 +58,8 @@ void GameSaver::saveState() {
     // j["enemies"] = enemies;
 
 }
+
+// ---------------------------------------------------------------------------
 
 bool GameSaver::recoverState() {
     // TODO

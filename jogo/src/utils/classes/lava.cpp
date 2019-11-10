@@ -2,21 +2,20 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "lava.hpp"
 
-// Standard libraries
-// ---------------------------------------------------------------------------
-
-// Internal libraries
-// ---------------------------------------------------------------------------
-
 // Attribute initialization
+// ---------------------------------------------------------------------------
+
 float Lava::hitDmg = 20;
 sf::Vector2f Lava::lavaSize(TILE_SIZE, TILE_SIZE);
 int Lava::obstacleNum = 1;
 
 // Methods
 // ---------------------------------------------------------------------------
+
 Lava::Lava(int posX, int posY):
     Obstacle(posX, posY, Lava::lavaSize.x, Lava::lavaSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
@@ -28,16 +27,6 @@ Lava::Lava(int posX, int posY):
 
 Lava::~Lava(){
     delete shape;
-}
-
-// ---------------------------------------------------------------------------
-
-bool Lava::collide(Collidable& c) {
-    if(c.getBoundingBox().intersects(getBoundingBox())) {
-        c.takeDamage(hitDmg);
-        return true;
-    }
-    return false;
 }
 
 // ---------------------------------------------------------------------------

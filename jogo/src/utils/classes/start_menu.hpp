@@ -2,8 +2,8 @@
 #ifndef START_MENU_HPP_
 #define START_MENU_HPP_
 
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <list>
 

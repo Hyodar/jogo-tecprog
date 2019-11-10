@@ -13,7 +13,6 @@ public:
         // noop
     }
 
-    virtual bool collide(Collidable& c) = 0;
     virtual sf::FloatRect getBoundingBox() const = 0;
     virtual void takeDamage(float dmg) { 
         // noop

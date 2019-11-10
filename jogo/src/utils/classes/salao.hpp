@@ -6,10 +6,6 @@
 
 #include "level.hpp"
 
-#include "spike.hpp"
-#include "lava.hpp"
-#include "box.hpp"
-
 class Salao : public Level {
 
 public:

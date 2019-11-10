@@ -2,14 +2,21 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "skeleton.hpp"
-#include "game.hpp"
 
 // Standard libraries
+// ---------------------
+
 #include <cstdlib>
 #include <iostream>
 
 // Internal libraries
+// ---------------------
+
+#include "bardo.hpp"
+#include "game.hpp"
 #include <constants.hpp>
 
 // Attribute initialization
@@ -94,5 +101,3 @@ void Skeleton::updatePositionY(float deltaTime) {
     sprite.setPosition(sf::Vector2f(position.x, position.y));
     render(Game::getInstance()->getMainWindow());
 }
-
-// ---------------------------------------------------------------------------

@@ -4,13 +4,13 @@
 
 #include "entity.hpp"
 
-#include "tile.hpp"
-#include "bardo.hpp"
-#include "fiel_escudeiro.hpp"
-#include "enemy.hpp"
-#include "character.hpp"
-#include "obstacle.hpp"
-#include "game_map.hpp"
+class Character;
+class GameMap;
+class Tile;
+class Enemy;
+class Obstacle;
+class Bardo;
+class FielEscudeiro;
 
 class CollisionResolver {
 

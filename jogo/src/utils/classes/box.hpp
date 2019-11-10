@@ -23,7 +23,6 @@ public:
     Box(int posX, int posY);
     ~Box();
 
-    bool collide(Collidable& c);
     void takeDamage(float dmg);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);

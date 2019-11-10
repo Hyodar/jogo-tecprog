@@ -1,9 +1,31 @@
 
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
+// ---------------------
+
 #include "collision_resolver.hpp"
+
+// Internal libraries
+// ---------------------
+
+#include "tile.hpp"
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+#include "enemy.hpp"
+#include "character.hpp"
+#include "obstacle.hpp"
+#include "game_map.hpp"
+
+// Methods
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::CollisionResolver::isColliding(Collidable* e1, Collidable* e2) {
     return e1->getBoundingBox().intersects(e2->getBoundingBox());
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideX(Character* c, GameMap* g) {
     for(int i = c->getPosY()/TILE_SIZE; i < (c->getPosY() + c->getSizeY())/TILE_SIZE; i++) {
@@ -15,6 +37,8 @@ bool CollisionResolver::collideX(Character* c, GameMap* g) {
     return false;
 }
 
+// ---------------------------------------------------------------------------
+
 bool CollisionResolver::collideY(Character* c, GameMap* g) {
     for(int i = c->getPosY()/TILE_SIZE; i < (c->getPosY() + c->getSizeY())/TILE_SIZE; i++) {
         for(int j = c->getPosX()/TILE_SIZE; j < (c->getPosX() + c->getSizeX())/TILE_SIZE; j++) {
@@ -24,6 +48,8 @@ bool CollisionResolver::collideY(Character* c, GameMap* g) {
     }
     return false;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(Character* c, Tile* t) {
     const Tile e = *t;
@@ -40,6 +66,8 @@ bool CollisionResolver::collideY(Character* c, Tile* t) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 bool CollisionResolver::collideX(Character* c, Tile* t) {
     const Tile e = *t;
 
@@ -54,6 +82,7 @@ bool CollisionResolver::collideX(Character* c, Tile* t) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideX(Bardo* b, Enemy* c) {
     if(!isColliding(b, c)) return false;
@@ -62,6 +91,8 @@ bool CollisionResolver::collideX(Bardo* b, Enemy* c) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(Bardo* b, Enemy* c) {
     if(!isColliding(b, c)) return false;
@@ -72,6 +103,8 @@ bool CollisionResolver::collideY(Bardo* b, Enemy* c) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 bool CollisionResolver::collideX(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
 
@@ -79,6 +112,8 @@ bool CollisionResolver::collideX(FielEscudeiro* f, Enemy* c) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
@@ -88,6 +123,8 @@ bool CollisionResolver::collideY(FielEscudeiro* f, Enemy* c) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideX(Bardo* b, Obstacle* o) {
     if(!isColliding(b, o)) return false;
@@ -101,6 +138,8 @@ bool CollisionResolver::collideX(Bardo* b, Obstacle* o) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(Bardo* b, Obstacle* o) {
     if(!isColliding(b, o)) return false;
@@ -120,6 +159,8 @@ bool CollisionResolver::collideY(Bardo* b, Obstacle* o) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 bool CollisionResolver::collideX(Enemy* e, Obstacle* o) {
     if(!isColliding(e, o)) return false;
 
@@ -131,6 +172,8 @@ bool CollisionResolver::collideX(Enemy* e, Obstacle* o) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(Enemy* e, Obstacle* o) {
     if(!isColliding(e, o)) return false;
@@ -147,6 +190,8 @@ bool CollisionResolver::collideY(Enemy* e, Obstacle* o) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 /*
 // Tentei adicionar colisão inimigo-inimigo, funcionou mas n ficou mt legal
 
@@ -161,6 +206,8 @@ bool CollisionResolver::collideX(Enemy* e1, Enemy* e2) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(Enemy* e1, Enemy* e2) {
     if(!isColliding(e1, e2)) return false;
@@ -177,6 +224,8 @@ bool CollisionResolver::collideY(Enemy* e1, Enemy* e2) {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 */
 
 bool CollisionResolver::collideX(FielEscudeiro* f, Obstacle* o) {
@@ -191,6 +240,8 @@ bool CollisionResolver::collideX(FielEscudeiro* f, Obstacle* o) {
 
     return true;
 }
+
+// ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideY(FielEscudeiro* f, Obstacle* o) {
     if(!isColliding(f, o)) return false;

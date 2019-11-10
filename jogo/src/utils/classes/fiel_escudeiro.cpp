@@ -3,13 +3,13 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "fiel_escudeiro.hpp"
 
-// Standard libraries
-#include <iostream>
-
 // Internal libraries
-#include "game_map.hpp"
+// ---------------------
+
 #include <constants.hpp>
 
 // Attribute initialization
@@ -52,5 +52,3 @@ void FielEscudeiro::checkKeys() {
     }
 
 }
-
-// ---------------------------------------------------------------------------

@@ -3,13 +3,16 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "character.hpp"
 
 // Internal libraries
-#include "game_map.hpp"
-#include <constants.hpp>
+// ---------------------
 
+#include "game_map.hpp"
 #include "collision_resolver.hpp"
+#include <constants.hpp>
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -114,26 +117,4 @@ void Character::render(sf::RenderWindow& window) {
 
     window.draw(sprite);
     window.draw(healthBar);
-}
-
-// ---------------------------------------------------------------------------
-
-bool Character::collide(Collidable& e) {
-    // DEPRECATED!!!!!!!!!!!!!
-    if(!e.getBoundingBox().intersects(getBoundingBox())) return false;
-
-    if(speed.y > 0) {
-        position.y = e.getBoundingBox().top - size.y;
-        onGround = true;
-    }
-    else if(speed.y < 0) position.y = e.getBoundingBox().top + e.getBoundingBox().height;
-    speed.y = 0;
-
-    if(speed.x > 0) {
-        position.x = e.getBoundingBox().left - size.x;
-    }
-    else if(speed.x < 0) position.x = e.getBoundingBox().left + e.getBoundingBox().width;
-    speed.x = 0;
-
-    return true;
 }

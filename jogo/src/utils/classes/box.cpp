@@ -3,20 +3,19 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "box.hpp"
 
-// Standard libraries
-// ---------------------------------------------------------------------------
-
-// Internal libraries
-// ---------------------------------------------------------------------------
-
 // Attribute initialization
+// ---------------------------------------------------------------------------
+
 sf::Vector2f Box::boxSize(2*TILE_SIZE, 2*TILE_SIZE);
 int Box::obstacleNum = 2;
 
 // Methods
 // ---------------------------------------------------------------------------
+
 Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(2*TILE_SIZE, 2*TILE_SIZE));
     shape->setTexture(TileManager::getInstance()->getTileSetTexture());
@@ -27,12 +26,6 @@ Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize
 
 Box::~Box() {
     delete shape;
-}
-
-// ---------------------------------------------------------------------------
-
-bool Box::collide(Collidable& c) {
-    return c.getBoundingBox().intersects(getBoundingBox());
 }
 
 // ---------------------------------------------------------------------------

@@ -7,9 +7,6 @@
 #include <constants.hpp>
 
 #include "obstacle.hpp"
-#include "collidable.hpp"
-#include "tile_manager.hpp"
-#include "game_map.hpp"
 #include "game.hpp"
 
 class Spike : public Obstacle {
@@ -24,7 +21,6 @@ public:
     Spike(int posX, int posY);
     ~Spike();
 
-    bool collide(Collidable& c);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }

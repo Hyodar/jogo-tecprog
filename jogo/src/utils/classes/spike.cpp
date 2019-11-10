@@ -3,21 +3,27 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "spike.hpp"
 
-// Standard libraries
-// ---------------------------------------------------------------------------
-
 // Internal libraries
-// ---------------------------------------------------------------------------
+// ---------------------
+
+#include "collidable.hpp"
+#include "tile_manager.hpp"
+#include "game_map.hpp"
 
 // Attribute initialization
+// ---------------------------------------------------------------------------
+
 float Spike::hitDmg = 20;
 sf::Vector2f Spike::spikeSize(TILE_SIZE, TILE_SIZE);
 int Spike::obstacleNum = 0;
 
 // Methods
 // ---------------------------------------------------------------------------
+
 Spike::Spike(int posX, int posY) :
     Obstacle(posX, posY, Spike::spikeSize.x, Spike::spikeSize.y) {
     shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
@@ -29,16 +35,6 @@ Spike::Spike(int posX, int posY) :
 
 Spike::~Spike() {
     delete shape;
-}
-
-// ---------------------------------------------------------------------------
-
-bool Spike::collide(Collidable& c) {
-    if(c.getBoundingBox().intersects(getBoundingBox())) {
-        c.takeDamage(hitDmg);
-        return true;
-    }
-    return false;
 }
 
 // ---------------------------------------------------------------------------

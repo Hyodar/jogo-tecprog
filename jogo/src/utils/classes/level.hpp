@@ -6,8 +6,6 @@
 #include <SFML/Graphics.hpp>
 #include <constants.hpp>
 
-#include "obstacle.hpp"
-
 class Level {
 
 public:

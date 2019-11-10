@@ -3,12 +3,18 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "bardo.hpp"
 
 // Standard libraries
+// ---------------------
+
 #include <iostream>
 
 // Internal libraries
+// ---------------------
+
 #include "game_map.hpp"
 #include <constants.hpp>
 

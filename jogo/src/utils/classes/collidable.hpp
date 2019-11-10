@@ -7,9 +7,6 @@
 class Collidable {
 
     public:
-        virtual bool collide(Collidable& c) {
-            return c.getBoundingBox().intersects(this->getBoundingBox());
-        }
         virtual sf::FloatRect getBoundingBox() const {
             return sf::FloatRect(0, 0, 0, 0);
         }

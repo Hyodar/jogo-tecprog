@@ -3,7 +3,6 @@
 #define TILE_MANAGER_HPP_
 
 #include <map>
-#include <string>
 #include <SFML/Graphics.hpp>
 
 #include "tile.hpp"
@@ -16,7 +15,6 @@ private:
 
     std::map<int, Tile> tileSet;
     sf::Texture tileSetTexture;
-    char tileSetPath[];
 
     void createTile(int tileNumber, sf::IntRect textureRect, sf::FloatRect colliderRect);
 

@@ -3,15 +3,21 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "game.hpp"
 
 // Standard libraries
+// ---------------------
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 
 // Internal libraries
+// ---------------------
+
 #include "tile_manager.hpp"
 #include "level_manager.hpp"
 #include "game_map.hpp"

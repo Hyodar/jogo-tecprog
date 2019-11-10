@@ -3,9 +3,13 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "tile.hpp"
 
 // Internal libraries
+// ---------------------
+
 #include "game.hpp"
 #include "tile_manager.hpp"
 

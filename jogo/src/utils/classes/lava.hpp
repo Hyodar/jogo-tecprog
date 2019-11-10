@@ -24,7 +24,6 @@ public:
     Lava(int posX, int posY);
     ~Lava();
 
-    bool collide(Collidable& c);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
     void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }

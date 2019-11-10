@@ -3,9 +3,13 @@
 // ---------------------------------------------------------------------------
 
 // Class header
+// ---------------------
+
 #include "splash_screen.hpp"
 
 // Standard libraries
+// ---------------------
+
 #include <iostream>
 
 // Methods

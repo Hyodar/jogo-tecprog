@@ -2,8 +2,8 @@
 #ifndef PAUSE_MENU_HPP_
 #define PAUSE_MENU_HPP_
 
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <list>
 

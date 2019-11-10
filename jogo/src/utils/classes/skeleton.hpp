@@ -5,7 +5,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "enemy.hpp"
-#include "bardo.hpp"
+
+class Bardo;
 
 class Skeleton : public Enemy {
 

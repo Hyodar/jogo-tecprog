@@ -5,12 +5,12 @@
 #include <SFML/Graphics.hpp>
 
 #include "list.hpp"
-#include "entity.hpp"
-#include "obstacle.hpp"
 
-#include "bardo.hpp"
-#include "fiel_escudeiro.hpp"
-#include "enemy.hpp"
+class Entity;
+class Enemy;
+class Bardo;
+class FielEscudeiro;
+class Obstacle;
 
 class EntityManager {
 

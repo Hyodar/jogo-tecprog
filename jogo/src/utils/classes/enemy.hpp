@@ -3,7 +3,8 @@
 #define ENEMY_HPP_
 
 #include "character.hpp"
-#include "bardo.hpp"
+
+class Bardo;
 
 class Enemy : public Character {
 
