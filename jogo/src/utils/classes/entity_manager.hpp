@@ -46,6 +46,7 @@ public:
     void moveEscudeiro(const float deltaTime);
     void moveEnemies(const float deltaTime);
     void moveObstacles(const float deltaTime);
+    void moveProjectiles(const float deltaTime);
 
     //std::vector<Obstacle*> getObstacles() { return obstacles; }
     //std::vector<Enemy*> getEnemies() { return enemies; }

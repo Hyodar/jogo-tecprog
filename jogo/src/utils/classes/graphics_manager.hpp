@@ -12,6 +12,7 @@ private:
     sf::Texture bardoTexture;
     sf::Texture fielEscudeiroTexture;
     sf::Texture skeletonTexture;
+    sf::Texture dragonTexture;
     sf::Texture projectileTexture;
     sf::Texture splashScreenTexture;
     sf::Texture pauseMenuTexture;
@@ -27,6 +28,7 @@ public:
     sf::Texture* getBardoTexture();
     sf::Texture* getFielEscudeiroTexture();
     sf::Texture* getSkeletonTexture();
+    sf::Texture* getDragonTexture();
     sf::Texture* getProjectileTexture();
     sf::Texture* getSplashScreenTexture();
     sf::Texture* getPauseMenuTexture();

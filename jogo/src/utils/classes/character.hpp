@@ -30,7 +30,7 @@ class Character : public Entity {
         ~Character();
 
         virtual void checkKeys();
-        void jump();
+        void jump(const float factor = 1);
         
         void update(const float deltaTime);
         virtual void updatePositionX(float deltaTime);

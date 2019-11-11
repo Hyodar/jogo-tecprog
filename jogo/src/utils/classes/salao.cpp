@@ -24,6 +24,8 @@
 #include "spike.hpp"
 #include "lava.hpp"
 #include "box.hpp"
+#include "game.hpp"
+#include "dragon.hpp"
 #include "level_manager.hpp"
 
 // Methods
@@ -82,5 +84,5 @@ void Salao::spawnObstacles(std::vector<int>& mat, int layerWidth) {
 // ---------------------------------------------------------------------------
 
 void Salao::spawnEnemies(std::vector<int>& mat, int layerWidth) {
-    // noop
+    LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Dragon(400, 200, &(Game::getInstance()->getPlayer()))));
 }

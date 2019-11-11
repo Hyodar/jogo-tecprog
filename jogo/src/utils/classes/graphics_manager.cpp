@@ -8,6 +8,7 @@ GraphicsManager::GraphicsManager() {
     bardoTexture.loadFromFile("resources/bardo.png");
     fielEscudeiroTexture.loadFromFile("resources/fiel_escudeiro.png");
     skeletonTexture.loadFromFile("resources/skeleton.png");
+    dragonTexture.loadFromFile("resources/dragon.png");
     projectileTexture.loadFromFile("resources/projectiles.png");
     splashScreenTexture.loadFromFile("resources/splash_screen.png");
     pauseMenuTexture.loadFromFile("resources/pause_menu.png");
@@ -38,6 +39,10 @@ sf::Texture* GraphicsManager::getFielEscudeiroTexture() {
 
 sf::Texture* GraphicsManager::getSkeletonTexture() {
     return &skeletonTexture;
+}
+
+sf::Texture* GraphicsManager::getDragonTexture() {
+    return &dragonTexture;
 }
 
 sf::Texture* GraphicsManager::getProjectileTexture() {

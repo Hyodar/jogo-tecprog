@@ -11,10 +11,13 @@ class Enemy;
 class Obstacle;
 class Bardo;
 class FielEscudeiro;
+class Projectile;
 
 class CollisionResolver {
 
 public:
+
+    static bool mapBoundsCollision(Entity* e);
 
     static bool collideX(Character* c, GameMap* g);
     static bool collideY(Character* c, GameMap* g);
@@ -34,11 +37,17 @@ public:
     static bool collideX(Bardo* b, Obstacle* o);
     static bool collideY(Bardo* b, Obstacle* o);
 
+    static bool collideX(Bardo* b, Projectile* p);
+    static bool collideY(Bardo* b, Projectile* p);
+
     static bool collideX(FielEscudeiro* f, Enemy* c);
     static bool collideY(FielEscudeiro* f, Enemy* c);
     
     static bool collideX(FielEscudeiro* f, Obstacle* o);
     static bool collideY(FielEscudeiro* f, Obstacle* o);
+
+    static bool collideX(FielEscudeiro* f, Projectile* p);
+    static bool collideY(FielEscudeiro* f, Projectile* p);
 
 private:
 

@@ -38,7 +38,9 @@ public:
     bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
     bool IsAtStart() { return start == 0; }
 
-    bool getSizeX() { return sizeX; }
+    int getSizeX() { return sizeX; }
+    int getSizeY() { return sizeX; }
+
     int getMapLength() { return sizeX * TILE_SIZE; }
     std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
 

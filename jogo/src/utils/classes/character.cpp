@@ -39,9 +39,9 @@ Character::~Character() {
 
 // ---------------------------------------------------------------------------
 
-void Character::jump() {
+void Character::jump(const float factor) {
     if(onGround) {
-        speed.y -= jumpSpeed;
+        speed.y -= jumpSpeed * factor;
         onGround = false;
     }
 }

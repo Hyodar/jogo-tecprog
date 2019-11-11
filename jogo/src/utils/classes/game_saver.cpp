@@ -46,6 +46,7 @@ void GameSaver::saveState() {
     for(Obstacle* e : LevelManager::getInstance()->getObstacles()) {
        obstacles.push_back(e->store());
     }
+    auto projectiles
     */
 
     //j["obstacles"] = obstacles;

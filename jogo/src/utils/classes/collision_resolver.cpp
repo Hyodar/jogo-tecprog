@@ -16,13 +16,24 @@
 #include "enemy.hpp"
 #include "character.hpp"
 #include "obstacle.hpp"
+#include "projectile.hpp"
 #include "game_map.hpp"
 
 // Methods
 // ---------------------------------------------------------------------------
 
-bool CollisionResolver::CollisionResolver::isColliding(Collidable* e1, Collidable* e2) {
+bool CollisionResolver::isColliding(Collidable* e1, Collidable* e2) {
     return e1->getBoundingBox().intersects(e2->getBoundingBox());
+}
+
+// Methods
+// ---------------------------------------------------------------------------
+
+bool CollisionResolver::mapBoundsCollision(Entity* e) {
+    const int maxX = GameMap::getInstance()->getSizeX() * TILE_SIZE;
+    const int maxY = GameMap::getInstance()->getSizeY() * TILE_SIZE;
+
+    return (e->getPosX() > maxX || e->getPosX() < 0) || (e->getPosY() > maxY || e->getPosY() < 0);
 }
 
 // ---------------------------------------------------------------------------
@@ -85,9 +96,19 @@ bool CollisionResolver::collideX(Character* c, Tile* t) {
 // ---------------------------------------------------------------------------
 
 bool CollisionResolver::collideX(Bardo* b, Enemy* c) {
+    /*
+    if(b->getAttack()) {
+        const auto attack = b->getAttack();
+        if(isColliding(attack, c)) {
+            c->takeDamage(attack->getDmg());
+        }
+    }
+    */
+    
     if(!isColliding(b, c)) return false;
 
-    b->takeDamage(20); // TODO - TROCAR PRA c->attackb
+    b->jump(0.5);
+    b->takeDamage(20);
 
     return true;
 }
@@ -97,7 +118,7 @@ bool CollisionResolver::collideX(Bardo* b, Enemy* c) {
 bool CollisionResolver::collideY(Bardo* b, Enemy* c) {
     if(!isColliding(b, c)) return false;
 
-    b->jump();
+    b->jump(0.5);
     b->takeDamage(20);
 
     return true;
@@ -108,6 +129,7 @@ bool CollisionResolver::collideY(Bardo* b, Enemy* c) {
 bool CollisionResolver::collideX(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
 
+    f->jump(0.5);
     f->takeDamage(10);
 
     return true;
@@ -118,7 +140,7 @@ bool CollisionResolver::collideX(FielEscudeiro* f, Enemy* c) {
 bool CollisionResolver::collideY(FielEscudeiro* f, Enemy* c) {
     if(!isColliding(f, c)) return false;
 
-    f->jump();
+    f->jump(0.5);
     f->takeDamage(10);
 
     return true;
@@ -236,7 +258,7 @@ bool CollisionResolver::collideX(FielEscudeiro* f, Obstacle* o) {
     }
     else if(f->getSpeedX() < 0) f->setPosX(o->getBoundingBox().left + o->getBoundingBox().width);
     f->setSpeedX(0);
-    if(o->getCollisionDmg()) f->takeDamage(o->getCollisionDmg());
+    if(o->getCollisionDmg()) f->takeDamage(o->getCollisionDmg() - 5);
 
     return true;
 }
@@ -255,6 +277,48 @@ bool CollisionResolver::collideY(FielEscudeiro* f, Obstacle* o) {
     }
     f->setSpeedY(0);
     if(o->getCollisionDmg()) f->takeDamage(o->getCollisionDmg() - 5);
+
+    return true;
+}
+
+// ---------------------------------------------------------------------------
+
+bool CollisionResolver::collideX(FielEscudeiro* f, Projectile* p) {
+    if(!isColliding(f, p)) return false;
+
+    if(p->getCollisionDmg()) f->takeDamage(p->getCollisionDmg() - 8);
+
+    return true;
+}
+
+// ---------------------------------------------------------------------------
+
+bool CollisionResolver::collideY(FielEscudeiro* f, Projectile* p) {
+    if(!isColliding(f, p)) return false;
+
+    f->jump(0.5);
+    if(p->getCollisionDmg()) f->takeDamage(p->getCollisionDmg() - 8);
+
+    return true;
+}
+
+// ---------------------------------------------------------------------------
+
+bool CollisionResolver::collideX(Bardo* b, Projectile* p) {
+    if(!isColliding(b, p)) return false;
+
+    if(p->getCollisionDmg()) b->takeDamage(p->getCollisionDmg());
+
+    return true;
+}
+
+// ---------------------------------------------------------------------------
+
+bool CollisionResolver::collideY(Bardo* b, Projectile* p) {
+    if(!isColliding(b, p)) return false;
+
+    b->jump(0.5);
+    if(p->getCollisionDmg()) b->takeDamage(p->getCollisionDmg());
 
     return true;
 }

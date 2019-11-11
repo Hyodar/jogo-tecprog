@@ -49,6 +49,7 @@ void EntityManager::process(float deltaTime) {
     if(hasEscudeiro) moveEscudeiro(deltaTime);
     moveObstacles(deltaTime);
     moveEnemies(deltaTime);
+    moveProjectiles(deltaTime);
 
     render(Game::getInstance()->getMainWindow());
 }
@@ -60,6 +61,7 @@ void EntityManager::render(sf::RenderWindow& window) {
     if(hasEscudeiro) fielEscudeiro->render(window);
     //for(auto it = obstacles.begin(); it != obstacles.end(); it++) (*it)->render(window);
     for(auto it = enemies.begin(); it != enemies.end(); it++) (*it)->render(window);
+    for(auto it = projectiles.begin(); it != projectiles.end(); it++) (*it)->render(window);
 }
 
 // ---------------------------------------------------------------------------
@@ -117,6 +119,32 @@ void EntityManager::moveEnemies(const float deltaTime) {
 void EntityManager::moveObstacles(const float deltaTime) {
     for(auto it = obstacles.begin(); it != obstacles.end(); it++) {
         (*it)->updatePosition(deltaTime);
+    }
+}
+
+// ---------------------------------------------------------------------------
+
+void EntityManager::moveProjectiles(const float deltaTime) {
+    for(auto it = projectiles.begin(); it != projectiles.end(); it++) {
+        (*it)->updatePositionX(deltaTime);
+        
+        if(CollisionResolver::mapBoundsCollision(*it) ||
+           CollisionResolver::collideX(bardo, *it) || 
+           CollisionResolver::collideX(fielEscudeiro, *it)){
+            projectiles.erase(it);
+            return;
+        }
+
+        (*it)->updatePositionY(deltaTime);
+        
+        if(CollisionResolver::mapBoundsCollision(*it) ||
+           CollisionResolver::collideY(bardo, *it) || 
+           CollisionResolver::collideY(fielEscudeiro, *it)){
+            projectiles.erase(it);
+            return;
+        }
+
+        (*it)->render(Game::getInstance()->getMainWindow());
     }
 }
 

@@ -27,3 +27,11 @@ void Projectile::render(sf::RenderWindow& window) {
     shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
     window.draw(*shape);
 }
+
+float Projectile::getCollisionDmg() {
+    return collisionDmg;
+}
+
+void Projectile::takeDamage(float dmg) {
+    // noop
+}

@@ -1,6 +1,6 @@
 
-#ifndef SKELETON_HPP_
-#define SKELETON_HPP_
+#ifndef DRAGON_HPP_
+#define DRAGON_HPP_
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -9,20 +9,21 @@
 
 class Bardo;
 
-class Skeleton : public Enemy {
+class Dragon : public Enemy {
 
 private:
     
-    int jumpCounter;
-    int jumpInterval;
+    int attackCounter;
+    int attackInterval;
 
 public:
-    Skeleton(int x=0, int y=0, Bardo* pp = nullptr);
-    ~Skeleton();
+    Dragon(int x=0, int y=0, Bardo* pp = nullptr);
+    ~Dragon();
     void checkPlayerPos();
     void update(const float deltaTime);
     void updatePositionX(float deltaTime);
     void updatePositionY(float deltaTime);
+    void launchFireball();
 
 };
-#endif // SKELETON_HPP_
+#endif // DRAGON_HPP_
