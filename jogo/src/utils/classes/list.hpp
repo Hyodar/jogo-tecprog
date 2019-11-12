@@ -1,4 +1,9 @@
 
+/*
+    Inspirado na implementação mostrada em cplusplus.com,
+    com implementações e otimizações adicionais
+*/
+
 #ifndef LIST_HPP_
 #define LIST_HPP_
 
@@ -40,7 +45,7 @@ public:
 
         for(uint i = 0; i < n; i++) {
             if(it.node) ++it;
-            else throw "Index error: Accessing null element on list";
+            else throw "Index error: Accessing invalid list node";
         }
 
         return it;
