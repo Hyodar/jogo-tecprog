@@ -18,8 +18,8 @@ public:
     virtual ~Projectile();
 
     void takeDamage(float dmg);
-    void updatePositionX(const float deltaTime);
-    void updatePositionY(const float deltaTime);
+    virtual void updatePositionX(const float deltaTime);
+    virtual void updatePositionY(const float deltaTime);
     void render(sf::RenderWindow& window);
     float getCollisionDmg();
 

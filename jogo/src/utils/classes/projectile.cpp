@@ -5,7 +5,7 @@
 #include "graphics_manager.hpp"
 #include <constants.hpp>
 
-Projectile::Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY) 
+Projectile::Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY)
  : Entity(posX, posY, sizeX, sizeY), speed(speedX, speedY) {
     shape = new sf::RectangleShape(sf::Vector2f(sizeX, sizeY));
     shape->setTexture(GraphicsManager::getInstance()->getProjectileTexture());
