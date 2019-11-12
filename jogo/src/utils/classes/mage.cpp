@@ -61,7 +61,7 @@ Mage::~Mage(){
         // quando tao perto do player
 
         if(abs(dist) > 20) {
-            walkingRight = (speed.x >= 0);
+            walkingRight = (speed.x <= 0);
         }
     }
     else speed.x = 0;
@@ -114,6 +114,6 @@ void Mage::launchEnergyBall() {
     const float fireballSpeedX = fireballSpeed * (playerDistX / playerDist);
     const float fireballSpeedY = fireballSpeed * (playerDistY / playerDist);
 
-    auto fb = new EnergyBall((walkingRight)? position.x + size.x : position.x, position.y, fireballSpeedX, fireballSpeedY, player);
+    auto fb = new EnergyBall((walkingRight)? position.x + size.x : position.x, position.y, fireballSpeedX, fireballSpeedY);
     LevelManager::getInstance()->addProjectile(fb);
 }
