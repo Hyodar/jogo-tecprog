@@ -1,7 +1,9 @@
 
 /*
+
     Inspirado na implementação mostrada em cplusplus.com,
     com implementações e otimizações adicionais
+
 */
 
 #ifndef LIST_HPP_
