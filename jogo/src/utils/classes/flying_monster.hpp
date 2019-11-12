@@ -11,6 +11,7 @@ class FlyingMonster : public Enemy {
 
 protected:
     sf::Vector2f startingPos;
+    float absoluteTime;
 
 public:
     FlyingMonster(int x=0, int y=0, Bardo* pp = nullptr);

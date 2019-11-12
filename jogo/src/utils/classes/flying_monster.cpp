@@ -22,6 +22,8 @@ FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Yellow);
+
+    absoluteTime = 0;
 }
 
 // ---------------------------------------------------------------------------
@@ -39,11 +41,13 @@ void FlyingMonster::update(const float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void FlyingMonster::updatePositionX(const float deltaTime) {
-    position.x = startingPos.x + 200 * cos( 30 * deltaTime);
+    absoluteTime += deltaTime;
+    std::cout << absoluteTime << std::endl;
+    position.x = startingPos.x + 200 * cos( 5 * absoluteTime);
 }
 
 // ---------------------------------------------------------------------------
 
 void FlyingMonster::updatePositionY(const float deltaTime) {
-    position.y = startingPos.y + 200 * cos( 30 * deltaTime + (3.14/2));
+    position.y = startingPos.y + 200 * cos( 5 * absoluteTime + (3.14/2));
 }
