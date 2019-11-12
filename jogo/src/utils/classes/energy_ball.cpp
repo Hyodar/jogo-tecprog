@@ -22,20 +22,11 @@ EnergyBall::~EnergyBall() {
 
 void EnergyBall::updatePositionX(const float deltaTime){
 
-    float playerpos = player->getPosX();
-    const float dist = abs(playerpos - position.x);
-
-    if(abs((position.x +speed.x*deltaTime) - playerpos) > dist) speed.x = speed.x * (-1/2);
-
     position.x += speed.x * deltaTime;
 
 }
 
 void EnergyBall::updatePositionY(const float deltaTime){
-    float playerpos = player->getPosY();
-    const float dist = abs(playerpos - position.y);
-
-    if(abs((position.y +speed.y*deltaTime) -playerpos) > dist) speed.y = speed.y * (-2);
 
     position.y += speed.y * deltaTime;
 }
