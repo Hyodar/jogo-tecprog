@@ -29,6 +29,12 @@ Enemy::~Enemy() {
 
 // ---------------------------------------------------------------------------
 
+int Enemy:: getPoints()const{
+    return points;
+}
+
+// ---------------------------------------------------------------------------
+
 void Enemy::takeDamage(float dmg) {
     if(!invulnerable) {
         hitPoints -= dmg;

@@ -30,6 +30,8 @@ Skeleton::Skeleton(int x, int y, Bardo* pp)
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);
 
+    points = 15;
+
     healthBar.setFillColor(sf::Color::Blue);
 }
 
@@ -67,7 +69,7 @@ Skeleton::~Skeleton(){
 // ---------------------------------------------------------------------------
 
 void Skeleton::update(const float deltaTime) {
-    
+
 }
 
 // ---------------------------------------------------------------------------
@@ -76,7 +78,7 @@ void Skeleton::updatePositionX(float deltaTime) {
     checkPlayerPos();
 
     position.x += speed.x * deltaTime;
-    
+
     if(jumpCounter == jumpInterval) {
         jumpCounter = 0;
         jumpInterval = rand() % 401;

@@ -18,6 +18,8 @@ FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);
 
+    points = 20;
+
     healthBar.setFillColor(sf::Color::Yellow);
 
     absoluteTime = 0;
@@ -38,7 +40,9 @@ void FlyingMonster::update(const float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void FlyingMonster::updatePositionX(const float deltaTime) {
+
     absoluteTime += deltaTime;
+
     position.x = startingPos.x + 200 * cos( 5 * absoluteTime);
 }
 

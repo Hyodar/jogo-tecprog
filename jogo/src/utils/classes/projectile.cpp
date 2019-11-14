@@ -8,13 +8,21 @@
 Projectile::Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY)
  : Entity(posX, posY, sizeX, sizeY), speed(speedX, speedY), shape(sf::Vector2f(sizeX, sizeY)) {
     shape.setTexture(GraphicsManager::getInstance()->getProjectileTexture());
+    traveledDist = 0;
 }
 
 Projectile::~Projectile() {
     /* noop */
 }
 
+float Projectile::getTraveledDist() const {
+    return traveledDist;
+}
+
 void Projectile::updatePositionX(const float deltaTime) {
+
+    traveledDist += speed.x * deltaTime;
+
     position.x += speed.x * deltaTime;
 }
 

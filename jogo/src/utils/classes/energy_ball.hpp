@@ -5,12 +5,10 @@ class LevelManager;
 class EnergyBall : public Projectile {
 
 private:
-    float traveledDist;
     bool alreadySplited;
-    bool child;
 
 public:
-    EnergyBall(int posX, int posY, float speedX, float speedY, bool child=false);
+    EnergyBall(int posX, int posY, float speedX, float speedY, bool as = false);
     ~EnergyBall();
     void updatePositionX(const float deltaTime);
     void updatePositionY(const float deltaTime);

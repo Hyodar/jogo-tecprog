@@ -33,6 +33,8 @@ Mage::Mage(int x, int y, Bardo* pp)
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);
 
+    points = 30;
+
     healthBar.setFillColor(sf::Color::Green);
 }
 

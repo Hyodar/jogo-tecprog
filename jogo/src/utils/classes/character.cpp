@@ -20,7 +20,7 @@
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
-const int Character::jumpSpeed{1670};
+const int Character::jumpSpeed{1470};
 const int Character::walkSpeed{500};
 
 // Methods
@@ -28,7 +28,7 @@ const int Character::walkSpeed{500};
 
 Character::Character (int x, int y, int sizeX, int sizeY, double maxHP)
     : Entity(x, y, sizeX, sizeY), healthBar(sf::Vector2f(64, healthBarHeight)),
-      speed(0, 0), hitPoints{100}, maxHitPoints(maxHP), onGround{false},
+      speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
       invulnerable{0}, walkingRight{true} {
 
     // noop

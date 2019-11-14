@@ -39,7 +39,7 @@ void CollisionList::add(FielEscudeiro* e) {
     fielEscudeiro = e;
 }
 
-void CollisionList::remove(Enemy* e) { 
+void CollisionList::remove(Enemy* e) {
     for(auto it = enemies.begin(); it != enemies.end(); it++) {
         if((*it) == e) {
             enemies.erase(it);
@@ -48,7 +48,7 @@ void CollisionList::remove(Enemy* e) {
     }
 }
 
-void CollisionList::remove(Obstacle* e) { 
+void CollisionList::remove(Obstacle* e) {
     for(auto it = obstacles.begin(); it != obstacles.end(); it++) {
         if(it->second == e) {
             obstacles.erase(it);
@@ -57,7 +57,7 @@ void CollisionList::remove(Obstacle* e) {
     }
 }
 
-void CollisionList::remove(Projectile* e) { 
+void CollisionList::remove(Projectile* e) {
     for(auto it = projectiles.begin(); it != projectiles.end(); it++) {
         if((*it) == e) {
             projectiles.erase(it);
@@ -71,14 +71,14 @@ void CollisionList::deallocate() {
         delete e;
     }
     enemies.clear();
-    
+
     for(auto& [key, o] : obstacles) {
         (void) key;
 
         delete o;
     }
     obstacles.clear();
-    
+
     for(Projectile* p : projectiles) {
         delete p;
     }
@@ -139,7 +139,7 @@ void CollisionList::testBardoX() {
 
 void CollisionList::testBardoY() {
     GameMap* g = GameMap::getInstance();
-    
+
     for(int i = bardo->getPosY()/TILE_SIZE; i < (bardo->getPosY() + bardo->getSizeY())/TILE_SIZE; i++) {
         for(int j = bardo->getPosX()/TILE_SIZE; j < (bardo->getPosX() + bardo->getSizeX())/TILE_SIZE; j++) {
             Tile* t = g->getTile(i, j);
@@ -148,7 +148,7 @@ void CollisionList::testBardoY() {
             }
         }
     }
-    
+
     for(Enemy* e : enemies) {
         if(collisionDetecter.isColliding(bardo, e)) {
             //bardo->collideY(e);
@@ -258,7 +258,7 @@ void CollisionList::testEnemiesX() {
             if(collisionDetecter.isColliding(e, o)) {
                 static_cast<Character*>(e)->collideX(o);
                 o->collideX(e);
-            }   
+            }
         }
         // inimigos n colidem com projeteis
     }
@@ -283,7 +283,7 @@ void CollisionList::testEnemiesY() {
             if(collisionDetecter.isColliding(e, o)) {
                 static_cast<Character*>(e)->collideY(o);
                 o->collideY(e);
-            }   
+            }
         }
     }
 }
@@ -295,11 +295,11 @@ void CollisionList::testProjectiles() {
         const int maxX = GameMap::getInstance()->getSizeX() * TILE_SIZE;
         const int maxY = GameMap::getInstance()->getSizeY() * TILE_SIZE;
 
-        if((*it)->getPosX() > maxX || (*it)->getPosX() < 0 || (*it)->getPosY() > maxY || (*it)->getPosY() < 0) {
+        if((*it)->getPosX() > maxX || (*it)->getPosX() < 0 || (*it)->getPosY() > maxY || (*it)->getPosY() < 0 || (*it)->getTraveledDist() > 2000) {
             toErase.push_back(*it);
         }
     }
-    
+
     for(Projectile* p : toErase) {
         LevelManager::getInstance()->removeProjectile(p);
     }
@@ -308,6 +308,7 @@ void CollisionList::testProjectiles() {
 void CollisionList::testHitPoints() {
     for(Enemy* e : enemies) {
         if(!e->isAlive()) {
+            Game
             LevelManager::getInstance()->removeEnemy(e);
         }
     }

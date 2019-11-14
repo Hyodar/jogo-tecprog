@@ -15,10 +15,14 @@ protected:
     sf::Vector2f speed;
     sf::RectangleShape shape;
     float collisionDmg;
+    float traveledDist;
+
 
 public:
     Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY);
     virtual ~Projectile();
+
+    float getTraveledDist() const;
 
     void takeDamage(float dmg);
     virtual void updatePositionX(const float deltaTime);
@@ -26,7 +30,7 @@ public:
 
     virtual void collideX(Bardo* b) { b->takeDamage(getCollisionDmg()); }
     virtual void collideY(Bardo* b) { b->takeDamage(getCollisionDmg()); }
-    
+
     virtual void collideX(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
     virtual void collideY(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
 

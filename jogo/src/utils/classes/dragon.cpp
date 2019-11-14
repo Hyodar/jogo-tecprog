@@ -27,11 +27,13 @@
 // ---------------------------------------------------------------------------
 
 Dragon::Dragon(int x, int y, Bardo* pp)
-   : Enemy(x, y, 256, 256, 100, pp), attackCounter{-rand() % 101},
+   : Enemy(x, y, 256, 256, 1000, pp), attackCounter{-rand() % 101},
      attackInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(4, 4);
+
+    points = 1000;
 
     healthBar.setFillColor(sf::Color::Blue);
 }
@@ -70,7 +72,7 @@ Dragon::~Dragon(){
 // ---------------------------------------------------------------------------
 
 void Dragon::update(const float deltaTime) {
-    
+
 }
 
 // ---------------------------------------------------------------------------
@@ -79,7 +81,7 @@ void Dragon::updatePositionX(float deltaTime) {
     checkPlayerPos();
 
     position.x += speed.x * deltaTime;
-    
+
     if(attackCounter == attackInterval) {
         attackCounter = 0;
         attackInterval = rand() % 401;
