@@ -29,6 +29,15 @@ Enemy::~Enemy() {
 
 // ---------------------------------------------------------------------------
 
+void Enemy::takeDamage(float dmg) {
+    if(!invulnerable) {
+        hitPoints -= dmg;
+        invulnerable = 300;
+    }
+}
+
+// ---------------------------------------------------------------------------
+
 void Enemy::collideX(Bardo* b) {
     b->takeDamage(20);
     b->jump(0.5);

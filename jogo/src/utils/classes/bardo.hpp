@@ -12,6 +12,7 @@ class Bardo : public Character {
 
 private:
     int attackCounter;
+    int attackInterval;
 
     void resetAttackCounter();
 

@@ -24,7 +24,7 @@
 // ---------------------------------------------------------------------------
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP) 
-   : Character(x, y, 64, 64, 100), attackCounter{0} {
+   : Character(x, y, 64, 64, 100), attackCounter{0}, attackInterval{300} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
     sprite.setScale(2, 2);
@@ -48,8 +48,11 @@ void Bardo::checkKeys() {
         speed.x = 0;
     }
 
+    if(attackCounter) attackCounter--;
+    else if(attackInterval) attackInterval--;
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)) {
-        if(!attackCounter) resetAttackCounter();
+        resetAttackCounter();
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -82,14 +85,14 @@ void Bardo::render(sf::RenderWindow& window) {
 
     sprite.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
 
-    const auto scale = sprite.getScale().x;
-
     if(walkingRight) {
-        sprite.setTextureRect(sf::IntRect(0, 0, size.x/scale, size.y/scale));
+        if(attackCounter) sprite.setTextureRect(sf::IntRect(32, 0, 47, 32));
+        else sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
         healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     }
     else {
-        sprite.setTextureRect(sf::IntRect(size.x/scale, 0, -size.x/scale, size.y/scale));
+        if(attackCounter) sprite.setTextureRect(sf::IntRect(79, 0, -49, 32));
+        else sprite.setTextureRect(sf::IntRect(32, 0, -32, 32));
         healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     }
 
@@ -113,7 +116,10 @@ sf::FloatRect Bardo::getBoundingBox() {
 // ---------------------------------------------------------------------------
 
 void Bardo::resetAttackCounter() {
-    attackCounter = 200;
+    if(!attackInterval && !attackCounter) {
+        attackCounter = 200;
+        attackInterval = 300;
+    }
 }
 
 // ---------------------------------------------------------------------------

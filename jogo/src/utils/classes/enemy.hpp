@@ -17,6 +17,8 @@ public:
     Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p);
     virtual ~Enemy();
 
+    void takeDamage(float dmg);
+
     virtual void collideX(Bardo* b);
     virtual void collideY(Bardo* b);
 
