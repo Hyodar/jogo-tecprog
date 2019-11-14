@@ -10,7 +10,7 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-Entity::Entity (int x, int y, int sizeX, int sizeY) : size(sizeX, sizeY), position(x, y) {}
+Entity::Entity (int x, int y, int sizeX, int sizeY) : Ent(x, y), size(sizeX, sizeY) {}
 
 // ---------------------------------------------------------------------------
 

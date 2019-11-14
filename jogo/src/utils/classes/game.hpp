@@ -32,6 +32,8 @@ private:
         paused,
         showingStartMenu,
         showingPauseMenu,
+        showingGameOverMenu,
+        showingRankingMenu,
         playing,
         exiting
     };
@@ -68,6 +70,7 @@ private:
     void showStartMenu();
 
     void processPlaying();
+    void checkPlayerState();
 
 };
 

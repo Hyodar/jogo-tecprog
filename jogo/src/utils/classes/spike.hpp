@@ -23,7 +23,8 @@ public:
 
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
-    void updatePosition(float deltaTime) { draw(Game::getInstance()->getMainWindow()); }
+    void render(sf::RenderWindow& window) { draw(window); }
+    void updatePosition(float deltaTime) { /* DELETE SOON */ }
 
     float getCollisionDmg() { return hitDmg; }
 

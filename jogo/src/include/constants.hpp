@@ -19,13 +19,14 @@ enum CharacterClassification {
     FIEL_ESCUDEIRO = 1,
     SKELETON = 2,
     MAGE = 3,
-    DRAGON = 4
+    FLYING_MONSTER = 4,
+    DRAGON = 5
 };
 
 enum ObstacleClassification {
-    SpikeObstacle = 1,
-    LavaObstacle = 2,
-    BoxObstacle = 6
+    SpikeObstacle = 6,
+    LavaObstacle = 7,
+    BoxObstacle = 8
 };
 
 #endif // CONSTANTS_HPP_

@@ -45,7 +45,7 @@ public:
     ListIterator<NodeType> operator + (int n) {
         ListIterator<NodeType> it = *this;
 
-        for(uint i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++) {
             if(it.node) ++it;
             else throw "Index error: Accessing invalid list node";
         }

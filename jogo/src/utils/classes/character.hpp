@@ -6,6 +6,9 @@
 
 #include "entity.hpp"
 
+class Tile;
+class Obstacle;
+
 class Character : public Entity {
 
     protected:
@@ -35,10 +38,17 @@ class Character : public Entity {
         void update(const float deltaTime);
         virtual void updatePositionX(float deltaTime);
         virtual void updatePositionY(float deltaTime);
-        void render(sf::RenderWindow& window);
+        virtual void render(sf::RenderWindow& window);
+
+        virtual void collideX(Tile* t);
+        virtual void collideY(Tile* t);
+
+        virtual void collideX(Obstacle* o);
+        virtual void collideY(Obstacle* o);
         
         void isInvulnerable();
         void takeDamage(float dmg);
+        const bool isAlive() const { return hitPoints > 0; }
 
         void setOnGround(bool b) { onGround = b; }
 
@@ -49,7 +59,6 @@ class Character : public Entity {
 
         float getHP() { return hitPoints; }
         void setHP(float hp) { hitPoints = hp; }
-
 };
 
 #endif // CHARACTER_HPP_

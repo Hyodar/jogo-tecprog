@@ -24,7 +24,7 @@ private:
     int sizeY;
     float start;
 
-    void setupTileStart(sf::Vector2f playerPos);
+    void setupTileStart();
 
 public:
     ~GameMap();
@@ -33,7 +33,7 @@ public:
     void loadBackground();
     void loadMap();
     void clearMap();
-    void draw(sf::Vector2f playerPos);
+    void draw();
     float getStart() { return start; }
     bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
     bool IsAtStart() { return start == 0; }

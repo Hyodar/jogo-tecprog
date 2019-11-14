@@ -99,7 +99,7 @@ void Mage::updatePositionY(float deltaTime) {
     onGround = false;
 
     sprite.setPosition(sf::Vector2f(position.x, position.y));
-    render(Game::getInstance()->getMainWindow());
+    isInvulnerable();
 }
 
 // ---------------------------------------------------------------------------

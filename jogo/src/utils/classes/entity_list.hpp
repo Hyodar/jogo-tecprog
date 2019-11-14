@@ -1,27 +1,32 @@
-#ifndef ENTITYLIST_HPP_
-#define ENTITYLIST_HPP_
 
-#include"elemento.hpp"
-#include"entity.hpp"
+#ifndef ENTITY_LIST_HPP_
+#define ENTITY_LIST_HPP_
 
-class EntityList{
+#include "list.hpp"
+#include "entity.hpp"
+#include "game.hpp"
+#include <SFML/Graphics.hpp>
+
+class EntityList {
 
 private:
-    Elemento<Entity>* start;
-    Elemento<Entity>* current;
+    List<Entity*> list;
+    bool hasEscudeiro;
 
 public:
-    EntityList();
-    ~EntityList();
+    EntityList() {}
+    ~EntityList() {}
 
-    void setCurrent(Elemento<Entity>* pc);
-    void setStart(Elemento<Entity>* ps);
-    Elemento<Entity>* getCurrent()const;
-    Elemento<Entity>* getStart()const;
+    void setHasEscudeiro(bool b);
 
-    void insert(Entity* elem);
-    void deleteAll();
-    void travel();
+    void add(Entity* e);
+    void remove(Entity* e);
+    
+    void moveX(const float deltaTime);
+    void moveY(const float deltaTime);
+
+    void render(sf::RenderWindow& window);
+    void clean();
 };
 
-#endif // ENTITYLIST_HPP_
+#endif // ENTITY_LIST_HPP_

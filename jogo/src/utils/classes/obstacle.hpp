@@ -6,6 +6,13 @@
 #include "entity.hpp"
 #include "database_model.hpp"
 
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+
+class Enemy;
+class Bardo;
+class FielEscudeiro;
+
 class Obstacle : public Entity, public DatabaseModel<Obstacle*> {
 
 public:
@@ -20,6 +27,13 @@ public:
     virtual void updatePosition(float deltaTime) { /* noop */ }
 
     virtual float getCollisionDmg() { return 10; }
+
+    virtual void collideX(Enemy* e) { /* noop */ }
+    virtual void collideY(Enemy* e) { /* noop */ }
+    virtual void collideX(Bardo* b) { b->takeDamage(getCollisionDmg()); }
+    virtual void collideY(Bardo* b) { b->takeDamage(getCollisionDmg()); }
+    virtual void collideX(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
+    virtual void collideY(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
 };
 
 #endif // OBSTACLE_HPP_

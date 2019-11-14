@@ -42,7 +42,6 @@ Game::Game() : player(windowW/2, 100), fielEscudeiro(windowW/2 - 100, 100),
     gamePhase = noPhase;
 
     LevelManager::getInstance()->getEntityManager().setBardo(&player);
-    LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
 
     srand(time(0));
 }
@@ -140,14 +139,14 @@ void Game::showStartMenu() {
         case StartMenu::play2tab:
             gameState = playing;
             gamePhase = phase1;
-            LevelManager::getInstance()->getEntityManager().setHasEscudeiro(true);
+            LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::play2sal:
             gameState = playing;
             gamePhase = phase2;
             hasEscudeiro = true;
-            LevelManager::getInstance()->getEntityManager().setHasEscudeiro(true);
+            LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::resume:
@@ -189,7 +188,7 @@ void Game::processPlaying() {
 
     mainWindow.clear(sf::Color::Blue);
 
-    while(gameState != exiting) {
+    while(gameState != exiting && gameState != showingGameOverMenu && gameState != showingRankingMenu) {
         while(mainWindow.pollEvent(playingEvent)) {
             switch(playingEvent.type) {
                 case sf::Event::KeyPressed:
@@ -197,8 +196,6 @@ void Game::processPlaying() {
                         gameState = showingPauseMenu;
                         showPauseMenu();
                     }
-                    break;
-                case sf::Event::KeyReleased:
                     break;
                 case sf::Event::Closed:
                     gameState = exiting;
@@ -209,20 +206,31 @@ void Game::processPlaying() {
         }
 
         refreshFrameTime();
-        mainWindow.clear(sf::Color(0, 0, 255));
+        mainWindow.clear(sf::Color::Blue);
 
-        GameMap::getInstance()->draw(player.getPosition());
-        player.updateStartPosition(0);
-
-        if(player.getPosition().x == 48*TILE_SIZE) {
-            LevelManager::getInstance()->nextLevel();
-
-            player.setPosX(windowW/2);
-        }
+        GameMap::getInstance()->draw();
+        checkPlayerState();
         
         LevelManager::getInstance()->process(frameTime.asSeconds());
         mainWindow.display();
     }
+}
+
+// ---------------------------------------------------------------------------
+
+void Game::checkPlayerState() {
+    if(player.getPosition().x < (GameMap::getInstance()->getSizeX() - 1)*TILE_SIZE && player.getPosition().x > (GameMap::getInstance()->getSizeX() - 2)*TILE_SIZE) {
+        LevelManager::getInstance()->nextLevel();
+
+        player.setPosX(windowW/2);
+        player.setPosY(windowH/2);
+    }
+
+    /*
+    if(!player.isAlive()) {
+        gameState = showingGameOverMenu;
+    }
+    */
 }
 
 // ---------------------------------------------------------------------------

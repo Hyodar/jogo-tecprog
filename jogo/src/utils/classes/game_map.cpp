@@ -70,10 +70,10 @@ void GameMap::loadMap() {
     json mapInfo;
     file >> mapInfo;
 
+    clearMap();
+
     sizeX = mapInfo["width"];
     sizeY = mapInfo["height"];
-
-    clearMap();
 
     for(int row = 0; row < sizeY ; row++) {
         std::vector<Tile*> lineTiles;
@@ -102,7 +102,9 @@ void GameMap::clearMap() {
 
 // ---------------------------------------------------------------------------
 
-void GameMap::setupTileStart(sf::Vector2f playerPos) {
+void GameMap::setupTileStart() {
+    sf::Vector2f playerPos = Game::getInstance()->getPlayer().getPosition();
+
     if(playerPos.x - windowW/2 < 0) {
         start = 0;
     }
@@ -117,9 +119,9 @@ void GameMap::setupTileStart(sf::Vector2f playerPos) {
 
 // ---------------------------------------------------------------------------
 
-void GameMap::draw(sf::Vector2f playerPos) {
+void GameMap::draw() {
 
-    setupTileStart(playerPos);
+    setupTileStart();
 
     background.setTextureRect(sf::IntRect(start * TILE_SIZE, 0, windowW, windowH));
     Game::getInstance()->getMainWindow().draw(background);

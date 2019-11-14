@@ -11,7 +11,10 @@
 // ---------------------
 
 #include "game_map.hpp"
-#include "collision_resolver.hpp"
+
+#include "obstacle.hpp"
+#include "tile.hpp"
+
 #include <constants.hpp>
 
 // Attribute initialization
@@ -117,4 +120,38 @@ void Character::render(sf::RenderWindow& window) {
 
     window.draw(sprite);
     window.draw(healthBar);
+}
+
+void Character::collideY(Tile* t) {
+    if(getSpeedY() > 0) {
+        setPosY(t->getBoundingBox().top - getSizeY());
+        setOnGround(true);
+    }
+    else if(getSpeedY() < 0) setPosY(t->getBoundingBox().top + t->getBoundingBox().height);
+    setSpeedY(0);
+}
+
+void Character::collideX(Tile* t) {
+    if(getSpeedX() > 0) {
+        setPosX(t->getBoundingBox().left - getSizeX());
+    }
+    else if(getSpeedX() < 0) setPosX(t->getBoundingBox().left + t->getBoundingBox().width);
+    setSpeedX(0);
+}
+
+void Character::collideY(Obstacle* o) {
+    if(getSpeedY() > 0) {
+        setPosY(o->getBoundingBox().top - getSizeY());
+        setOnGround(true);
+    }
+    else if(getSpeedY() < 0) setPosY(o->getBoundingBox().top + o->getBoundingBox().height);
+    setSpeedY(0);
+}
+
+void Character::collideX(Obstacle* o) {
+    if(getSpeedX() > 0) {
+        setPosX(o->getBoundingBox().left - getSizeX());
+    }
+    else if(getSpeedX() < 0) setPosX(o->getBoundingBox().left + o->getBoundingBox().width);
+    setSpeedX(0);
 }

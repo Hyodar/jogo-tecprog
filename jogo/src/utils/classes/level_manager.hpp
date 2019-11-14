@@ -19,7 +19,9 @@ public:
 
     void addObstacle(Obstacle* e) { entityManager.addObstacle(e); }
     void addEnemy(Enemy* e) { entityManager.addEnemy(e); }
+    void removeEnemy(Enemy* e) { entityManager.removeEnemy(e); }
     void addProjectile(Projectile* e) { entityManager.addProjectile(e); }
+    void removeProjectile(Projectile* e) { entityManager.removeProjectile(e); }
 
     void nextLevel();
     void changeLevel(int levelNum);

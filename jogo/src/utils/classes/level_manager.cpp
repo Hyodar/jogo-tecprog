@@ -63,6 +63,8 @@ void LevelManager::changeLevel(int levelNum) {
     currentLevel = levelNum;
     levels[currentLevel]->init();
     GameMap::getInstance()->loadMap();
+
+    std::cout << "Loaded level." << std::endl;
 }
 
 // ---------------------------------------------------------------------------

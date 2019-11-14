@@ -7,6 +7,12 @@
 
 #include "enemy.hpp"
 
+// Internal libraries
+// ----------------------
+
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+
 // Methods
 // ---------------------------------------------------------------------------
 
@@ -19,4 +25,32 @@ Enemy::Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p)
 
 Enemy::~Enemy() {
     // noop
+}
+
+// ---------------------------------------------------------------------------
+
+void Enemy::collideX(Bardo* b) {
+    b->takeDamage(20);
+    b->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
+void Enemy::collideY(Bardo* b) {
+    b->takeDamage(20);
+    b->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
+void Enemy::collideX(FielEscudeiro* f) {
+    f->takeDamage(10);
+    f->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
+void Enemy::collideY(FielEscudeiro* f) {
+    f->takeDamage(10);
+    f->jump(0.5);
 }

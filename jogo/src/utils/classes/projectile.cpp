@@ -6,13 +6,12 @@
 #include <constants.hpp>
 
 Projectile::Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY)
- : Entity(posX, posY, sizeX, sizeY), speed(speedX, speedY) {
-    shape = new sf::RectangleShape(sf::Vector2f(sizeX, sizeY));
-    shape->setTexture(GraphicsManager::getInstance()->getProjectileTexture());
+ : Entity(posX, posY, sizeX, sizeY), speed(speedX, speedY), shape(sf::Vector2f(sizeX, sizeY)) {
+    shape.setTexture(GraphicsManager::getInstance()->getProjectileTexture());
 }
 
 Projectile::~Projectile() {
-    delete shape;
+    /* noop */
 }
 
 void Projectile::updatePositionX(const float deltaTime) {
@@ -24,8 +23,8 @@ void Projectile::updatePositionY(const float deltaTime) {
 }
 
 void Projectile::render(sf::RenderWindow& window) {
-    shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
-    window.draw(*shape);
+    shape.setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
+    window.draw(shape);
 }
 
 float Projectile::getCollisionDmg() {
