@@ -24,6 +24,7 @@
 #include "splash_screen.hpp"
 #include "start_menu.hpp"
 #include "pause_menu.hpp"
+#include "score_manager.hpp"
 #include <constants.hpp>
 
 // Attribute Initialization
@@ -210,9 +211,11 @@ void Game::processPlaying() {
 
         GameMap::getInstance()->draw();
         checkPlayerState();
-        
+
         LevelManager::getInstance()->process(frameTime.asSeconds());
+        ScoreManager::getInstance()->process(mainWindow);
         mainWindow.display();
+
     }
 }
 

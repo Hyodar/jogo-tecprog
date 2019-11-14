@@ -18,6 +18,7 @@ private:
     sf::Texture pauseMenuTexture;
     sf::Texture startMenuTexture;
     sf::Texture tileSheetTexture;
+    sf::Font scorefont;
 
 public:
 
@@ -34,5 +35,6 @@ public:
     sf::Texture* getPauseMenuTexture();
     sf::Texture* getStartMenuTexture();
     sf::Texture* getTileSheetTexture();
+    sf::Font* getScoreFont(); 
 
 };

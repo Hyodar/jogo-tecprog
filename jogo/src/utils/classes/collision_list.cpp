@@ -308,7 +308,6 @@ void CollisionList::testProjectiles() {
 void CollisionList::testHitPoints() {
     for(Enemy* e : enemies) {
         if(!e->isAlive()) {
-            Game
             LevelManager::getInstance()->removeEnemy(e);
         }
     }
