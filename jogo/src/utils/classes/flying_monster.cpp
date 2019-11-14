@@ -14,11 +14,9 @@
 // ---------------------------------------------------------------------------
 
 FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
-   : Enemy(x, y, 84, 128, 80, pp), startingPos(x, y) {
+   : Enemy(x, y, 84, 128, 80, pp, 20), startingPos(x, y) {
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);
-
-    points = 20;
 
     healthBar.setFillColor(sf::Color::Yellow);
 

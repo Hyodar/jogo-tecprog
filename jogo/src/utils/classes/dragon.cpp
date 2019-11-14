@@ -27,13 +27,11 @@
 // ---------------------------------------------------------------------------
 
 Dragon::Dragon(int x, int y, Bardo* pp)
-   : Enemy(x, y, 256, 256, 1000, pp), attackCounter{-rand() % 101},
+   : Enemy(x, y, 256, 256, 1000, pp, 1000), attackCounter{-rand() % 101},
      attackInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(4, 4);
-
-    points = 1000;
 
     healthBar.setFillColor(sf::Color::Blue);
 }

@@ -10,6 +10,7 @@
 #include "tile.hpp"
 
 #include "level_manager.hpp"
+#include "score_manager.hpp"
 
 CollisionList::CollisionList() : bardo{nullptr}, fielEscudeiro{nullptr} {
     // noop
@@ -308,6 +309,7 @@ void CollisionList::testProjectiles() {
 void CollisionList::testHitPoints() {
     for(Enemy* e : enemies) {
         if(!e->isAlive()) {
+            ScoreManager::getInstance()->increasePoints(e->getPoints());
             LevelManager::getInstance()->removeEnemy(e);
         }
     }

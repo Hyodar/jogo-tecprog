@@ -93,7 +93,7 @@ void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
 
     int skeletonCount = 0;
     int mageCount = 0;
-    
+
     for(uint i = 0; i < mat.size(); i++) {
         if(!mat[i]) continue;
 

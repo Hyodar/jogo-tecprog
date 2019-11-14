@@ -9,13 +9,14 @@ class ScoreManager {
 public:
     ~ScoreManager();
     static ScoreManager* getInstance();
-
+    void increasePoints(int p=0);
     void process(sf::RenderWindow& window);
 
 private:
     ScoreManager();
     static ScoreManager* instance;
     int score;
+    sf::Text text; 
 
 };
 

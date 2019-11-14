@@ -16,8 +16,8 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-Enemy::Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p)
- : Character(posX, posY, sizeX, sizeY, hp), player{p} {
+Enemy::Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos)
+ : Character(posX, posY, sizeX, sizeY, hp), player{p}, points{pontos} {
     // noop
 }
 

@@ -14,7 +14,7 @@ GraphicsManager::GraphicsManager() {
     pauseMenuTexture.loadFromFile("resources/pause_menu.png");
     startMenuTexture.loadFromFile("resources/start_menu.png");
     tileSheetTexture.loadFromFile("resources/sheet.png");
-    scorefont.loadFromFile("bilboregular.ttf");
+    scorefont.loadFromFile("resources/bilboregular.ttf");
 }
 
 GraphicsManager::~GraphicsManager() {

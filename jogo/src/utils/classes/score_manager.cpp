@@ -12,6 +12,8 @@
 // ---------------------
 
 #include <iostream>
+#include <sstream>
+#include <string.h>
 
 // Internal libraries
 // ---------------------
@@ -25,6 +27,10 @@ ScoreManager* ScoreManager::instance = nullptr;
 // ---------------------------------------------------------------------------
 ScoreManager::ScoreManager(){
     score = 0;
+    text.setFont(*(GraphicsManager::getInstance()->getScoreFont()));
+    text.setFillColor(sf::Color::White);
+    text.setPosition(75,50);
+    text.setCharacterSize(40);
 }
 
 // ---------------------------------------------------------------------------
@@ -43,15 +49,18 @@ ScoreManager* ScoreManager::getInstance() {
 
 // ---------------------------------------------------------------------------
 
+void ScoreManager::increasePoints(int p) {
+    score += p;
+}
+
+// ---------------------------------------------------------------------------
+
 void ScoreManager::process(sf::RenderWindow& window){
-    sf::Text text;
-    text.setString("asdasdasdasdadsads");
-    text.setFont(*(GraphicsManager::getInstance()->getScoreFont()));
-    //text.setString("Hello world");
-    text.setFillColor(sf::Color::Red);
-    //text.setFont(sf::Font::getDefaultFont());
-    //text.setFont(*(GraphicsManager::getInstance()->getScoreFont()));
-    text.setPosition(400,200);
-    text.setCharacterSize(40);
+
+    std::stringstream str;
+    str << " score: " << score;
+    std::string s = str.str();
+
+    text.setString(s);
     window.draw(text);
 }
