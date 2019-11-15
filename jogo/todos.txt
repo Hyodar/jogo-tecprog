@@ -22,13 +22,14 @@ TODOS DONES
  - fazer as textures so darem loadFromFile uma vez -> colocar tudo em um GraphicsManager
  - limpar bagunça de collide
  - deltaTime inutil em updateStartPosition
+ - tirar dano de contato com caixa
+ - tirar virtual de getCollisionDmg
 
 TODOS
  - tirar obstacleNum, etc.
  - tirar durability de box
- - tirar virtual de getCollisionDmg
- - tirar dano de contato com caixa
  - consertar os random do salao (comparar com taberna)
+ - tirar o seg fault quando chega no final da segunda fase
  * tratar caso que o arquivo de save n exista ou esteja vazio
  
 

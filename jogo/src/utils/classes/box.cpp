@@ -53,4 +53,3 @@ void Box::render(sf::RenderWindow& window) {
     window.draw(*shape);
     //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
 }
-

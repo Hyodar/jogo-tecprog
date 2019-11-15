@@ -21,13 +21,13 @@ public:
     }
 
     virtual sf::FloatRect getBoundingBox() const = 0;
-    virtual void takeDamage(float dmg) { 
+    virtual void takeDamage(float dmg) {
         // noop
     }
     virtual void updatePosition(float deltaTime) { /* noop */ }
 
-    virtual float getCollisionDmg() { return 10; }
-    
+    float getCollisionDmg() { return 10; }
+
     json store() {
         json j;
 
