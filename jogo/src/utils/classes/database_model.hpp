@@ -1,11 +1,15 @@
 
-#include <vector>
-template <class S>
+#ifndef DATABASE_MODEL_HPP_
+#define DATABASE_MODEL_HPP_
+
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 class DatabaseModel {
 
 public:
-    virtual std::vector<float> store() = 0;
-    //virtual S* recover() = 0;
+    virtual json store() = 0;
 
 };
+
+#endif // DATABASE_MODEL_HPP_

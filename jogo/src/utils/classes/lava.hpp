@@ -30,8 +30,6 @@ public:
 
     float getCollisionDmg() { return hitDmg; }
 
-    std::vector<float> store();
-
 };
 
 #endif // LAVA_HPP_

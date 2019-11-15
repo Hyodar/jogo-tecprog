@@ -11,6 +11,7 @@
 // ---------------------
 
 #include "graphics_manager.hpp"
+#include <constants.hpp>
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -21,7 +22,7 @@ int Box::obstacleNum = 2;
 // Methods
 // ---------------------------------------------------------------------------
 
-Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y) {
+Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y, ObstacleClassification::BOX) {
     shape = new sf::RectangleShape(sf::Vector2f(2*TILE_SIZE, 2*TILE_SIZE));
     shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(sf::IntRect(7*TILE_SIZE, 0, 2*TILE_SIZE, 2*TILE_SIZE));
@@ -52,17 +53,4 @@ void Box::render(sf::RenderWindow& window) {
     window.draw(*shape);
     //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
 }
-
-// ---------------------------------------------------------------------------
-
-std::vector<float> Box::store() {
-    std::vector<float> resp;
-    
-    resp.push_back(ObstacleClassification::BoxObstacle);
-    resp.push_back(position.x);
-    resp.push_back(position.y);
-    
-    return resp;
-}
-
 

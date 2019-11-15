@@ -22,7 +22,7 @@ sf::Texture FielEscudeiro::texture;
 // ---------------------------------------------------------------------------
 
 FielEscudeiro::FielEscudeiro(int x, int y, int sizeX, int sizeY, double maxHP) 
-   : Character(x, y, 64, 64, 100) {
+   : Character(x, y, 64, 64, 100, CharacterClassification::FIEL_ESCUDEIRO) {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getFielEscudeiroTexture()));
     sprite.setScale(2, 2);

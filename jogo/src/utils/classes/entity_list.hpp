@@ -2,12 +2,14 @@
 #ifndef ENTITY_LIST_HPP_
 #define ENTITY_LIST_HPP_
 
+#include <SFML/Graphics.hpp>
+
 #include "list.hpp"
 #include "entity.hpp"
 #include "game.hpp"
-#include <SFML/Graphics.hpp>
+#include "database_model.hpp"
 
-class EntityList {
+class EntityList : public DatabaseModel {
 
 private:
     List<Entity*> list;
@@ -27,6 +29,8 @@ public:
 
     void render(sf::RenderWindow& window);
     void clean();
+
+    json store();
 };
 
 #endif // ENTITY_LIST_HPP_

@@ -27,8 +27,9 @@
 // ---------------------------------------------------------------------------
 
 Mage::Mage(int x, int y, Bardo* pp)
-   : Enemy(x, y, 86, 128, 100, pp, 30), attackCounter{-rand() % 101},
-     attackInterval{1700} {
+ : Enemy(x, y, 86, 128, 100, pp, 30, CharacterClassification::MAGE),
+   attackCounter{-rand() % 101},
+   attackInterval{1700} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);

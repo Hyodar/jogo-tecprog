@@ -13,10 +13,10 @@ class Enemy;
 class Bardo;
 class FielEscudeiro;
 
-class Obstacle : public Entity, public DatabaseModel<Obstacle*> {
+class Obstacle : public Entity {
 
 public:
-    Obstacle(int posX, int posY, int sizeX, int sizeY) : Entity(posX, posY, sizeX, sizeY) {
+    Obstacle(int posX, int posY, int sizeX, int sizeY, int classification) : Entity(posX, posY, sizeX, sizeY, classification) {
         // noop
     }
 
@@ -27,6 +27,16 @@ public:
     virtual void updatePosition(float deltaTime) { /* noop */ }
 
     virtual float getCollisionDmg() { return 10; }
+    
+    json store() {
+        json j;
+
+        j["classification"] = classification;
+        j["posX"] = position.x;
+        j["posY"] = position.y;
+
+        return j;
+    }
 
     virtual void collideX(Enemy* e) { /* noop */ }
     virtual void collideY(Enemy* e) { /* noop */ }

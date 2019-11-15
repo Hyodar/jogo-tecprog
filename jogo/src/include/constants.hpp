@@ -24,9 +24,14 @@ enum CharacterClassification {
 };
 
 enum ObstacleClassification {
-    SpikeObstacle = 6,
-    LavaObstacle = 7,
-    BoxObstacle = 8
+    SPIKE = 6,
+    LAVA = 7,
+    BOX = 8
+};
+
+enum ProjectileClassification {
+    FIREBALL = 9,
+    ENERGY_BALL = 10
 };
 
 #endif // CONSTANTS_HPP_

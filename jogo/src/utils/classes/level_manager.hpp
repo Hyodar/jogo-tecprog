@@ -25,6 +25,7 @@ public:
 
     void nextLevel();
     void changeLevel(int levelNum);
+    void recoverLevel(int levelNum);
     void cleanLevel();
     
     Level* getLevel() { return levels[currentLevel]; }

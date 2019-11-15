@@ -62,13 +62,13 @@ void Salao::spawnObstacles(std::vector<int>& mat, int layerWidth) {
         sf::Vector2f pos = getSpawnPosition(i, layerWidth);
 
         switch(mat[i]) {
-            case ObstacleClassification::SpikeObstacle:
+            case ObstacleClassification::SPIKE:
                 spikes.push_back(pos);
                 break;
-            case ObstacleClassification::LavaObstacle:
+            case ObstacleClassification::LAVA:
                 lavas.push_back(pos);
                 break;
-            case ObstacleClassification::BoxObstacle:
+            case ObstacleClassification::BOX:
                 boxes.push_back(pos);
                 break;
             default:;

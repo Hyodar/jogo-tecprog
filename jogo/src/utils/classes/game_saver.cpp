@@ -7,6 +7,14 @@
 
 #include "game_saver.hpp"
 
+// Standard libraries
+// ---------------------
+
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <ios>
+
 // External libraries
 // ---------------------
 
@@ -16,54 +24,161 @@ using json = nlohmann::json;
 // Internal libraries
 // ---------------------
 
+#include "game.hpp"
 #include "level_manager.hpp"
+#include "score_manager.hpp"
+
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+#include "skeleton.hpp"
+#include "mage.hpp"
+#include "flying_monster.hpp"
+#include "dragon.hpp"
 #include "spike.hpp"
 #include "lava.hpp"
 #include "box.hpp"
-#include "game.hpp"
-#include "entity.hpp"
-#include "character.hpp"
-#include "bardo.hpp"
+#include "fireball.hpp"
+#include "energy_ball.hpp"
+
+#include "obstacle.hpp"
+#include "enemy.hpp"
+#include "projectile.hpp"
+
+#include <constants.hpp>
+
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
+GameSaver* GameSaver::instance = nullptr;
 
 // Methods
 // ---------------------------------------------------------------------------
 
+GameSaver::GameSaver() {
+    // noop
+}
+
+GameSaver::~GameSaver() {
+    delete instance;
+}
+
+GameSaver* GameSaver::getInstance() {
+    if(!instance) instance = new GameSaver();
+    return instance;
+}
+
 void GameSaver::saveState() {
 
-    json j; // "data/save.json"
+    std::ofstream out("data/save.json", std::ios::out | std::ios::trunc);
+    out.exceptions(std::ios::badbit);
 
-    j["phase"] = LevelManager::getInstance()->getCurrentLevel();
-    j["score"] = Game::getInstance()->getScore();
-
-    //const Bardo& b = Game::getInstance()->getPlayer();
-
-    // j["bardo"] = { b.getPosX(), b.getPosY(), b.getHP() };
-    // //j["fielescudeiro"] = { f.getPosX(), f.getPosY(), f.getHP() };
-    // // TODO - player 2
-
-    /*
-    auto obstacles = json::array();
-    for(Obstacle* e : LevelManager::getInstance()->getObstacles()) {
-       obstacles.push_back(e->store());
+    try {
+        out << std::setw(4) << Game::getInstance()->store() << std::endl;
     }
-    auto projectiles
-    */
+    catch(std::ifstream::failure e) {
+        std::cerr << "[!] Error writing to 'data/save.json'!";
+    }
 
-    //j["obstacles"] = obstacles;
-
-    // auto enemies = json::array();
-    // for(Character* c : LevelManager::getInstance()->getEnemies()) {
-    //     enemies.push_back({ /*e->enemyNum,*/ c->getPosX(), c->getPosY(), c->getHP() });
-    // }
-
-    // j["enemies"] = enemies;
-
+    out.close();
 }
 
 // ---------------------------------------------------------------------------
 
 bool GameSaver::recoverState() {
-    // TODO
+    
+    json j;
+
+    std::ifstream in("data/save.json");
+    in >> j;
+
+    Game* game = Game::getInstance();
+    ScoreManager* scoreMng = ScoreManager::getInstance();
+    LevelManager* levelMng = LevelManager::getInstance();
+
+    int phase = j["phase"];
+    game->setGamePhase(phase);
+
+    int score = j["score"];
+    scoreMng->setScore(score);
+
+    for(auto obj : j["entities"]) {
+        switch((int) obj["classification"]) {
+            case CharacterClassification::BARDO: {
+                Bardo& bardo = game->getPlayer();
+                bardo.setPosX(obj["posX"]);
+                bardo.setPosY(obj["posY"]);
+                bardo.setHP(obj["hp"]);
+                
+            } break;
+            case CharacterClassification::FIEL_ESCUDEIRO: {
+                FielEscudeiro& f = game->getFielEscudeiro();
+                f.setPosX(obj["posX"]);
+                f.setPosY(obj["posY"]);
+                f.setHP(obj["hp"]);
+                game->setHasEscudeiro(true);
+
+            } break;
+            case CharacterClassification::SKELETON: {
+                Skeleton* s = new Skeleton(obj["posX"], obj["posY"], &(game->getPlayer()));
+                s->setHP(obj["hp"]);
+                
+                levelMng->addEnemy(static_cast<Enemy*>(s));
+
+            } break;
+            case CharacterClassification::MAGE: {
+                Mage* m = new Mage(obj["posX"], obj["posY"], &(game->getPlayer()));
+                m->setHP(obj["hp"]);
+                
+                levelMng->addEnemy(static_cast<Enemy*>(m));
+
+            } break;
+            case CharacterClassification::FLYING_MONSTER: {
+                FlyingMonster* fm = new FlyingMonster(obj["posX"], obj["posY"], &(game->getPlayer()));
+                fm->setHP(obj["hp"]);
+                
+                levelMng->addEnemy(static_cast<Enemy*>(fm));
+
+            } break;
+            case CharacterClassification::DRAGON: {
+                Dragon* d = new Dragon(obj["posX"], obj["posY"], &(game->getPlayer()));
+                d->setHP(obj["hp"]);
+                
+                levelMng->addEnemy(static_cast<Enemy*>(d));
+
+            } break;
+            case ObstacleClassification::SPIKE: {
+                Spike* s = new Spike(obj["posX"], obj["posY"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(s));
+
+            } break;
+            case ObstacleClassification::LAVA: {
+                Lava* l = new Lava(obj["posX"], obj["posY"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(l));
+
+            } break;
+            case ObstacleClassification::BOX: {
+                Box* b = new Box(obj["posX"], obj["posY"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(b));
+
+            } break;
+            case ProjectileClassification::FIREBALL: {
+                Fireball* f = new Fireball(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
+
+                levelMng->addProjectile(static_cast<Projectile*>(f));
+
+            } break;
+            case ProjectileClassification::ENERGY_BALL: {
+                EnergyBall* e = new EnergyBall(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
+
+                levelMng->addProjectile(static_cast<Projectile*>(e));
+
+            } break;
+        }
+    }
+
 
     return false;
 }

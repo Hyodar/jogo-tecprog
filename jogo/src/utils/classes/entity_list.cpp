@@ -39,3 +39,13 @@ void EntityList::clean() {
     list.push_back(&(Game::getInstance()->getPlayer()));
     if(hasEscudeiro) list.push_back(&(Game::getInstance()->getFielEscudeiro()));
 }
+
+json EntityList::store() {
+    json j;
+
+    for(auto it = list.begin(); it != list.end(); it++) {
+        j.push_back((*it)->store());
+    }
+
+    return j;
+}

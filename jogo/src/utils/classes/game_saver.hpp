@@ -4,8 +4,16 @@
 
 class GameSaver {
 
-    static void saveState();
-    static bool recoverState();
+private:
+    GameSaver();
+    static GameSaver* instance;
+
+public:
+    ~GameSaver();
+    static GameSaver* getInstance();
+
+    void saveState();
+    bool recoverState();
 
 };
 

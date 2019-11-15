@@ -7,11 +7,6 @@
 
 #include "bardo.hpp"
 
-// Standard libraries
-// ---------------------
-
-#include <iostream>
-
 // Internal libraries
 // ---------------------
 
@@ -24,7 +19,8 @@
 // ---------------------------------------------------------------------------
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP) 
-   : Character(x, y, 64, 64, 100), attackCounter{0}, attackInterval{300} {
+ : Character(x, y, 64, 64, 100, CharacterClassification::BARDO),
+   attackCounter{0}, attackInterval{300} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
     sprite.setScale(2, 2);
@@ -129,4 +125,17 @@ void Bardo::collideX(Enemy* e) {
         e->takeDamage(50);
         e->jump(0.5);
     }
+}
+
+// ---------------------------------------------------------------------------
+
+json Bardo::store() {
+    json j;
+
+    j["classification"] = classification;
+    j["hp"] = hitPoints;
+    j["posX"] = position.x;
+    j["posY"] = position.y;
+
+    return j;
 }

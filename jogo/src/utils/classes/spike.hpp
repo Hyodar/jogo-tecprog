@@ -27,8 +27,6 @@ public:
     void updatePosition(float deltaTime) { /* DELETE SOON */ }
 
     float getCollisionDmg() { return hitDmg; }
-
-    std::vector<float> store();
     
 };
 

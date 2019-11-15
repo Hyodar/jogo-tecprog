@@ -19,12 +19,18 @@ TODOS DONES
  - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez)
  - Transformar GameMap, TileManager para singleton
  - trocar de Entity* pra Obstacle* em obstacles do entityManager
+ - fazer as textures so darem loadFromFile uma vez -> colocar tudo em um GraphicsManager
+ - limpar bagunça de collide
+ - deltaTime inutil em updateStartPosition
 
 TODOS
- - deltaTime inutil em updateStartPosition
- - limpar bagunça de collide
+ - tirar obstacleNum, etc.
+ - tirar durability de box
+ - tirar virtual de getCollisionDmg
+ - tirar dano de contato com caixa
  - consertar os random do salao (comparar com taberna)
- - fazer as textures so darem loadFromFile uma vez -> colocar tudo em um GraphicsManager
+ * tratar caso que o arquivo de save n exista ou esteja vazio
+ 
 
  simao:
  - entityManager -> entityList : List

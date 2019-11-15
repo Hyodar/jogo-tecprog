@@ -29,7 +29,7 @@ class Character : public Entity {
         static const int walkSpeed;
 
     public:
-        Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0);
+        Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0, int _classification=-1);
         ~Character();
 
         virtual void checkKeys();
@@ -59,6 +59,8 @@ class Character : public Entity {
 
         float getHP() { return hitPoints; }
         void setHP(float hp) { hitPoints = hp; }
+
+        virtual json store();
 };
 
 #endif // CHARACTER_HPP_

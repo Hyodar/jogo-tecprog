@@ -17,9 +17,8 @@ protected:
     float collisionDmg;
     float traveledDist;
 
-
 public:
-    Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY);
+    Projectile(int posX, int posY, int sizeX, int sizeY, float speedX, float speedY, int classification);
     virtual ~Projectile();
 
     float getTraveledDist() const;
@@ -36,6 +35,8 @@ public:
 
     void render(sf::RenderWindow& window);
     virtual float getCollisionDmg();
+
+    json store();
 
 };
 

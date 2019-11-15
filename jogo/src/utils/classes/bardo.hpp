@@ -2,6 +2,8 @@
 #ifndef BARDO_HPP_
 #define BARDO_HPP_
 
+#include <string>
+
 #include <SFML/Graphics.hpp>
 
 #include "character.hpp"
@@ -25,6 +27,8 @@ public:
 
     void collideX(Enemy* e);
     void collideY(Enemy* e);
+
+    json store();
 
 };
 

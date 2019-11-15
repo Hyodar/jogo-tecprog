@@ -24,8 +24,8 @@
 // ---------------------------------------------------------------------------
 
 Skeleton::Skeleton(int x, int y, Bardo* pp)
-   : Enemy(x, y, 86, 128, 100, pp, 10), jumpCounter{-rand() % 101},
-     jumpInterval{rand() % 501} {
+ : Enemy(x, y, 86, 128, 100, pp, 10, CharacterClassification::SKELETON),
+   jumpCounter{-rand() % 101}, jumpInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);

@@ -1,6 +1,8 @@
 
 #include "collision_list.hpp"
 
+#include <vector>
+
 #include "enemy.hpp"
 #include "obstacle.hpp"
 #include "projectile.hpp"
@@ -307,10 +309,16 @@ void CollisionList::testProjectiles() {
 }
 
 void CollisionList::testHitPoints() {
+    std::vector<Enemy*> toErase;
+
     for(Enemy* e : enemies) {
         if(!e->isAlive()) {
             ScoreManager::getInstance()->increasePoints(e->getPoints());
-            LevelManager::getInstance()->removeEnemy(e);
+            toErase.push_back(e);
         }
+    }
+
+    for(Enemy* e : toErase) {
+        LevelManager::getInstance()->removeEnemy(e);
     }
 }

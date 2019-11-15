@@ -4,6 +4,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 #include "list.hpp"
 
 #include "entity_list.hpp"
@@ -51,6 +54,8 @@ public:
         entityList.add(static_cast<Entity*>(f));
         collisionList.add(f);
     }
+
+    json store();
 
 };
 

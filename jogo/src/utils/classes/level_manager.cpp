@@ -69,6 +69,19 @@ void LevelManager::changeLevel(int levelNum) {
 
 // ---------------------------------------------------------------------------
 
+void LevelManager::recoverLevel(int levelNum) {
+    std::cout << "Recovering level " << levelNum << "..." << std::endl;
+
+    if(levelNum < 0 || levelNum > 2) return;
+
+    currentLevel = levelNum;
+    GameMap::getInstance()->loadMap();
+
+    std::cout << "Loaded level." << std::endl;
+}
+
+// ---------------------------------------------------------------------------
+
 void LevelManager::cleanLevel() {
     entityManager.clean();
 }

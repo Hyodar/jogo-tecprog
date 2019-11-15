@@ -37,7 +37,7 @@ GameMap* GameMap::instance = nullptr;
 // ---------------------------------------------------------------------------
 
 GameMap::GameMap() : background(sf::Vector2f(windowW, windowH)),
- sizeX{-1}, sizeY{-1}, start{0.0f}                      {
+ sizeX{-1}, sizeY{-1}, start{0.0f} {
     // noop
 }
 

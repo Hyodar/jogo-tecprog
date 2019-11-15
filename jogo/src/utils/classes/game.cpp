@@ -25,6 +25,7 @@
 #include "start_menu.hpp"
 #include "pause_menu.hpp"
 #include "score_manager.hpp"
+#include "game_saver.hpp"
 #include <constants.hpp>
 
 // Attribute Initialization
@@ -151,7 +152,11 @@ void Game::showStartMenu() {
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case StartMenu::resume:
-            // TODO logic
+            gameState = playing;
+            LevelManager::getInstance()->cleanLevel();
+            GameSaver::getInstance()->recoverState();
+            LevelManager::getInstance()->recoverLevel(gamePhase);
+            break;
             break;
         default:;
     }
@@ -174,7 +179,7 @@ void Game::showPauseMenu() {
             gameState = playing;
             break;
         case PauseMenu::save:
-            // TODO - logic
+            GameSaver::getInstance()->saveState();
             break;
         default:;
     }
@@ -213,7 +218,7 @@ void Game::processPlaying() {
         checkPlayerState();
 
         LevelManager::getInstance()->process(frameTime.asSeconds());
-        ScoreManager::getInstance()->process(mainWindow);
+        ScoreManager::getInstance()->process();
         mainWindow.display();
 
     }
@@ -246,4 +251,16 @@ void Game::refreshFrameTime() {
 
 void Game::stop() {
     mainWindow.close();
+}
+
+// ---------------------------------------------------------------------------
+
+json Game::store() {
+    json j;
+
+    j["phase"] = gamePhase;
+    j["score"] = ScoreManager::getInstance()->getScore();
+    j["entities"] = LevelManager::getInstance()->getEntityManager().store();
+
+    return j;
 }

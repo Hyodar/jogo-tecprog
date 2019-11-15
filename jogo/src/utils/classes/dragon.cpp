@@ -27,8 +27,8 @@
 // ---------------------------------------------------------------------------
 
 Dragon::Dragon(int x, int y, Bardo* pp)
-   : Enemy(x, y, 256, 256, 1000, pp, 1000), attackCounter{-rand() % 101},
-     attackInterval{rand() % 501} {
+   : Enemy(x, y, 256, 256, 1000, pp, 1000, CharacterClassification::DRAGON),
+     attackCounter{-rand() % 101}, attackInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(4, 4);
@@ -44,7 +44,7 @@ Dragon::~Dragon(){
 
 // ---------------------------------------------------------------------------
 
- void Dragon::checkPlayerPos(){
+void Dragon::checkPlayerPos(){
 
     float playerpos = player->getPosX();
     const float dist = playerpos - position.x;

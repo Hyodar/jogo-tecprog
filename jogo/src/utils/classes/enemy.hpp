@@ -15,7 +15,7 @@ protected:
     Bardo* player;
 
 public:
-    Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos);
+    Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos, int classification);
     virtual ~Enemy();
 
     int getPoints()const;
@@ -27,6 +27,8 @@ public:
 
     virtual void collideX(FielEscudeiro* f);
     virtual void collideY(FielEscudeiro* f);
+
+    json store();
 
 };
 

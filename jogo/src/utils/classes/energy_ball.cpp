@@ -7,7 +7,7 @@
 #include <constants.hpp>
 
 EnergyBall::EnergyBall(int posX, int posY, float speedX, float speedY, bool as)
- : Projectile(posX, posY, 3 * TILE_SIZE / 2, 3 * TILE_SIZE / 2, speedX, speedY) {
+ : Projectile(posX, posY, 3 * TILE_SIZE / 2, 3 * TILE_SIZE / 2, speedX, speedY, ProjectileClassification::ENERGY_BALL) {
     shape.setTextureRect(sf::IntRect(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
     shape.setScale(0.9, 0.9);
 

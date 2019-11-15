@@ -26,8 +26,8 @@ const int Character::walkSpeed{500};
 // Methods
 // ---------------------------------------------------------------------------
 
-Character::Character (int x, int y, int sizeX, int sizeY, double maxHP)
-    : Entity(x, y, sizeX, sizeY), healthBar(sf::Vector2f(64, healthBarHeight)),
+Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification)
+    : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, healthBarHeight)),
       speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
       invulnerable{0}, walkingRight{true} {
 
@@ -154,4 +154,17 @@ void Character::collideX(Obstacle* o) {
     }
     else if(getSpeedX() < 0) setPosX(o->getBoundingBox().left + o->getBoundingBox().width);
     setSpeedX(0);
+}
+
+// ---------------------------------------------------------------------------
+
+json Character::store() {
+    json j;
+
+    j["classification"] = classification;
+    j["hp"] = hitPoints;
+    j["posX"] = position.x;
+    j["posY"] = position.y;
+
+    return j;
 }

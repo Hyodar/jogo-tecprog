@@ -16,8 +16,8 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-Enemy::Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos)
- : Character(posX, posY, sizeX, sizeY, hp), player{p}, points{pontos} {
+Enemy::Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos, int classification)
+ : Character(posX, posY, sizeX, sizeY, hp, classification), player{p}, points{pontos} {
     // noop
 }
 
@@ -68,4 +68,17 @@ void Enemy::collideX(FielEscudeiro* f) {
 void Enemy::collideY(FielEscudeiro* f) {
     f->takeDamage(10);
     f->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
+json Enemy::store() {
+    json j;
+
+    j["classification"] = classification;
+    j["hp"] = hitPoints;
+    j["posX"] = position.x;
+    j["posY"] = position.y;
+
+    return j;
 }

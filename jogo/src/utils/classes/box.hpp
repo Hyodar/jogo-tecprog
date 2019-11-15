@@ -30,8 +30,6 @@ public:
 
     float getCollisionDmg() { return 0; }
 
-    std::vector<float> store();
-
 };
 
 #endif // BOX_HPP_

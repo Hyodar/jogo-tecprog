@@ -101,3 +101,8 @@ void EntityManager::removeProjectile(Projectile* e) {
     delete e;
 }
 
+// ---------------------------------------------------------------------------
+
+json EntityManager::store() {
+    return entityList.store();
+}

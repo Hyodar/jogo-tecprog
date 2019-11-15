@@ -6,17 +6,19 @@
 // ---------------------
 
 #include "score_manager.hpp"
-#include "graphics_manager.hpp"
 
 // Standard libraries
 // ---------------------
 
 #include <iostream>
 #include <sstream>
-#include <string.h>
+#include <string>
 
 // Internal libraries
 // ---------------------
+
+#include "game.hpp"
+#include "graphics_manager.hpp"
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -25,8 +27,7 @@ ScoreManager* ScoreManager::instance = nullptr;
 
 // Methods
 // ---------------------------------------------------------------------------
-ScoreManager::ScoreManager(){
-    score = 0;
+ScoreManager::ScoreManager() : score{0} {
     text.setFont(*(GraphicsManager::getInstance()->getScoreFont()));
     text.setFillColor(sf::Color::White);
     text.setPosition(75,50);
@@ -36,7 +37,7 @@ ScoreManager::ScoreManager(){
 // ---------------------------------------------------------------------------
 
 ScoreManager::~ScoreManager(){
-    //noop
+    delete instance;
 }
 
 // ---------------------------------------------------------------------------
@@ -55,12 +56,22 @@ void ScoreManager::increasePoints(int p) {
 
 // ---------------------------------------------------------------------------
 
-void ScoreManager::process(sf::RenderWindow& window){
-
+void ScoreManager::process(){
     std::stringstream str;
     str << " score: " << score;
-    std::string s = str.str();
 
-    text.setString(s);
-    window.draw(text);
+    text.setString(str.str());
+    Game::getInstance()->getMainWindow().draw(text);
+}
+
+// ---------------------------------------------------------------------------
+
+int ScoreManager::getScore(){
+    return score;
+}
+
+// ---------------------------------------------------------------------------
+
+void ScoreManager::setScore(int s){
+    score = s;
 }
