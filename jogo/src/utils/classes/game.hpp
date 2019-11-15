@@ -46,6 +46,7 @@ public:
     void setGamePhase(int p) { gamePhase = (Game::GamePhase) p; }
 
     json store();
+    void resume();
 
 private:
     Game();

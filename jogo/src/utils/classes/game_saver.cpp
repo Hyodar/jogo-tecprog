@@ -10,7 +10,6 @@
 // Standard libraries
 // ---------------------
 
-#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <ios>
@@ -85,11 +84,30 @@ void GameSaver::saveState() {
 // ---------------------------------------------------------------------------
 
 bool GameSaver::recoverState() {
-    
-    json j;
 
     std::ifstream in("data/save.json");
-    in >> j;
+
+    // Testa se o arquivo existe
+    if(!in.good()) return false;
+
+    // Testa se o arquivo ta vazio
+    in.seekg(0, std::ios::end);
+    if(!in.tellg()) return false;
+    in.seekg(0, std::ios::beg);
+
+    json j;
+
+    try {
+        in >> j;
+    }
+    catch(json::exception& e) {
+        std::cerr << "[!] Erro na leitura do arquivo de save. Iniciando jogo na fase 1 e com 1 jogador..." << std::endl;
+        std::cerr << e.what() << std::endl;
+        in.close();
+        return false;
+    }
+
+    LevelManager::getInstance()->cleanLevel();
 
     Game* game = Game::getInstance();
     ScoreManager* scoreMng = ScoreManager::getInstance();
@@ -179,6 +197,7 @@ bool GameSaver::recoverState() {
         }
     }
 
+    in.close();
 
-    return false;
+    return true;
 }

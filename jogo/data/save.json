@@ -2,15 +2,35 @@
     "entities": [
         {
             "classification": 0,
-            "hp": -60.0,
-            "posX": 758.6604614257813,
-            "posY": 576.0
+            "hp": 0.0,
+            "posX": 1786.8719482421875,
+            "posY": 640.0
         },
         {
             "classification": 1,
             "hp": 100.0,
             "posX": 412.0,
-            "posY": 822426.75
+            "posY": 166601.4375
+        },
+        {
+            "classification": 6,
+            "posX": 960.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 1024.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 1536.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 1152.0,
+            "posY": 640.0
         },
         {
             "classification": 6,
@@ -24,42 +44,12 @@
         },
         {
             "classification": 6,
-            "posX": 1152.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "posX": 1024.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
             "posX": 576.0,
             "posY": 640.0
         },
         {
             "classification": 6,
-            "posX": 960.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
             "posX": 1088.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "posX": 1536.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4928.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4224.0,
             "posY": 640.0
         },
         {
@@ -69,12 +59,7 @@
         },
         {
             "classification": 7,
-            "posX": 4608.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4096.0,
+            "posX": 4800.0,
             "posY": 640.0
         },
         {
@@ -83,9 +68,14 @@
             "posY": 640.0
         },
         {
-            "classification": 8,
-            "posX": 1344.0,
-            "posY": 512.0
+            "classification": 7,
+            "posX": 4224.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 7,
+            "posX": 4736.0,
+            "posY": 640.0
         },
         {
             "classification": 8,
@@ -94,13 +84,8 @@
         },
         {
             "classification": 8,
-            "posX": 5440.0,
-            "posY": 576.0
-        },
-        {
-            "classification": 8,
-            "posX": 5632.0,
-            "posY": 576.0
+            "posX": 1024.0,
+            "posY": 320.0
         },
         {
             "classification": 8,
@@ -114,82 +99,30 @@
         },
         {
             "classification": 8,
-            "posX": 1024.0,
-            "posY": 320.0
+            "posX": 3200.0,
+            "posY": 512.0
         },
         {
-            "classification": 5,
-            "hp": 1000.0,
-            "posX": 1152.0,
-            "posY": 256.0
-        },
-        {
-            "classification": 4,
-            "hp": 80.0,
-            "posX": 1803.484375,
-            "posY": 237.01321411132813
-        },
-        {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 192.0,
+            "classification": 8,
+            "posX": 5632.0,
             "posY": 576.0
         },
         {
-            "classification": 9,
-            "posX": 378.52691650390625,
-            "posY": 522.3916625976563,
-            "speedX": -472.6824035644531,
-            "speedY": 163.00718688964844
+            "classification": 8,
+            "posX": 5440.0,
+            "posY": 576.0
         },
         {
-            "classification": 9,
-            "posX": 562.3599243164063,
-            "posY": 705.6643676757813,
-            "speedX": -397.3326721191406,
-            "speedY": 303.52386474609375
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 3584.0,
+            "posY": 302.9538269042969
         },
         {
-            "classification": 9,
-            "posX": 703.176513671875,
-            "posY": 692.9055786132813,
-            "speedX": -357.8892517089844,
-            "speedY": 349.1636962890625
-        },
-        {
-            "classification": 9,
-            "posX": 799.2789306640625,
-            "posY": 488.09539794921875,
-            "speedX": -417.3261413574219,
-            "speedY": 275.3886413574219
-        },
-        {
-            "classification": 9,
-            "posX": 869.2476806640625,
-            "posY": 436.79779052734375,
-            "speedX": -420.81195068359375,
-            "speedY": 270.0320739746094
-        },
-        {
-            "classification": 9,
-            "posX": 881.4848022460938,
-            "posY": 433.26519775390625,
-            "speedX": -417.7391357421875,
-            "speedY": 274.76177978515625
-        },
-        {
-            "classification": 9,
-            "posX": 1066.7030029296875,
-            "posY": 324.6212158203125,
-            "speedX": -387.7638854980469,
-            "speedY": 315.6567077636719
-        },
-        {
-            "classification": 10,
-            "posX": 315.5895080566406,
-            "posY": 576.0,
-            "speedX": 500.0,
-            "speedY": 0.0
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 5184.0,
+            "posY": 297.7038879394531
         }
     ],
     "phase": 0,

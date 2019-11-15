@@ -84,6 +84,8 @@ void GameMap::loadMap() {
         }
         tileMap.push_back(lineTiles);
     }
+
+    file.close();
 }
 
 // ---------------------------------------------------------------------------

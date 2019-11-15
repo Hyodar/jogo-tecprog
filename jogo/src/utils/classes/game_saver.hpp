@@ -2,6 +2,8 @@
 #ifndef GAME_SAVER_HPP_
 #define GAME_SAVER_HPP_
 
+#include <fstream>
+
 class GameSaver {
 
 private:

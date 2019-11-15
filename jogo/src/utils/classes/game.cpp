@@ -153,14 +153,10 @@ void Game::showStartMenu() {
             break;
         case StartMenu::resume:
             gameState = playing;
-            LevelManager::getInstance()->cleanLevel();
-            GameSaver::getInstance()->recoverState();
-            LevelManager::getInstance()->recoverLevel(gamePhase);
-            break;
+            resume();
             break;
         default:;
     }
-    // TODO - talvez colocar aqui o negocio pra pegar o numero de jogadores
 
     refreshFrameTime();
 }
@@ -258,9 +254,22 @@ void Game::stop() {
 json Game::store() {
     json j;
 
-    j["phase"] = gamePhase;
-    j["score"] = ScoreManager::getInstance()->getScore();
     j["entities"] = LevelManager::getInstance()->getEntityManager().store();
+    j["score"] = ScoreManager::getInstance()->getScore();
+    j["phase"] = gamePhase;
 
     return j;
 }
+
+// ---------------------------------------------------------------------------
+
+void Game::resume() {
+    if(GameSaver::getInstance()->recoverState()) {
+        LevelManager::getInstance()->recoverLevel(gamePhase);
+    }
+    else {
+        gamePhase = phase1;
+        LevelManager::getInstance()->changeLevel(gamePhase);
+    }
+}
+
