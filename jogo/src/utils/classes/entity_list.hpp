@@ -16,7 +16,7 @@ private:
     bool hasEscudeiro;
 
 public:
-    EntityList() {}
+    EntityList() : hasEscudeiro{false} {}
     ~EntityList() {}
 
     void setHasEscudeiro(bool b);

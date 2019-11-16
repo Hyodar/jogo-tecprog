@@ -16,6 +16,10 @@ private:
     int attackCounter;
     int attackInterval;
 
+    bool onFire;
+
+    void manageOnFire();
+
     void resetAttackCounter();
 
 public:
@@ -26,7 +30,9 @@ public:
     sf::FloatRect getBoundingBox();
 
     void collideX(Enemy* e);
-    void collideY(Enemy* e);
+
+    bool getOnFire();
+    void setOnFire(bool b);
 
     bool isAttacking();
 

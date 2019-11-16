@@ -152,18 +152,21 @@ void Game::showStartMenu() {
         case MenuCommand::PLAY_1_TABERNA:
             gameState = PLAYING;
             gamePhase = PHASE_1;
+            hasEscudeiro = false;
             showNamePrompt();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_1_SALAO:
             gameState = PLAYING;
             gamePhase = PHASE_2;
+            hasEscudeiro = false;
             showNamePrompt();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_2_TABERNA:
             gameState = PLAYING;
             gamePhase = PHASE_1;
+            hasEscudeiro = true;
             showNamePrompt();
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
