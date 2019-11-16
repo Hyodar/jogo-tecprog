@@ -12,7 +12,7 @@ using json = nlohmann::json;
 #include <constants.hpp>
 
 RankingScreen::RankingScreen() : Ent(0, 0) {
-    sprite.setTexture(*(GraphicsManager::getInstance()->getSplashScreenTexture()));
+    sprite.setTexture(*(GraphicsManager::getInstance()->getRankingScreenTexture()));
 }
 
 RankingScreen::~RankingScreen() {
@@ -38,7 +38,7 @@ void RankingScreen::render(sf::RenderWindow& window) {
     sf::FloatRect textRect = placeText.getLocalBounds();
     placeText.setOrigin(textRect.left + textRect.width/2.0f,
                         textRect.top  + textRect.height/2.0f);
-    placeText.setPosition(sf::Vector2f(WINDOW_W/2.0f, WINDOW_H/4.0f));
+    placeText.setPosition(sf::Vector2f(WINDOW_W/2.0f, WINDOW_H/4.0f + 50));
 
     stream.str(std::string());
 

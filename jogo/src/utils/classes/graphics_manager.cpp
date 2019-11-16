@@ -11,6 +11,7 @@ GraphicsManager::GraphicsManager() {
     dragonTexture.loadFromFile("resources/dragon.png");
     projectileTexture.loadFromFile("resources/projectiles.png");
     splashScreenTexture.loadFromFile("resources/splash_screen.png");
+    rankingScreenTexture.loadFromFile("resources/ranking_screen.png");
     pauseMenuTexture.loadFromFile("resources/pause_menu.png");
     startMenuTexture.loadFromFile("resources/start_menu.png");
     gameOverMenuTexture.loadFromFile("resources/game_over_menu.png");
@@ -53,6 +54,10 @@ sf::Texture* GraphicsManager::getProjectileTexture() {
 
 sf::Texture* GraphicsManager::getSplashScreenTexture() {
     return &splashScreenTexture;
+}
+
+sf::Texture* GraphicsManager::getRankingScreenTexture() {
+    return &rankingScreenTexture;
 }
 
 sf::Texture* GraphicsManager::getPauseMenuTexture() {

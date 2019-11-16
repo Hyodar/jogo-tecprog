@@ -44,6 +44,7 @@ TODOS
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)
+ - https://www.artstation.com/artwork/xzmKBR (autor da splash screen)
 
 DETALHES
  - Taberna tem skeletons e mages / spikes e boxes

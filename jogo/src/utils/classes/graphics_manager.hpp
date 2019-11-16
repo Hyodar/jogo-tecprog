@@ -15,10 +15,12 @@ private:
     sf::Texture dragonTexture;
     sf::Texture projectileTexture;
     sf::Texture splashScreenTexture;
+    sf::Texture rankingScreenTexture;
     sf::Texture pauseMenuTexture;
     sf::Texture startMenuTexture;
     sf::Texture gameOverMenuTexture;
     sf::Texture tileSheetTexture;
+
     sf::Font scorefont;
 
 public:
@@ -33,6 +35,7 @@ public:
     sf::Texture* getDragonTexture();
     sf::Texture* getProjectileTexture();
     sf::Texture* getSplashScreenTexture();
+    sf::Texture* getRankingScreenTexture();
     sf::Texture* getPauseMenuTexture();
     sf::Texture* getStartMenuTexture();
     sf::Texture* getGameOverMenuTexture();
