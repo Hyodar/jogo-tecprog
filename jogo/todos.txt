@@ -34,6 +34,8 @@ TODOS
  - colocar public Ent em SplashScreen e ajeitar o q precisa
  - colocar o maxHP do bardo em 100 e o ataque em 50
  - ajeitar as variedades de inimigos e obstaculos de cada mapa
+ - consertar o store() do FlyingEnemy pra retornar a posicao inicial e o absolute time e daí dar set no absolute time no restoreSave
+ - inicializar hasEscudeiro como false na entityList e colocar hasEscudeiro = false no game nas opcoes de um jogador
  
  simao:
  - entityManager -> entityList : List
