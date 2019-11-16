@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <boost/asio/ip/host_name.hpp>
+#include <wx/wx.h>
 
 // Internal libraries
 // ---------------------
@@ -152,16 +152,19 @@ void Game::showStartMenu() {
         case MenuCommand::PLAY_1_TABERNA:
             gameState = PLAYING;
             gamePhase = PHASE_1;
+            showNamePrompt();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_1_SALAO:
             gameState = PLAYING;
             gamePhase = PHASE_2;
+            showNamePrompt();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_2_TABERNA:
             gameState = PLAYING;
             gamePhase = PHASE_1;
+            showNamePrompt();
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
@@ -169,6 +172,7 @@ void Game::showStartMenu() {
             gameState = PLAYING;
             gamePhase = PHASE_2;
             hasEscudeiro = true;
+            showNamePrompt();
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
@@ -294,6 +298,7 @@ void Game::refreshFrameTime() {
 
 void Game::stop() {
     mainWindow.close();
+    gameState = EXITING;
 }
 
 // ---------------------------------------------------------------------------
@@ -304,6 +309,7 @@ json Game::store() {
     j["entities"] = LevelManager::getInstance()->getEntityManager().store();
     j["score"] = ScoreManager::getInstance()->getScore();
     j["phase"] = gamePhase;
+    j["name"] = playerName;
 
     return j;
 }
@@ -333,4 +339,13 @@ void Game::reset() {
 
 void Game::winGame() {
     gameState = SHOWING_RANKING_SCREEN;
+}
+
+// ---------------------------------------------------------------------------
+
+#include <iostream>
+void Game::showNamePrompt() {
+    wxTheApp->OnInit();
+    wxTheApp->OnRun();
+    wxTheApp->OnExit();
 }

@@ -2,6 +2,8 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <string>
+
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -41,19 +43,27 @@ public:
     bool getHasEscudeiro() { return hasEscudeiro; }
     void setHasEscudeiro(bool b) { hasEscudeiro = b; }
 
+    void setPlayerName(std::string s) { playerName = s; }
+    std::string getPlayerName() { return playerName; }
+
     sf::RenderWindow& getMainWindow() { return mainWindow; }
 
     void setGamePhase(int p) { gamePhase = (Game::GamePhase) p; }
 
     json store();
     void resume();
+    
     void reset();
+    void stop();
+
     void winGame();
 
 private:
     Game();
 
     static Game* instance;
+
+    std::string playerName;
 
     Bardo player;
     FielEscudeiro fielEscudeiro;
@@ -68,7 +78,6 @@ private:
 
     int score;
 
-    void stop();
     bool isExiting();
     void refreshFrameTime();
 
@@ -79,6 +88,8 @@ private:
     void showStartMenu();
     void showPauseMenu();
     void showGameOverMenu();
+
+    void showNamePrompt();
 
     void processPlaying();
     void checkPlayerState();

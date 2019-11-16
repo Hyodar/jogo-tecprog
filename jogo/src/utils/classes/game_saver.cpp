@@ -10,14 +10,10 @@
 // Standard libraries
 // ---------------------
 
+#include <string>
 #include <iomanip>
 #include <iostream>
 #include <ios>
-
-// External libraries
-// ---------------------
-
-#include <boost/asio/ip/host_name.hpp>
 
 // Internal libraries
 // ---------------------
@@ -118,6 +114,9 @@ bool GameSaver::recoverState() {
     int score = j["score"];
     scoreMng->setScore(score);
 
+    std::string name = j["name"];
+    game->setPlayerName(name);
+
     for(auto obj : j["entities"]) {
         switch((int) obj["classification"]) {
             case CharacterClassification::BARDO: {
@@ -203,7 +202,7 @@ bool GameSaver::recoverState() {
 
 json GameSaver::savePlayerScore() {
     int score = ScoreManager::getInstance()->getScore();
-    auto name = boost::asio::ip::host_name();
+    std::string name = Game::getInstance()->getPlayerName();
 
     std::ifstream in("data/ranking.json");
 

@@ -2,9 +2,20 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 20.0,
-            "posX": 2469.712646484375,
-            "posY": 256.0
+            "hp": 9980.0,
+            "posX": 512.0,
+            "posY": 590.3014526367188
+        },
+        {
+            "classification": 1,
+            "hp": 100.0,
+            "posX": 412.0,
+            "posY": 1669.193115234375
+        },
+        {
+            "classification": 6,
+            "posX": 1152.0,
+            "posY": 640.0
         },
         {
             "classification": 6,
@@ -18,17 +29,17 @@
         },
         {
             "classification": 6,
-            "posX": 1024.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "posX": 1152.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
             "posX": 1472.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 576.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 960.0,
             "posY": 640.0
         },
         {
@@ -38,12 +49,12 @@
         },
         {
             "classification": 6,
-            "posX": 576.0,
+            "posX": 1024.0,
             "posY": 640.0
         },
         {
             "classification": 7,
-            "posX": 4224.0,
+            "posX": 4736.0,
             "posY": 640.0
         },
         {
@@ -53,12 +64,12 @@
         },
         {
             "classification": 7,
-            "posX": 4864.0,
+            "posX": 4608.0,
             "posY": 640.0
         },
         {
             "classification": 7,
-            "posX": 4096.0,
+            "posX": 4864.0,
             "posY": 640.0
         },
         {
@@ -68,23 +79,8 @@
         },
         {
             "classification": 7,
-            "posX": 4736.0,
+            "posX": 4928.0,
             "posY": 640.0
-        },
-        {
-            "classification": 8,
-            "posX": 3328.0,
-            "posY": 512.0
-        },
-        {
-            "classification": 8,
-            "posX": 2240.0,
-            "posY": 576.0
-        },
-        {
-            "classification": 8,
-            "posX": 1024.0,
-            "posY": 320.0
         },
         {
             "classification": 8,
@@ -93,8 +89,8 @@
         },
         {
             "classification": 8,
-            "posX": 5632.0,
-            "posY": 576.0
+            "posX": 1024.0,
+            "posY": 320.0
         },
         {
             "classification": 8,
@@ -102,48 +98,59 @@
             "posY": 576.0
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 2469.6611328125,
-            "posY": 389.8748779296875
+            "classification": 8,
+            "posX": 5632.0,
+            "posY": 576.0
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 2469.763916015625,
+            "classification": 8,
+            "posX": 2240.0,
             "posY": 576.0
         },
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 2469.6611328125,
-            "posY": 419.55450439453125
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 3584.0,
+            "posX": 1344.0,
             "posY": 512.0
         },
         {
             "classification": 2,
             "hp": 100.0,
+            "posX": 1728.0,
+            "posY": 169.65072631835938
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 511.9678649902344,
+            "posY": 474.2219543457031
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 3584.0,
+            "posY": 393.9310607910156
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
             "posX": 5184.0,
-            "posY": 484.8625183105469
+            "posY": 310.2426452636719
         },
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 2469.6611328125,
-            "posY": 576.0
+            "posX": 511.8841857910156,
+            "posY": 512.0
         },
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 2469.6611328125,
+            "posX": 2752.0,
             "posY": 576.0
         }
     ],
+    "name": "Asd",
     "phase": 0,
     "score": 0
 }

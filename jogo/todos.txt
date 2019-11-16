@@ -27,11 +27,13 @@ TODOS DONES
  * tratar caso que o arquivo de save n exista ou esteja vazio
 
 TODOS
- - tirar obstacleNum, etc.
+ - tirar obstacleNum, boxNum, etc. pq ja foi feito outro sistema de classificacao
  - tirar durability de box
  - consertar os random do salao (comparar com taberna)
- - tirar o seg fault quando chega no final da segunda fase
- - colocar public Ent em SplashScreen
+ - tirar o seg fault quando chega no final da segunda fase -> colocar parede no final da 2a fase
+ - colocar public Ent em SplashScreen e ajeitar o q precisa
+ - colocar o maxHP do bardo em 100 e o ataque em 50
+ - ajeitar as variedades de inimigos e obstaculos de cada mapa
  
  simao:
  - entityManager -> entityList : List
@@ -40,3 +42,6 @@ TODOS
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)
+
+ JOAO
+ - Instalar wxWidgets (sudo apt install libwxgtk3.0-dev)
