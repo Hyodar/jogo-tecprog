@@ -36,6 +36,20 @@ Lava::~Lava(){
 
 // ---------------------------------------------------------------------------
 
+void Lava::collideX(Bardo* b){
+    b->takeDamage(getCollisionDmg());
+    b->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
+void Lava::collideY(Bardo* b){
+    b->takeDamage(getCollisionDmg());
+    b->jump(0.5);
+}
+
+// ---------------------------------------------------------------------------
+
 sf::FloatRect Lava::getBoundingBox() const {
     return sf::FloatRect(position.x, position.y + 10, size.x, size.y - 10);
 }

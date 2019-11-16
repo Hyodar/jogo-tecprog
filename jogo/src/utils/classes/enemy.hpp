@@ -11,8 +11,8 @@ class Enemy : public Character {
 
 protected:
     int enemyNum;
-    int points;
     Bardo* player;
+    int points;
 
 public:
     Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos, int classification);

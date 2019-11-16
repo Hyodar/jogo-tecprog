@@ -2,15 +2,9 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 9980.0,
-            "posX": 512.0,
-            "posY": 590.3014526367188
-        },
-        {
-            "classification": 1,
-            "hp": 100.0,
-            "posX": 412.0,
-            "posY": 1669.193115234375
+            "hp": 9880.0,
+            "posX": 3500.156982421875,
+            "posY": 576.0
         },
         {
             "classification": 6,
@@ -110,47 +104,11 @@
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 1344.0,
-            "posY": 512.0
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 1728.0,
-            "posY": 169.65072631835938
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 511.9678649902344,
-            "posY": 474.2219543457031
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 3584.0,
-            "posY": 393.9310607910156
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
             "posX": 5184.0,
-            "posY": 310.2426452636719
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 511.8841857910156,
             "posY": 512.0
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 2752.0,
-            "posY": 576.0
         }
     ],
     "name": "Asd",
     "phase": 0,
-    "score": 0
+    "score": 60
 }

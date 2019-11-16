@@ -18,7 +18,7 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP) 
+Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP)
  : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO),
    attackCounter{0}, attackInterval{300} {
 
