@@ -24,7 +24,7 @@
 // ---------------------------------------------------------------------------
 
 Skeleton::Skeleton(int x, int y, Bardo* pp)
- : Enemy(x, y, 86, 128, 100, pp, 10, CharacterClassification::SKELETON),
+ : Enemy(x, y, 86, 128, 100, pp, Points::SKELETON_REWARD, CharacterClassification::SKELETON),
    jumpCounter{-rand() % 101}, jumpInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
@@ -87,7 +87,7 @@ void Skeleton::updatePositionX(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void Skeleton::updatePositionY(float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
 
     position.y += speed.y * deltaTime;
     onGround = false;

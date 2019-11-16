@@ -35,8 +35,9 @@ public:
     void clearMap();
     void draw();
     float getStart() { return start; }
-    bool IsAtEnd() { return start == sizeX - windowW/TILE_SIZE; }
+    bool IsAtEnd() { return start == sizeX - WINDOW_W/TILE_SIZE; }
     bool IsAtStart() { return start == 0; }
+    bool isPositionValid(int row, int col) { return (row >= 0 && row < sizeY) && (col >= 0 && col < sizeX); }
 
     int getSizeX() { return sizeX; }
     int getSizeY() { return sizeX; }

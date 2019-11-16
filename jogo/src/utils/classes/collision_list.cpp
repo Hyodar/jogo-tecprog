@@ -248,6 +248,7 @@ void CollisionList::testEnemiesX() {
     for(Enemy* e : enemies) {
         for(int i = e->getPosY()/TILE_SIZE; i < (e->getPosY() + e->getSizeY())/TILE_SIZE; i++) {
             for(int j = e->getPosX()/TILE_SIZE; j < (e->getPosX() + e->getSizeX())/TILE_SIZE; j++) {
+                if(!g->isPositionValid(i, j)) continue;
                 Tile* t = g->getTile(i, j);
                 if(t->getBoundingBox().intersects(e->getBoundingBox())) {
                     static_cast<Character*>(e)->collideX(t);
@@ -267,12 +268,15 @@ void CollisionList::testEnemiesX() {
     }
 }
 
+#include <iostream>
 void CollisionList::testEnemiesY() {
     GameMap* g = GameMap::getInstance();
 
     for(Enemy* e : enemies) {
         for(int i = e->getPosY()/TILE_SIZE; i < (e->getPosY() + e->getSizeY())/TILE_SIZE; i++) {
             for(int j = e->getPosX()/TILE_SIZE; j < (e->getPosX() + e->getSizeX())/TILE_SIZE; j++) {
+                if(!g->isPositionValid(i, j)) continue;
+                
                 Tile* t = g->getTile(i, j);
                 if(t->getBoundingBox().intersects(e->getBoundingBox())) {
                     static_cast<Character*>(e)->collideY(t);

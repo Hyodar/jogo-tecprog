@@ -26,8 +26,6 @@ public:
     }
     virtual void updatePosition(float deltaTime) { /* noop */ }
 
-    float getCollisionDmg() { return 10; }
-
     json store() {
         json j;
 
@@ -37,6 +35,8 @@ public:
 
         return j;
     }
+
+    virtual float getCollisionDmg() { return 0; }
 
     virtual void collideX(Enemy* e) { /* noop */ }
     virtual void collideY(Enemy* e) { /* noop */ }

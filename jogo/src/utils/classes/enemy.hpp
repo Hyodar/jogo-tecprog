@@ -18,7 +18,7 @@ public:
     Enemy(int posX, int posY, int sizeX, int sizeY, int hp, Bardo* p, int pontos, int classification);
     virtual ~Enemy();
 
-    int getPoints()const;
+    int getPoints() const;
 
     void takeDamage(float dmg);
 

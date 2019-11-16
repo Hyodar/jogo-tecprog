@@ -12,21 +12,21 @@
 class Game : public DatabaseModel {
 
 enum GameState {
-    uninitialized,
-    showingSplash,
-    paused,
-    showingStartMenu,
-    showingPauseMenu,
-    showingGameOverMenu,
-    showingRankingMenu,
-    playing,
-    exiting
+    UNINITIALIZED,
+    SHOWING_SPLASH,
+    PAUSED,
+    SHOWING_START_MENU,
+    SHOWING_PAUSE_MENU,
+    SHOWING_GAME_OVER_MENU,
+    SHOWING_RANKING_SCREEN,
+    PLAYING,
+    EXITING
 };
 
 enum GamePhase {
-    noPhase = -1,
-    phase1 = 0,
-    phase2 = 1
+    NO_PHASE = -1,
+    PHASE_1 = 0,
+    PHASE_2 = 1
 };
 
 public:
@@ -47,6 +47,8 @@ public:
 
     json store();
     void resume();
+    void reset();
+    void winGame();
 
 private:
     Game();
@@ -73,8 +75,10 @@ private:
     void gameLoop();
 
     void showSplashScreen();
-    void showPauseMenu();
+    void showRankingScreen();
     void showStartMenu();
+    void showPauseMenu();
+    void showGameOverMenu();
 
     void processPlaying();
     void checkPlayerState();

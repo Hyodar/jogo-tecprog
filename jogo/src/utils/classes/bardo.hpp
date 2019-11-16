@@ -28,6 +28,8 @@ public:
     void collideX(Enemy* e);
     void collideY(Enemy* e);
 
+    bool isAttacking();
+
     json store();
 
 };

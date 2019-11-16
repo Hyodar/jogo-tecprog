@@ -19,7 +19,7 @@
 // ---------------------------------------------------------------------------
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP) 
- : Character(x, y, 64, 64, 100, CharacterClassification::BARDO),
+ : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO),
    attackCounter{0}, attackInterval{300} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
@@ -61,13 +61,13 @@ void Bardo::checkKeys() {
 
 void Bardo::updateStartPosition() {
     if(GameMap::getInstance()->IsAtEnd()) {
-        sprite.setPosition(sf::Vector2f(windowW + position.x - GameMap::getInstance()->getMapLength(), position.y));
+        sprite.setPosition(sf::Vector2f(WINDOW_W + position.x - GameMap::getInstance()->getMapLength(), position.y));
     }
     else if(GameMap::getInstance()->IsAtStart()) {
         sprite.setPosition(position);
     }
     else {
-        sprite.setPosition(sf::Vector2f(windowW/2, position.y));
+        sprite.setPosition(sf::Vector2f(WINDOW_W/2, position.y));
     }
 }
 
@@ -93,7 +93,7 @@ void Bardo::render(sf::RenderWindow& window) {
     }
 
     //healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
-    healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
+    healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, HEALTH_BAR_HEIGHT));
 
     window.draw(sprite);
     window.draw(healthBar);
@@ -122,9 +122,22 @@ void Bardo::resetAttackCounter() {
 
 void Bardo::collideX(Enemy* e) {
     if(attackCounter) {
-        e->takeDamage(50);
-        e->jump(0.5);
+        if(walkingRight && e->getPosX() > position.x) {
+            e->takeDamage(5000);
+            e->jump(0.5);
+            e->setSpeedX(0);
+        }
+        else if(!walkingRight && e->getPosX() < position.x) {
+            e->takeDamage(5000);
+            e->jump(0.5);
+            e->setSpeedX(0);
+        }
     }
+}
+// ---------------------------------------------------------------------------
+
+bool Bardo::isAttacking() {
+    return attackCounter;
 }
 
 // ---------------------------------------------------------------------------

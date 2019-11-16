@@ -17,6 +17,7 @@ private:
     sf::Texture splashScreenTexture;
     sf::Texture pauseMenuTexture;
     sf::Texture startMenuTexture;
+    sf::Texture gameOverMenuTexture;
     sf::Texture tileSheetTexture;
     sf::Font scorefont;
 
@@ -34,6 +35,7 @@ public:
     sf::Texture* getSplashScreenTexture();
     sf::Texture* getPauseMenuTexture();
     sf::Texture* getStartMenuTexture();
+    sf::Texture* getGameOverMenuTexture();
     sf::Texture* getTileSheetTexture();
     sf::Font* getScoreFont(); 
 

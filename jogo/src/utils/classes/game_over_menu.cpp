@@ -5,7 +5,7 @@
 // Class header
 // ---------------------
 
-#include "pause_menu.hpp"
+#include "game_over_menu.hpp"
 
 // Internal libraries
 // ---------------------
@@ -15,16 +15,15 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-PauseMenu::PauseMenu() {
-    sprite.setTexture(*(GraphicsManager::getInstance()->getPauseMenuTexture()));
-
-    addButton(0, 260, 1023, 110, MenuCommand::RESUME);
-    addButton(0, 420, 1023, 80, MenuCommand::SAVE);
-    addButton(0, 550, 1023, 80, MenuCommand::EXIT);
+GameOverMenu::GameOverMenu() {
+    sprite.setTexture(*(GraphicsManager::getInstance()->getGameOverMenuTexture()));
+    
+    addButton(250, 400, 500, 80, MenuCommand::RETURN);
+    addButton(420, 500, 180, 80, MenuCommand::EXIT);
 }
 
 // ---------------------------------------------------------------------------
 
-PauseMenu::~PauseMenu() {
-    // noop
+GameOverMenu::~GameOverMenu() {
+
 }

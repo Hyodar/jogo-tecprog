@@ -103,6 +103,14 @@ void EntityManager::removeProjectile(Projectile* e) {
 
 // ---------------------------------------------------------------------------
 
+void EntityManager::removeFielEscudeiro(FielEscudeiro* f) {
+    entityList.setHasEscudeiro(false);
+    entityList.remove(static_cast<Entity*>(f));
+    collisionList.add(static_cast<FielEscudeiro*>(nullptr));
+}
+
+// ---------------------------------------------------------------------------
+
 json EntityManager::store() {
     return entityList.store();
 }

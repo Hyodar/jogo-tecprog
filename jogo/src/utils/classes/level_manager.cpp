@@ -18,6 +18,7 @@
 #include "taberna.hpp"
 #include "salao.hpp"
 #include "game_map.hpp"
+#include "enemy.hpp"
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -57,7 +58,7 @@ void LevelManager::nextLevel() {
 void LevelManager::changeLevel(int levelNum) {
     std::cout << "Changing to level " << levelNum << "..." << std::endl;
 
-    if(levelNum < 0 || levelNum > 2) return;
+    if(levelNum < 0 || levelNum > 1) return;
 
     cleanLevel();
     currentLevel = levelNum;
@@ -72,7 +73,7 @@ void LevelManager::changeLevel(int levelNum) {
 void LevelManager::recoverLevel(int levelNum) {
     std::cout << "Recovering level " << levelNum << "..." << std::endl;
 
-    if(levelNum < 0 || levelNum > 2) return;
+    if(levelNum < 0 || levelNum > 1) return;
 
     currentLevel = levelNum;
     GameMap::getInstance()->loadMap();
@@ -84,4 +85,13 @@ void LevelManager::recoverLevel(int levelNum) {
 
 void LevelManager::cleanLevel() {
     entityManager.clean();
+}
+
+// ---------------------------------------------------------------------------
+
+void LevelManager::removeEnemy(Enemy* e) {
+    if(e->getPoints() == (int) Points::DRAGON_REWARD) {
+        Game::getInstance()->winGame();
+    }
+    entityManager.removeEnemy(e); 
 }

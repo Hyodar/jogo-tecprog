@@ -4,6 +4,9 @@
 
 #include <fstream>
 
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 class GameSaver {
 
 private:
@@ -16,6 +19,7 @@ public:
 
     void saveState();
     bool recoverState();
+    json savePlayerScore();
 
 };
 

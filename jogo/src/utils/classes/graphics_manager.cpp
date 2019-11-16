@@ -13,6 +13,7 @@ GraphicsManager::GraphicsManager() {
     splashScreenTexture.loadFromFile("resources/splash_screen.png");
     pauseMenuTexture.loadFromFile("resources/pause_menu.png");
     startMenuTexture.loadFromFile("resources/start_menu.png");
+    gameOverMenuTexture.loadFromFile("resources/game_over_menu.png");
     tileSheetTexture.loadFromFile("resources/sheet.png");
     scorefont.loadFromFile("resources/bilboregular.ttf");
 }
@@ -60,6 +61,10 @@ sf::Texture* GraphicsManager::getPauseMenuTexture() {
 
 sf::Texture* GraphicsManager::getStartMenuTexture() {
     return &startMenuTexture;
+}
+
+sf::Texture* GraphicsManager::getGameOverMenuTexture() {
+    return &gameOverMenuTexture;
 }
 
 sf::Texture* GraphicsManager::getTileSheetTexture() {

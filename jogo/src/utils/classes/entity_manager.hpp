@@ -22,7 +22,6 @@ class Projectile;
 class EntityManager {
 
 private:
-
     EntityList entityList;
     CollisionList collisionList;    
 
@@ -36,6 +35,7 @@ public:
     void removeEnemy(Enemy* e);
     void addProjectile(Projectile* e);
     void removeProjectile(Projectile* e);
+    void removeFielEscudeiro(FielEscudeiro* f);
 
     void clean();
     void process(float deltaTime); // processa movimento e colisao

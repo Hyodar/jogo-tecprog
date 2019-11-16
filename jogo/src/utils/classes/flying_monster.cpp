@@ -14,7 +14,7 @@
 // ---------------------------------------------------------------------------
 
 FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
- : Enemy(x, y, 84, 128, 80, pp, 20, CharacterClassification::FLYING_MONSTER),
+ : Enemy(x, y, 84, 128, 80, pp, Points::FLYING_MONSTER_REWARD, CharacterClassification::FLYING_MONSTER),
    startingPos(x, y) {
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
     sprite.setScale(2, 2);

@@ -36,7 +36,7 @@ GameMap* GameMap::instance = nullptr;
 // Methods
 // ---------------------------------------------------------------------------
 
-GameMap::GameMap() : background(sf::Vector2f(windowW, windowH)),
+GameMap::GameMap() : background(sf::Vector2f(WINDOW_W, WINDOW_H)),
  sizeX{-1}, sizeY{-1}, start{0.0f} {
     // noop
 }
@@ -107,15 +107,15 @@ void GameMap::clearMap() {
 void GameMap::setupTileStart() {
     sf::Vector2f playerPos = Game::getInstance()->getPlayer().getPosition();
 
-    if(playerPos.x - windowW/2 < 0) {
+    if(playerPos.x - WINDOW_W/2 < 0) {
         start = 0;
     }
     else {
-        start = (playerPos.x - windowW/2) / TILE_SIZE;
+        start = (playerPos.x - WINDOW_W/2) / TILE_SIZE;
     }
 
-    if(start + windowW/TILE_SIZE > sizeX) {
-        start = sizeX - windowW / TILE_SIZE;
+    if(start + WINDOW_W/TILE_SIZE > sizeX) {
+        start = sizeX - WINDOW_W / TILE_SIZE;
     }
 }
 
@@ -125,11 +125,11 @@ void GameMap::draw() {
 
     setupTileStart();
 
-    background.setTextureRect(sf::IntRect(start * TILE_SIZE, 0, windowW, windowH));
+    background.setTextureRect(sf::IntRect(start * TILE_SIZE, 0, WINDOW_W, WINDOW_H));
     Game::getInstance()->getMainWindow().draw(background);
 
     for(int vec = 0; vec < sizeY; vec++) {
-        for(int i = start; i < start + windowW/TILE_SIZE; i++) {
+        for(int i = start; i < start + WINDOW_W/TILE_SIZE; i++) {
             tileMap[vec][i]->draw(sf::Vector2f((i-start)*TILE_SIZE, vec*TILE_SIZE));
         }
     }

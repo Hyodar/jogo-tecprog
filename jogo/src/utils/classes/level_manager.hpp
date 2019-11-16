@@ -6,6 +6,8 @@
 
 #include "entity_manager.hpp"
 #include "level.hpp"
+#include "game.hpp"
+#include <constants.hpp>
 
 class Obstacle;
 class Enemy;
@@ -19,9 +21,11 @@ public:
 
     void addObstacle(Obstacle* e) { entityManager.addObstacle(e); }
     void addEnemy(Enemy* e) { entityManager.addEnemy(e); }
-    void removeEnemy(Enemy* e) { entityManager.removeEnemy(e); }
+    void removeEnemy(Enemy* e);
     void addProjectile(Projectile* e) { entityManager.addProjectile(e); }
     void removeProjectile(Projectile* e) { entityManager.removeProjectile(e); }
+    
+    void removeFielEscudeiro(FielEscudeiro* f) { entityManager.removeFielEscudeiro(f); }
 
     void nextLevel();
     void changeLevel(int levelNum);
@@ -30,9 +34,6 @@ public:
     
     Level* getLevel() { return levels[currentLevel]; }
     int getCurrentLevel() { return currentLevel; }
-
-    //std::vector<Obstacle*> getObstacles() { return entityManager.getObstacles(); }
-    //std::vector<Enemy*> getEnemies() { return entityManager.getEnemies(); }
 
     void init() { levels[currentLevel]->init(); }
     void process(float deltaTime) { entityManager.process(deltaTime); }

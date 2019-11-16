@@ -15,6 +15,8 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <boost/asio/ip/host_name.hpp>
+
 // Internal libraries
 // ---------------------
 
@@ -22,8 +24,10 @@
 #include "level_manager.hpp"
 #include "game_map.hpp"
 #include "splash_screen.hpp"
+#include "ranking_screen.hpp"
 #include "start_menu.hpp"
 #include "pause_menu.hpp"
+#include "game_over_menu.hpp"
 #include "score_manager.hpp"
 #include "game_saver.hpp"
 #include <constants.hpp>
@@ -36,12 +40,12 @@ Game* Game::instance = nullptr;
 // Methods
 // ---------------------------------------------------------------------------
 
-Game::Game() : player(windowW/2, 100), fielEscudeiro(windowW/2 - 100, 100),
+Game::Game() : player(WINDOW_W/2, 100), fielEscudeiro(WINDOW_W/2 - 100, 100),
                hasEscudeiro{false} {
     instance = nullptr;
 
-    gameState = uninitialized;
-    gamePhase = noPhase;
+    gameState = UNINITIALIZED;
+    gamePhase = NO_PHASE;
 
     LevelManager::getInstance()->getEntityManager().setBardo(&player);
 
@@ -67,14 +71,14 @@ Game* Game::getInstance() {
 
 void Game::start() {
 
-    if(gameState != uninitialized) return;
+    if(gameState != UNINITIALIZED) return;
 
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     TileManager::getInstance()->loadTileSet();
 
-    gameState = showingSplash;
-    gamePhase = noPhase;
+    gameState = SHOWING_SPLASH;
+    gamePhase = NO_PHASE;
 
     while(!isExiting()) {
         gameLoop();
@@ -86,23 +90,29 @@ void Game::start() {
 // ---------------------------------------------------------------------------
 
 bool Game::isExiting() {
-    return gameState == exiting;
+    return gameState == EXITING;
 }
 
 // ---------------------------------------------------------------------------
 
 void Game::gameLoop() {
     switch(gameState) {
-        case showingStartMenu:
+        case SHOWING_START_MENU:
             showStartMenu();
             break;
-        case showingPauseMenu:
+        case SHOWING_PAUSE_MENU:
             showPauseMenu();
             break;
-        case showingSplash:
+        case SHOWING_GAME_OVER_MENU:
+            showGameOverMenu();
+            break;
+        case SHOWING_SPLASH:
             showSplashScreen();
             break;
-        case playing:
+        case SHOWING_RANKING_SCREEN:
+            showRankingScreen();
+            break;
+        case PLAYING:
             processPlaying();
             break;
         default:;
@@ -115,7 +125,17 @@ void Game::showSplashScreen() {
     SplashScreen splashScreen;
 
     splashScreen.show(mainWindow);
-    gameState = showingStartMenu;
+    gameState = SHOWING_START_MENU;
+}
+
+// ---------------------------------------------------------------------------
+
+void Game::showRankingScreen() {
+    RankingScreen rankingScreen;
+
+    rankingScreen.show(mainWindow);
+    reset();
+    gameState = SHOWING_START_MENU;
 }
 
 // ---------------------------------------------------------------------------
@@ -123,36 +143,37 @@ void Game::showSplashScreen() {
 void Game::showStartMenu() {
     StartMenu startMenu;
 
-    StartMenu::MenuResult result = startMenu.show(mainWindow);
+    startMenu.render(mainWindow);
+    MenuCommand result = startMenu.getMenuResponse(mainWindow);
     switch(result) {
-        case StartMenu::exit:
-            gameState = exiting;
+        case MenuCommand::EXIT:
+            gameState = EXITING;
             break;
-        case StartMenu::play1tab:
-            gameState = playing;
-            gamePhase = phase1;
+        case MenuCommand::PLAY_1_TABERNA:
+            gameState = PLAYING;
+            gamePhase = PHASE_1;
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
-        case StartMenu::play1sal:
-            gameState = playing;
-            gamePhase = phase2;
+        case MenuCommand::PLAY_1_SALAO:
+            gameState = PLAYING;
+            gamePhase = PHASE_2;
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
-        case StartMenu::play2tab:
-            gameState = playing;
-            gamePhase = phase1;
+        case MenuCommand::PLAY_2_TABERNA:
+            gameState = PLAYING;
+            gamePhase = PHASE_1;
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
-        case StartMenu::play2sal:
-            gameState = playing;
-            gamePhase = phase2;
+        case MenuCommand::PLAY_2_SALAO:
+            gameState = PLAYING;
+            gamePhase = PHASE_2;
             hasEscudeiro = true;
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
-        case StartMenu::resume:
-            gameState = playing;
+        case MenuCommand::RECOVER_SAVE:
+            gameState = PLAYING;
             resume();
             break;
         default:;
@@ -166,16 +187,38 @@ void Game::showStartMenu() {
 void Game::showPauseMenu() {
     PauseMenu pauseMenu;
 
-    PauseMenu::MenuResult result = pauseMenu.show(mainWindow);
+    pauseMenu.render(mainWindow);
+    MenuCommand result = pauseMenu.getMenuResponse(mainWindow);
     switch(result) {
-        case PauseMenu::exit:
-            gameState = exiting;
+        case MenuCommand::EXIT:
+            gameState = EXITING;
             break;
-        case PauseMenu::resume:
-            gameState = playing;
+        case MenuCommand::RESUME:
+            gameState = PLAYING;
             break;
-        case PauseMenu::save:
+        case MenuCommand::SAVE:
             GameSaver::getInstance()->saveState();
+            break;
+        default:;
+    }
+
+    refreshFrameTime();
+}
+
+// ---------------------------------------------------------------------------
+
+void Game::showGameOverMenu() {
+    GameOverMenu gameOverMenu;
+
+    gameOverMenu.render(mainWindow);
+    MenuCommand result = gameOverMenu.getMenuResponse(mainWindow);
+    switch(result) {
+        case MenuCommand::EXIT:
+            gameState = EXITING;
+            break;
+        case MenuCommand::RETURN:
+            reset();
+            gameState = SHOWING_START_MENU;
             break;
         default:;
     }
@@ -190,17 +233,17 @@ void Game::processPlaying() {
 
     mainWindow.clear(sf::Color::Blue);
 
-    while(gameState != exiting && gameState != showingGameOverMenu && gameState != showingRankingMenu) {
+    while(gameState != EXITING && gameState != SHOWING_GAME_OVER_MENU && gameState != SHOWING_RANKING_SCREEN) {
         while(mainWindow.pollEvent(playingEvent)) {
             switch(playingEvent.type) {
                 case sf::Event::KeyPressed:
                     if(playingEvent.key.code == sf::Keyboard::Key::Escape) {
-                        gameState = showingPauseMenu;
+                        gameState = SHOWING_PAUSE_MENU;
                         showPauseMenu();
                     }
                     break;
                 case sf::Event::Closed:
-                    gameState = exiting;
+                    gameState = EXITING;
                     break;
                 default:
                     break;
@@ -226,15 +269,19 @@ void Game::checkPlayerState() {
     if(player.getPosition().x < (GameMap::getInstance()->getSizeX() - 1)*TILE_SIZE && player.getPosition().x > (GameMap::getInstance()->getSizeX() - 2)*TILE_SIZE) {
         LevelManager::getInstance()->nextLevel();
 
-        player.setPosX(windowW/2);
-        player.setPosY(windowH/2);
+        player.setPosX(WINDOW_W/2);
+        player.setPosY(WINDOW_H/2);
     }
 
-    /*
     if(!player.isAlive()) {
-        gameState = showingGameOverMenu;
+        gameState = SHOWING_GAME_OVER_MENU;
     }
-    */
+
+    if(!fielEscudeiro.isAlive()) {
+        hasEscudeiro = false;
+        LevelManager::getInstance()->removeFielEscudeiro(&fielEscudeiro);
+    }
+
 }
 
 // ---------------------------------------------------------------------------
@@ -268,8 +315,22 @@ void Game::resume() {
         LevelManager::getInstance()->recoverLevel(gamePhase);
     }
     else {
-        gamePhase = phase1;
+        gamePhase = PHASE_1;
         LevelManager::getInstance()->changeLevel(gamePhase);
     }
 }
 
+// ---------------------------------------------------------------------------
+
+void Game::reset() {
+    player = Bardo(WINDOW_W/2, 100);
+    fielEscudeiro = FielEscudeiro(WINDOW_W/2 - 100, 100);
+
+    ScoreManager::getInstance()->setScore(0);
+}
+
+// ---------------------------------------------------------------------------
+
+void Game::winGame() {
+    gameState = SHOWING_RANKING_SCREEN;
+}

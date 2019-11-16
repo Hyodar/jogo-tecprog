@@ -19,6 +19,7 @@
 
 #include "game.hpp"
 #include "graphics_manager.hpp"
+#include <constants.hpp>
 
 // Attribute initialization
 // ---------------------------------------------------------------------------

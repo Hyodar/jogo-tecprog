@@ -51,5 +51,5 @@ sf::FloatRect Box::getBoundingBox() const {
 void Box::render(sf::RenderWindow& window) {
     shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
     window.draw(*shape);
-    //if(position.x < playerPos.x + windowW/2 && position.y > playerPos.x - windowW/2) {
+    //if(position.x < playerPos.x + WINDOW_W/2 && position.y > playerPos.x - WINDOW_W/2) {
 }

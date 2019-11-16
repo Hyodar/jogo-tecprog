@@ -27,7 +27,7 @@ const int Character::walkSpeed{500};
 // ---------------------------------------------------------------------------
 
 Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification)
-    : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, healthBarHeight)),
+    : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, HEALTH_BAR_HEIGHT)),
       speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
       invulnerable{0}, walkingRight{true} {
 
@@ -90,7 +90,7 @@ void Character::updatePositionX(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void Character::updatePositionY(float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
 
     position.y += speed.y * deltaTime;
     onGround = false;
@@ -116,7 +116,7 @@ void Character::render(sf::RenderWindow& window) {
     }
 
     //healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
-    healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, healthBarHeight));
+    healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, HEALTH_BAR_HEIGHT));
 
     window.draw(sprite);
     window.draw(healthBar);

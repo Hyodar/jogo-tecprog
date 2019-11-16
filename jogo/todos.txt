@@ -1,6 +1,5 @@
 
 OBJETIVOS
- - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
 
 OBJETIVOS DONES
  - Pode ter 2 jogadores
@@ -14,6 +13,7 @@ OBJETIVOS DONES
  - Três inimigos diferentes (incluindo chefe), em que um deles pode lançar projétil
  - Ter chefao na ultima fase
  - A cada fase 2 tipos de inimigos com numero aleatorio de instancias e pelo menos 5 instancias por tipo
+ - Salvar dados do usuario, manter pontuacao durante o jogo, salvar pontuacao e gerar ranking
 
 TODOS DONES
  - Ajeitar pras tiles já serem marcadas com colliders ou fazer matriz separada com colliders menores (32x32 talvez)
@@ -24,15 +24,15 @@ TODOS DONES
  - deltaTime inutil em updateStartPosition
  - tirar dano de contato com caixa
  - tirar virtual de getCollisionDmg
+ * tratar caso que o arquivo de save n exista ou esteja vazio
 
 TODOS
  - tirar obstacleNum, etc.
  - tirar durability de box
  - consertar os random do salao (comparar com taberna)
  - tirar o seg fault quando chega no final da segunda fase
- * tratar caso que o arquivo de save n exista ou esteja vazio
+ - colocar public Ent em SplashScreen
  
-
  simao:
  - entityManager -> entityList : List
  - collisionResolver so determinar colisao e ter collide() sobrecarregado em cada classe

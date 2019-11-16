@@ -27,7 +27,7 @@
 // ---------------------------------------------------------------------------
 
 Dragon::Dragon(int x, int y, Bardo* pp)
-   : Enemy(x, y, 256, 256, 1000, pp, 1000, CharacterClassification::DRAGON),
+   : Enemy(x, y, 256, 256, 1000, pp, Points::DRAGON_REWARD, CharacterClassification::DRAGON),
      attackCounter{-rand() % 101}, attackInterval{rand() % 501} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
@@ -90,7 +90,7 @@ void Dragon::updatePositionX(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void Dragon::updatePositionY(float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
 
     position.y += speed.y * deltaTime;
     onGround = false;

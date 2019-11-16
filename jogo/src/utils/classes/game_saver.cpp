@@ -17,8 +17,7 @@
 // External libraries
 // ---------------------
 
-#include <nlohmann/json.hpp>
-using json = nlohmann::json;
+#include <boost/asio/ip/host_name.hpp>
 
 // Internal libraries
 // ---------------------
@@ -200,4 +199,76 @@ bool GameSaver::recoverState() {
     in.close();
 
     return true;
+}
+
+json GameSaver::savePlayerScore() {
+    int score = ScoreManager::getInstance()->getScore();
+    auto name = boost::asio::ip::host_name();
+
+    std::ifstream in("data/ranking.json");
+
+    // Testa se o arquivo existe
+    if(!in.good()) {
+        throw "[!] Ranking file doesn't exist.";
+    }
+
+    // Testa se o arquivo ta vazio
+    in.seekg(0, std::ios::end);
+    if(!in.tellg()) {
+        throw "[!] Ranking file is empty.";
+    }
+    in.seekg(0, std::ios::beg);
+
+    json j;
+
+    try {
+        in >> j;
+    }
+    catch(json::exception& e) {
+        std::cerr << "[!] Erro na leitura do arquivo de ranking." << std::endl;
+        std::cerr << e.what() << std::endl;
+        in.close();
+    }
+
+    json rank;
+    rank["player"] = name;
+    rank["score"] = score;
+    uint place = 1;
+
+    if(j.find("players") == j.end()) {
+        j["players"].push_back(rank);
+    }
+    else {
+        for(auto it = j["players"].begin(); it != j["players"].end(); it++) {
+            
+            if((*it)["score"] <= score) {
+                j["players"].insert(it, rank);
+                break;
+            }
+            place++;
+        }
+
+        if(place == j["players"].size()) j["players"].insert(j["players"].end() - 1, rank);
+    }
+
+    in.close();
+
+    rank["place"] = place;
+    
+    const uint posMax = (j["players"].size() > 5)? 5 : j["players"].size();
+    for(uint i = 0; i < posMax; i++) rank["ranking"].push_back(j["players"][i]);
+
+    std::ofstream out("data/ranking.json", std::ios::out | std::ios::trunc);
+    out.exceptions(std::ios::badbit);
+
+    try {
+        out << std::setw(4) << j << std::endl;
+    }
+    catch(std::ifstream::failure e) {
+        std::cerr << "[!] Error writing to 'data/save.json'!";
+    }
+
+    out.close();
+
+    return rank;
 }

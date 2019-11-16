@@ -27,7 +27,7 @@
 // ---------------------------------------------------------------------------
 
 Mage::Mage(int x, int y, Bardo* pp)
- : Enemy(x, y, 86, 128, 100, pp, 30, CharacterClassification::MAGE),
+ : Enemy(x, y, 86, 128, 100, pp, Points::MAGE_REWARD, CharacterClassification::MAGE),
    attackCounter{-rand() % 101},
    attackInterval{1700} {
 
@@ -94,7 +94,7 @@ void Mage::updatePositionX(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void Mage::updatePositionY(float deltaTime) {
-    if(!onGround) speed.y += gravAcc * deltaTime;
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
 
     position.y += speed.y * deltaTime;
     onGround = false;
