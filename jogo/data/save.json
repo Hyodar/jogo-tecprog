@@ -2,15 +2,9 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 10000.0,
-            "posX": 512.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 1,
-            "hp": 100.0,
-            "posX": 412.0,
-            "posY": 642.4892578125
+            "hp": 9880.0,
+            "posX": 3500.156982421875,
+            "posY": 576.0
         },
         {
             "classification": 6,
@@ -115,35 +109,11 @@
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 1344.0,
-            "posY": 496.23956298828125
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 1728.0,
-            "posY": 384.0
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 587.81884765625,
-            "posY": 298.9561767578125
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 3584.0,
-            "posY": 512.0
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
             "posX": 5184.0,
-            "posY": 299.77825927734375
+            "posY": 512.0
         }
     ],
     "name": "a",
     "phase": 0,
-    "score": 0
+    "score": 60
 }

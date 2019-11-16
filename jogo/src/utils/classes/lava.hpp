@@ -24,6 +24,8 @@ public:
     Lava(int posX, int posY);
     ~Lava();
 
+    void collideX(Bardo* b);
+    void collideY(Bardo* b);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
     void render(sf::RenderWindow& window) { draw(window); }
