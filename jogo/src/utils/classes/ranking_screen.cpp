@@ -9,6 +9,8 @@ using json = nlohmann::json;
 #include "graphics_manager.hpp"
 #include "game_saver.hpp"
 
+#include <constants.hpp>
+
 RankingScreen::RankingScreen() : Ent(0, 0) {
     sprite.setTexture(*(GraphicsManager::getInstance()->getSplashScreenTexture()));
 }
@@ -25,19 +27,23 @@ void RankingScreen::render(sf::RenderWindow& window) {
     window.draw(sprite);
 
     std::stringstream stream;
-    stream << scores["player"] << ", ficou no lugar " << scores["place"] << " com " << scores["score"] << " pontos !";
+    stream << scores["player"] << ": lugar " << scores["place"] << " com " << scores["score"] << " pontos !";
 
     sf::Text placeText;
     placeText.setFont(*fontPtr);
     placeText.setString(stream.str());
     placeText.setCharacterSize(60);
     placeText.setFillColor(sf::Color::White);
-    placeText.setPosition(200, 300);
+
+    sf::FloatRect textRect = placeText.getLocalBounds();
+    placeText.setOrigin(textRect.left + textRect.width/2.0f,
+                        textRect.top  + textRect.height/2.0f);
+    placeText.setPosition(sf::Vector2f(WINDOW_W/2.0f, WINDOW_H/4.0f));
 
     stream.str(std::string());
 
     for(uint i = 1; i <= scores["ranking"].size(); i++) {
-        stream << i << " - " << scores["ranking"][i-1]["player"] << " | " << scores["ranking"][i-1]["score"] << "pontos \n";
+        stream << i << " - " << scores["ranking"][i-1]["player"] << " | " << scores["ranking"][i-1]["score"] << " pontos \n";
     }
 
     sf::Text rankingBoard;
@@ -45,7 +51,11 @@ void RankingScreen::render(sf::RenderWindow& window) {
     rankingBoard.setString(stream.str());
     rankingBoard.setCharacterSize(50);
     rankingBoard.setFillColor(sf::Color::White);
-    rankingBoard.setPosition(350, 400);
+
+    textRect = rankingBoard.getLocalBounds();
+    rankingBoard.setOrigin(textRect.left + textRect.width/2.0f,
+                        textRect.top  + textRect.height/2.0f);
+    rankingBoard.setPosition(sf::Vector2f(WINDOW_W/2.0f, 100 + WINDOW_H/2.0f));
 
     window.draw(placeText);
     window.draw(rankingBoard);

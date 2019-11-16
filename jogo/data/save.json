@@ -2,23 +2,29 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 9880.0,
-            "posX": 3500.156982421875,
+            "hp": 9980.0,
+            "posX": 873.312744140625,
             "posY": 576.0
         },
         {
+            "classification": 1,
+            "hp": 100.0,
+            "posX": 412.0,
+            "posY": 640.0
+        },
+        {
             "classification": 6,
-            "posX": 960.0,
+            "posX": 576.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 1024.0,
             "posY": 640.0
         },
         {
             "classification": 6,
             "posX": 1472.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "posX": 640.0,
             "posY": 640.0
         },
         {
@@ -32,44 +38,9 @@
             "posY": 640.0
         },
         {
-            "classification": 7,
-            "posX": 4928.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4096.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4224.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4480.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4608.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4736.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 3968.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 7,
-            "posX": 4352.0,
-            "posY": 640.0
+            "classification": 8,
+            "posX": 5440.0,
+            "posY": 576.0
         },
         {
             "classification": 8,
@@ -78,23 +49,8 @@
         },
         {
             "classification": 8,
-            "posX": 2624.0,
-            "posY": 192.0
-        },
-        {
-            "classification": 8,
             "posX": 1024.0,
             "posY": 320.0
-        },
-        {
-            "classification": 8,
-            "posX": 5632.0,
-            "posY": 576.0
-        },
-        {
-            "classification": 8,
-            "posX": 3200.0,
-            "posY": 512.0
         },
         {
             "classification": 8,
@@ -103,17 +59,83 @@
         },
         {
             "classification": 8,
-            "posX": 5440.0,
+            "posX": 5632.0,
             "posY": 576.0
         },
         {
             "classification": 2,
             "hp": 100.0,
-            "posX": 5184.0,
+            "posX": 1728.0,
+            "posY": 347.2130432128906
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 708.1935424804688,
+            "posY": 512.0
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 3584.0,
+            "posY": 496.9870910644531
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 708.1936645507813,
+            "posY": 378.99676513671875
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 1263.9659423828125,
+            "posY": 396.30255126953125
+        },
+        {
+            "classification": 2,
+            "hp": 100.0,
+            "posX": 2752.0,
+            "posY": 360.8833923339844
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 2368.0,
+            "posY": 192.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 4032.0,
+            "posY": 320.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 4480.0,
+            "posY": 320.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 4992.0,
+            "posY": 512.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 5632.0,
+            "posY": 448.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "posX": 3200.0,
             "posY": 512.0
         }
     ],
-    "name": "a",
+    "name": "run",
     "phase": 0,
-    "score": 60
+    "score": 0
 }

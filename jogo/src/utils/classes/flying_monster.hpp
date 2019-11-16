@@ -21,5 +21,9 @@ public:
     void updatePositionX(const float deltaTime);
     void updatePositionY(const float deltaTime);
 
+    void setAbsoluteTime(float absTime);
+
+    json store();
+
 };
 #endif //FLYINGMONSTER_HPP_

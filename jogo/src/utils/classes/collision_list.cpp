@@ -109,6 +109,7 @@ void CollisionList::testBardoX() {
 
     for(int i = bardo->getPosY()/TILE_SIZE; i < (bardo->getPosY() + bardo->getSizeY())/TILE_SIZE; i++) {
         for(int j = bardo->getPosX()/TILE_SIZE; j < (bardo->getPosX() + bardo->getSizeX())/TILE_SIZE; j++) {
+            if(!g->isPositionValid(i, j)) continue;
             Tile* t = g->getTile(i, j);
             if(t->getBoundingBox().intersects(bardo->getBoundingBox())) {
                 static_cast<Character*>(bardo)->collideX(t);
@@ -145,6 +146,7 @@ void CollisionList::testBardoY() {
 
     for(int i = bardo->getPosY()/TILE_SIZE; i < (bardo->getPosY() + bardo->getSizeY())/TILE_SIZE; i++) {
         for(int j = bardo->getPosX()/TILE_SIZE; j < (bardo->getPosX() + bardo->getSizeX())/TILE_SIZE; j++) {
+            if(!g->isPositionValid(i, j)) continue;
             Tile* t = g->getTile(i, j);
             if(t->getBoundingBox().intersects(bardo->getBoundingBox())) {
                 static_cast<Character*>(bardo)->collideY(t);
@@ -179,6 +181,7 @@ void CollisionList::testFielEscudeiroX() {
 
     for(int i = fielEscudeiro->getPosY()/TILE_SIZE; i < (fielEscudeiro->getPosY() + fielEscudeiro->getSizeY())/TILE_SIZE; i++) {
         for(int j = fielEscudeiro->getPosX()/TILE_SIZE; j < (fielEscudeiro->getPosX() + fielEscudeiro->getSizeX())/TILE_SIZE; j++) {
+            if(!g->isPositionValid(i, j)) continue;
             Tile* t = g->getTile(i, j);
             if(t->getBoundingBox().intersects(fielEscudeiro->getBoundingBox())) {
                 static_cast<Character*>(fielEscudeiro)->collideX(t);
@@ -213,6 +216,7 @@ void CollisionList::testFielEscudeiroY() {
 
     for(int i = fielEscudeiro->getPosY()/TILE_SIZE; i < (fielEscudeiro->getPosY() + fielEscudeiro->getSizeY())/TILE_SIZE; i++) {
         for(int j = fielEscudeiro->getPosX()/TILE_SIZE; j < (fielEscudeiro->getPosX() + fielEscudeiro->getSizeX())/TILE_SIZE; j++) {
+            if(!g->isPositionValid(i, j)) continue;
             Tile* t = g->getTile(i, j);
             if(t->getBoundingBox().intersects(fielEscudeiro->getBoundingBox())) {
                 static_cast<Character*>(fielEscudeiro)->collideY(t);

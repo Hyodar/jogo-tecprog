@@ -25,17 +25,17 @@ TODOS DONES
  - tirar dano de contato com caixa
  - tirar virtual de getCollisionDmg
  * tratar caso que o arquivo de save n exista ou esteja vazio
+ - inicializar hasEscudeiro como false na entityList e colocar hasEscudeiro = false no game nas opcoes de um jogador
+ - consertar o store() do FlyingEnemy pra retornar a posicao inicial e o absolute time e daí dar set no absolute time no restoreSave
+ - tirar o seg fault quando chega no final da segunda fase -> colocar parede no final da 2a fase
+ - ajeitar as variedades de inimigos e obstaculos de cada mapa
+ - consertar os random do salao (comparar com taberna)
 
 TODOS
  - tirar obstacleNum, boxNum, etc. pq ja foi feito outro sistema de classificacao
  - tirar durability de box
- - consertar os random do salao (comparar com taberna)
- - tirar o seg fault quando chega no final da segunda fase -> colocar parede no final da 2a fase
  - colocar public Ent em SplashScreen e ajeitar o q precisa
- - colocar o maxHP do bardo em 100 e o ataque em 50
- - ajeitar as variedades de inimigos e obstaculos de cada mapa
- - consertar o store() do FlyingEnemy pra retornar a posicao inicial e o absolute time e daí dar set no absolute time no restoreSave
- - inicializar hasEscudeiro como false na entityList e colocar hasEscudeiro = false no game nas opcoes de um jogador
+ - colocar o maxHP do bardo em 200 e o ataque em 50 e do fiel escudeiro o maxHP em 300
  
  simao:
  - entityManager -> entityList : List
@@ -44,6 +44,10 @@ TODOS
 
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)
+
+DETALHES
+ - Taberna tem skeletons e mages / spikes e boxes
+ - Salao tem mages, flyingmonsters e dragon / spikes e lava
 
  JOAO
  - Instalar wxWidgets (sudo apt install libwxgtk3.0-dev)

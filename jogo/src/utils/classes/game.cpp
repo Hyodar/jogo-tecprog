@@ -154,6 +154,7 @@ void Game::showStartMenu() {
             gamePhase = PHASE_1;
             hasEscudeiro = false;
             showNamePrompt();
+            reset();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_1_SALAO:
@@ -161,6 +162,7 @@ void Game::showStartMenu() {
             gamePhase = PHASE_2;
             hasEscudeiro = false;
             showNamePrompt();
+            reset();
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
         case MenuCommand::PLAY_2_TABERNA:
@@ -168,6 +170,7 @@ void Game::showStartMenu() {
             gamePhase = PHASE_1;
             hasEscudeiro = true;
             showNamePrompt();
+            reset();
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
@@ -176,6 +179,7 @@ void Game::showStartMenu() {
             gamePhase = PHASE_2;
             hasEscudeiro = true;
             showNamePrompt();
+            reset();
             LevelManager::getInstance()->getEntityManager().setFielEscudeiro(&fielEscudeiro);
             LevelManager::getInstance()->changeLevel(gamePhase);
             break;
@@ -278,6 +282,9 @@ void Game::checkPlayerState() {
 
         player.setPosX(WINDOW_W/2);
         player.setPosY(WINDOW_H/2);
+
+        fielEscudeiro.setPosX(WINDOW_W/2 - 100);
+        fielEscudeiro.setPosY(WINDOW_H/2);
     }
 
     if(!player.isAlive()) {
@@ -332,8 +339,8 @@ void Game::resume() {
 // ---------------------------------------------------------------------------
 
 void Game::reset() {
-    player = Bardo(WINDOW_W/2, 100);
-    fielEscudeiro = FielEscudeiro(WINDOW_W/2 - 100, 100);
+    player = Bardo(WINDOW_W/2, 200);
+    fielEscudeiro = FielEscudeiro(WINDOW_W/2 - 100, 200);
 
     ScoreManager::getInstance()->setScore(0);
 }
@@ -346,7 +353,6 @@ void Game::winGame() {
 
 // ---------------------------------------------------------------------------
 
-#include <iostream>
 void Game::showNamePrompt() {
     wxTheApp->OnInit();
     wxTheApp->OnRun();

@@ -51,3 +51,23 @@ void FlyingMonster::updatePositionY(const float deltaTime) {
     position.y = startingPos.y + 200 * cos( 5 * absoluteTime + (3.14/2));
     isInvulnerable();
 }
+
+// ---------------------------------------------------------------------------
+
+void FlyingMonster::setAbsoluteTime(float absTime) {
+    absoluteTime = absTime;
+}
+
+// ---------------------------------------------------------------------------
+
+json FlyingMonster::store() {
+    json j;
+
+    j["classification"] = classification;
+    j["hp"] = hitPoints;
+    j["startingPosX"] = startingPos.x;
+    j["startingPosY"] = startingPos.y;
+    j["timeCounter"] = absoluteTime;
+
+    return j;
+}

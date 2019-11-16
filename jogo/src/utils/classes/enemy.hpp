@@ -28,7 +28,7 @@ public:
     virtual void collideX(FielEscudeiro* f);
     virtual void collideY(FielEscudeiro* f);
 
-    json store();
+    virtual json store();
 
 };
 

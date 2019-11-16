@@ -7,7 +7,6 @@ const int WINDOW_H = 768;
 const int WINDOW_W = 1024;
 
 const int TILE_SIZE = 64;
-const int COLLISION_TILE_SIZE = 32;
 
 const int HEALTH_BAR_HEIGHT = 10;
 const int INVULNERABILITY_TICKS = 1500;

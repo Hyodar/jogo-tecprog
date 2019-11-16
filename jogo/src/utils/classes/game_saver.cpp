@@ -132,6 +132,7 @@ bool GameSaver::recoverState() {
                 f.setPosY(obj["posY"]);
                 f.setHP(obj["hp"]);
                 game->setHasEscudeiro(true);
+                levelMng->getEntityManager().setFielEscudeiro(&f);
 
             } break;
             case CharacterClassification::SKELETON: {
@@ -149,8 +150,9 @@ bool GameSaver::recoverState() {
 
             } break;
             case CharacterClassification::FLYING_MONSTER: {
-                FlyingMonster* fm = new FlyingMonster(obj["posX"], obj["posY"], &(game->getPlayer()));
+                FlyingMonster* fm = new FlyingMonster(obj["startingPosX"], obj["startingPosY"], &(game->getPlayer()));
                 fm->setHP(obj["hp"]);
+                fm->setAbsoluteTime(obj["timeCounter"]);
                 
                 levelMng->addEnemy(static_cast<Enemy*>(fm));
 
