@@ -16,14 +16,14 @@ private:
     bool hasEscudeiro;
 
 public:
-    EntityList() : hasEscudeiro{false} {}
-    ~EntityList() {}
+    EntityList();
+    ~EntityList();
 
     void setHasEscudeiro(bool b);
 
     void add(Entity* e);
     void remove(Entity* e);
-    
+
     void moveX(const float deltaTime);
     void moveY(const float deltaTime);
 

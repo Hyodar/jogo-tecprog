@@ -1,10 +1,25 @@
+// Libraries
+// ---------------------------------------------------------------------------
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <constants.hpp>
+
+// Class header
+// ---------------------
+
 #include "energy_ball.hpp"
+
+// Internal libraries
+// ---------------------
 
 #include "level_manager.hpp"
 
-#include <SFML/Graphics.hpp>
+// Attribute initialization
+// ---------------------------------------------------------------------------
 
-#include <constants.hpp>
+// Methods
+// ---------------------------------------------------------------------------
 
 EnergyBall::EnergyBall(int posX, int posY, float speedX, float speedY, bool as)
  : Projectile(posX, posY, 3 * TILE_SIZE / 2, 3 * TILE_SIZE / 2, speedX, speedY, ProjectileClassification::ENERGY_BALL) {
@@ -15,9 +30,13 @@ EnergyBall::EnergyBall(int posX, int posY, float speedX, float speedY, bool as)
     collisionDmg = 20;
 }
 
+// ---------------------------------------------------------------------------
+
 EnergyBall::~EnergyBall() {
     /* noop */
 }
+
+// ---------------------------------------------------------------------------
 
 void EnergyBall::updatePositionX(const float deltaTime){
 
@@ -25,15 +44,19 @@ void EnergyBall::updatePositionX(const float deltaTime){
 
     position.x += speed.x * deltaTime;
 
-    if(traveledDist > 100 && !alreadySplited) {
+    if(abs(traveledDist) > 100 && !alreadySplited) {
         split();
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void EnergyBall::updatePositionY(const float deltaTime){
 
     position.y += speed.y * deltaTime;
 }
+
+// ---------------------------------------------------------------------------
 
 void EnergyBall::split(){
 
@@ -44,4 +67,10 @@ void EnergyBall::split(){
     LevelManager::getInstance()->addProjectile(pb);
 
     alreadySplited = true;
+}
+
+// ---------------------------------------------------------------------------
+
+void EnergyBall::setAlreadySplited(bool as){
+    alreadySplited = as;
 }

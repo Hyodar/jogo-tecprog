@@ -23,12 +23,12 @@ public:
     Box(int posX, int posY);
     ~Box();
 
-    void collideX(Bardo* b){ /*noop*/ };
-    void collideY(Bardo* b){ /*noop*/ };
+    void collideX(Bardo* b);
+    void collideY(Bardo* b);
     void takeDamage(float dmg);
     sf::FloatRect getBoundingBox() const;
     void render(sf::RenderWindow& window);
-    void updatePosition(float deltaTime) { /* DELETE SOON */ }
+    //void updatePosition(float deltaTime);
 
     float getCollisionDmg() { return 0; }
 

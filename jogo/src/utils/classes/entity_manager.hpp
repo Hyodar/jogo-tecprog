@@ -23,7 +23,7 @@ class EntityManager {
 
 private:
     EntityList entityList;
-    CollisionList collisionList;    
+    CollisionList collisionList;
 
 public:
 
@@ -45,15 +45,8 @@ public:
     //std::vector<Obstacle*> getObstacles() { return obstacles; }
     //std::vector<Enemy*> getEnemies() { return enemies; }
 
-    void setBardo(Bardo* b) { 
-        entityList.add(static_cast<Entity*>(b));
-        collisionList.add(b);
-    }
-    void setFielEscudeiro(FielEscudeiro* f) {
-        entityList.setHasEscudeiro(true);
-        entityList.add(static_cast<Entity*>(f));
-        collisionList.add(f);
-    }
+    void setBardo(Bardo* b);
+    void setFielEscudeiro(FielEscudeiro* f);
 
     json store();
 

@@ -39,6 +39,7 @@ Lava::~Lava(){
 void Lava::collideX(Bardo* b){
     b->takeDamage(getCollisionDmg());
     b->jump(0.5);
+    //b->setOnFire(true);
 }
 
 // ---------------------------------------------------------------------------
@@ -46,6 +47,7 @@ void Lava::collideX(Bardo* b){
 void Lava::collideY(Bardo* b){
     b->takeDamage(getCollisionDmg());
     b->jump(0.5);
+    //b->setOnFire(true);
 }
 
 // ---------------------------------------------------------------------------

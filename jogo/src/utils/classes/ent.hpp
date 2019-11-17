@@ -7,19 +7,20 @@
 class Ent {
 
 protected:
+
     sf::Vector2f position;
 
 public:
-    Ent(float posX, float posY) : position(posX, posY) {}
-    ~Ent() {}
+    Ent(float posX = 0, float posY = 0);
+    ~Ent();
 
     virtual void render(sf::RenderWindow& window) = 0;
 
-    sf::Vector2f getPosition() { return position; }    
-    void setPosX(float p) { position.x = p; }
-    void setPosY(float p) { position.y = p; }
-    float getPosX() { return position.x; }
-    float getPosY() { return position.y; }
+    sf::Vector2f getPosition() const;
+    void setPosX(float p);
+    void setPosY(float p);
+    float getPosX() const;
+    float getPosY() const;
 
 };
 

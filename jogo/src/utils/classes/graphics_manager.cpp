@@ -16,7 +16,8 @@ GraphicsManager::GraphicsManager() {
     startMenuTexture.loadFromFile("resources/start_menu.png");
     gameOverMenuTexture.loadFromFile("resources/game_over_menu.png");
     tileSheetTexture.loadFromFile("resources/sheet.png");
-    scorefont.loadFromFile("resources/bilboregular.ttf");
+    scoreFont.loadFromFile("resources/bilboregular.ttf");
+    rankingFont.loadFromFile("resources/dungeon.ttf");
 }
 
 GraphicsManager::~GraphicsManager() {
@@ -77,5 +78,9 @@ sf::Texture* GraphicsManager::getTileSheetTexture() {
 }
 
 sf::Font* GraphicsManager::getScoreFont() {
-    return &scorefont;
+    return &scoreFont;
+}
+
+sf::Font* GraphicsManager::getRankingFont(){
+    return &rankingFont;
 }

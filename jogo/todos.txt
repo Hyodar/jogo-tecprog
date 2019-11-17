@@ -36,6 +36,7 @@ TODOS
  - tirar durability de box
  - colocar public Ent em SplashScreen e ajeitar o q precisa
  - colocar o maxHP do bardo em 200 e o ataque em 50 e do fiel escudeiro o maxHP em 300
+ - lembrar de por construtora e destrutora em DatabaseModel
  
  simao:
  - entityManager -> entityList : List

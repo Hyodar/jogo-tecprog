@@ -1,12 +1,60 @@
 {
     "players": [
         {
+            "player": "oi",
+            "score": 2020
+        },
+        {
             "player": "aeon",
             "score": 2000
         },
         {
+            "player": "oi",
+            "score": 1990
+        },
+        {
+            "player": "oi",
+            "score": 1810
+        },
+        {
             "player": "run",
             "score": 1770
+        },
+        {
+            "player": "sei la",
+            "score": 1580
+        },
+        {
+            "player": "qualquer coisa",
+            "score": 1440
+        },
+        {
+            "player": "sei la",
+            "score": 1420
+        },
+        {
+            "player": "sei la",
+            "score": 1300
+        },
+        {
+            "player": "sei la",
+            "score": 1220
+        },
+        {
+            "player": "1",
+            "score": 1200
+        },
+        {
+            "player": "sei la",
+            "score": 1200
+        },
+        {
+            "player": "sei la",
+            "score": 1200
+        },
+        {
+            "player": "sei la",
+            "score": 1200
         },
         {
             "player": "aeon",
@@ -23,6 +71,10 @@
         {
             "player": "bar do bardo",
             "score": 1170
+        },
+        {
+            "player": "sei la",
+            "score": 1140
         },
         {
             "player": "run",
@@ -71,6 +123,10 @@
         {
             "player": "homura-chan",
             "score": 1070
+        },
+        {
+            "player": "sei la",
+            "score": 1060
         },
         {
             "player": "ad",
@@ -131,6 +187,14 @@
         {
             "player": "aeon",
             "score": 1020
+        },
+        {
+            "player": "oi",
+            "score": 1000
+        },
+        {
+            "player": "sei la",
+            "score": 1000
         },
         {
             "player": "run",

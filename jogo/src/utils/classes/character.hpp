@@ -19,7 +19,7 @@ class Character : public Entity {
 
         double hitPoints;
         double maxHitPoints;
-        
+
         bool onGround;
 
         int invulnerable;
@@ -28,13 +28,15 @@ class Character : public Entity {
         static const int jumpSpeed;
         static const int walkSpeed;
 
+        bool onFire;
+
     public:
         Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0, int _classification=-1);
         ~Character();
 
         virtual void checkKeys();
         void jump(const float factor = 1);
-        
+
         void update(const float deltaTime);
         virtual void updatePositionX(float deltaTime);
         virtual void updatePositionY(float deltaTime);
@@ -45,20 +47,24 @@ class Character : public Entity {
 
         virtual void collideX(Obstacle* o);
         virtual void collideY(Obstacle* o);
-        
+
         void isInvulnerable();
         void takeDamage(float dmg);
-        const bool isAlive() const { return hitPoints > 0; }
+        const bool isAlive() const;
 
-        void setOnGround(bool b) { onGround = b; }
+        void setOnGround(bool b);
 
-        float getSpeedX() { return speed.x; }
-        float getSpeedY() { return speed.y; }
-        void setSpeedX(float s) { speed.x = s; }
-        void setSpeedY(float s) { speed.y = s; }
+        float getSpeedX() const;
+        float getSpeedY() const;
+        void setSpeedX(float s);
+        void setSpeedY(float s);
 
-        float getHP() { return hitPoints; }
-        void setHP(float hp) { hitPoints = hp; }
+        float getHP() const;
+        void setHP(float hp);
+
+        bool getOnFire();
+        void setOnFire(bool b);
+        void manageOnFire();
 
         virtual json store();
 };

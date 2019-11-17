@@ -21,7 +21,8 @@ private:
     sf::Texture gameOverMenuTexture;
     sf::Texture tileSheetTexture;
 
-    sf::Font scorefont;
+    sf::Font scoreFont;
+    sf::Font rankingFont;
 
 public:
 
@@ -40,6 +41,7 @@ public:
     sf::Texture* getStartMenuTexture();
     sf::Texture* getGameOverMenuTexture();
     sf::Texture* getTileSheetTexture();
-    sf::Font* getScoreFont(); 
+    sf::Font* getScoreFont();
+    sf::Font* getRankingFont();
 
 };

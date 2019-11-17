@@ -109,6 +109,22 @@ void EntityManager::removeFielEscudeiro(FielEscudeiro* f) {
     collisionList.add(static_cast<FielEscudeiro*>(nullptr));
 }
 
+
+// ---------------------------------------------------------------------------
+
+void EntityManager::setBardo(Bardo* b) {
+    entityList.add(static_cast<Entity*>(b));
+    collisionList.add(b);
+}
+
+// ---------------------------------------------------------------------------
+
+void EntityManager::setFielEscudeiro(FielEscudeiro* f) {
+    entityList.setHasEscudeiro(true);
+    entityList.add(static_cast<Entity*>(f));
+    collisionList.add(f);
+}
+
 // ---------------------------------------------------------------------------
 
 json EntityManager::store() {

@@ -16,10 +16,6 @@ private:
     int attackCounter;
     int attackInterval;
 
-    bool onFire;
-
-    void manageOnFire();
-
     void resetAttackCounter();
 
 public:
@@ -27,12 +23,9 @@ public:
     void updateStartPosition();
     void checkKeys();
     void render(sf::RenderWindow& window);
-    sf::FloatRect getBoundingBox();
+    sf::FloatRect getBoundingBox() const;
 
     void collideX(Enemy* e);
-
-    bool getOnFire();
-    void setOnFire(bool b);
 
     bool isAttacking();
 

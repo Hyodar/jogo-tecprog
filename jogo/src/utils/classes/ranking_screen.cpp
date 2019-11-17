@@ -22,7 +22,7 @@ RankingScreen::~RankingScreen() {
 void RankingScreen::render(sf::RenderWindow& window) {
     json scores = GameSaver::getInstance()->savePlayerScore();
 
-    sf::Font* fontPtr = GraphicsManager::getInstance()->getScoreFont();
+    sf::Font* fontPtr = GraphicsManager::getInstance()->getRankingFont();
 
     window.draw(sprite);
 
@@ -33,6 +33,7 @@ void RankingScreen::render(sf::RenderWindow& window) {
     placeText.setFont(*fontPtr);
     placeText.setString(stream.str());
     placeText.setCharacterSize(60);
+    placeText.setStyle(sf::Text::Bold);
     placeText.setFillColor(sf::Color::White);
 
     sf::FloatRect textRect = placeText.getLocalBounds();
@@ -50,6 +51,7 @@ void RankingScreen::render(sf::RenderWindow& window) {
     rankingBoard.setFont(*fontPtr);
     rankingBoard.setString(stream.str());
     rankingBoard.setCharacterSize(50);
+    rankingBoard.setStyle(sf::Text::Bold);
     rankingBoard.setFillColor(sf::Color::White);
 
     textRect = rankingBoard.getLocalBounds();
@@ -84,4 +86,3 @@ void RankingScreen::processLoop(sf::RenderWindow& window) {
         }
     }
 }
-

@@ -1,7 +1,16 @@
+// Libraries
+// ---------------------------------------------------------------------------
+
+#include <vector>
+#include <iostream>
+
+// Class header
+// ---------------------
 
 #include "collision_list.hpp"
 
-#include <vector>
+// Internal libraries
+// ---------------------
 
 #include "enemy.hpp"
 #include "obstacle.hpp"
@@ -14,33 +23,53 @@
 #include "level_manager.hpp"
 #include "score_manager.hpp"
 
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
+// Methods
+// ---------------------------------------------------------------------------
+
 CollisionList::CollisionList() : bardo{nullptr}, fielEscudeiro{nullptr} {
     // noop
 }
+
+// ---------------------------------------------------------------------------
 
 CollisionList::~CollisionList() {
     deallocate();
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::add(Enemy* e) {
     enemies.push_back(e);
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::add(Obstacle* e) {
     obstacles.insert({ obstacles.size(), e });
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::add(Projectile* e) {
     projectiles.push_back(e);
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::add(Bardo* e) {
     bardo = e;
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::add(FielEscudeiro* e) {
     fielEscudeiro = e;
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::remove(Enemy* e) {
     for(auto it = enemies.begin(); it != enemies.end(); it++) {
@@ -51,6 +80,8 @@ void CollisionList::remove(Enemy* e) {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::remove(Obstacle* e) {
     for(auto it = obstacles.begin(); it != obstacles.end(); it++) {
         if(it->second == e) {
@@ -60,6 +91,8 @@ void CollisionList::remove(Obstacle* e) {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::remove(Projectile* e) {
     for(auto it = projectiles.begin(); it != projectiles.end(); it++) {
         if((*it) == e) {
@@ -68,6 +101,8 @@ void CollisionList::remove(Projectile* e) {
         }
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::deallocate() {
     for(Enemy* e : enemies) {
@@ -88,12 +123,16 @@ void CollisionList::deallocate() {
     projectiles.clear();
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::testCollisionX() {
     testBardoX();
     if(fielEscudeiro) testFielEscudeiroX();
     testEnemiesX();
     testProjectiles();
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::testCollisionY() {
     testBardoY();
@@ -103,6 +142,8 @@ void CollisionList::testCollisionY() {
     testProjectiles();
     testHitPoints();
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::testBardoX() {
     GameMap* g = GameMap::getInstance();
@@ -141,6 +182,8 @@ void CollisionList::testBardoX() {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::testBardoY() {
     GameMap* g = GameMap::getInstance();
 
@@ -175,6 +218,8 @@ void CollisionList::testBardoY() {
         }
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::testFielEscudeiroX() {
     GameMap* g = GameMap::getInstance();
@@ -211,6 +256,8 @@ void CollisionList::testFielEscudeiroX() {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::testFielEscudeiroY() {
     GameMap* g = GameMap::getInstance();
 
@@ -246,6 +293,8 @@ void CollisionList::testFielEscudeiroY() {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::testEnemiesX() {
     GameMap* g = GameMap::getInstance();
 
@@ -272,7 +321,8 @@ void CollisionList::testEnemiesX() {
     }
 }
 
-#include <iostream>
+// ---------------------------------------------------------------------------
+
 void CollisionList::testEnemiesY() {
     GameMap* g = GameMap::getInstance();
 
@@ -280,7 +330,7 @@ void CollisionList::testEnemiesY() {
         for(int i = e->getPosY()/TILE_SIZE; i < (e->getPosY() + e->getSizeY())/TILE_SIZE; i++) {
             for(int j = e->getPosX()/TILE_SIZE; j < (e->getPosX() + e->getSizeX())/TILE_SIZE; j++) {
                 if(!g->isPositionValid(i, j)) continue;
-                
+
                 Tile* t = g->getTile(i, j);
                 if(t->getBoundingBox().intersects(e->getBoundingBox())) {
                     static_cast<Character*>(e)->collideY(t);
@@ -299,6 +349,8 @@ void CollisionList::testEnemiesY() {
     }
 }
 
+// ---------------------------------------------------------------------------
+
 void CollisionList::testProjectiles() {
     std::vector<Projectile*> toErase;
 
@@ -315,6 +367,8 @@ void CollisionList::testProjectiles() {
         LevelManager::getInstance()->removeProjectile(p);
     }
 }
+
+// ---------------------------------------------------------------------------
 
 void CollisionList::testHitPoints() {
     std::vector<Enemy*> toErase;

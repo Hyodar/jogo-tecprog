@@ -7,12 +7,9 @@
 class Collidable {
 
     public:
-        virtual sf::FloatRect getBoundingBox() const {
-            return sf::FloatRect(0, 0, 0, 0);
-        }
-        virtual void takeDamage(float dmg) {
-            // noop
-        }
+        virtual sf::FloatRect getBoundingBox() const;
+        
+        virtual void takeDamage(float dmg);
 };
 
 #endif // COLLIDABLE_HPP_

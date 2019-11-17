@@ -4,13 +4,10 @@
 // Class header
 // ---------------------
 
-#include "collision_detecter.hpp"
+#include "collidable.hpp"
 
 // Internal libraries
 // ---------------------
-
-#include "collidable.hpp"
-
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -18,18 +15,12 @@
 // Methods
 // ---------------------------------------------------------------------------
 
-CollisionDetecter::CollisionDetecter() {
-    // noop
+sf::FloatRect Collidable::getBoundingBox() const {
+    return sf::FloatRect(0, 0, 0, 0);
 }
 
 // ---------------------------------------------------------------------------
 
-CollisionDetecter::~CollisionDetecter() {
+void Collidable::takeDamage(float dmg) {
     // noop
-}
-
-// ---------------------------------------------------------------------------
-
-const bool CollisionDetecter::isColliding(Collidable* e1, Collidable* e2) const {
-    return e1->getBoundingBox().intersects(e2->getBoundingBox());
 }

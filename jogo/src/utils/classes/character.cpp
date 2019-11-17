@@ -29,7 +29,7 @@ const int Character::walkSpeed{500};
 Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification)
     : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, HEALTH_BAR_HEIGHT)),
       speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
-      invulnerable{0}, walkingRight{true} {
+      invulnerable{0}, walkingRight{true}, onFire{false} {
 
     // noop
 }
@@ -81,6 +81,54 @@ void Character::takeDamage(float dmg) {
 
 // ---------------------------------------------------------------------------
 
+const bool Character::isAlive() const {
+    return hitPoints > 0;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::setOnGround(bool b) {
+    onGround = b;
+}
+
+// ---------------------------------------------------------------------------
+
+float Character::getSpeedX() const {
+    return speed.x;
+}
+
+// ---------------------------------------------------------------------------
+
+float Character::getSpeedY() const {
+    return speed.y;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::setSpeedX(float s) {
+    speed.x = s;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::setSpeedY(float s) {
+    speed.y = s;
+}
+
+// ---------------------------------------------------------------------------
+
+float Character::getHP() const {
+    return hitPoints;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::setHP(float hp) {
+    hitPoints = hp;
+}
+
+// ---------------------------------------------------------------------------
+
 void Character::updatePositionX(float deltaTime) {
     checkKeys();
 
@@ -96,6 +144,24 @@ void Character::updatePositionY(float deltaTime) {
     onGround = false;
 
     isInvulnerable();
+}
+
+// ---------------------------------------------------------------------------
+
+bool Character::getOnFire() {
+    return onFire;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::setOnFire(bool b) {
+    onFire = b;
+}
+
+// ---------------------------------------------------------------------------
+
+void Character::manageOnFire() {
+
 }
 
 // ---------------------------------------------------------------------------
@@ -122,6 +188,8 @@ void Character::render(sf::RenderWindow& window) {
     window.draw(healthBar);
 }
 
+// ---------------------------------------------------------------------------
+
 void Character::collideY(Tile* t) {
     if(getSpeedY() > 0) {
         setPosY(t->getBoundingBox().top - getSizeY());
@@ -131,6 +199,8 @@ void Character::collideY(Tile* t) {
     setSpeedY(0);
 }
 
+// ---------------------------------------------------------------------------
+
 void Character::collideX(Tile* t) {
     if(getSpeedX() > 0) {
         setPosX(t->getBoundingBox().left - getSizeX());
@@ -138,6 +208,8 @@ void Character::collideX(Tile* t) {
     else if(getSpeedX() < 0) setPosX(t->getBoundingBox().left + t->getBoundingBox().width);
     setSpeedX(0);
 }
+
+// ---------------------------------------------------------------------------
 
 void Character::collideY(Obstacle* o) {
     if(getSpeedY() > 0) {
@@ -147,6 +219,8 @@ void Character::collideY(Obstacle* o) {
     else if(getSpeedY() < 0) setPosY(o->getBoundingBox().top + o->getBoundingBox().height);
     setSpeedY(0);
 }
+
+// ---------------------------------------------------------------------------
 
 void Character::collideX(Obstacle* o) {
     if(getSpeedX() > 0) {

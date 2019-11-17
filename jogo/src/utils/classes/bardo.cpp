@@ -20,7 +20,7 @@
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP)
  : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO),
-   attackCounter{0}, attackInterval{300} {
+   attackCounter{0}, attackInterval{300}{
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
     sprite.setScale(2, 2);
@@ -101,7 +101,7 @@ void Bardo::render(sf::RenderWindow& window) {
 
 // ---------------------------------------------------------------------------
 
-sf::FloatRect Bardo::getBoundingBox() {
+sf::FloatRect Bardo::getBoundingBox() const{
     if(attackCounter) {
         if(walkingRight) return sf::FloatRect(position.x, position.y, size.x + 30, size.y);
         return sf::FloatRect(position.x - 30, position.y, size.x, size.y);
@@ -133,24 +133,6 @@ void Bardo::collideX(Enemy* e) {
             e->setSpeedX(0);
         }
     }
-}
-
-// ---------------------------------------------------------------------------
-
-bool Bardo::getOnFire() {
-    return onFire;
-}
-
-// ---------------------------------------------------------------------------
-
-void Bardo::setOnFire(bool b) {
-
-}
-
-// ---------------------------------------------------------------------------
-
-void Bardo::manageOnFire() {
-
 }
 
 // ---------------------------------------------------------------------------
