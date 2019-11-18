@@ -15,8 +15,6 @@
 #include "obstacle.hpp"
 #include "tile.hpp"
 
-#include <constants.hpp>
-
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -26,10 +24,10 @@ const int Character::walkSpeed{500};
 // Methods
 // ---------------------------------------------------------------------------
 
-Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification)
+Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification, int _invulnerabilityTicks)
     : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, HEALTH_BAR_HEIGHT)),
       speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
-      invulnerable{0}, walkingRight{true}, onFire{false} {
+      invulnerable{0}, invulnerabilityTicks{_invulnerabilityTicks}, walkingRight{true}, onFire{false} {
 
     // noop
 }
@@ -57,12 +55,6 @@ void Character::update(const float deltaTime) {
 
 // ---------------------------------------------------------------------------
 
-void Character::checkKeys() {
-    // noop
-}
-
-// ---------------------------------------------------------------------------
-
 void Character::isInvulnerable() {
     if(invulnerable) {
         invulnerable--;
@@ -73,9 +65,9 @@ void Character::isInvulnerable() {
 // ---------------------------------------------------------------------------
 
 void Character::takeDamage(float dmg) {
-    if(!invulnerable) {
+    if(invulnerable <= 0) {
         hitPoints -= dmg;
-        invulnerable = INVULNERABILITY_TICKS;
+        invulnerable = invulnerabilityTicks;
     }
 }
 
@@ -130,7 +122,6 @@ void Character::setHP(float hp) {
 // ---------------------------------------------------------------------------
 
 void Character::updatePositionX(float deltaTime) {
-    checkKeys();
 
     position.x += speed.x * deltaTime;
 }

@@ -16,3 +16,13 @@ Fireball::Fireball(int posX, int posY, float speedX, float speedY)
 Fireball::~Fireball() {
 
 }
+
+void Fireball::collideX(Bardo* b) {
+    b->takeDamage(getCollisionDmg());
+    b->burn();
+}
+
+void Fireball::collideY(Bardo* b) {
+    b->takeDamage(getCollisionDmg());
+    b->burn();
+}

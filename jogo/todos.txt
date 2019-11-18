@@ -37,6 +37,7 @@ TODOS
  - colocar public Ent em SplashScreen e ajeitar o q precisa
  - colocar o maxHP do bardo em 200 e o ataque em 50 e do fiel escudeiro o maxHP em 300
  - lembrar de por construtora e destrutora em DatabaseModel
+ - tirar os bool onFire de character
  
  simao:
  - entityManager -> entityList : List
@@ -46,6 +47,7 @@ TODOS
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)
  - https://www.artstation.com/artwork/xzmKBR (autor da splash screen)
+ - Autores das fontes
 
 DETALHES
  - Taberna tem skeletons e mages / spikes e boxes

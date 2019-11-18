@@ -2,14 +2,13 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 9980.0,
-            "posX": 873.312744140625,
-            "posY": 576.0
+            "hp": 9800.0,
+            "posX": 6192.1943359375,
+            "posY": 640.0
         },
         {
-            "classification": 1,
-            "hp": 100.0,
-            "posX": 412.0,
+            "classification": 6,
+            "posX": 1024.0,
             "posY": 640.0
         },
         {
@@ -19,7 +18,12 @@
         },
         {
             "classification": 6,
-            "posX": 1024.0,
+            "posX": 960.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "posX": 1152.0,
             "posY": 640.0
         },
         {
@@ -34,13 +38,13 @@
         },
         {
             "classification": 6,
-            "posX": 1152.0,
+            "posX": 640.0,
             "posY": 640.0
         },
         {
-            "classification": 8,
-            "posX": 5440.0,
-            "posY": 576.0
+            "classification": 6,
+            "posX": 1088.0,
+            "posY": 640.0
         },
         {
             "classification": 8,
@@ -49,8 +53,18 @@
         },
         {
             "classification": 8,
-            "posX": 1024.0,
-            "posY": 320.0
+            "posX": 5632.0,
+            "posY": 576.0
+        },
+        {
+            "classification": 8,
+            "posX": 3200.0,
+            "posY": 512.0
+        },
+        {
+            "classification": 8,
+            "posX": 2624.0,
+            "posY": 192.0
         },
         {
             "classification": 8,
@@ -58,84 +72,97 @@
             "posY": 576.0
         },
         {
-            "classification": 8,
-            "posX": 5632.0,
-            "posY": 576.0
-        },
-        {
             "classification": 2,
             "hp": 100.0,
-            "posX": 1728.0,
-            "posY": 347.2130432128906
+            "posX": 5694.7001953125,
+            "posY": 393.553955078125
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 708.1935424804688,
-            "posY": 512.0
+            "classification": 10,
+            "posX": 139.37435913085938,
+            "posY": 1502.421875,
+            "speedX": -536.2021484375,
+            "speedY": 169.23455810546875
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 3584.0,
-            "posY": 496.9870910644531
+            "classification": 10,
+            "posX": 2357.086181640625,
+            "posY": 567.9155883789063,
+            "speedX": -497.3165283203125,
+            "speedY": 51.73245620727539
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 708.1936645507813,
-            "posY": 378.99676513671875
+            "classification": 10,
+            "posX": 1853.0343017578125,
+            "posY": 1086.3297119140625,
+            "speedX": -549.8912353515625,
+            "speedY": 140.04092407226563
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 1263.9659423828125,
-            "posY": 396.30255126953125
+            "classification": 10,
+            "posX": 1922.1700439453125,
+            "posY": 1048.347412109375,
+            "speedX": -596.7798461914063,
+            "speedY": 162.07894897460938
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "posX": 2752.0,
-            "posY": 360.8833923339844
+            "classification": 10,
+            "posX": 4296.0654296875,
+            "posY": 640.6349487304688,
+            "speedX": -494.94171142578125,
+            "speedY": 70.94136810302734
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 2368.0,
-            "posY": 192.0
+            "classification": 10,
+            "posX": 3975.577880859375,
+            "posY": 633.179443359375,
+            "speedX": -497.9902038574219,
+            "speedY": 44.78586959838867
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 4032.0,
-            "posY": 320.0
+            "classification": 10,
+            "posX": 4046.0751953125,
+            "posY": 927.0369873046875,
+            "speedX": -593.9300537109375,
+            "speedY": 185.129638671875
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 4480.0,
-            "posY": 320.0
+            "classification": 10,
+            "posX": 3723.683837890625,
+            "posY": 905.2194213867188,
+            "speedX": -597.5882568359375,
+            "speedY": 153.7430419921875
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 4992.0,
-            "posY": 512.0
+            "classification": 10,
+            "posX": 3723.683837890625,
+            "posY": 134.78271484375,
+            "speedX": -597.5882568359375,
+            "speedY": -153.7430419921875
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 5632.0,
-            "posY": 448.0
+            "classification": 10,
+            "posX": 5603.38720703125,
+            "posY": 589.4749145507813,
+            "speedX": -499.8002624511719,
+            "speedY": 14.13174057006836
         },
         {
-            "classification": 3,
-            "hp": 100.0,
-            "posX": 3200.0,
-            "posY": 512.0
+            "classification": 10,
+            "posX": 5526.87060546875,
+            "posY": 665.973876953125,
+            "speedX": -599.7603149414063,
+            "speedY": 116.95809173583984
+        },
+        {
+            "classification": 10,
+            "posX": 5526.87060546875,
+            "posY": 490.02618408203125,
+            "speedX": -599.7603149414063,
+            "speedY": -116.95809173583984
         }
     ],
-    "name": "run",
+    "name": "a",
     "phase": 0,
-    "score": 0
+    "score": 180
 }

@@ -7,25 +7,49 @@
 
 #include "bardo.hpp"
 
+// Standard libraries
+// ---------------------
+
+#include <iostream>
+#include <chrono>
+
 // Internal libraries
 // ---------------------
 
+#include "game.hpp"
 #include "game_map.hpp"
 #include "graphics_manager.hpp"
 #include "enemy.hpp"
 #include <constants.hpp>
 
+std::mutex* Bardo::invulnerabilityMutex = new std::mutex();
+
 // Methods
 // ---------------------------------------------------------------------------
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP)
- : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO),
-   attackCounter{0}, attackInterval{300}{
+ : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO, 40),
+   attackCounter{0}, attackInterval{300}, onFireCounter{200},
+   invulnerabilityThread{nullptr}, onFireThread{nullptr} {
 
     sprite.setTexture(*(GraphicsManager::getInstance()->getBardoTexture()));
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Red);
+}
+
+// ---------------------------------------------------------------------------
+
+Bardo::~Bardo() {
+    hitPoints = 0;
+
+    if(invulnerabilityThread) {
+        invulnerabilityThread->join();
+        onFireThread->join();
+
+        delete invulnerabilityThread;
+        delete onFireThread;
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -91,6 +115,13 @@ void Bardo::render(sf::RenderWindow& window) {
         else sprite.setTextureRect(sf::IntRect(32, 0, -32, 32));
         healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     }
+    
+    if(invulnerable) {
+        sprite.setColor(sf::Color(255, 255, 255, 128));
+    } 
+    else {
+        sprite.setColor(sf::Color(255, 255, 255, 255));
+    }
 
     //healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     healthBar.setSize(sf::Vector2f((hitPoints > 0)? (hitPoints/maxHitPoints) * size.x : 0, HEALTH_BAR_HEIGHT));
@@ -102,6 +133,12 @@ void Bardo::render(sf::RenderWindow& window) {
 // ---------------------------------------------------------------------------
 
 sf::FloatRect Bardo::getBoundingBox() const{
+    return sf::FloatRect(position.x, position.y, size.x, size.y);
+}
+
+// ---------------------------------------------------------------------------
+
+sf::FloatRect Bardo::getAttackBoundingBox() const{
     if(attackCounter) {
         if(walkingRight) return sf::FloatRect(position.x, position.y, size.x + 30, size.y);
         return sf::FloatRect(position.x - 30, position.y, size.x, size.y);
@@ -134,6 +171,62 @@ void Bardo::collideX(Enemy* e) {
         }
     }
 }
+// ---------------------------------------------------------------------------
+
+void Bardo::updatePositionX(float deltaTime) {
+    checkKeys();
+
+    position.x += speed.x * deltaTime;
+}
+
+// ---------------------------------------------------------------------------
+
+void Bardo::updatePositionY(float deltaTime) {
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
+
+    position.y += speed.y * deltaTime;
+    onGround = false;
+
+    if(onFireCounter > 0) onFireCounter -= 1;
+}
+
+// ---------------------------------------------------------------------------
+
+void Bardo::checkInvulnerability() {
+    while(isAlive()) {
+        if(Game::getInstance()->getGameState() == Game::GameState::PLAYING) {
+            invulnerabilityMutex->lock();
+            if(invulnerable > 0) {
+                invulnerable -= 1;
+            }
+            invulnerabilityMutex->unlock();
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
+
+// ---------------------------------------------------------------------------
+
+void Bardo::checkOnFire() {
+    while(isAlive()) {
+        if(Game::getInstance()->getGameState() == Game::GameState::PLAYING) {
+            if(onFireCounter > 0) {
+                invulnerabilityMutex->lock();
+                if(invulnerable > 0) {
+                    invulnerable -= 1;
+                }
+                invulnerabilityMutex->unlock();
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
+
+// ---------------------------------------------------------------------------
+
+void Bardo::burn() {
+    onFireCounter = 200;
+}
 
 // ---------------------------------------------------------------------------
 
@@ -152,4 +245,11 @@ json Bardo::store() {
     j["posY"] = position.y;
 
     return j;
+}
+
+// ---------------------------------------------------------------------------
+
+void Bardo::initThreads() {
+    invulnerabilityThread = new std::thread([this] { this->checkInvulnerability(); });
+    onFireThread = new std::thread([this] { this->checkOnFire(); });
 }

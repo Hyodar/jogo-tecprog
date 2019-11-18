@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "entity.hpp"
+#include <constants.hpp>
 
 class Tile;
 class Obstacle;
@@ -23,6 +24,7 @@ class Character : public Entity {
         bool onGround;
 
         int invulnerable;
+        int invulnerabilityTicks;
         bool walkingRight;
 
         static const int jumpSpeed;
@@ -31,10 +33,9 @@ class Character : public Entity {
         bool onFire;
 
     public:
-        Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0, int _classification=-1);
+        Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0, int _classification=-1, int _invulnerabilityTicks=INVULNERABILITY_TICKS);
         ~Character();
 
-        virtual void checkKeys();
         void jump(const float factor = 1);
 
         void update(const float deltaTime);

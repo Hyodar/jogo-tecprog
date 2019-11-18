@@ -51,3 +51,22 @@ void FielEscudeiro::checkKeys() {
     }
 
 }
+
+// ---------------------------------------------------------------------------
+
+void FielEscudeiro::updatePositionX(float deltaTime) {
+    checkKeys();
+
+    position.x += speed.x * deltaTime;
+}
+
+// ---------------------------------------------------------------------------
+
+void FielEscudeiro::updatePositionY(float deltaTime) {
+    if(!onGround) speed.y += GRAV_ACC * deltaTime;
+
+    position.y += speed.y * deltaTime;
+    onGround = false;
+
+    isInvulnerable();
+}

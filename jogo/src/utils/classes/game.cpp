@@ -80,6 +80,8 @@ void Game::start() {
     gameState = SHOWING_SPLASH;
     gamePhase = NO_PHASE;
 
+    player.initThreads();
+
     while(!isExiting()) {
         gameLoop();
     }
@@ -340,6 +342,7 @@ void Game::resume() {
 
 void Game::reset() {
     player = Bardo(WINDOW_W/2, 200);
+    player.initThreads();
     fielEscudeiro = FielEscudeiro(WINDOW_W/2 - 100, 200);
 
     ScoreManager::getInstance()->setScore(0);

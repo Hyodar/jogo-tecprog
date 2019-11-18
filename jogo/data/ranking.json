@@ -137,6 +137,10 @@
             "score": 1050
         },
         {
+            "player": "a",
+            "score": 1040
+        },
+        {
             "player": "run",
             "score": 1040
         },
@@ -187,6 +191,10 @@
         {
             "player": "aeon",
             "score": 1020
+        },
+        {
+            "player": "a",
+            "score": 1000
         },
         {
             "player": "oi",

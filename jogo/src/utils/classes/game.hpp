@@ -13,23 +13,25 @@
 
 class Game : public DatabaseModel {
 
-enum GameState {
-    UNINITIALIZED,
-    SHOWING_SPLASH,
-    PAUSED,
-    SHOWING_START_MENU,
-    SHOWING_PAUSE_MENU,
-    SHOWING_GAME_OVER_MENU,
-    SHOWING_RANKING_SCREEN,
-    PLAYING,
-    EXITING
-};
+public:
 
-enum GamePhase {
-    NO_PHASE = -1,
-    PHASE_1 = 0,
-    PHASE_2 = 1
-};
+    enum GameState {
+        UNINITIALIZED,
+        SHOWING_SPLASH,
+        PAUSED,
+        SHOWING_START_MENU,
+        SHOWING_PAUSE_MENU,
+        SHOWING_GAME_OVER_MENU,
+        SHOWING_RANKING_SCREEN,
+        PLAYING,
+        EXITING
+    };
+
+    enum GamePhase {
+        NO_PHASE = -1,
+        PHASE_1 = 0,
+        PHASE_2 = 1
+    };
 
 public:
     ~Game();
@@ -49,6 +51,7 @@ public:
     sf::RenderWindow& getMainWindow() { return mainWindow; }
 
     void setGamePhase(int p) { gamePhase = (Game::GamePhase) p; }
+    Game::GameState getGameState() { return gameState; }
 
     json store();
     void resume();

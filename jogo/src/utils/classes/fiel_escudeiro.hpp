@@ -16,6 +16,9 @@ public:
     FielEscudeiro(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0);
     void checkKeys();
 
+    void updatePositionX(const float deltaTime);
+    void updatePositionY(const float deltaTime);
+
 };
 
 #endif // FIEL_ESCUDEIRO_HPP_

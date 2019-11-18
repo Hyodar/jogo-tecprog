@@ -159,7 +159,7 @@ void CollisionList::testBardoX() {
     }
 
     for(Enemy* e : enemies) {
-        if(collisionDetecter.isColliding(bardo, e)) {
+        if(e->getBoundingBox().intersects(bardo->getAttackBoundingBox())) {
             bardo->collideX(e);
             e->collideX(bardo);
         }
