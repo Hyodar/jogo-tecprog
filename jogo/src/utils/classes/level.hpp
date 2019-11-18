@@ -16,8 +16,8 @@ public:
     void init(); // inicializa o nivel
 
     sf::Vector2f getSpawnPosition(uint pos, int layerWidth);
-    
-    const char* getConfigPath() { return configPath; }
+
+    const char* getConfigPath();
 
 private:
     const char* configPath;

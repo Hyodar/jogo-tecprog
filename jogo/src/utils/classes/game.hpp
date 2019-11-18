@@ -36,26 +36,26 @@ public:
 public:
     ~Game();
     static Game* getInstance();
-    
+
     void start();
-    
-    Bardo& getPlayer() { return player; }
-    FielEscudeiro& getFielEscudeiro() { return fielEscudeiro; }
 
-    bool getHasEscudeiro() { return hasEscudeiro; }
-    void setHasEscudeiro(bool b) { hasEscudeiro = b; }
+    Bardo& getPlayer();
+    FielEscudeiro& getFielEscudeiro();
 
-    void setPlayerName(std::string s) { playerName = s; }
-    std::string getPlayerName() { return playerName; }
+    bool getHasEscudeiro();
+    void setHasEscudeiro(bool b);
 
-    sf::RenderWindow& getMainWindow() { return mainWindow; }
+    void setPlayerName(std::string s);
+    std::string getPlayerName();
 
-    void setGamePhase(int p) { gamePhase = (Game::GamePhase) p; }
-    Game::GameState getGameState() { return gameState; }
+    sf::RenderWindow& getMainWindow();
+
+    void setGamePhase(int p);
+    Game::GameState getGameState();
 
     json store();
     void resume();
-    
+
     void reset();
     void stop();
 

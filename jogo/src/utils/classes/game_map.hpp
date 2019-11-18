@@ -17,7 +17,7 @@ private:
     static GameMap* instance;
 
     std::vector<std::vector<Tile*>> tileMap;
-    
+
     sf::RectangleShape background;
 
     int sizeX;
@@ -34,18 +34,18 @@ public:
     void loadMap();
     void clearMap();
     void draw();
-    float getStart() { return start; }
-    bool IsAtEnd() { return start == sizeX - WINDOW_W/TILE_SIZE; }
-    bool IsAtStart() { return start == 0; }
-    bool isPositionValid(int row, int col) { return (row >= 0 && row < sizeY) && (col >= 0 && col < sizeX); }
+    float getStart();
+    bool IsAtEnd();
+    bool IsAtStart();
+    bool isPositionValid(int row, int col);
 
-    int getSizeX() { return sizeX; }
-    int getSizeY() { return sizeX; }
+    int getSizeX();
+    int getSizeY();
 
-    int getMapLength() { return sizeX * TILE_SIZE; }
-    std::vector<std::vector<Tile*>>& getTileMap() { return tileMap; }
+    int getMapLength();
+    std::vector<std::vector<Tile*>>& getTileMap();
 
-    Tile* getTile(int line, int col) { return tileMap[line][col]; }
+    Tile* getTile(int line, int col);
 };
 
 #endif // GAME_MAP_HPP_

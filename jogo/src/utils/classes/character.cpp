@@ -27,7 +27,7 @@ const int Character::walkSpeed{500};
 Character::Character (int x, int y, int sizeX, int sizeY, double maxHP, int classification, int _invulnerabilityTicks)
     : Entity(x, y, sizeX, sizeY, classification), healthBar(sf::Vector2f(64, HEALTH_BAR_HEIGHT)),
       speed(0, 0), hitPoints{maxHP}, maxHitPoints(maxHP), onGround{false},
-      invulnerable{0}, invulnerabilityTicks{_invulnerabilityTicks}, walkingRight{true}, onFire{false} {
+      invulnerable{0}, invulnerabilityTicks{_invulnerabilityTicks}, walkingRight{true} {
 
     // noop
 }
@@ -135,24 +135,6 @@ void Character::updatePositionY(float deltaTime) {
     onGround = false;
 
     isInvulnerable();
-}
-
-// ---------------------------------------------------------------------------
-
-bool Character::getOnFire() {
-    return onFire;
-}
-
-// ---------------------------------------------------------------------------
-
-void Character::setOnFire(bool b) {
-    onFire = b;
-}
-
-// ---------------------------------------------------------------------------
-
-void Character::manageOnFire() {
-
 }
 
 // ---------------------------------------------------------------------------

@@ -99,6 +99,60 @@ void Game::start() {
 
 // ---------------------------------------------------------------------------
 
+Bardo& Game::getPlayer() {
+     return player;
+ }
+
+ // ---------------------------------------------------------------------------
+
+FielEscudeiro& Game::getFielEscudeiro() {
+     return fielEscudeiro;
+ }
+
+ // ---------------------------------------------------------------------------
+
+bool Game::getHasEscudeiro() {
+     return hasEscudeiro;
+ }
+
+ // ---------------------------------------------------------------------------
+
+void Game::setHasEscudeiro(bool b) {
+     hasEscudeiro = b;
+ }
+
+ // ---------------------------------------------------------------------------
+
+void Game::setPlayerName(std::string s) {
+     playerName = s;
+ }
+
+ // ---------------------------------------------------------------------------
+
+std::string Game::getPlayerName() {
+     return playerName;
+ }
+
+ // ---------------------------------------------------------------------------
+
+sf::RenderWindow& Game::getMainWindow() {
+     return mainWindow;
+ }
+
+ // ---------------------------------------------------------------------------
+
+void Game::setGamePhase(int p) {
+     gamePhase = (Game::GamePhase) p;
+ }
+
+ // ---------------------------------------------------------------------------
+
+Game::GameState Game::getGameState() {
+     return gameState;
+ }
+
+// ---------------------------------------------------------------------------
+
 bool Game::isExiting() {
     return gameState == EXITING;
 }

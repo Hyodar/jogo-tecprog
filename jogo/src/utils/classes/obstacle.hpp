@@ -16,34 +16,24 @@ class FielEscudeiro;
 class Obstacle : public Entity {
 
 public:
-    Obstacle(int posX, int posY, int sizeX, int sizeY, int classification) : Entity(posX, posY, sizeX, sizeY, classification) {
-        // noop
-    }
+    Obstacle(int posX, int posY, int sizeX, int sizeY, int classification);
+    ~Obstacle();
 
     virtual sf::FloatRect getBoundingBox() const = 0;
-    virtual void takeDamage(float dmg) {
-        // noop
-    }
-    virtual void updatePosition(float deltaTime) { /* noop */ }
+    virtual void takeDamage(float dmg);
 
-    json store() {
-        json j;
+    virtual void updatePosition(float deltaTime);
 
-        j["classification"] = classification;
-        j["posX"] = position.x;
-        j["posY"] = position.y;
+    json store();
 
-        return j;
-    }
+    virtual float getCollisionDmg();
 
-    virtual float getCollisionDmg() { return 0; }
-
-    virtual void collideX(Enemy* e) { /* noop */ }
-    virtual void collideY(Enemy* e) { /* noop */ }
-    virtual void collideX(Bardo* b) { b->takeDamage(getCollisionDmg()); }
-    virtual void collideY(Bardo* b) { b->takeDamage(getCollisionDmg()); }
-    virtual void collideX(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
-    virtual void collideY(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
+    virtual void collideX(Enemy* e);
+    virtual void collideY(Enemy* e);
+    virtual void collideX(Bardo* b);
+    virtual void collideY(Bardo* b);
+    virtual void collideX(FielEscudeiro* f);
+    virtual void collideY(FielEscudeiro* f);
 };
 
 #endif // OBSTACLE_HPP_

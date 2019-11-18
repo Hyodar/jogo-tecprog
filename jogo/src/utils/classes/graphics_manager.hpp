@@ -1,3 +1,5 @@
+#ifndef GRAPHICSMANAGER_HPP_
+#define GRAPHICSMANAGER_HPP_
 
 #include <SFML/Graphics.hpp>
 
@@ -45,3 +47,5 @@ public:
     sf::Font* getRankingFont();
 
 };
+
+#endif // GRAPHICSMANAGER_HPP_

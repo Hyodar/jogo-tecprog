@@ -1,8 +1,16 @@
 {
     "players": [
         {
+            "player": "sei la",
+            "score": 2020
+        },
+        {
             "player": "oi",
             "score": 2020
+        },
+        {
+            "player": "sei la",
+            "score": 2010
         },
         {
             "player": "aeon",
@@ -13,12 +21,28 @@
             "score": 1990
         },
         {
+            "player": "sei la",
+            "score": 1930
+        },
+        {
+            "player": "sei la",
+            "score": 1930
+        },
+        {
             "player": "oi",
             "score": 1810
         },
         {
             "player": "run",
             "score": 1770
+        },
+        {
+            "player": "sei la",
+            "score": 1690
+        },
+        {
+            "player": "sei la",
+            "score": 1650
         },
         {
             "player": "sei la",
@@ -31,6 +55,10 @@
         {
             "player": "sei la",
             "score": 1420
+        },
+        {
+            "player": "sei la",
+            "score": 1340
         },
         {
             "player": "sei la",

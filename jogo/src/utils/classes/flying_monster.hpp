@@ -26,4 +26,4 @@ public:
     json store();
 
 };
-#endif //FLYINGMONSTER_HPP_
+#endif // FLYINGMONSTER_HPP_

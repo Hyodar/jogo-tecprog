@@ -63,3 +63,17 @@ void Lava::draw(sf::RenderWindow& window) {
     window.draw(*shape);
     //if(position.x < playerPos.x + WINDOW_W/2 && position.y > playerPos.x - WINDOW_W/2) {
 }
+
+// ---------------------------------------------------------------------------
+
+void Lava::render(sf::RenderWindow& window) {
+     draw(window);
+ }
+
+ // ---------------------------------------------------------------------------
+
+float Lava::getCollisionDmg() {
+     return hitDmg;
+ }
+
+ // ---------------------------------------------------------------------------

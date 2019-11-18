@@ -124,7 +124,7 @@ bool GameSaver::recoverState() {
                 bardo.setPosX(obj["posX"]);
                 bardo.setPosY(obj["posY"]);
                 bardo.setHP(obj["hp"]);
-                
+
             } break;
             case CharacterClassification::FIEL_ESCUDEIRO: {
                 FielEscudeiro& f = game->getFielEscudeiro();
@@ -138,14 +138,14 @@ bool GameSaver::recoverState() {
             case CharacterClassification::SKELETON: {
                 Skeleton* s = new Skeleton(obj["posX"], obj["posY"], &(game->getPlayer()));
                 s->setHP(obj["hp"]);
-                
+
                 levelMng->addEnemy(static_cast<Enemy*>(s));
 
             } break;
             case CharacterClassification::MAGE: {
                 Mage* m = new Mage(obj["posX"], obj["posY"], &(game->getPlayer()));
                 m->setHP(obj["hp"]);
-                
+
                 levelMng->addEnemy(static_cast<Enemy*>(m));
 
             } break;
@@ -153,14 +153,14 @@ bool GameSaver::recoverState() {
                 FlyingMonster* fm = new FlyingMonster(obj["startingPosX"], obj["startingPosY"], &(game->getPlayer()));
                 fm->setHP(obj["hp"]);
                 fm->setAbsoluteTime(obj["timeCounter"]);
-                
+
                 levelMng->addEnemy(static_cast<Enemy*>(fm));
 
             } break;
             case CharacterClassification::DRAGON: {
                 Dragon* d = new Dragon(obj["posX"], obj["posY"], &(game->getPlayer()));
                 d->setHP(obj["hp"]);
-                
+
                 levelMng->addEnemy(static_cast<Enemy*>(d));
 
             } break;
@@ -202,6 +202,8 @@ bool GameSaver::recoverState() {
     return true;
 }
 
+// ---------------------------------------------------------------------------
+
 json GameSaver::savePlayerScore() {
     int score = ScoreManager::getInstance()->getScore();
     std::string name = Game::getInstance()->getPlayerName();
@@ -241,7 +243,7 @@ json GameSaver::savePlayerScore() {
     }
     else {
         for(auto it = j["players"].begin(); it != j["players"].end(); it++) {
-            
+
             if((*it)["score"] <= score) {
                 j["players"].insert(it, rank);
                 break;
@@ -255,7 +257,7 @@ json GameSaver::savePlayerScore() {
     in.close();
 
     rank["place"] = place;
-    
+
     const uint posMax = (j["players"].size() > 5)? 5 : j["players"].size();
     for(uint i = 0; i < posMax; i++) rank["ranking"].push_back(j["players"][i]);
 

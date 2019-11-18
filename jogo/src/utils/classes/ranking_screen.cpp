@@ -1,23 +1,41 @@
-
-#include "ranking_screen.hpp"
+// Libraries
+// ---------------------------------------------------------------------------
 
 #include <sstream>
 
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
+// Class header
+// ---------------------
+
+#include "ranking_screen.hpp"
+
+// Internal libraries
+// ---------------------
+
 #include "graphics_manager.hpp"
 #include "game_saver.hpp"
 
 #include <constants.hpp>
 
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
+// Methods
+// ---------------------------------------------------------------------------
+
 RankingScreen::RankingScreen() : Ent(0, 0) {
     sprite.setTexture(*(GraphicsManager::getInstance()->getRankingScreenTexture()));
 }
 
+// ---------------------------------------------------------------------------
+
 RankingScreen::~RankingScreen() {
 
 }
+
+// ---------------------------------------------------------------------------
 
 void RankingScreen::render(sf::RenderWindow& window) {
     json scores = GameSaver::getInstance()->savePlayerScore();
@@ -62,6 +80,8 @@ void RankingScreen::render(sf::RenderWindow& window) {
     window.draw(placeText);
     window.draw(rankingBoard);
 }
+
+// ---------------------------------------------------------------------------
 
 void RankingScreen::show(sf::RenderWindow& window) {
     render(window);

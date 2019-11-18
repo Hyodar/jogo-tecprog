@@ -18,6 +18,18 @@
 // Methods
 // ---------------------------------------------------------------------------
 
+Tile::Tile() {
+    //noop
+}
+
+// ---------------------------------------------------------------------------
+
+Tile::~Tile() {
+    //noop
+}
+
+// ---------------------------------------------------------------------------
+
 Tile::Tile(int tileNum, int row, int col)
   : tileNumber{tileNum},
     rect{TileManager::getInstance()->getTileTexture(tileNumber)},
@@ -42,3 +54,23 @@ void Tile::draw(sf::Vector2f pos) {
         Game::getInstance()->getMainWindow().draw(*rect);
     }
 }
+
+// ---------------------------------------------------------------------------
+
+char Tile::getTileNumber() const {
+     return tileNumber;
+ }
+
+ // ---------------------------------------------------------------------------
+
+sf::RectangleShape* Tile::getTileTexture() const {
+     return rect;
+ }
+
+ // ---------------------------------------------------------------------------
+
+sf::FloatRect Tile::getBoundingBox() const {
+     return collider;
+ }
+
+ // ---------------------------------------------------------------------------

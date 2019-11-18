@@ -30,8 +30,6 @@ class Character : public Entity {
         static const int jumpSpeed;
         static const int walkSpeed;
 
-        bool onFire;
-
     public:
         Character(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0, int _classification=-1, int _invulnerabilityTicks=INVULNERABILITY_TICKS);
         ~Character();
@@ -62,10 +60,6 @@ class Character : public Entity {
 
         float getHP() const;
         void setHP(float hp);
-
-        bool getOnFire();
-        void setOnFire(bool b);
-        void manageOnFire();
 
         virtual json store();
 };

@@ -9,10 +9,10 @@ class ScoreManager {
 public:
     ~ScoreManager();
     static ScoreManager* getInstance();
-    
-    void increasePoints(int p=0);
+
+    void increasePoints(int p);
     void process();
-    
+
     int getScore();
     void setScore(int s);
 
@@ -20,7 +20,7 @@ private:
     ScoreManager();
     static ScoreManager* instance;
     int score;
-    sf::Text text; 
+    sf::Text text;
 
 };
 

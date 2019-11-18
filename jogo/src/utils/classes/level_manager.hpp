@@ -19,26 +19,26 @@ public:
     ~LevelManager();
     static LevelManager* getInstance();
 
-    void addObstacle(Obstacle* e) { entityManager.addObstacle(e); }
-    void addEnemy(Enemy* e) { entityManager.addEnemy(e); }
+    void addObstacle(Obstacle* e);
+    void addEnemy(Enemy* e);
     void removeEnemy(Enemy* e);
-    void addProjectile(Projectile* e) { entityManager.addProjectile(e); }
-    void removeProjectile(Projectile* e) { entityManager.removeProjectile(e); }
-    
-    void removeFielEscudeiro(FielEscudeiro* f) { entityManager.removeFielEscudeiro(f); }
+    void addProjectile(Projectile* e);
+    void removeProjectile(Projectile* e);
+
+    void removeFielEscudeiro(FielEscudeiro* f);
 
     void nextLevel();
     void changeLevel(int levelNum);
     void recoverLevel(int levelNum);
     void cleanLevel();
-    
-    Level* getLevel() { return levels[currentLevel]; }
-    int getCurrentLevel() { return currentLevel; }
 
-    void init() { levels[currentLevel]->init(); }
-    void process(float deltaTime) { entityManager.process(deltaTime); }
+    Level* getLevel() const;
+    int getCurrentLevel() const;
 
-    EntityManager& getEntityManager() { return entityManager; }
+    void init();
+    void process(float deltaTime);
+
+    EntityManager& getEntityManager();
 
 private:
     LevelManager();

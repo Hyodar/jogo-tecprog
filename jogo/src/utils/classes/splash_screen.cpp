@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-// Standard libraries
+// Internal libraries
 // ---------------------
 
 #include "graphics_manager.hpp"
@@ -21,13 +21,13 @@
 // ---------------------------------------------------------------------------
 
 SplashScreen::SplashScreen() {
-    
+
 }
 
 //----------------------------------------------------------------------------
 
 SplashScreen::~SplashScreen() {
-  
+
 }
 
 

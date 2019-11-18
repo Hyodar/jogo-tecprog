@@ -50,3 +50,9 @@ void Spike::draw(sf::RenderWindow& window) {
     shape->setPosition(position.x - GameMap::getInstance()->getStart()*TILE_SIZE, position.y);
     window.draw(*shape);
 }
+
+// ---------------------------------------------------------------------------
+
+void Spike::render(sf::RenderWindow& window) {
+    draw(window);
+}

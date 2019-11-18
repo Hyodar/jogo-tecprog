@@ -28,9 +28,9 @@ public:
     void collideY(Bardo* b);
     sf::FloatRect getBoundingBox() const;
     void draw(sf::RenderWindow& window);
-    void render(sf::RenderWindow& window) { draw(window); }
+    void render(sf::RenderWindow& window);
 
-    float getCollisionDmg() { return hitDmg; }
+    float getCollisionDmg();
 
 };
 

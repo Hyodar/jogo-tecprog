@@ -16,14 +16,14 @@ protected:
 public:
     Tile(int tileNumber, sf::RectangleShape* shape, sf::FloatRect coll);
     Tile(int tileNumber, int row, int col);
-    Tile() {}
-    virtual ~Tile() {}
+    Tile();
+    ~Tile();
 
     void draw(sf::Vector2f pos);
-    
-    char getTileNumber() { return tileNumber; }
-    sf::RectangleShape* getTileTexture() const { return rect; }
-    sf::FloatRect getBoundingBox() const { return collider; }
+
+    char getTileNumber()const;
+    sf::RectangleShape* getTileTexture() const;
+    sf::FloatRect getBoundingBox() const;
 
 };
 

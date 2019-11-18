@@ -72,10 +72,10 @@ void LevelManager::changeLevel(int levelNum) {
 
 void LevelManager::recoverLevel(int levelNum) {
     std::cout << "Recovering level " << levelNum << "..." << std::endl;
-
     if(levelNum < 0 || levelNum > 1) return;
 
     currentLevel = levelNum;
+
     GameMap::getInstance()->loadMap();
 
     std::cout << "Loaded level." << std::endl;
@@ -93,5 +93,67 @@ void LevelManager::removeEnemy(Enemy* e) {
     if(e->getPoints() == (int) Points::DRAGON_REWARD) {
         Game::getInstance()->winGame();
     }
-    entityManager.removeEnemy(e); 
+    entityManager.removeEnemy(e);
 }
+
+// ---------------------------------------------------------------------------
+
+void LevelManager::addObstacle(Obstacle* e) {
+     entityManager.addObstacle(e);
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::addEnemy(Enemy* e) {
+     entityManager.addEnemy(e);
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::addProjectile(Projectile* e) {
+     entityManager.addProjectile(e);
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::removeProjectile(Projectile* e) {
+     entityManager.removeProjectile(e);
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::removeFielEscudeiro(FielEscudeiro* f) {
+     entityManager.removeFielEscudeiro(f);
+ }
+
+ // ---------------------------------------------------------------------------
+
+Level* LevelManager::getLevel() const{
+     return levels[currentLevel];
+ }
+
+ // ---------------------------------------------------------------------------
+
+int LevelManager::getCurrentLevel() const{
+     return currentLevel;
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::init() {
+     levels[currentLevel]->init();
+ }
+
+ // ---------------------------------------------------------------------------
+
+void LevelManager::process(float deltaTime) {
+     entityManager.process(deltaTime);
+ }
+
+ // ---------------------------------------------------------------------------
+
+EntityManager& LevelManager::getEntityManager() {
+     return entityManager;
+ }
+
+ // ---------------------------------------------------------------------------

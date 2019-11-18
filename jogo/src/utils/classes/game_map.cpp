@@ -136,3 +136,55 @@ void GameMap::draw() {
 }
 
 // ---------------------------------------------------------------------------
+
+float GameMap::getStart() {
+    return start;
+}
+
+// ---------------------------------------------------------------------------
+
+bool GameMap::IsAtEnd() {
+    return start == sizeX - WINDOW_W/TILE_SIZE;
+}
+
+// ---------------------------------------------------------------------------
+
+bool GameMap::IsAtStart() {
+    return start == 0;
+}
+
+// ---------------------------------------------------------------------------
+
+bool GameMap::isPositionValid(int row, int col) {
+    return (row >= 0 && row < sizeY) && (col >= 0 && col < sizeX);
+}
+
+// ---------------------------------------------------------------------------
+
+int GameMap::getSizeX() {
+    return sizeX;
+}
+
+// ---------------------------------------------------------------------------
+
+int GameMap::getSizeY() {
+    return sizeX;
+}
+
+// ---------------------------------------------------------------------------
+
+int GameMap::getMapLength() {
+    return sizeX * TILE_SIZE;
+}
+
+// ---------------------------------------------------------------------------
+
+std::vector<std::vector<Tile*>>& GameMap::getTileMap() {
+    return tileMap;
+}
+
+// ---------------------------------------------------------------------------
+
+Tile* GameMap::getTile(int line, int col) {
+    return tileMap[line][col];
+}

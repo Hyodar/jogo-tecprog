@@ -115,10 +115,10 @@ void Bardo::render(sf::RenderWindow& window) {
         else sprite.setTextureRect(sf::IntRect(32, 0, -32, 32));
         healthBar.setPosition(sprite.getPosition() + sf::Vector2f(0, -40));
     }
-    
+
     if(invulnerable) {
         sprite.setColor(sf::Color(255, 255, 255, 128));
-    } 
+    }
     else {
         sprite.setColor(sf::Color(255, 255, 255, 255));
     }

@@ -1,3 +1,5 @@
+#ifndef FIREBALL_HPP_
+#define FIREBALL_HPP_
 
 #include "projectile.hpp"
 
@@ -11,3 +13,5 @@ public:
     void collideY(Bardo* b);
 
 };
+
+#endif // FIREBALL_HPP

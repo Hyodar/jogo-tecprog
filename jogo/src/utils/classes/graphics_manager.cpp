@@ -1,7 +1,21 @@
+// Libraries
+// ---------------------------------------------------------------------------
+
+// Class header
+// ---------------------
 
 #include "graphics_manager.hpp"
 
+// Internal libraries
+// ---------------------
+
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
 GraphicsManager* GraphicsManager::instance = nullptr;
+
+// Methods
+// ---------------------------------------------------------------------------
 
 GraphicsManager::GraphicsManager() {
     backgroundTexture.loadFromFile("resources/maps/background.png");
@@ -20,66 +34,99 @@ GraphicsManager::GraphicsManager() {
     rankingFont.loadFromFile("resources/dungeon.ttf");
 }
 
+// ---------------------------------------------------------------------------
+
 GraphicsManager::~GraphicsManager() {
     // noop
+
 }
+
+// ---------------------------------------------------------------------------
 
 GraphicsManager* GraphicsManager::getInstance() {
     if(!instance) instance = new GraphicsManager;
     return instance;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getBackgroundTexture() {
     return &backgroundTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getBardoTexture() {
     return &bardoTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getFielEscudeiroTexture() {
     return &fielEscudeiroTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getSkeletonTexture() {
     return &skeletonTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getDragonTexture() {
     return &dragonTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getProjectileTexture() {
     return &projectileTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getSplashScreenTexture() {
     return &splashScreenTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getRankingScreenTexture() {
     return &rankingScreenTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getPauseMenuTexture() {
     return &pauseMenuTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getStartMenuTexture() {
     return &startMenuTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Texture* GraphicsManager::getGameOverMenuTexture() {
     return &gameOverMenuTexture;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Texture* GraphicsManager::getTileSheetTexture() {
     return &tileSheetTexture;
 }
 
+// ---------------------------------------------------------------------------
+
 sf::Font* GraphicsManager::getScoreFont() {
     return &scoreFont;
 }
+
+// ---------------------------------------------------------------------------
 
 sf::Font* GraphicsManager::getRankingFont(){
     return &rankingFont;

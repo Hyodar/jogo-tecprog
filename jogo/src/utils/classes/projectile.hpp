@@ -27,11 +27,11 @@ public:
     virtual void updatePositionX(const float deltaTime);
     virtual void updatePositionY(const float deltaTime);
 
-    virtual void collideX(Bardo* b) { b->takeDamage(getCollisionDmg()); }
-    virtual void collideY(Bardo* b) { b->takeDamage(getCollisionDmg()); }
+    virtual void collideX(Bardo* b);
+    virtual void collideY(Bardo* b);
 
-    virtual void collideX(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
-    virtual void collideY(FielEscudeiro* f) { f->takeDamage(getCollisionDmg()); }
+    virtual void collideX(FielEscudeiro* f);
+    virtual void collideY(FielEscudeiro* f);
 
     void render(sf::RenderWindow& window);
     virtual float getCollisionDmg();

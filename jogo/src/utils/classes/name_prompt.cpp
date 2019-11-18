@@ -1,5 +1,5 @@
-
-#include "name_prompt.hpp"
+// Libraries
+// ---------------------------------------------------------------------------
 
 #include <string>
 #include <locale>
@@ -8,24 +8,42 @@
 #include <unicode/unistr.h>
 #include <unicode/translit.h>
 
+// Class header
+// ---------------------
+
+#include "name_prompt.hpp"
+
+// Internal libraries
+// ---------------------
+
 #include "game.hpp"
 
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
 wxBEGIN_EVENT_TABLE(PromptFrame, wxFrame)
-    EVT_BUTTON(10001, PromptFrame::OnButtonClicked)
+EVT_BUTTON(10001, PromptFrame::OnButtonClicked)
 wxEND_EVENT_TABLE()
+
+// Methods
+// ---------------------------------------------------------------------------
 
 PromptFrame::PromptFrame() : wxFrame(nullptr, wxID_ANY, "Insira seu nome de jogador") {
     m_btn1 = new wxButton(this, 10001, "Enviar", wxPoint(125, 100), wxSize(150, 50));
     m_txt1 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(125, 10), wxSize(150, 50));
 }
 
+// ---------------------------------------------------------------------------
+
 PromptFrame::~PromptFrame() {
     delete m_btn1;
     delete m_txt1;
 }
 
+// ---------------------------------------------------------------------------
+
 void PromptFrame::OnButtonClicked(wxCommandEvent& event) {
-    
+
     std::string textBoxContent(m_txt1->GetValue().mb_str(wxConvUTF8));
 
     // testa se a string eh valida
@@ -37,6 +55,8 @@ void PromptFrame::OnButtonClicked(wxCommandEvent& event) {
     }
     event.Skip();
 }
+
+// ---------------------------------------------------------------------------
 
 /*
     Código retirado de https://stackoverflow.com/questions/2992066/code-to-strip-diacritical-marks-using-icu,
@@ -61,13 +81,19 @@ std::string PromptFrame::removeDiacritics(const std::string& str) {
     return result;
 }
 
+// ---------------------------------------------------------------------------
+
 NamePrompt::NamePrompt() {
 
 }
 
+// ---------------------------------------------------------------------------
+
 NamePrompt::~NamePrompt() {
     delete m_frame1;
 }
+
+// ---------------------------------------------------------------------------
 
 bool NamePrompt::OnInit() {
     m_frame1 = new PromptFrame;
@@ -75,6 +101,8 @@ bool NamePrompt::OnInit() {
 
     return false;
 }
+
+// ---------------------------------------------------------------------------
 
 int NamePrompt::OnExit() {
     if(Game::getInstance()->getPlayerName() == "") {
