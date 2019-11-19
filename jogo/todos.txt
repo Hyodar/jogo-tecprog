@@ -48,6 +48,9 @@ TODOS
  - Autor do json.hpp (nlohmann)
  - https://www.artstation.com/artwork/xzmKBR (autor da splash screen)
  - Autores das fontes
+ - https://lionheart963.itch.io /Warren Clark: Flying Monster, Wizard
+ - https://jesse-m.itch.io  /Jesse Munguia: Skeleton
+ - https://opengameart.org/content/flying-dragon-rework 
 
 DETALHES
  - Taberna tem skeletons e mages / spikes e boxes

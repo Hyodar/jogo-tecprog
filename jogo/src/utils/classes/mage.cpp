@@ -27,11 +27,11 @@
 // ---------------------------------------------------------------------------
 
 Mage::Mage(int x, int y, Bardo* pp)
- : Enemy(x, y, 86, 128, 100, pp, Points::MAGE_REWARD, CharacterClassification::MAGE),
+ : Enemy(x, y, 68, 120, 100, pp, Points::MAGE_REWARD, CharacterClassification::MAGE),
    attackCounter{-rand() % 101},
    attackInterval{1700} {
 
-    sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
+    sprite.setTexture(*(GraphicsManager::getInstance()->getMageTexture()));
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Green);
@@ -62,7 +62,7 @@ Mage::~Mage(){
         // quando tao perto do player
 
         if(abs(dist) > 20) {
-            walkingRight = (speed.x <= 0);
+            walkingRight = (speed.x >= 0);
         }
     }
     else speed.x = 0;
@@ -115,6 +115,6 @@ void Mage::launchEnergyBall() {
     const float fireballSpeedX = fireballSpeed * (playerDistX / playerDist);
     const float fireballSpeedY = fireballSpeed * (playerDistY / playerDist);
 
-    auto fb = new EnergyBall((walkingRight)? position.x + size.x : position.x, position.y, fireballSpeedX, fireballSpeedY);
+    auto fb = new EnergyBall((walkingRight)? position.x : position.x + size.x, position.y, fireballSpeedX, fireballSpeedY);
     LevelManager::getInstance()->addProjectile(fb);
 }

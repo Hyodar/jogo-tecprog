@@ -27,11 +27,11 @@
 // ---------------------------------------------------------------------------
 
 Dragon::Dragon(int x, int y, Bardo* pp)
-   : Enemy(x, y, 256, 256, 1000, pp, Points::DRAGON_REWARD, CharacterClassification::DRAGON),
+   : Enemy(x, y, 320, 260, 1000, pp, Points::DRAGON_REWARD, CharacterClassification::DRAGON),
      attackCounter{-rand() % 101}, attackInterval{rand() % 501} {
 
-    sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
-    sprite.setScale(4, 4);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getDragonTexture()));
+    sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Blue);
 }
@@ -61,7 +61,7 @@ void Dragon::checkPlayerPos(){
         // quando tao perto do player
 
         if(abs(dist) > 20) {
-            walkingRight = (speed.x >= 0);
+            walkingRight = (speed.x <= 0);
         }
     }
     else speed.x = 0;
@@ -111,6 +111,6 @@ void Dragon::launchFireball() {
     const float fireballSpeedX = fireballSpeed * (playerDistX / playerDist);
     const float fireballSpeedY = fireballSpeed * (playerDistY / playerDist);
 
-    auto fb = new Fireball((walkingRight)? position.x + size.x : position.x, position.y, fireballSpeedX, fireballSpeedY);
+    auto fb = new Fireball((walkingRight)? position.x : position.x + size.x, position.y, fireballSpeedX, fireballSpeedY);
     LevelManager::getInstance()->addProjectile(fb);
 }

@@ -14,10 +14,10 @@
 // ---------------------------------------------------------------------------
 
 FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
- : Enemy(x, y, 84, 128, 80, pp, Points::FLYING_MONSTER_REWARD, CharacterClassification::FLYING_MONSTER),
+ : Enemy(x, y, 90, 90, 80, pp, Points::FLYING_MONSTER_REWARD, CharacterClassification::FLYING_MONSTER),
    startingPos(x, y) {
-    sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
-    sprite.setScale(2, 2);
+    sprite.setTexture(*(GraphicsManager::getInstance()->getFlyingMonsterTexture()));
+    sprite.setScale(2.5, 2.5);
 
     healthBar.setFillColor(sf::Color::Yellow);
 
@@ -42,13 +42,13 @@ void FlyingMonster::updatePositionX(const float deltaTime) {
 
     absoluteTime += deltaTime;
 
-    position.x = startingPos.x + 200 * cos( 5 * absoluteTime);
+    position.x = startingPos.x + 200 * cos( 2.5 * absoluteTime);
 }
 
 // ---------------------------------------------------------------------------
 
 void FlyingMonster::updatePositionY(const float deltaTime) {
-    position.y = startingPos.y + 200 * cos( 5 * absoluteTime + (3.14/2));
+    position.y = startingPos.y + 200 * cos( 2.5 * absoluteTime + (3.14/2));
     isInvulnerable();
 }
 

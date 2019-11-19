@@ -22,6 +22,8 @@ GraphicsManager::GraphicsManager() {
     bardoTexture.loadFromFile("resources/bardo.png");
     fielEscudeiroTexture.loadFromFile("resources/fiel_escudeiro.png");
     skeletonTexture.loadFromFile("resources/skeleton.png");
+    mageTexture.loadFromFile("resources/mage.png");
+    flyingMonsterTexture.loadFromFile("resources/flying_monster.png");
     dragonTexture.loadFromFile("resources/dragon.png");
     projectileTexture.loadFromFile("resources/projectiles.png");
     splashScreenTexture.loadFromFile("resources/splash_screen.png");
@@ -70,6 +72,18 @@ sf::Texture* GraphicsManager::getFielEscudeiroTexture() {
 
 sf::Texture* GraphicsManager::getSkeletonTexture() {
     return &skeletonTexture;
+}
+
+// ---------------------------------------------------------------------------
+
+sf::Texture* GraphicsManager::getMageTexture() {
+    return &mageTexture;
+}
+
+// ---------------------------------------------------------------------------
+
+sf::Texture* GraphicsManager::getFlyingMonsterTexture() {
+    return &flyingMonsterTexture;
 }
 
 // ---------------------------------------------------------------------------

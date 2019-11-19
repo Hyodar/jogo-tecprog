@@ -14,6 +14,8 @@ private:
     sf::Texture bardoTexture;
     sf::Texture fielEscudeiroTexture;
     sf::Texture skeletonTexture;
+    sf::Texture mageTexture;
+    sf::Texture flyingMonsterTexture;
     sf::Texture dragonTexture;
     sf::Texture projectileTexture;
     sf::Texture splashScreenTexture;
@@ -35,6 +37,8 @@ public:
     sf::Texture* getBardoTexture();
     sf::Texture* getFielEscudeiroTexture();
     sf::Texture* getSkeletonTexture();
+    sf::Texture* getMageTexture();
+    sf::Texture* getFlyingMonsterTexture();
     sf::Texture* getDragonTexture();
     sf::Texture* getProjectileTexture();
     sf::Texture* getSplashScreenTexture();

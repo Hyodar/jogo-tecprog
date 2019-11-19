@@ -1,6 +1,10 @@
 {
     "players": [
         {
+            "player": "segfault",
+            "score": 2030
+        },
+        {
             "player": "sei la",
             "score": 2020
         },
@@ -21,12 +25,20 @@
             "score": 1990
         },
         {
+            "player": "fiel escudeiro",
+            "score": 1940
+        },
+        {
             "player": "sei la",
             "score": 1930
         },
         {
             "player": "sei la",
             "score": 1930
+        },
+        {
+            "player": "sei la",
+            "score": 1810
         },
         {
             "player": "oi",
@@ -38,7 +50,15 @@
         },
         {
             "player": "sei la",
+            "score": 1740
+        },
+        {
+            "player": "sei la",
             "score": 1690
+        },
+        {
+            "player": "sei la",
+            "score": 1680
         },
         {
             "player": "sei la",
