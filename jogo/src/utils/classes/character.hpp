@@ -47,7 +47,7 @@ class Character : public Entity {
         virtual void collideX(Obstacle* o);
         virtual void collideY(Obstacle* o);
 
-        void isInvulnerable();
+        virtual void isInvulnerable();
         void takeDamage(float dmg);
         const bool isAlive() const;
 

@@ -19,6 +19,8 @@ public:
     void updatePositionX(const float deltaTime);
     void updatePositionY(const float deltaTime);
 
+    void isInvulnerable();
+    void render(sf::RenderWindow& window);
 };
 
 #endif // FIEL_ESCUDEIRO_HPP_

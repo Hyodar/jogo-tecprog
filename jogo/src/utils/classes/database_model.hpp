@@ -8,6 +8,8 @@ using json = nlohmann::json;
 class DatabaseModel {
 
 public:
+    DatabaseModel();
+    virtual ~DatabaseModel();
     virtual json store() = 0;
 
 };

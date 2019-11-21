@@ -71,7 +71,7 @@ void Bardo::checkKeys() {
     if(attackCounter) attackCounter--;
     else if(attackInterval) attackInterval--;
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)) {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
         resetAttackCounter();
     }
 
