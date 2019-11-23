@@ -74,13 +74,6 @@ void Game::start() {
 
     if(gameState != UNINITIALIZED) return;
 
-    int argc = 0;
-    char** argv = nullptr;
-
-    wxApp* pApp = new NamePrompt();
-    wxApp::SetInstance(pApp);
-    wxEntryStart(argc, argv);
-
     std::cout << "[*] Creating window..." << std::endl;
     mainWindow.create(sf::VideoMode(1024, 768), "Game title");
     TileManager::getInstance()->loadTileSet();

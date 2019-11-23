@@ -1,9 +1,9 @@
 
-#include "game.hpp"
+#include "main_controller.hpp"
 
 int main(int argc, char** argv) {
 
-    Game::getInstance()->start();
+    MainController mainController(argc, argv);
 
     return 0;
 }

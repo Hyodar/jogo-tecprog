@@ -46,8 +46,8 @@ Dragon::~Dragon(){
 
 void Dragon::checkPlayerPos(){
 
-    float playerpos = player->getPosX();
-    const float dist = playerpos - position.x;
+    const float playerpos = player->getPosX();
+    const float dist = (playerpos - position.x - size.x/2);
 
     if(abs(dist) < 600) {
         if(dist > 0) {
@@ -56,9 +56,6 @@ void Dragon::checkPlayerPos(){
         else {
             speed.x = -walkSpeed/2;
         }
-
-        // pra prevenir q os esqueletos fiquem girando sem parar
-        // quando tao perto do player
 
         if(abs(dist) > 20) {
             walkingRight = (speed.x <= 0);
@@ -104,7 +101,14 @@ void Dragon::updatePositionY(float deltaTime) {
 void Dragon::launchFireball() {
     const float fireballSpeed = 500.0f;
 
-    const float playerDistX = player->getPosX() - position.x;
+    float playerDistX;
+    if(walkingRight) {
+        playerDistX = player->getPosX() - position.x;
+    }
+    else {
+        playerDistX = player->getPosX() - (position.x + size.x);
+    }
+
     const float playerDistY = player->getPosY() - position.y;
     const float playerDist = sqrt(playerDistX*playerDistX + playerDistY*playerDistY);
 
