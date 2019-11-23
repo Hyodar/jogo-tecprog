@@ -4,6 +4,8 @@
 
 #include "menu.hpp"
 
+namespace bardadv::menus {
+
 class PauseMenu : public Menu {
     
 public:
@@ -12,5 +14,7 @@ public:
     ~PauseMenu();
     
 };
+
+}
 
 #endif // PAUSE_MENU_HPP_

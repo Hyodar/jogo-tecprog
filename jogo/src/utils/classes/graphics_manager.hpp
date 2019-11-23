@@ -3,10 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace bardadv::core {
+
 class GraphicsManager {
 
 private:
-
     GraphicsManager();
     static GraphicsManager* instance;
 
@@ -51,5 +52,7 @@ public:
     sf::Font* getRankingFont();
 
 };
+
+}
 
 #endif // GRAPHICSMANAGER_HPP_

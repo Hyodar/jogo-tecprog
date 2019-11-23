@@ -29,6 +29,11 @@
 #include "level_manager.hpp"
 #include "game.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
+using namespace bardadv::levels;
+
 // Methods
 // ---------------------------------------------------------------------------
 

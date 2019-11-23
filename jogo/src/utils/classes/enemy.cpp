@@ -13,6 +13,8 @@
 #include "bardo.hpp"
 #include "fiel_escudeiro.hpp"
 
+using namespace bardadv::characters;
+
 // Methods
 // ---------------------------------------------------------------------------
 
@@ -75,6 +77,8 @@ void Enemy::collideY(FielEscudeiro* f) {
 json Enemy::store() {
     json j;
 
+    j["id"] = id;
+    j["playerId"] = player->getId();
     j["classification"] = classification;
     j["hp"] = hitPoints;
     j["posX"] = position.x;

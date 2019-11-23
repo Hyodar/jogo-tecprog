@@ -10,7 +10,9 @@
 #include "ent.hpp"
 #include <constants.hpp>
 
-class Menu : public Ent {
+namespace bardadv::menus {
+
+class Menu : public bardadv::core::Ent {
     
 public:
     Menu();
@@ -33,5 +35,7 @@ protected:
 
     std::list<MenuItem> menuItems;
 };
+
+}
 
 #endif // MENU_HPP_

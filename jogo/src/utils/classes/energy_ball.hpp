@@ -1,11 +1,14 @@
+
+#ifndef ENERGY_BALL_HPP_
+#define ENERGY_BALL_HPP_
+
 #include "projectile.hpp"
 
-class LevelManager;
+namespace bardadv::projectiles {
 
 class EnergyBall : public Projectile {
 
 private:
-    
     bool alreadySplited;
 
 public:
@@ -18,3 +21,7 @@ public:
     void split();
     void setAlreadySplited(bool as);
 };
+
+}
+
+#endif // ENERGY_BALL_HPP_

@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace bardadv::collision {
+
 class Collidable {
 
     public:
@@ -11,5 +13,7 @@ class Collidable {
         
         virtual void takeDamage(float dmg);
 };
+
+}
 
 #endif // COLLIDABLE_HPP_

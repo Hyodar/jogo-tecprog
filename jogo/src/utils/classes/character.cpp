@@ -15,6 +15,10 @@
 #include "obstacle.hpp"
 #include "tile.hpp"
 
+using namespace bardadv::map;
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -208,6 +212,7 @@ void Character::collideX(Obstacle* o) {
 json Character::store() {
     json j;
 
+    j["id"] = id;
     j["classification"] = classification;
     j["hp"] = hitPoints;
     j["posX"] = position.x;

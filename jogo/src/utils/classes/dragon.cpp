@@ -23,6 +23,10 @@
 #include "graphics_manager.hpp"
 #include <constants.hpp>
 
+using namespace bardadv::characters;
+using namespace bardadv::projectiles;
+using namespace bardadv::core;
+
 // Methods
 // ---------------------------------------------------------------------------
 

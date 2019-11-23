@@ -20,6 +20,11 @@
 #include "game_map.hpp"
 #include "enemy.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::levels;
+using namespace bardadv::map;
+using namespace bardadv::characters;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -155,5 +160,3 @@ void LevelManager::process(float deltaTime) {
 EntityManager& LevelManager::getEntityManager() {
      return entityManager;
  }
-
- // ---------------------------------------------------------------------------

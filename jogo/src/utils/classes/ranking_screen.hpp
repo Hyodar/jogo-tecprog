@@ -6,7 +6,9 @@
 
 #include "ent.hpp"
 
-class RankingScreen : public Ent {
+namespace bardadv::menus {
+
+class RankingScreen : public bardadv::core::Ent {
 
 private:
     sf::Sprite sprite;
@@ -21,5 +23,7 @@ public:
     void show(sf::RenderWindow& window);
 
 };
+
+}
 
 #endif // RANKING_SCREEN_HPP_

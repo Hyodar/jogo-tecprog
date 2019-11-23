@@ -1,13 +1,13 @@
 
-/*
-
-    Inspirado na implementação mostrada em cplusplus.com,
-    com implementações e otimizações adicionais
-
-*/
-
 #ifndef LIST_HPP_
 #define LIST_HPP_
+
+/*
+    Inspirado na implementação mostrada em cplusplus.com,
+    com implementações e otimizações adicionais
+*/
+
+namespace bardadv::lists {
 
 template <typename T>
 class List;
@@ -69,7 +69,7 @@ private:
     Node<T>* next;
 
 public:
-    // define o tipo de valor do node como atributo
+    // define o tipo de valor do node seu value_type
     typedef T value_type;
 
 };
@@ -173,5 +173,7 @@ public:
         return false;
     }
 };
+
+}
 
 #endif // LIST_HPP_

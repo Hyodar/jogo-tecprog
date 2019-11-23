@@ -7,17 +7,19 @@
 #include <constants.hpp>
 
 #include "obstacle.hpp"
-#include "collidable.hpp"
-#include "tile_manager.hpp"
-#include "game_map.hpp"
-#include "game.hpp"
+
+namespace bardadv::characters {
+class Bardo;
+}
+
+namespace bardadv::obstacles {
+
+using bardadv::characters::Bardo;
 
 class Box : public Obstacle {
 
 private:
     sf::RectangleShape* shape;
-    static sf::Vector2f boxSize;
-    static int obstacleNum;
 
 public:
     Box(int posX, int posY);
@@ -28,10 +30,11 @@ public:
     void takeDamage(float dmg);
     sf::FloatRect getBoundingBox() const;
     void render(sf::RenderWindow& window);
-    //void updatePosition(float deltaTime);
 
     float getCollisionDmg() { return 0; }
 
 };
+
+}
 
 #endif // BOX_HPP_

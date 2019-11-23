@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace bardadv::core {
+
 class ScoreManager {
 
 public:
@@ -23,5 +25,7 @@ private:
     sf::Text text;
 
 };
+
+}
 
 #endif //SCORE_MANAGER_HPP

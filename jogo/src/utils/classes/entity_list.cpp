@@ -9,6 +9,12 @@
 // Internal libraries
 // ---------------------
 
+#include "entity.hpp"
+#include "game.hpp"
+
+using namespace bardadv::core;
+using namespace bardadv::lists;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -77,6 +83,16 @@ void EntityList::clean() {
     list.deallocate();
     list.push_back(&(Game::getInstance()->getPlayer()));
     if(hasEscudeiro) list.push_back(&(Game::getInstance()->getFielEscudeiro()));
+}
+
+// ---------------------------------------------------------------------------
+
+
+Entity* EntityList::getEntityById(int id) {
+    for(auto it = list.begin(); it != list.end(); it++) {
+        if((*it)->getId() == id) return (*it);
+    }
+    return nullptr;
 }
 
 // ---------------------------------------------------------------------------

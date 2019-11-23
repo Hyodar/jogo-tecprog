@@ -6,6 +6,8 @@
 
 #include "level.hpp"
 
+namespace bardadv::levels {
+
 class Taberna : public Level {
 
 public:
@@ -15,8 +17,8 @@ public:
     void spawnEnemies(std::vector<int>& mat, int layerWidth);
     void spawnObstacles(std::vector<int>& mat, int layerWidth);
 
-private:
-
 };
+
+}
 
 #endif // TABERNA_HPP_

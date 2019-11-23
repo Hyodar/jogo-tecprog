@@ -14,6 +14,10 @@
 #include "game_map.hpp"
 #include <constants.hpp>
 
+using namespace bardadv::map;
+using namespace bardadv::core;
+using namespace bardadv::characters;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

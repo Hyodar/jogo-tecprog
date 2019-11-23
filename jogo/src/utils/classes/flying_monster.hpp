@@ -1,3 +1,4 @@
+
 #ifndef FLYINGMONSTER_HPP_
 #define FLYINGMONSTER_HPP_
 
@@ -5,11 +6,18 @@
 #include <SFML/Graphics.hpp>
 
 #include "enemy.hpp"
-#include "bardo.hpp"
 
-class FlyingMonster : public Enemy {
+namespace bardadv::characters {
+class Bardo;
+}
 
-protected:
+namespace bardadv::characters {
+
+using bardadv::characters::Bardo;
+
+class FlyingMonster : public bardadv::characters::Enemy {
+
+private:
     sf::Vector2f startingPos;
     float absoluteTime;
 
@@ -26,4 +34,7 @@ public:
     json store();
 
 };
+
+}
+
 #endif // FLYINGMONSTER_HPP_

@@ -10,19 +10,25 @@
 // ---------------------
 
 #include "graphics_manager.hpp"
+#include "game_map.hpp"
+#include "bardo.hpp"
+
 #include <constants.hpp>
+
+using namespace bardadv::core;
+using namespace bardadv::map;
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
 float Lava::hitDmg = 20;
-sf::Vector2f Lava::lavaSize(TILE_SIZE, TILE_SIZE);
-int Lava::obstacleNum = 1;
 
 // Methods
 // ---------------------------------------------------------------------------
 
-Lava::Lava(int posX, int posY) : Obstacle(posX, posY, Lava::lavaSize.x, Lava::lavaSize.y, ObstacleClassification::LAVA) {
+Lava::Lava(int posX, int posY) : Obstacle(posX, posY, 64, 64, ObstacleClassification::LAVA) {
     shape = new sf::RectangleShape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
     shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(sf::IntRect(6*TILE_SIZE, 0, TILE_SIZE, TILE_SIZE));
@@ -75,5 +81,3 @@ void Lava::render(sf::RenderWindow& window) {
 float Lava::getCollisionDmg() {
      return hitDmg;
  }
-
- // ---------------------------------------------------------------------------

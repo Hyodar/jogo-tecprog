@@ -6,9 +6,11 @@
 
 #include "enemy.hpp"
 
+namespace bardadv::characters {
+
 class Bardo;
 
-class Mage : public Enemy {
+class Mage : public bardadv::characters::Enemy {
 
 private:
 
@@ -25,4 +27,7 @@ public:
     void launchEnergyBall();
 
 };
+
+}
+
 #endif // MAGE_HPP_

@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace bardadv::core {
+
 class Ent {
 
 protected:
@@ -23,5 +25,7 @@ public:
     float getPosY() const;
 
 };
+
+}
 
 #endif // ENT_HPP_

@@ -11,18 +11,19 @@
 // ---------------------
 
 #include "graphics_manager.hpp"
+#include "game_map.hpp"
+#include "game.hpp"
+
 #include <constants.hpp>
 
-// Attribute initialization
-// ---------------------------------------------------------------------------
-
-sf::Vector2f Box::boxSize(2*TILE_SIZE, 2*TILE_SIZE);
-int Box::obstacleNum = 2;
+using namespace bardadv::core;
+using namespace bardadv::map;
+using namespace bardadv::obstacles;
 
 // Methods
 // ---------------------------------------------------------------------------
 
-Box::Box(int posX, int posY) : Obstacle(posX, posY, Box::boxSize.x, Box::boxSize.y, ObstacleClassification::BOX) {
+Box::Box(int posX, int posY) : Obstacle(posX, posY, 128, 128, ObstacleClassification::BOX) {
     shape = new sf::RectangleShape(sf::Vector2f(2*TILE_SIZE, 2*TILE_SIZE));
     shape->setTexture(GraphicsManager::getInstance()->getTileSheetTexture());
     shape->setTextureRect(sf::IntRect(7*TILE_SIZE, 0, 2*TILE_SIZE, 2*TILE_SIZE));

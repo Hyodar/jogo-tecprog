@@ -23,6 +23,14 @@
 #include "level_manager.hpp"
 #include "score_manager.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::characters;
+using namespace bardadv::obstacles;
+using namespace bardadv::map;
+using namespace bardadv::projectiles;
+using namespace bardadv::collision;
+using namespace bardadv::lists;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

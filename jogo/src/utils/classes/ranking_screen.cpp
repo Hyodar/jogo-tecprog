@@ -19,6 +19,10 @@ using json = nlohmann::json;
 
 #include <constants.hpp>
 
+using namespace bardadv::core;
+using namespace bardadv::menus;
+using namespace bardadv::persistence;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

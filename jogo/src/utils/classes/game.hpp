@@ -11,7 +11,9 @@
 #include "fiel_escudeiro.hpp"
 #include "database_model.hpp"
 
-class Game : public DatabaseModel {
+namespace bardadv::core {
+
+class Game : public bardadv::persistence::DatabaseModel {
 
 public:
 
@@ -39,8 +41,8 @@ public:
 
     void start();
 
-    Bardo& getPlayer();
-    FielEscudeiro& getFielEscudeiro();
+    bardadv::characters::Bardo& getPlayer();
+    bardadv::characters::FielEscudeiro& getFielEscudeiro();
 
     bool getHasEscudeiro();
     void setHasEscudeiro(bool b);
@@ -68,8 +70,8 @@ private:
 
     std::string playerName;
 
-    Bardo player;
-    FielEscudeiro fielEscudeiro;
+    bardadv::characters::Bardo player;
+    bardadv::characters::FielEscudeiro fielEscudeiro;
     bool hasEscudeiro;
 
     GameState gameState;
@@ -98,5 +100,7 @@ private:
     void checkPlayerState();
 
 };
+
+}
 
 #endif // GAME_HPP_

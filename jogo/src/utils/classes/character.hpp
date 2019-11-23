@@ -7,10 +7,20 @@
 #include "entity.hpp"
 #include <constants.hpp>
 
+namespace bardadv::map {
 class Tile;
-class Obstacle;
+}
 
-class Character : public Entity {
+namespace bardadv::obstacles {
+class Obstacle;
+}
+
+namespace bardadv::characters {
+
+using bardadv::map::Tile;
+using bardadv::obstacles::Obstacle;
+
+class Character : public bardadv::core::Entity {
 
     protected:
         sf::Sprite sprite;
@@ -63,5 +73,7 @@ class Character : public Entity {
 
         virtual json store();
 };
+
+}
 
 #endif // CHARACTER_HPP_

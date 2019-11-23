@@ -7,6 +7,8 @@
 
 #include "tile.hpp"
 
+namespace bardadv::map {
+
 class TileManager {
 
 private:
@@ -36,5 +38,7 @@ public:
     sf::FloatRect getTileCollider(int tileNumber);
 
 };
+
+}
 
 #endif // TILE_MANAGER_HPP_

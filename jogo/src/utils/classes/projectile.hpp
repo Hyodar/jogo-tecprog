@@ -6,10 +6,17 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "bardo.hpp"
-#include "fiel_escudeiro.hpp"
+namespace bardadv::characters {
+class Bardo;
+class FielEscudeiro;
+}
 
-class Projectile : public Entity {
+namespace bardadv::projectiles {
+
+using bardadv::characters::Bardo;
+using bardadv::characters::FielEscudeiro;
+
+class Projectile : public bardadv::core::Entity {
 
 protected:
     sf::Vector2f speed;
@@ -39,5 +46,7 @@ public:
     json store();
 
 };
+
+}
 
 #endif // PROJECTILE_HPP_

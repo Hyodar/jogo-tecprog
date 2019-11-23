@@ -15,6 +15,9 @@
 
 #include "level_manager.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::projectiles;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

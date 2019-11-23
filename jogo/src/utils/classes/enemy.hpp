@@ -4,6 +4,8 @@
 
 #include "character.hpp"
 
+namespace bardadv::characters {
+
 class Bardo;
 class FielEscudeiro;
 
@@ -31,5 +33,7 @@ public:
     virtual json store();
 
 };
+
+}
 
 #endif // ENEMY_HPP_

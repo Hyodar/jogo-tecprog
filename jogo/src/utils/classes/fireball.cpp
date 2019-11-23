@@ -11,7 +11,11 @@
 // Internal libraries
 // ---------------------
 
+#include "bardo.hpp"
 #include <constants.hpp>
+
+using namespace bardadv::characters;
+using namespace bardadv::projectiles;
 
 // Attribute initialization
 // ---------------------------------------------------------------------------

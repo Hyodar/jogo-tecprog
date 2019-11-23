@@ -26,6 +26,9 @@ using json = nlohmann::json;
 #include "graphics_manager.hpp"
 #include "level_manager.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::map;
+
 #include <constants.hpp>
 
 // Attribute initialization

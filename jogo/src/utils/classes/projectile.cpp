@@ -11,7 +11,16 @@
 
 #include "game_map.hpp"
 #include "graphics_manager.hpp"
+
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+
 #include <constants.hpp>
+
+using namespace bardadv::core;
+using namespace bardadv::map;
+using namespace bardadv::projectiles;
+using namespace bardadv::characters;
 
 // Attribute initialization
 // ---------------------------------------------------------------------------
@@ -100,6 +109,7 @@ void Projectile::takeDamage(float dmg) {
 json Projectile::store() {
     json j;
 
+    j["id"] = id;
     j["classification"] = classification;
     j["posX"] = position.x;
     j["posY"] = position.y;

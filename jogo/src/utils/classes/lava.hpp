@@ -7,18 +7,18 @@
 #include <constants.hpp>
 
 #include "obstacle.hpp"
-#include "collidable.hpp"
-#include "tile_manager.hpp"
-#include "game_map.hpp"
-#include "game.hpp"
 
-class Lava : public Obstacle {
+namespace bardadv::characters {
+class Bardo;
+}
+
+namespace bardadv::obstacles {
+
+class Lava : public bardadv::obstacles::Obstacle {
 
 private:
     sf::RectangleShape* shape;
     static float hitDmg;
-    static sf::Vector2f lavaSize;
-    static int obstacleNum;
 
 public:
     Lava(int posX, int posY);
@@ -33,5 +33,7 @@ public:
     float getCollisionDmg();
 
 };
+
+}
 
 #endif // LAVA_HPP_

@@ -18,6 +18,9 @@
 
 #include "game.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::menus;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

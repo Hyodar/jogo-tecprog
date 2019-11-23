@@ -9,9 +9,25 @@
 #include "game.hpp"
 #include <constants.hpp>
 
+namespace bardadv::obstacles {
 class Obstacle;
+}
+
+namespace bardadv::characters {
 class Enemy;
+}
+
+namespace bardadv::projectiles {
 class Projectile;
+}
+
+namespace bardadv::core {
+
+using bardadv::obstacles::Obstacle;
+using bardadv::characters::Enemy;
+using bardadv::projectiles::Projectile;
+using bardadv::core::EntityManager;
+using bardadv::levels::Level;
 
 class LevelManager {
 
@@ -50,5 +66,7 @@ private:
     EntityManager entityManager;
 
 };
+
+}
 
 #endif // LEVEL_MANAGER_HPP_

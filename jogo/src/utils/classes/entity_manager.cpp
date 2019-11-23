@@ -18,7 +18,11 @@
 #include "projectile.hpp"
 
 #include "game.hpp"
-#include "game_map.hpp"
+
+using namespace bardadv::core;
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
+using namespace bardadv::projectiles;
 
 // Methods
 // ---------------------------------------------------------------------------
@@ -54,13 +58,6 @@ void EntityManager::process(float deltaTime) {
 // ---------------------------------------------------------------------------
 
 void EntityManager::render(sf::RenderWindow& window) {
-    /*
-    bardo->render(window);
-    if(hasEscudeiro) fielEscudeiro->render(window);
-    //for(auto it = obstacles.begin(); it != obstacles.end(); it++) (*it)->render(window);
-    for(auto it = enemies.begin(); it != enemies.end(); it++) (*it)->render(window);
-    for(auto it = projectiles.begin(); it != projectiles.end(); it++) (*it)->render(window);
-    */
     entityList.render(window);
 }
 
@@ -123,6 +120,12 @@ void EntityManager::setFielEscudeiro(FielEscudeiro* f) {
     entityList.setHasEscudeiro(true);
     entityList.add(static_cast<Entity*>(f));
     collisionList.add(f);
+}
+
+// ---------------------------------------------------------------------------
+
+Entity* EntityManager::getEntityById(int id) {
+    return entityList.getEntityById(id);
 }
 
 // ---------------------------------------------------------------------------

@@ -2,6 +2,8 @@
 #ifndef COLLISION_DETECTER_HPP_
 #define COLLISION_DETECTER_HPP_
 
+namespace bardadv::collision {
+
 class Collidable;
 
 class CollisionDetecter {
@@ -14,4 +16,6 @@ public:
 
 };
 
-#endif // COLLISION_DETECTER_HPP
+}
+
+#endif // COLLISION_DETECTER_HPP_

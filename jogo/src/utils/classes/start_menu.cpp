@@ -12,6 +12,9 @@
 
 #include "graphics_manager.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::menus;
+
 // Methods
 // ---------------------------------------------------------------------------
 

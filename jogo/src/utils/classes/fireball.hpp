@@ -3,7 +3,15 @@
 
 #include "projectile.hpp"
 
-class Fireball : public Projectile {
+namespace bardadv::characters {
+class Bardo;
+}
+
+namespace bardadv::projectiles {
+
+using bardadv::characters::Bardo;
+
+class Fireball : public bardadv::projectiles::Projectile {
 
 public:
     Fireball(int posX, int posY, float speedX, float speedY);
@@ -13,5 +21,7 @@ public:
     void collideY(Bardo* b);
 
 };
+
+}
 
 #endif // FIREBALL_HPP

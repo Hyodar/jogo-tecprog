@@ -7,26 +7,43 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-#include "list.hpp"
-
 #include "entity_list.hpp"
 #include "collision_list.hpp"
 
+namespace bardadv::core {
 class Entity;
+}
+
+namespace bardadv::characters {
 class Enemy;
 class Bardo;
 class FielEscudeiro;
+}
+
+namespace bardadv::obstacles {
 class Obstacle;
+}
+
+namespace bardadv::projectiles {
 class Projectile;
+}
+
+namespace bardadv::core {
+
+using bardadv::core::Entity;
+using bardadv::characters::Enemy;
+using bardadv::characters::Bardo;
+using bardadv::characters::FielEscudeiro;
+using bardadv::obstacles::Obstacle;
+using bardadv::projectiles::Projectile;
 
 class EntityManager {
 
 private:
-    EntityList entityList;
-    CollisionList collisionList;
+    bardadv::lists::EntityList entityList;
+    bardadv::lists::CollisionList collisionList;
 
 public:
-
     EntityManager();
     ~EntityManager();
 
@@ -41,9 +58,7 @@ public:
     void process(float deltaTime); // processa movimento e colisao
     void render(sf::RenderWindow& window);
 
-    //void checkAttack(sf::FloatRect box); // checa se aquela box se intercepta com alguem
-    //std::vector<Obstacle*> getObstacles() { return obstacles; }
-    //std::vector<Enemy*> getEnemies() { return enemies; }
+    Entity* getEntityById(int id);
 
     void setBardo(Bardo* b);
     void setFielEscudeiro(FielEscudeiro* f);
@@ -51,5 +66,7 @@ public:
     json store();
 
 };
+
+}
 
 #endif // ENTITY_MANAGER_HPP_

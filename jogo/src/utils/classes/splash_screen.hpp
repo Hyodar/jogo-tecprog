@@ -5,6 +5,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+namespace bardadv::menus {
+
 class SplashScreen {
 
 public:
@@ -15,5 +17,7 @@ public:
 private:
     void processLoop(sf::RenderWindow& window);
 };
+
+}
 
 #endif // SPLASH_SCREEN_HPP_

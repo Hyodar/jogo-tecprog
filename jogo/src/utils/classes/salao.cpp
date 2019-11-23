@@ -31,6 +31,11 @@
 #include "flying_monster.hpp"
 #include "level_manager.hpp"
 
+using namespace bardadv::core;
+using namespace bardadv::levels;
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
+
 // Methods
 // ---------------------------------------------------------------------------
 

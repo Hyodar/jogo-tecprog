@@ -22,6 +22,13 @@
 #include "enemy.hpp"
 #include <constants.hpp>
 
+using namespace bardadv::core;
+using namespace bardadv::map;
+using namespace bardadv::characters;
+
+// Attribute initialization
+// ---------------------------------------------------------------------------
+
 std::mutex* Bardo::invulnerabilityMutex = new std::mutex();
 
 // Methods
@@ -239,6 +246,7 @@ bool Bardo::isAttacking() {
 json Bardo::store() {
     json j;
 
+    j["id"] = id;
     j["classification"] = classification;
     j["hp"] = hitPoints;
     j["posX"] = position.x;

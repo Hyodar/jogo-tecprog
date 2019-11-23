@@ -5,14 +5,20 @@
 #include <SFML/Graphics.hpp>
 
 #include "list.hpp"
-#include "entity.hpp"
-#include "game.hpp"
 #include "database_model.hpp"
 
-class EntityList : public DatabaseModel {
+namespace bardadv::core {
+class Entity;
+}
+
+namespace bardadv::lists {
+
+using bardadv::core::Entity;
+
+class EntityList : public bardadv::persistence::DatabaseModel {
 
 private:
-    List<Entity*> list;
+    bardadv::lists::List<Entity*> list;
     bool hasEscudeiro;
 
 public:
@@ -27,10 +33,14 @@ public:
     void moveX(const float deltaTime);
     void moveY(const float deltaTime);
 
+    Entity* getEntityById(int id);
+
     void render(sf::RenderWindow& window);
     void clean();
 
     json store();
 };
+
+}
 
 #endif // ENTITY_LIST_HPP_

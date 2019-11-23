@@ -4,6 +4,8 @@
 
 #include <wx/wx.h>
 
+namespace bardadv::menus {
+
 /*
     Classe feita com base no guia encontrado em 
     https://www.youtube.com/watch?v=FOIbK4bJKS8,
@@ -39,5 +41,7 @@ public:
 private:
     PromptFrame* m_frame1;
 };
+
+}
 
 #endif // NAME_PROMPT_HPP_

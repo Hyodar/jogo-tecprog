@@ -7,6 +7,8 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
+namespace bardadv::persistence {
+
 class GameSaver {
 
 private:
@@ -22,5 +24,7 @@ public:
     json savePlayerScore();
 
 };
+
+}
 
 #endif // GAME_SAVER_HPP_

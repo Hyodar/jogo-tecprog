@@ -6,7 +6,9 @@
 
 #include "collidable.hpp"
 
-class Tile : public Collidable {
+namespace bardadv::map {
+
+class Tile : public bardadv::collision::Collidable {
 
 protected:
     int tileNumber;
@@ -26,5 +28,7 @@ public:
     sf::FloatRect getBoundingBox() const;
 
 };
+
+}
 
 #endif // TILE_HPP_

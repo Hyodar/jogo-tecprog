@@ -5,6 +5,8 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
+namespace bardadv::persistence {
+
 class DatabaseModel {
 
 public:
@@ -13,5 +15,7 @@ public:
     virtual json store() = 0;
 
 };
+
+}
 
 #endif // DATABASE_MODEL_HPP_

@@ -33,6 +33,12 @@
 #include "name_prompt.hpp"
 #include <constants.hpp>
 
+using namespace bardadv::core;
+using namespace bardadv::map;
+using namespace bardadv::menus;
+using namespace bardadv::characters;
+using namespace bardadv::persistence;
+
 // Attribute Initialization
 // ---------------------------------------------------------------------------
 
@@ -75,7 +81,7 @@ void Game::start() {
     if(gameState != UNINITIALIZED) return;
 
     std::cout << "[*] Creating window..." << std::endl;
-    mainWindow.create(sf::VideoMode(1024, 768), "Game title");
+    mainWindow.create(sf::VideoMode(1024, 768), "As aventuras do Bardo");
     TileManager::getInstance()->loadTileSet();
 
     gameState = SHOWING_SPLASH;

@@ -1,14 +1,28 @@
+
 // Libraries
-#include <cmath>
 // ---------------------------------------------------------------------------
 
+// Standard libraries
+// --------------------------
+
+#include <cmath>
+
 // Class header
+// --------------------------
+
 #include "flying_monster.hpp"
-#include "graphics_manager.hpp"
-#include "game.hpp"
 
 // Internal libraries
+// --------------------------
+
+#include "graphics_manager.hpp"
+#include "game.hpp"
+#include "bardo.hpp"
+
 #include <constants.hpp>
+
+using namespace bardadv::core;
+using namespace bardadv::characters;
 
 // Methods
 // ---------------------------------------------------------------------------
@@ -63,6 +77,8 @@ void FlyingMonster::setAbsoluteTime(float absTime) {
 json FlyingMonster::store() {
     json j;
 
+    j["id"] = id;
+    j["playerId"] = player->getId();
     j["classification"] = classification;
     j["hp"] = hitPoints;
     j["startingPosX"] = startingPos.x;

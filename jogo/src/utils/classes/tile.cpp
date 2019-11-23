@@ -15,6 +15,9 @@
 
 #include <constants.hpp>
 
+using namespace bardadv::core;
+using namespace bardadv::map;
+
 // Methods
 // ---------------------------------------------------------------------------
 

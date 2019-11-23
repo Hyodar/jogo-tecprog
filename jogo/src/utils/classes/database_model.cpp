@@ -9,6 +9,8 @@
 // Internal libraries
 // ---------------------
 
+using namespace bardadv::persistence;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 

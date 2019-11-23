@@ -7,6 +7,8 @@
 
 #include "enemy.hpp"
 
+namespace bardadv::characters {
+
 class Bardo;
 
 class Dragon : public Enemy {
@@ -26,4 +28,7 @@ public:
     void launchFireball();
 
 };
+
+}
+
 #endif // DRAGON_HPP_

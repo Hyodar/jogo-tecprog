@@ -8,6 +8,7 @@
 
 #include <constants.hpp>
 
+namespace bardadv::map {
 class Tile;
 
 class GameMap {
@@ -47,5 +48,7 @@ public:
 
     Tile* getTile(int line, int col);
 };
+
+}
 
 #endif // GAME_MAP_HPP_

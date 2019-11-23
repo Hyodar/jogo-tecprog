@@ -2,18 +2,21 @@
 #ifndef OBSTACLE_HPP_
 #define OBSTACLE_HPP_
 
-#include "collidable.hpp"
 #include "entity.hpp"
-#include "database_model.hpp"
 
-#include "bardo.hpp"
-#include "fiel_escudeiro.hpp"
-
+namespace bardadv::characters {
 class Enemy;
 class Bardo;
 class FielEscudeiro;
+}
 
-class Obstacle : public Entity {
+namespace bardadv::obstacles {
+
+using bardadv::characters::Enemy;
+using bardadv::characters::Bardo;
+using bardadv::characters::FielEscudeiro;
+
+class Obstacle : public bardadv::core::Entity {
 
 public:
     Obstacle(int posX, int posY, int sizeX, int sizeY, int classification);
@@ -35,5 +38,7 @@ public:
     virtual void collideX(FielEscudeiro* f);
     virtual void collideY(FielEscudeiro* f);
 };
+
+}
 
 #endif // OBSTACLE_HPP_

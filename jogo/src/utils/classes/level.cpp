@@ -23,6 +23,8 @@ using json = nlohmann::json;
 
 #include <constants.hpp>
 
+using namespace bardadv::levels;
+
 // Methods
 // ---------------------------------------------------------------------------
 

@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <constants.hpp>
 
+namespace bardadv::levels {
+
 class Level {
 
 public:
@@ -27,5 +29,7 @@ private:
     virtual void spawnObstacles(std::vector<int>& mat, int layerWidth) = 0;
 
 };
+
+}
 
 #endif // LEVEL_HPP_

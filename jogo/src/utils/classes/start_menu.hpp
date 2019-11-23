@@ -4,6 +4,8 @@
 
 #include "menu.hpp"
 
+namespace bardadv::menus {
+
 class StartMenu : public Menu {
     
 public:
@@ -11,5 +13,7 @@ public:
     ~StartMenu();
     
 };
+
+}
 
 #endif // START_MENU_HPP_

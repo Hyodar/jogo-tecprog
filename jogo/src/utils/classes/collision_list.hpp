@@ -9,16 +9,39 @@
 #include <constants.hpp>
 
 #include "collision_detecter.hpp"
-//#include "level_manager.hpp"
 
+namespace bardadv::core {
 class LevelManager;
-class Enemy;
+}
+
+namespace bardadv::obstacles {
 class Obstacle;
-class Projectile;
+}
+
+namespace bardadv::characters {
+class Enemy;
 class Bardo;
 class FielEscudeiro;
+}
+
+namespace bardadv::projectiles {
+class Projectile;
+}
+
+namespace bardadv::map {
 class GameMap;
 class Tile;
+}
+
+namespace bardadv::lists {
+
+using bardadv::obstacles::Obstacle;
+using bardadv::characters::Enemy;
+using bardadv::characters::Bardo;
+using bardadv::characters::FielEscudeiro;
+using bardadv::projectiles::Projectile;
+using bardadv::map::GameMap;
+using bardadv::map::Tile;
 
 class CollisionList {
 
@@ -32,7 +55,7 @@ private:
     Bardo* bardo;
     FielEscudeiro* fielEscudeiro;
 
-    CollisionDetecter collisionDetecter;
+    bardadv::collision::CollisionDetecter collisionDetecter;
 
 public:
     CollisionList();
@@ -62,5 +85,7 @@ public:
     void testProjectiles();
     void testHitPoints();
 };
+
+}
 
 #endif // COLLISION_LIST_HPP_

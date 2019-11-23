@@ -11,6 +11,8 @@
 
 #include "character.hpp"
 
+namespace bardadv::characters {
+
 class Enemy;
 
 class Bardo : public Character {
@@ -54,5 +56,7 @@ public:
     json store();
 
 };
+
+}
 
 #endif // BARDO_HPP_

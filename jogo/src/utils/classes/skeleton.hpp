@@ -7,6 +7,8 @@
 
 #include "enemy.hpp"
 
+namespace bardadv::characters {
+
 class Bardo;
 
 class Skeleton : public Enemy {
@@ -25,4 +27,7 @@ public:
     void updatePositionY(float deltaTime);
 
 };
+
+}
+
 #endif // SKELETON_HPP_

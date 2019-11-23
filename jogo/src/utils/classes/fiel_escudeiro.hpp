@@ -7,7 +7,9 @@
 
 #include "character.hpp"
 
-class FielEscudeiro : public Character {
+namespace bardadv::characters {
+
+class FielEscudeiro : public bardadv::characters::Character {
 
 protected:
     static sf::Texture texture;
@@ -22,5 +24,7 @@ public:
     void isInvulnerable();
     void render(sf::RenderWindow& window);
 };
+
+}
 
 #endif // FIEL_ESCUDEIRO_HPP_

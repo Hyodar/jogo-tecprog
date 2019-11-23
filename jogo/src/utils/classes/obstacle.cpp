@@ -9,6 +9,12 @@
 // Internal libraries
 // ---------------------
 
+#include "bardo.hpp"
+#include "fiel_escudeiro.hpp"
+
+using namespace bardadv::obstacles;
+using namespace bardadv::characters;
+
 // Attribute initialization
 // ---------------------------------------------------------------------------
 
@@ -85,6 +91,7 @@ void Obstacle::collideY(FielEscudeiro* f) {
 json Obstacle::store() {
     json j;
 
+    j["id"] = id;
     j["classification"] = classification;
     j["posX"] = position.x;
     j["posY"] = position.y;
