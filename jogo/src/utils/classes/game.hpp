@@ -81,8 +81,6 @@ private:
     sf::Clock clock;
     sf::Time frameTime;
 
-    int score;
-
     bool isExiting();
     void refreshFrameTime();
 
