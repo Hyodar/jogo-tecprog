@@ -14,12 +14,12 @@ class Bardo;
 class Dragon : public Enemy {
 
 private:
-    
     int attackCounter;
     int attackInterval;
 
 public:
     Dragon(int x=0, int y=0, Bardo* pp = nullptr);
+    Dragon(int id=-1, float hp=-1, int x=0, int y=0, Bardo* pp = nullptr);
     ~Dragon();
     void checkPlayerPos();
     void update(const float deltaTime);

@@ -13,12 +13,12 @@ class Bardo;
 class Mage : public bardadv::characters::Enemy {
 
 private:
-
     int attackCounter;
     int attackInterval;
 
 public:
     Mage(int x=0, int y=0, Bardo* pp = nullptr);
+    Mage(int id=-1, float hp=-1, int x=0, int y=0, Bardo* pp = nullptr);
     ~Mage();
     void checkPlayerPos();
     void update(const float deltaTime);

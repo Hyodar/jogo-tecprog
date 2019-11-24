@@ -1,6 +1,6 @@
 
-#ifndef CONSTANTS_HPP_
-#define CONSTANTS_HPP_
+#ifndef GAME_CONFIG_HPP_
+#define GAME_CONFIG_HPP_
 
 const float GRAV_ACC = 5000.0f;
 const int WINDOW_H = 768;
@@ -10,8 +10,6 @@ const int TILE_SIZE = 64;
 
 const int HEALTH_BAR_HEIGHT = 10;
 const int INVULNERABILITY_TICKS = 1500;
-
-const float FLOORSPIKES_DMG = 20;
 
 enum CharacterClassification {
     BARDO = 0,
@@ -53,4 +51,4 @@ enum Points {
     DRAGON_REWARD = 1000
 };
 
-#endif // CONSTANTS_HPP_
+#endif // GAME_CONFIG_HPP_

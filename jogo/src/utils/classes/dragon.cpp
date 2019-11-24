@@ -21,7 +21,7 @@
 #include "game.hpp"
 #include "level_manager.hpp"
 #include "graphics_manager.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::characters;
 using namespace bardadv::projectiles;
@@ -38,6 +38,21 @@ Dragon::Dragon(int x, int y, Bardo* pp)
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Blue);
+}
+
+// ---------------------------------------------------------------------------
+
+Dragon::Dragon(int id, float hp, int x, int y, Bardo* pp)
+   : Enemy(x, y, 320, 260, 1000, pp, Points::DRAGON_REWARD, CharacterClassification::DRAGON),
+     attackCounter{-rand() % 101}, attackInterval{rand() % 501} {
+
+    sprite.setTexture(*(GraphicsManager::getInstance()->getDragonTexture()));
+    sprite.setScale(2, 2);
+
+    healthBar.setFillColor(sf::Color::Blue);
+
+    this->id = id;
+    this->hitPoints = hp;
 }
 
 // ---------------------------------------------------------------------------

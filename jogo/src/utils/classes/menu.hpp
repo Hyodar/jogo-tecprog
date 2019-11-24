@@ -8,7 +8,7 @@
 #include <list>
 
 #include "ent.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 namespace bardadv::menus {
 

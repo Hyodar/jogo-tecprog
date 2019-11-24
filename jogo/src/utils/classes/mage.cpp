@@ -21,7 +21,7 @@
 #include "game.hpp"
 #include "level_manager.hpp"
 #include "graphics_manager.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::characters;
@@ -39,6 +39,23 @@ Mage::Mage(int x, int y, Bardo* pp)
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Green);
+}
+
+// ---------------------------------------------------------------------------
+
+
+Mage::Mage(int id, float hp, int x, int y, Bardo* pp)
+ : Enemy(x, y, 68, 120, 100, pp, Points::MAGE_REWARD, CharacterClassification::MAGE),
+   attackCounter{-rand() % 101},
+   attackInterval{1700} {
+
+    sprite.setTexture(*(GraphicsManager::getInstance()->getMageTexture()));
+    sprite.setScale(2, 2);
+
+    healthBar.setFillColor(sf::Color::Green);
+
+    this->id = id;
+    this->hitPoints = hp;
 }
 
 // ---------------------------------------------------------------------------

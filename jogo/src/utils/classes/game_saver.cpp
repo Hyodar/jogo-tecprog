@@ -38,7 +38,7 @@
 #include "enemy.hpp"
 #include "projectile.hpp"
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::persistence;
@@ -145,75 +145,58 @@ bool GameSaver::recoverState() {
             } break;
             case CharacterClassification::SKELETON: {
                 Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
-                Skeleton* s = new Skeleton(obj["posX"], obj["posY"], player);
-                s->setHP(obj["hp"]);
-                s->setId(obj["id"]);
+                Skeleton* s = new Skeleton(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
 
                 levelMng->addEnemy(static_cast<Enemy*>(s));
-
             } break;
             case CharacterClassification::MAGE: {
                 Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
-                Mage* m = new Mage(obj["posX"], obj["posY"], player);
-                m->setHP(obj["hp"]);
-                m->setId(obj["id"]);
+                Mage* m = new Mage(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
 
                 levelMng->addEnemy(static_cast<Enemy*>(m));
-
             } break;
             case CharacterClassification::FLYING_MONSTER: {
                 Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
-                FlyingMonster* fm = new FlyingMonster(obj["startingPosX"], obj["startingPosY"], player);
-                fm->setHP(obj["hp"]);
-                fm->setAbsoluteTime(obj["timeCounter"]);
-                fm->setId(obj["id"]);
+                FlyingMonster* fm = new FlyingMonster(obj["id"], obj["hp"], obj["timeCounter"], obj["startingPosX"], obj["startingPosY"], player);
 
                 levelMng->addEnemy(static_cast<Enemy*>(fm));
-
             } break;
             case CharacterClassification::DRAGON: {
                 Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
-                Dragon* d = new Dragon(obj["posX"], obj["posY"], player);
-                d->setHP(obj["hp"]);
-                d->setId(obj["id"]);
+                Dragon* d = new Dragon(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
 
                 levelMng->addEnemy(static_cast<Enemy*>(d));
-
             } break;
             case ObstacleClassification::SPIKE: {
                 Spike* s = new Spike(obj["posX"], obj["posY"]);
                 s->setId(obj["id"]);
 
                 levelMng->addObstacle(static_cast<Obstacle*>(s));
-
             } break;
             case ObstacleClassification::LAVA: {
                 Lava* l = new Lava(obj["posX"], obj["posY"]);
                 l->setId(obj["id"]);
 
                 levelMng->addObstacle(static_cast<Obstacle*>(l));
-
             } break;
             case ObstacleClassification::BOX: {
                 Box* b = new Box(obj["posX"], obj["posY"]);
                 b->setId(obj["id"]);
 
                 levelMng->addObstacle(static_cast<Obstacle*>(b));
-
             } break;
             case ProjectileClassification::FIREBALL: {
                 Fireball* f = new Fireball(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
                 f->setId(obj["id"]);
 
                 levelMng->addProjectile(static_cast<Projectile*>(f));
-
             } break;
             case ProjectileClassification::ENERGY_BALL: {
                 EnergyBall* e = new EnergyBall(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
                 e->setId(obj["id"]);
+                e->setAlreadySplited(true);
 
                 levelMng->addProjectile(static_cast<Projectile*>(e));
-
             } break;
         }
     }

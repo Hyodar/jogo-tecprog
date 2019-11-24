@@ -4,7 +4,7 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include <constants.hpp>
+#include <game_config.hpp>
 
 namespace bardadv::levels {
 

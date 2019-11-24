@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 #include "obstacle.hpp"
 

@@ -2,51 +2,51 @@
     "entities": [
         {
             "classification": 0,
-            "hp": 9980.0,
+            "hp": 820.0,
             "id": 2,
-            "posX": 762.6748046875,
-            "posY": 526.854248046875
+            "posX": 5277.6611328125,
+            "posY": 576.0
         },
         {
             "classification": 6,
             "id": 4,
-            "posX": 640.0,
+            "posX": 1472.0,
             "posY": 640.0
         },
         {
             "classification": 6,
             "id": 5,
-            "posX": 960.0,
+            "posX": 1536.0,
             "posY": 640.0
         },
         {
             "classification": 6,
             "id": 6,
-            "posX": 1088.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "id": 7,
-            "posX": 576.0,
-            "posY": 640.0
-        },
-        {
-            "classification": 6,
-            "id": 8,
             "posX": 1024.0,
             "posY": 640.0
         },
         {
             "classification": 6,
+            "id": 7,
+            "posX": 960.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
+            "id": 8,
+            "posX": 576.0,
+            "posY": 640.0
+        },
+        {
+            "classification": 6,
             "id": 9,
-            "posX": 1536.0,
+            "posX": 640.0,
             "posY": 640.0
         },
         {
             "classification": 8,
             "id": 10,
-            "posX": 5440.0,
+            "posX": 5632.0,
             "posY": 576.0
         },
         {
@@ -58,57 +58,45 @@
         {
             "classification": 8,
             "id": 12,
-            "posX": 3200.0,
-            "posY": 512.0
-        },
-        {
-            "classification": 8,
-            "id": 13,
-            "posX": 5632.0,
+            "posX": 5440.0,
             "posY": 576.0
         },
         {
             "classification": 8,
-            "id": 14,
+            "id": 13,
             "posX": 2624.0,
             "posY": 192.0
         },
         {
             "classification": 8,
+            "id": 14,
+            "posX": 2240.0,
+            "posY": 576.0
+        },
+        {
+            "classification": 8,
             "id": 15,
+            "posX": 3328.0,
+            "posY": 512.0
+        },
+        {
+            "classification": 8,
+            "id": 16,
             "posX": 1344.0,
             "posY": 512.0
         },
         {
-            "classification": 2,
-            "hp": 100.0,
-            "id": 16,
-            "playerId": 2,
-            "posX": 3584.0,
-            "posY": 397.6051025390625
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
+            "classification": 8,
             "id": 17,
-            "playerId": 2,
-            "posX": 5184.0,
-            "posY": 441.1220397949219
-        },
-        {
-            "classification": 2,
-            "hp": 100.0,
-            "id": 18,
-            "playerId": 2,
-            "posX": 1269.578369140625,
-            "posY": 355.4778747558594
+            "posX": 3200.0,
+            "posY": 512.0
         },
         {
             "classification": 2,
             "hp": 100.0,
             "id": 19,
             "playerId": 2,
-            "posX": 2752.0,
+            "posX": 2112.1396484375,
             "posY": 576.0
         },
         {
@@ -116,67 +104,163 @@
             "hp": 100.0,
             "id": 20,
             "playerId": 2,
-            "posX": 1728.0,
-            "posY": 384.0
+            "posX": 5277.43994140625,
+            "posY": 347.501708984375
         },
         {
             "classification": 2,
             "hp": 100.0,
             "id": 21,
             "playerId": 2,
-            "posX": 702.7708129882813,
-            "posY": 512.0
+            "posX": 1880.4161376953125,
+            "posY": 576.0
         },
         {
             "classification": 2,
             "hp": 100.0,
-            "id": 22,
-            "playerId": 2,
-            "posX": 702.8133544921875,
-            "posY": 512.0
-        },
-        {
-            "classification": 3,
-            "hp": 100.0,
             "id": 23,
             "playerId": 2,
-            "posX": 4032.0,
-            "posY": 328.0
-        },
-        {
-            "classification": 3,
-            "hp": 100.0,
-            "id": 24,
-            "playerId": 2,
-            "posX": 4992.0,
-            "posY": 520.0
+            "posX": 5105.21875,
+            "posY": 297.8301086425781
         },
         {
             "classification": 3,
             "hp": 100.0,
             "id": 25,
             "playerId": 2,
-            "posX": 5632.0,
-            "posY": 456.0
+            "posX": 5372.0,
+            "posY": 520.0
         },
         {
             "classification": 3,
             "hp": 100.0,
             "id": 26,
             "playerId": 2,
-            "posX": 4480.0,
-            "posY": 328.0
+            "posX": 2355.95166015625,
+            "posY": 200.0
         },
         {
             "classification": 3,
             "hp": 100.0,
             "id": 27,
             "playerId": 2,
-            "posX": 3200.0,
-            "posY": 392.0
+            "posX": 5372.0,
+            "posY": 520.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "id": 29,
+            "playerId": 2,
+            "posX": 5878.134765625,
+            "posY": 584.0
+        },
+        {
+            "classification": 3,
+            "hp": 100.0,
+            "id": 30,
+            "playerId": 2,
+            "posX": 5372.0,
+            "posY": 520.0
+        },
+        {
+            "classification": 10,
+            "id": 40,
+            "posX": 4191.7353515625,
+            "posY": 632.5192260742188,
+            "speedX": -496.968994140625,
+            "speedY": 54.971134185791016
+        },
+        {
+            "classification": 10,
+            "id": 41,
+            "posX": 4211.220703125,
+            "posY": 635.9642333984375,
+            "speedX": -496.6304016113281,
+            "speedY": 57.95035171508789
+        },
+        {
+            "classification": 10,
+            "id": 42,
+            "posX": 4213.5537109375,
+            "posY": 635.8836059570313,
+            "speedX": -496.62603759765625,
+            "speedY": 57.98777770996094
+        },
+        {
+            "classification": 10,
+            "id": 43,
+            "posX": 4007.00146484375,
+            "posY": 837.1251220703125,
+            "speedX": -596.36279296875,
+            "speedY": 165.96536254882813
+        },
+        {
+            "classification": 10,
+            "id": 44,
+            "posX": 4007.00146484375,
+            "posY": 224.8742218017578,
+            "speedX": -596.36279296875,
+            "speedY": -165.96536254882813
+        },
+        {
+            "classification": 10,
+            "id": 45,
+            "posX": 4031.313720703125,
+            "posY": 835.8819580078125,
+            "speedX": -595.9564819335938,
+            "speedY": 169.54042053222656
+        },
+        {
+            "classification": 10,
+            "id": 46,
+            "posX": 4031.313720703125,
+            "posY": 226.11863708496094,
+            "speedX": -595.9564819335938,
+            "speedY": -169.54042053222656
+        },
+        {
+            "classification": 10,
+            "id": 47,
+            "posX": 4034.0390625,
+            "posY": 835.4712524414063,
+            "speedX": -595.9512329101563,
+            "speedY": 169.5853271484375
+        },
+        {
+            "classification": 10,
+            "id": 48,
+            "posX": 4034.0390625,
+            "posY": 226.52845764160156,
+            "speedX": -595.9512329101563,
+            "speedY": -169.5853271484375
+        },
+        {
+            "classification": 10,
+            "id": 49,
+            "posX": 5276.861328125,
+            "posY": 576.337646484375,
+            "speedX": -430.2254333496094,
+            "speedY": 254.76673889160156
+        },
+        {
+            "classification": 10,
+            "id": 50,
+            "posX": 5295.67578125,
+            "posY": 565.1924438476563,
+            "speedX": -430.2358093261719,
+            "speedY": 254.74920654296875
+        },
+        {
+            "classification": 10,
+            "id": 51,
+            "posX": 5297.87451171875,
+            "posY": 563.8934936523438,
+            "speedX": -430.22772216796875,
+            "speedY": 254.7628631591797
         }
     ],
     "name": "a",
     "phase": 0,
-    "score": 0
+    "score": 50
 }

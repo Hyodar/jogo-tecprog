@@ -20,7 +20,6 @@ OBJ = $(subst $(SRC_DIR),$(BUILD_DIR),$(CPP:%.cpp=%.cpp.o))
 OBJ_BIN = $(subst $(SRC_DIR),$(BUILD_DIR),$(CPP_BIN:%.cpp=%.cpp.o))
 
 # Makefile targets
-
 .PHONY = default all clean
 
 default: $(BIN)

@@ -14,12 +14,12 @@ class Bardo;
 class Skeleton : public Enemy {
 
 private:
-    
     int jumpCounter;
     int jumpInterval;
 
 public:
     Skeleton(int x=0, int y=0, Bardo* pp = nullptr);
+    Skeleton(int id=-1, float hp=-1, int x=0, int y=0, Bardo* pp = nullptr);
     ~Skeleton();
     void checkPlayerPos();
     void update(const float deltaTime);

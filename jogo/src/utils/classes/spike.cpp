@@ -13,7 +13,7 @@
 #include "game.hpp"
 #include "graphics_manager.hpp"
 #include "game_map.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::map;

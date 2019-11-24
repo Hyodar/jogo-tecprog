@@ -47,7 +47,7 @@ TODOS
  LEMBRAR DE DAR CREDITOS
  - Autor do json.hpp (nlohmann)
  - https://www.artstation.com/artwork/xzmKBR (autor da splash screen)
- - Autores das fontes
+ - AutoreS das fonteS
  - https://lionheart963.itch.io /Warren Clark: Flying Monster, Wizard
  - https://jesse-m.itch.io  /Jesse Munguia: Skeleton
  - https://opengameart.org/content/flying-dragon-rework 

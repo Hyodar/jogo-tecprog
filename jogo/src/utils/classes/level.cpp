@@ -21,7 +21,7 @@ using json = nlohmann::json;
 // Internal libraries
 // ---------------------
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::levels;
 

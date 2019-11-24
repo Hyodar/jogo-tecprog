@@ -7,7 +7,7 @@
 #include "entity_manager.hpp"
 #include "level.hpp"
 #include "game.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 namespace bardadv::obstacles {
 class Obstacle;

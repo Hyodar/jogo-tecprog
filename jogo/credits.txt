@@ -1,0 +1,47 @@
+
+Aqui, os devidos créditos de recursos e tutoriais externos usados no 
+desenvolviemnto do jogo:
+
+* json.hpp
+    Autor: N. Lohmann
+    Fonte: https://github.com/nlohmann/json
+    Licença: MIT
+    Uso: Biblioteca que torna a leitura e armazenamento de arquivos json
+         extremamente sofisticada e refinada. É usada para os esquemas de
+         persistência de dados - tanto salvar jogada quanto ranking.
+
+* Implementação básica de Linked List
+    Autor: Desconhecido
+    Fonte: http://www.cplusplus.com/articles/Lw6AC542/
+    Uso: Inspiração para a List implementada no projeto. Fizemos imple-
+         mentações e edições adicionais. Muito bem explicado.
+
+* Interfaces em wxWidgets
+    Autor: javidx9 / OneLoneCoder
+    Fonte: https://www.youtube.com/watch?v=FOIbK4bJKS8
+    Uso: Tutorial para o uso de wxWidgets em C++. Foi especialmente
+         útil para demonstrar o uso de wxWidgets como UI.
+
+* Imagens:
+    - Imagem de fundo de SplashScreen:
+        Fonte: https://www.artstation.com/artwork/xzmKBR
+        Autor: Bela Lund
+    - Imagens de FlyingMonster e Mage:
+        Fonte: https://lionheart963.itch.io/
+        Autor: Warren Clark
+    - Imagem de Skeleton:
+        Fonte: https://jesse-m.itch.io
+        Autor: Jesse Munguia
+    - Imagem de Dragon (adaptada):
+        Fonte: https://opengameart.org/content/flying-dragon-rework
+        Autor: Antum Deluge
+
+* Fontes:
+    - Score: 
+        Fonte: https://fonts.google.com/specimen/Bilbo
+        Autor: TypeSETit
+    - Ranking:
+        Fonte: https://www.dafont.com/pt/dungeon-sn.font
+        Autor: Saesarez Novandito
+
+    

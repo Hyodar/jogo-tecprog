@@ -12,7 +12,7 @@
 // ---------------------
 
 #include "bardo.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::characters;
 using namespace bardadv::projectiles;

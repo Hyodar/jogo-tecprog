@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <constants.hpp>
+#include <game_config.hpp>
 
 // Class header
 // ---------------------

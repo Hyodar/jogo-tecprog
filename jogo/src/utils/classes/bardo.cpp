@@ -20,7 +20,7 @@
 #include "game_map.hpp"
 #include "graphics_manager.hpp"
 #include "enemy.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::map;
@@ -35,7 +35,7 @@ std::mutex* Bardo::invulnerabilityMutex = new std::mutex();
 // ---------------------------------------------------------------------------
 
 Bardo::Bardo(int x, int y, int sizeX, int sizeY, double maxHP)
- : Character(x, y, 64, 64, 10000, CharacterClassification::BARDO, 40),
+ : Character(x, y, 64, 64, 1000, CharacterClassification::BARDO, 40),
    attackCounter{0}, attackInterval{300}, onFireCounter{200},
    invulnerabilityThread{nullptr}, onFireThread{nullptr} {
 
@@ -167,12 +167,12 @@ void Bardo::resetAttackCounter() {
 void Bardo::collideX(Enemy* e) {
     if(attackCounter) {
         if(walkingRight && e->getPosX() > position.x) {
-            e->takeDamage(5000);
+            e->takeDamage(100);
             e->jump(0.5);
             e->setSpeedX(0);
         }
         else if(!walkingRight && e->getPosX() < position.x) {
-            e->takeDamage(5000);
+            e->takeDamage(100);
             e->jump(0.5);
             e->setSpeedX(0);
         }

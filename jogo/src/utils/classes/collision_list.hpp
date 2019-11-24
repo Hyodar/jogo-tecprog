@@ -6,7 +6,7 @@
 #include <map>
 #include <deque>
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 #include "collision_detecter.hpp"
 

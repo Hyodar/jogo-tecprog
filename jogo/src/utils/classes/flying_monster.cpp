@@ -19,7 +19,7 @@
 #include "game.hpp"
 #include "bardo.hpp"
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::characters;
@@ -36,6 +36,21 @@ FlyingMonster::FlyingMonster(int x, int y, Bardo* pp)
     healthBar.setFillColor(sf::Color::Yellow);
 
     absoluteTime = 0;
+}
+
+// ---------------------------------------------------------------------------
+
+FlyingMonster::FlyingMonster(int id, float hp, float abstime, int x, int y, Bardo* pp)
+ : Enemy(x, y, 90, 90, 80, pp, Points::FLYING_MONSTER_REWARD, CharacterClassification::FLYING_MONSTER),
+   startingPos(x, y) {
+    sprite.setTexture(*(GraphicsManager::getInstance()->getFlyingMonsterTexture()));
+    sprite.setScale(2.5, 2.5);
+
+    healthBar.setFillColor(sf::Color::Yellow);
+
+    this->id = id;
+    this->hitPoints = hp;
+    this->absoluteTime = abstime;
 }
 
 // ---------------------------------------------------------------------------

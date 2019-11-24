@@ -18,7 +18,7 @@
 #include "bardo.hpp"
 #include "game.hpp"
 #include "graphics_manager.hpp"
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::characters;
@@ -34,6 +34,21 @@ Skeleton::Skeleton(int x, int y, Bardo* pp)
     sprite.setScale(2, 2);
 
     healthBar.setFillColor(sf::Color::Blue);
+}
+
+// ---------------------------------------------------------------------------
+
+Skeleton::Skeleton(int id, float hp, int x, int y, Bardo* pp)
+ : Enemy(x, y, 86, 128, 100, pp, Points::SKELETON_REWARD, CharacterClassification::SKELETON),
+   jumpCounter{-rand() % 101}, jumpInterval{rand() % 501} {
+
+    sprite.setTexture(*(GraphicsManager::getInstance()->getSkeletonTexture()));
+    sprite.setScale(2, 2);
+
+    healthBar.setFillColor(sf::Color::Blue);
+
+    this->hitPoints = hp;
+    this->id = id;
 }
 
 // ---------------------------------------------------------------------------

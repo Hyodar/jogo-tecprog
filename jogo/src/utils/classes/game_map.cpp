@@ -29,7 +29,7 @@ using json = nlohmann::json;
 using namespace bardadv::core;
 using namespace bardadv::map;
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 // Attribute initialization
 // ---------------------------------------------------------------------------

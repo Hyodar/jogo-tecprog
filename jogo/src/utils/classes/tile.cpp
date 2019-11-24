@@ -13,7 +13,7 @@
 #include "game.hpp"
 #include "tile_manager.hpp"
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 using namespace bardadv::core;
 using namespace bardadv::map;

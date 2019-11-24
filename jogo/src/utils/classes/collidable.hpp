@@ -8,10 +8,12 @@ namespace bardadv::collision {
 
 class Collidable {
 
-    public:
-        virtual sf::FloatRect getBoundingBox() const;
-        
-        virtual void takeDamage(float dmg);
+public:
+    Collidable();
+    virtual ~Collidable();
+
+    virtual sf::FloatRect getBoundingBox() const;
+    
 };
 
 }

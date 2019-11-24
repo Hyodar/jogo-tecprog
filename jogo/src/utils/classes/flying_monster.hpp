@@ -23,6 +23,7 @@ private:
 
 public:
     FlyingMonster(int x=0, int y=0, Bardo* pp = nullptr);
+    FlyingMonster(int id=-1, float hp=-1, float abstime=-1, int x=0, int y=0, Bardo* pp = nullptr);
     ~FlyingMonster();
     void checkPlayerPos();
     void update(const float deltaTime);

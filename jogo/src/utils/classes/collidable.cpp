@@ -17,12 +17,18 @@ using namespace bardadv::collision;
 // Methods
 // ---------------------------------------------------------------------------
 
-sf::FloatRect Collidable::getBoundingBox() const {
-    return sf::FloatRect(0, 0, 0, 0);
+Collidable::Collidable() {
+    // noop
 }
 
 // ---------------------------------------------------------------------------
 
-void Collidable::takeDamage(float dmg) {
+Collidable::~Collidable() {
     // noop
+}
+
+// ---------------------------------------------------------------------------
+
+sf::FloatRect Collidable::getBoundingBox() const {
+    return sf::FloatRect(0, 0, 0, 0);
 }

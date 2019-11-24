@@ -6,7 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <constants.hpp>
+#include <game_config.hpp>
 
 namespace bardadv::map {
 class Tile;
