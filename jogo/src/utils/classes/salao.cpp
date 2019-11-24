@@ -29,6 +29,7 @@
 #include "dragon.hpp"
 #include "fireball.hpp"
 #include "mage.hpp"
+#include "energy_ball.hpp"
 #include "flying_monster.hpp"
 #include "level_manager.hpp"
 
@@ -165,6 +166,13 @@ void Salao::recoverLevel(json data) {
                 f->setId(obj["id"]);
 
                 levelMng->addProjectile(static_cast<Projectile*>(f));
+            } break;
+            case ProjectileClassification::ENERGY_BALL: {
+                EnergyBall* e = new EnergyBall(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
+                e->setId(obj["id"]);
+                e->setAlreadySplited(true);
+
+                levelMng->addProjectile(static_cast<Projectile*>(e));
             } break;
         }
     }
