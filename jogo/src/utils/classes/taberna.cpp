@@ -26,11 +26,13 @@
 #include "box.hpp"
 #include "skeleton.hpp"
 #include "mage.hpp"
+#include "energy_ball.hpp"
 #include "level_manager.hpp"
 #include "game.hpp"
 
 using namespace bardadv::core;
 using namespace bardadv::obstacles;
+using namespace bardadv::projectiles;
 using namespace bardadv::characters;
 using namespace bardadv::levels;
 
@@ -115,4 +117,46 @@ void Taberna::spawnEnemies(std::vector<int>& mat, int layerWidth) {
 
     for(uint i = 0; i < maxSkeletons; i++) LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Skeleton(skeletons[i].x, skeletons[i].y, &(Game::getInstance()->getPlayer()))));
     for(uint i = 0; i < maxMages; i++) LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Mage(mages[i].x, mages[i].y, &(Game::getInstance()->getPlayer()))));
+}
+
+// ---------------------------------------------------------------------------
+
+void Taberna::recoverLevel(json data) {
+    LevelManager* levelMng = LevelManager::getInstance();
+
+    for(auto obj : data["entities"]) {
+        switch((int) obj["classification"]) {
+            case CharacterClassification::SKELETON: {
+                Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
+                Skeleton* s = new Skeleton(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
+
+                levelMng->addEnemy(static_cast<Enemy*>(s));
+            } break;
+            case CharacterClassification::MAGE: {
+                Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
+                Mage* m = new Mage(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
+
+                levelMng->addEnemy(static_cast<Enemy*>(m));
+            } break;
+            case ObstacleClassification::SPIKE: {
+                Spike* s = new Spike(obj["posX"], obj["posY"]);
+                s->setId(obj["id"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(s));
+            } break;
+            case ObstacleClassification::BOX: {
+                Box* b = new Box(obj["posX"], obj["posY"]);
+                b->setId(obj["id"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(b));
+            } break;
+            case ProjectileClassification::ENERGY_BALL: {
+                EnergyBall* e = new EnergyBall(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
+                e->setId(obj["id"]);
+                e->setAlreadySplited(true);
+
+                levelMng->addProjectile(static_cast<Projectile*>(e));
+            } break;
+        }
+    }
 }

@@ -75,13 +75,14 @@ void LevelManager::changeLevel(int levelNum) {
 
 // ---------------------------------------------------------------------------
 
-void LevelManager::recoverLevel(int levelNum) {
+void LevelManager::recoverLevel(int levelNum, json data) {
     std::cout << "Recovering level " << levelNum << "..." << std::endl;
     if(levelNum < 0 || levelNum > 1) return;
 
     currentLevel = levelNum;
 
     GameMap::getInstance()->loadMap();
+    levels[currentLevel]->recoverLevel(data);
 
     std::cout << "Loaded level." << std::endl;
 }

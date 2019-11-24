@@ -348,6 +348,8 @@ void Game::checkPlayerState() {
 
         fielEscudeiro.setPosX(WINDOW_W/2 - 100);
         fielEscudeiro.setPosY(WINDOW_H/2);
+
+        gamePhase = PHASE_2;
     }
 
     if(!player.isAlive()) {
@@ -390,10 +392,7 @@ json Game::store() {
 // ---------------------------------------------------------------------------
 
 void Game::resume() {
-    if(GameSaver::getInstance()->recoverState()) {
-        LevelManager::getInstance()->recoverLevel(gamePhase);
-    }
-    else {
+    if(!GameSaver::getInstance()->recoverState()) {
         gamePhase = PHASE_1;
         LevelManager::getInstance()->changeLevel(gamePhase);
     }

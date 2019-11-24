@@ -16,6 +16,7 @@ public:
 
     void spawnEnemies(std::vector<int>& mat, int layerWidth);
     void spawnObstacles(std::vector<int>& mat, int layerWidth);
+    void recoverLevel(json data);
 
 };
 

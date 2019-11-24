@@ -27,6 +27,7 @@
 #include "lava.hpp"
 #include "game.hpp"
 #include "dragon.hpp"
+#include "fireball.hpp"
 #include "mage.hpp"
 #include "flying_monster.hpp"
 #include "level_manager.hpp"
@@ -34,6 +35,7 @@
 using namespace bardadv::core;
 using namespace bardadv::levels;
 using namespace bardadv::obstacles;
+using namespace bardadv::projectiles;
 using namespace bardadv::characters;
 
 // Methods
@@ -87,11 +89,6 @@ void Salao::spawnObstacles(std::vector<int>& mat, int layerWidth) {
 // ---------------------------------------------------------------------------
 
 void Salao::spawnEnemies(std::vector<int>& mat, int layerWidth) {
-    /*
-    LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Dragon(1000, 200, &(Game::getInstance()->getPlayer()))));
-    LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new FlyingMonster(2000, 200, &(Game::getInstance()->getPlayer()))));
-    LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Mage (400, 200, &(Game::getInstance()->getPlayer()))));
-    */
 
     const uint fmNum = rand() % 5 + 5;
     const uint mageNum = rand() % 5 + 5;
@@ -126,4 +123,49 @@ void Salao::spawnEnemies(std::vector<int>& mat, int layerWidth) {
 
     for(uint i = 0; i < maxSkeletons; i++) LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new FlyingMonster(fms[i].x, fms[i].y, &(Game::getInstance()->getPlayer()))));
     for(uint i = 0; i < maxMages; i++) LevelManager::getInstance()->addEnemy(static_cast<Enemy*>(new Mage(mages[i].x, mages[i].y, &(Game::getInstance()->getPlayer()))));
+}
+
+void Salao::recoverLevel(json data) {
+    LevelManager* levelMng = LevelManager::getInstance();
+
+    for(auto obj : data["entities"]) {
+        switch((int) obj["classification"]) {
+            case CharacterClassification::MAGE: {
+                Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
+                Mage* m = new Mage(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
+
+                levelMng->addEnemy(static_cast<Enemy*>(m));
+            } break;
+            case CharacterClassification::FLYING_MONSTER: {
+                Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
+                FlyingMonster* fm = new FlyingMonster(obj["id"], obj["hp"], obj["timeCounter"], obj["startingPosX"], obj["startingPosY"], player);
+
+                levelMng->addEnemy(static_cast<Enemy*>(fm));
+            } break;
+            case CharacterClassification::DRAGON: {
+                Bardo* player = dynamic_cast<Bardo*>(levelMng->getEntityManager().getEntityById(obj["playerId"]));
+                Dragon* d = new Dragon(obj["id"], obj["hp"], obj["posX"], obj["posY"], player);
+
+                levelMng->addEnemy(static_cast<Enemy*>(d));
+            } break;
+            case ObstacleClassification::SPIKE: {
+                Spike* s = new Spike(obj["posX"], obj["posY"]);
+                s->setId(obj["id"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(s));
+            } break;
+            case ObstacleClassification::LAVA: {
+                Lava* l = new Lava(obj["posX"], obj["posY"]);
+                l->setId(obj["id"]);
+
+                levelMng->addObstacle(static_cast<Obstacle*>(l));
+            } break;
+            case ProjectileClassification::FIREBALL: {
+                Fireball* f = new Fireball(obj["posX"], obj["posY"], obj["speedX"], obj["speedY"]);
+                f->setId(obj["id"]);
+
+                levelMng->addProjectile(static_cast<Projectile*>(f));
+            } break;
+        }
+    }
 }

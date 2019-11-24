@@ -52,17 +52,7 @@ void Level::init() {
         matrix1.push_back(n);
     }
 
-    /*
-    std::vector<int> matrix2;
-    jsonMat = mapInfo["layers"][2]["data"];
-
-    for(int n : jsonMat) {
-        matrix2.push_back(n);
-    }
-    */
-
     spawnAll(matrix1, matrix1, static_cast<int>(mapInfo["width"]));
-    // Game.loadBackground(mapInfo["backgroundPath"]); - TODO
 }
 
 // ---------------------------------------------------------------------------

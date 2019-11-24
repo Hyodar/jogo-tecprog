@@ -9,6 +9,9 @@
 #include "game.hpp"
 #include <game_config.hpp>
 
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 namespace bardadv::obstacles {
 class Obstacle;
 }
@@ -45,7 +48,7 @@ public:
 
     void nextLevel();
     void changeLevel(int levelNum);
-    void recoverLevel(int levelNum);
+    void recoverLevel(int levelNum, json data);
     void cleanLevel();
 
     Level* getLevel() const;
