@@ -18,11 +18,6 @@ using namespace bardadv::map;
 using namespace bardadv::core;
 using namespace bardadv::characters;
 
-// Attribute initialization
-// ---------------------------------------------------------------------------
-
-sf::Texture FielEscudeiro::texture;
-
 // Methods
 // ---------------------------------------------------------------------------
 

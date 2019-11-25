@@ -11,9 +11,6 @@ namespace bardadv::characters {
 
 class FielEscudeiro : public bardadv::characters::Character {
 
-protected:
-    static sf::Texture texture;
-
 public:
     FielEscudeiro(int x=0, int y=0, int sizeX=0, int sizeY=0, double maxHP=0);
     void checkKeys();
