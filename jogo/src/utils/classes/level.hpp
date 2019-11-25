@@ -25,7 +25,7 @@ public:
     const char* getConfigPath();
     virtual void recoverLevel(json data) = 0;
 
-private:
+protected:
     const char* configPath;
 
     void spawnAll(std::vector<int>& mat1, std::vector<int>& mat2, int layerWidth);

@@ -35,6 +35,8 @@ desenvolviemnto do jogo:
     - Imagem de Dragon (adaptada):
         Fonte: https://opengameart.org/content/flying-dragon-rework
         Autor: Antum Deluge
+    - Imagens do Bardo e FielEscudeiro (adaptadas):
+        Fonte: GIMP (GNU Image Manipulation Program)
 
 * Fontes:
     - Score: 

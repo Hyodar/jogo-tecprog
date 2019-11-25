@@ -18,7 +18,7 @@ public:
     Menu();
     ~Menu();
 
-    struct MenuItem {
+    class MenuItem {
         public:
             sf::Rect<int> rect;
             MenuCommand action;
